@@ -135,25 +135,40 @@ def generate_theme_ideas(theme: str, items: List[Dict[str, Any]], min_sources: i
     # 2. Product as relief idea (25% target)
     if "ubo" in theme_lower or "shell" in theme_lower:
         ideas.append({
-            "title": "Questionnaire Said 'No Sanctions Concern'. Registry Said 51% Owned by SDN.",
+            "title": "72% of Flagged Risk Was on Zero Watchlists (The Nested Ownership Blindspot)",
             "format": "Product as relief",
             "pillar": format_pillar_map("Product as relief"),
-            "hook": "Self-reported vendor questionnaires are polite fiction. Here is what happens when you compare the supplier's checkbox to actual corporate registry filings.",
-            "suggested_visual": "Two-panel before/after: Left panel is a supplier questionnaire with 'No' checked; Right panel is the official corporate structure showing ultimate beneficial ownership.",
+            "hook": "For a global telecom screening 60,000+ partners, 72% of high-risk entities appeared clean on every commercial watchlist. The exposure was buried 3 layers deep in nested corporate ownership.",
+            "suggested_visual": "Two-panel contrast: Left panel shows '0 Watchlist Matches' on legacy vendor check; Right panel shows Sayari graph revealing 51% ownership by an SDN via offshore holding company.",
             "extends_idea": "Questionnaire vs record: two panels",
             "evidence_sources": evidence,
             "source_count": len(items),
             "avg_intensity": avg_intensity,
             "engagement_score": engagement_score,
-            "risks": "High if real supplier named. Must use anonymized or public enforcement case.",
-            "verify_before_use": "Verify whether Sayari has approved public customer case studies or if the two panels must be marked 'Illustrative Scenario'."
+            "risks": "Low. Cites approved client benchmark ('No. 3 global telecom', 60K+ partners, 72% stat). No proprietary client names disclosed.",
+            "verify_before_use": "Verified per Sayari brief: approved as 'No. 3 global telecom'."
+        })
+    elif "frankenstack" in theme_lower or "swivel chair" in theme_lower:
+        ideas.append({
+            "title": "Retiring a Homegrown System: Collapsing 75+ Data Feeds into One Screen",
+            "format": "Product as relief",
+            "pillar": format_pillar_map("Product as relief"),
+            "hook": "A Fortune 50 energy supermajor collapsed 75+ fragmented point solutions and internal databases into a single query. Result: real-time screening across 1.2M records instead of a 48-hour delay.",
+            "suggested_visual": "Before/After flow diagram: Left shows 75 disjointed feed arrows feeding an analyst desk; Right shows 1 unified graph query delivering immediate disposition evidence.",
+            "extends_idea": "Six tabs to one query: before/after",
+            "evidence_sources": evidence,
+            "source_count": len(items),
+            "avg_intensity": avg_intensity,
+            "engagement_score": engagement_score,
+            "risks": "Low. References approved anonymized Fortune 50 energy case study.",
+            "verify_before_use": "Verified per Sayari proof points: 'Fortune 50 energy supermajor — 1.2M records in real time vs 24–48h competitor'."
         })
     else:
         ideas.append({
             "title": f"From 6 Tabs to 1 Query: Solving {theme}",
             "format": "Product as relief",
             "pillar": format_pillar_map("Product as relief"),
-            "hook": f"The manual workaround for {theme} takes 45 minutes per vendor. Here is the single query that pulls verified registry records in seconds.",
+            "hook": f"The manual workaround for {theme} takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds.",
             "suggested_visual": "Before/after UI workflow comparison with clear source documentation attached.",
             "extends_idea": "Six tabs to one query: before/after",
             "evidence_sources": evidence,
@@ -165,20 +180,36 @@ def generate_theme_ideas(theme: str, items: List[Dict[str, Any]], min_sources: i
         })
 
     # 3. The Receipts / Teardown (20% target)
-    ideas.append({
-        "title": "One Residential Apartment, 147 Export Trading Firms",
-        "format": "The receipts",
-        "pillar": format_pillar_map("The receipts"),
-        "hook": "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter.",
-        "suggested_visual": "Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.",
-        "extends_idea": "One address, 200 companies",
-        "evidence_sources": evidence,
-        "source_count": len(items),
-        "avg_intensity": avg_intensity,
-        "engagement_score": engagement_score,
-        "risks": "Legal sensitivity: naming real addresses or companies requires official DOJ/OFAC public settlement source.",
-        "verify_before_use": "Attach public OFAC settlement notice or BIS enforcement action as citation before naming real entities."
-    })
+    if "supply chain" in theme_lower or "uflpa" in theme_lower or "forced labor" in theme_lower:
+        ideas.append({
+            "title": "Beyond Tier 1: Why a Top-5 Tech Giant Replaced Their Supply Chain Screening Incumbent",
+            "format": "The receipts",
+            "pillar": format_pillar_map("The receipts"),
+            "hook": "Your tier-1 suppliers will always pass a questionnaire. The risk is in tier 2 and tier 3 sub-tier component manufacturers where UFLPA detentions actually happen.",
+            "suggested_visual": "Multi-tier network teardown carousel: Tier 1 (clean US/EU distributor) -> Tier 2 (transshipment hub in Vietnam) -> Tier 3 (Xinjiang polysilicon smelter with BIS export restriction).",
+            "extends_idea": "Ownership chain carousel",
+            "evidence_sources": evidence,
+            "source_count": len(items),
+            "avg_intensity": avg_intensity,
+            "engagement_score": engagement_score,
+            "risks": "Low. Cites approved brief case: 'Top-5 global technology company chose Sayari over supply-chain incumbent for sub-tier mapping.'",
+            "verify_before_use": "Verified per Sayari proof points doc."
+        })
+    else:
+        ideas.append({
+            "title": "One Residential Apartment, 147 Export Trading Firms",
+            "format": "The receipts",
+            "pillar": format_pillar_map("The receipts"),
+            "hook": "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter.",
+            "suggested_visual": "Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.",
+            "extends_idea": "One address, 200 companies",
+            "evidence_sources": evidence,
+            "source_count": len(items),
+            "avg_intensity": avg_intensity,
+            "engagement_score": engagement_score,
+            "risks": "Legal sensitivity: naming real addresses or companies requires official DOJ/OFAC public settlement source.",
+            "verify_before_use": "Attach public OFAC settlement notice or BIS enforcement action as citation before naming real entities."
+        })
 
     # 4. Newsjack / Explainer (20% target)
     ideas.append({

@@ -77,16 +77,25 @@ rss_sources:
 keywords:
   seed_keywords:
     - "alert fatigue"
+    - "swivel chair"
+    - "swivel chair effect"
     - "false positive"
+    - "false positives"
     - "name matching"
     - "sanctions screening"
     - "kyc"
     - "kyb"
+    - "pkyc"
+    - "perpetual kyc"
+    - "kyc refresh"
+    - "periodic review"
     - "ubo"
+    - "nested ownership"
     - "beneficial ownership"
     - "third-party risk"
     - "tprm"
     - "supplier screening"
+    - "sub-tier mapping"
     - "uflpa"
     - "forced labor"
     - "ofac"
@@ -94,18 +103,44 @@ keywords:
     - "transshipment"
     - "shell company"
     - "audit"
+    - "audit trail"
     - "regulator exam"
     - "spreadsheet"
+    - "spreadsheets and google"
     - "backlog"
+    - "clearing alerts"
     - "queue"
     - "l1 review"
+    - "first-line review"
     - "disposition"
+    - "disposition alerts"
     - "edd"
     - "adverse media"
-    - "swivel chair"
     - "manual review"
     - "frankenstack"
+    - "point solutions"
+    - "fragmented systems"
+    - "disconnected systems"
     - "entity resolution"
+
+customer_proof_points:
+  no3_global_telecom:
+    stat: "72% of flagged risk was on no watchlist anywhere, hidden in nested ownership (60K+ partners screened continuously)"
+    approved_for: "Product as relief, Receipts"
+  fortune50_energy_supermajor:
+    stat: "1.2M records screened in real time (competing platform required 24–48 hours)"
+    approved_for: "Product as relief"
+  fortune50_energy_company:
+    stat: "75+ data sources collapsed into one solution; costly homegrown system retired"
+    approved_for: "Frankenstack reckoning, Product as relief"
+  top5_global_tech_company:
+    stat: "Chose Sayari over supply-chain incumbent for sub-tier mapping"
+    approved_for: "Receipts, Product as relief"
+
+industry_benchmarks:
+  false_positives: "90% to 95% false positives in sanctions screening (vendor-reported benchmark)"
+  spreadsheets_usage: "Over 25% manage periodic reviews mainly in spreadsheets (vendor-run survey)"
+  google_adverse_media: "65% rely on Google for manual adverse media searches"
 
 filter_rules:
   drop_patterns:

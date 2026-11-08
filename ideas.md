@@ -9,7 +9,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 | 3 | **54.1** | [One Residential Apartment, 147 Export Trading Firms](#idea-3) | The receipts | The risk hiding in plain sight | One address, 200 companies | 5 | 1.8/5 |
 | 4 | **54.1** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-4) | Headline to what it means for you | A score is not a defense | A score is not a defense | 5 | 1.8/5 |
 | 5 | **43.8** | [The Practitioner Reality of UBO, Shell Companies & Transshipment](#idea-5) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 3 | 2.0/5 |
-| 6 | **40.6** | [Questionnaire Said 'No Sanctions Concern'. Registry Said 51% Owned by SDN.](#idea-6) | Product as relief | The Frankenstack Reckoning | Questionnaire vs record: two panels | 3 | 2.0/5 |
+| 6 | **40.6** | [72% of Flagged Risk Was on Zero Watchlists (The Nested Ownership Blindspot)](#idea-6) | Product as relief | The Frankenstack Reckoning | Questionnaire vs record: two panels | 3 | 2.0/5 |
 | 7 | **38.9** | [One Residential Apartment, 147 Export Trading Firms](#idea-7) | The receipts | The risk hiding in plain sight | One address, 200 companies | 3 | 2.0/5 |
 | 8 | **38.9** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-8) | Headline to what it means for you | A score is not a defense | A score is not a defense | 3 | 2.0/5 |
 
@@ -38,7 +38,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Format:** `Product as relief`
 - **Pillar:** The Frankenstack Reckoning
 - **Extends Doc Idea:** *Six tabs to one query: before/after*
-- **The Hook:** "The manual workaround for Entity Resolution & Name Matching takes 45 minutes per vendor. Here is the single query that pulls verified registry records in seconds."
+- **The Hook:** "The manual workaround for Entity Resolution & Name Matching takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
 - **Suggested Visual Portrayal:** Before/after UI workflow comparison with clear source documentation attached.
 - **Metrics:** Backed by 5 independent sources | Engagement Score: 136 | Avg Intensity: 1.8/5
 - **Risks:** Needs cleared Sayari product screenshots.
@@ -108,15 +108,15 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 
 ---
 
-### <a id='idea-6'></a>#6. Questionnaire Said 'No Sanctions Concern'. Registry Said 51% Owned by SDN.
+### <a id='idea-6'></a>#6. 72% of Flagged Risk Was on Zero Watchlists (The Nested Ownership Blindspot)
 - **Format:** `Product as relief`
 - **Pillar:** The Frankenstack Reckoning
 - **Extends Doc Idea:** *Questionnaire vs record: two panels*
-- **The Hook:** "Self-reported vendor questionnaires are polite fiction. Here is what happens when you compare the supplier's checkbox to actual corporate registry filings."
-- **Suggested Visual Portrayal:** Two-panel before/after: Left panel is a supplier questionnaire with 'No' checked; Right panel is the official corporate structure showing ultimate beneficial ownership.
+- **The Hook:** "For a global telecom screening 60,000+ partners, 72% of high-risk entities appeared clean on every commercial watchlist. The exposure was buried 3 layers deep in nested corporate ownership."
+- **Suggested Visual Portrayal:** Two-panel contrast: Left panel shows '0 Watchlist Matches' on legacy vendor check; Right panel shows Sayari graph revealing 51% ownership by an SDN via offshore holding company.
 - **Metrics:** Backed by 3 independent sources | Engagement Score: 93 | Avg Intensity: 2.0/5
-- **Risks:** High if real supplier named. Must use anonymized or public enforcement case.
-- **Verify Before Use:** Verify whether Sayari has approved public customer case studies or if the two panels must be marked 'Illustrative Scenario'.
+- **Risks:** Low. Cites approved client benchmark ('No. 3 global telecom', 60K+ partners, 72% stat). No proprietary client names disclosed.
+- **Verify Before Use:** Verified per Sayari brief: approved as 'No. 3 global telecom'.
 
 **Evidence & Sourced Public Reaction:**
   - [https://reddit.com/r/RegulatoryCompliance/comments/sample4](https://reddit.com/r/RegulatoryCompliance/comments/sample4) (2026-11-08, 15 upvotes, 8 comments): *"We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings."*

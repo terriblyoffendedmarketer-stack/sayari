@@ -37,22 +37,33 @@ VENDOR_MARKETING_TERMS = {
 }
 
 PRACTITIONER_TERM_PATTERNS = [
-    r"\bswivel[- ]chair\b",
+    r"\bswivel[- ]chair(?: effect)?\b",
     r"\bname[- ]match(?:ing)?\b",
     r"\bfalse positive[s]?\b",
     r"\balert fatigue\b",
+    r"\bclearing alerts\b",
     r"\bfrankenstack\b",
+    r"\bpoint solutions?\b",
+    r"\bdisconnected systems?\b",
+    r"\bfragmented systems?\b",
     r"\bl1 review\b",
+    r"\bfirst[- ]line review\b",
     r"\bedd\b",
     r"\bkyc\b",
     r"\bkyb\b",
+    r"\bpkyc\b",
+    r"\bperpetual kyc\b",
+    r"\bkyc refresh\b",
+    r"\bperiodic review[s]?\b",
     r"\bubo\b",
+    r"\bnested ownership\b",
     r"\bbeneficial owner(?:ship)?\b",
-    r"\bdisposition\b",
+    r"\bdisposition(?: alerts)?\b",
     r"\bbacklog\b",
     r"\bqueue\b",
     r"\bofac\b",
     r"\buflpa\b",
+    r"\bsub[- ]tier mapping\b",
     r"\bforced labor\b",
     r"\bshell compan(?:y|ies)\b",
     r"\btransshipment\b",
@@ -61,7 +72,8 @@ PRACTITIONER_TERM_PATTERNS = [
     r"\badverse media\b",
     r"\bexport control[s]?\b",
     r"\bmanual review\b",
-    r"\bspreadsheet[s]?\b"
+    r"\bspreadsheet[s]?(?: and google)?\b",
+    r"\baudit trail\b"
 ]
 
 def detect_audience(text: str) -> str:
