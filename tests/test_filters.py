@@ -76,3 +76,12 @@ def test_no_false_positive_acronym_substring_match(sample_config):
     passed, reason, matched = evaluate_item(title, body, sample_config)
     assert passed is False
     assert matched == []
+
+def test_vendor_promo_post_dropped(sample_config):
+    # Vendor trying to sell a tool in the subreddit
+    sample_config["filter_rules"]["drop_patterns"].extend(["we built a tool", "schedule a demo", "free trial"])
+    title = "We built a tool to automate sanctions screening"
+    body = "Tired of manual review? Check out our tool and schedule a demo for a free trial."
+    passed, reason, matched = evaluate_item(title, body, sample_config)
+    assert passed is False
+    assert "Dropped: career/exam-prep" in reason or "Dropped" in reason
