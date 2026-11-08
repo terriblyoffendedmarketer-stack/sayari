@@ -85,3 +85,12 @@ def test_vendor_promo_post_dropped(sample_config):
     passed, reason, matched = evaluate_item(title, body, sample_config)
     assert passed is False
     assert "Dropped: career/exam-prep" in reason or "Dropped" in reason
+
+def test_practitioner_comment_on_ad_passed(sample_config):
+    # An analyst roasting or questioning a vendor promo thread
+    sample_config["filter_rules"]["drop_patterns"].extend(["we built a tool", "schedule a demo", "free trial"])
+    title = "Practitioner reaction to vendor pitch ('We built a tool to automate sanctions screening...')"
+    comment_body = "Another tool promising zero false positives? Does this actually handle fuzzy name matching or is our backlog still stuck with 90% manual review?"
+    passed, reason, matched = evaluate_item(title, comment_body, sample_config)
+    assert passed is True
+    assert "false positive" in matched or "name matching" in matched or "backlog" in matched

@@ -50,7 +50,9 @@ def evaluate_item(title: str, text_content: str, config: Dict[str, Any]) -> Tupl
         return False, "No compliance seed keywords matched", []
 
     # Check for career / exam-prep / promo patterns
-    matched_drops = find_matched_terms(combined_text, drop_patterns)
+    # If this is a practitioner comment on an ad, check drop patterns against the comment body, not the quoted ad title
+    text_for_drop_check = text_content if "practitioner reaction to vendor" in title.lower() else combined_text
+    matched_drops = find_matched_terms(text_for_drop_check, drop_patterns)
     if matched_drops:
         # Check if saved by a daily-work frustration exception
         matched_frustrations = find_matched_terms(combined_text, frustration_exceptions)

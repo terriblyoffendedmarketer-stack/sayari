@@ -139,6 +139,21 @@ def cmd_analyze_text(config, text_sample=None):
             "title": "Regulators don't accept 'the tool gave it an 85' as due diligence",
             "body": "FinCEN and OFAC enforcement actions show that relying on an automated black-box score without source documents guarantees a penalty notice."
         },
+        # Practitioner reactions to vendor pitches / ads (unfiltered cynicism & reality checks)
+        {
+            "id": "sample_ad_reaction_1",
+            "source": "reddit:r/AMLCompliance:ad_reaction",
+            "url": "https://reddit.com/r/AMLCompliance/comments/ad_pitch_01",
+            "title": "Practitioner reaction to vendor pitch ('We launched an AI tool to eliminate 100% of false positives...')",
+            "body": "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
+        },
+        {
+            "id": "sample_ad_reaction_2",
+            "source": "reddit:r/financialcrime:ad_reaction",
+            "url": "https://reddit.com/r/financialcrime/comments/ad_pitch_02",
+            "title": "Practitioner reaction to vendor pitch ('Automate your UBO discovery with single-click questionnaires...')",
+            "body": "Questionnaires are security theater. The moment an illicit actor routes ownership through a Belize or Cyprus shell company, their questionnaire comes back 100% clean. Without primary registry corporate ownership records, you cannot prove beneficial ownership to a regulator."
+        },
         {
             "id": "sample_12",
             "source": "pasted:r/RegulatoryCompliance",

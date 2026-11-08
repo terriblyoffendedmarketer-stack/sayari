@@ -77,7 +77,38 @@ def collect_from_reddit(subreddit_name: str, config: Dict[str, Any]) -> List[Dic
                 continue
 
             flair = post.link_flair_text
-            if is_promo(post.title, flair, skip_flairs, skip_patterns):
+            created_utc = time.strftime('%Y-%m-%d', time.gmtime(post.created_utc))
+            post_is_promotional = is_promo(post.title, flair, skip_flairs, skip_patterns)
+
+            # NUANCE: If the post is an ad or vendor promo, we do NOT keep the sales pitch.
+            # BUT the comments are a goldmine of raw practitioner reactions (cynicism, objections, reality checks, or praise).
+            if post_is_promotional:
+                if post.num_comments > 0:
+                    try:
+                        post.comments.replace_more(limit=0)
+                        for c_idx, comment in enumerate(post.comments[:5]):
+                            c_body = comment.body or ""
+                            # Ignore automoderator bot comments and trivial short phrases
+                            if len(c_body) > 20 and not c_body.lower().startswith("i am a bot"):
+                                c_id = f"reddit_{post.id}_ad_reaction_{c_idx}"
+                                c_url = f"https://www.reddit.com{comment.permalink}"
+                                c_short = clip_to_25_words(c_body)
+                                c_para = paraphrase_text(c_body, max_words=60)
+
+                                collected_items.append({
+                                    "id": c_id,
+                                    "source": f"reddit:r/{subreddit_name}:ad_reaction",
+                                    "url": c_url,
+                                    "date": created_utc,
+                                    "title": f"Practitioner reaction to vendor pitch ('{post.title[:60]}...')",
+                                    "short_excerpt": c_short,
+                                    "paraphrase": c_para,
+                                    "upvotes": int(comment.score or 0),
+                                    "comment_count": 0,
+                                    "paraphrased_top_comments": []
+                                })
+                    except Exception:
+                        pass
                 continue
 
             post_id = f"reddit_{post.id}"
