@@ -12,18 +12,19 @@
 ## 2. THE 'BEER TEST' LEXICON (PRACTITIONER SLANG VS VENDOR FLUFF)
 - OFAC [AUTHENTIC PRACTITIONER TERM]: The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none
 - FALSE POSITIVES [AUTHENTIC PRACTITIONER TERM]: Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+- SHELL COMPANIES [AUTHENTIC PRACTITIONER TERM]: One single residential flat in Belize registered to 240 shell companies Investigating a wire transfer for electronic components. Found a
 - BACKLOG [AUTHENTIC PRACTITIONER TERM]: Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
-- NAME MATCHING [AUTHENTIC PRACTITIONER TERM]: Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
 - BENEFICIAL OWNERSHIP [AUTHENTIC PRACTITIONER TERM]: Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+- NAME MATCHING [AUTHENTIC PRACTITIONER TERM]: Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
 - FALSE POSITIVE [AUTHENTIC PRACTITIONER TERM]: Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
 - SWIVEL CHAIR [AUTHENTIC PRACTITIONER TERM]: Breakup note to our compliance tech stack Dear vendor stack: I cannot keep copy-pasting business registration numbers from registry PDFs
 - L1 REVIEW [AUTHENTIC PRACTITIONER TERM]: Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
 - QUEUE [AUTHENTIC PRACTITIONER TERM]: Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
 - UBO [AUTHENTIC PRACTITIONER TERM]: The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none
-- SHELL COMPANIES [AUTHENTIC PRACTITIONER TERM]: One single residential flat in Belize registered to 240 shell companies Investigating a wire transfer for electronic components. Found a
 - UFLPA [AUTHENTIC PRACTITIONER TERM]: Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
 - TPRM [AUTHENTIC PRACTITIONER TERM]: Examiner asked for proof of our sub-tier forced labor audit trail We had clean questionnaires from tier 1 suppliers, but
 - SHELL COMPANY [AUTHENTIC PRACTITIONER TERM]: Practitioner reaction to vendor pitch ('Automate your UBO discovery with single-click questionnaires...') Questionnaires are security theater. The moment an illicit
+- KYC [AUTHENTIC PRACTITIONER TERM]: What does a good AML investigation actually look like? What does a good AML investigation actually look like?. For those
 - MANUAL REVIEW [AUTHENTIC PRACTITIONER TERM]: Vendor questionnaire claimed zero SDN ties, but UBO is an OFAC designated oligarch Supplier screening questionnaire was completely clean. But
 - NAME MATCH [AUTHENTIC PRACTITIONER TERM]: Vendor questionnaire claimed zero SDN ties, but UBO is an OFAC designated oligarch Supplier screening questionnaire was completely clean. But
 - SPREADSHEETS [AUTHENTIC PRACTITIONER TERM]: Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
@@ -40,15 +41,15 @@
 - SPREADSHEETS AND GOOGLE [AUTHENTIC PRACTITIONER TERM]: >25% of compliance teams manage periodic reviews in spreadsheets; 65% rely on manual Google searches for adverse media.
 - KYC REFRESH VS PKYC [AUTHENTIC PRACTITIONER TERM]: Periodic KYC review cycles vs perpetual KYC (pKYC) continuous monitoring.
 - UBO & NESTED OWNERSHIP [AUTHENTIC PRACTITIONER TERM]: Ultimate Beneficial Ownership obscured behind opaque multi-jurisdiction holding layers.
-- PARADIGM SHIFT [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- SINGLE PANE OF GLASS [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- NEXT-GEN RISK ECOSYSTEM [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- HOLISTIC END-TO-END [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - ZERO-RESISTANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- HOLISTIC END-TO-END [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - JUDGMENT INFRASTRUCTURE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - LEVERAGE SYNERGIES [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- FRICTIONLESS COMPLIANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- NEXT-GEN RISK ECOSYSTEM [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- SINGLE PANE OF GLASS [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - BEST-IN-BREED SEAMLESS INTEGRATION [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- FRICTIONLESS COMPLIANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- PARADIGM SHIFT [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 
 ## 3. SAYARI VERIFIED PROOF ANCHORS
 - [Proof #1] No. 3 Global Telecom: 72% of flagged risk was on zero watchlists anywhere, hidden in nested ownership (60K+ partners screened continuously).
@@ -67,10 +68,10 @@
 - Suggested Visual Metaphor: Two-panel meme or clean typographic contrast card.
 - Supporting Public Evidence:
   * [Evidence #01-01 | Source: Reddit r]: "Trump Admin Ends Rule Requiring Shell Companies to Disclose Their Ownership, Further Facilitating Corruption in the U.S.. "
-  * [Evidence #01-02 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
-  * [Evidence #01-03 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
-  * [Evidence #01-04 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
-  * [Evidence #01-05 | Source: Reddit r]: "The FMU has implemented an Anti-Money Laundering system for the automated detection of possible money laundering and terror financing that uses the banking system. The data centre ..."
+  * [Evidence #01-02 | Source: Reddit r]: "Why aren't there laws that require shell companies to identify their owner?. Like there is an incredibly small number of companies operating a HUGE number of shell companies, often..."
+  * [Evidence #01-03 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
+  * [Evidence #01-04 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
+  * [Evidence #01-05 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
 
 ### [Idea #02] From 6 Tabs to 1 Query: Solving Adverse Media & Negative News Noise
 - Format: Product as relief | Pillar: The Frankenstack Reckoning
@@ -78,10 +79,10 @@
 - Suggested Visual Metaphor: Before/after UI workflow comparison with clear source documentation attached.
 - Supporting Public Evidence:
   * [Evidence #02-01 | Source: Reddit r]: "Trump Admin Ends Rule Requiring Shell Companies to Disclose Their Ownership, Further Facilitating Corruption in the U.S.. "
-  * [Evidence #02-02 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
-  * [Evidence #02-03 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
-  * [Evidence #02-04 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
-  * [Evidence #02-05 | Source: Reddit r]: "The FMU has implemented an Anti-Money Laundering system for the automated detection of possible money laundering and terror financing that uses the banking system. The data centre ..."
+  * [Evidence #02-02 | Source: Reddit r]: "Why aren't there laws that require shell companies to identify their owner?. Like there is an incredibly small number of companies operating a HUGE number of shell companies, often..."
+  * [Evidence #02-03 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
+  * [Evidence #02-04 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
+  * [Evidence #02-05 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
 
 ### [Idea #03] One Residential Apartment, 147 Export Trading Firms
 - Format: The receipts | Pillar: The risk hiding in plain sight
@@ -89,10 +90,10 @@
 - Suggested Visual Metaphor: Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
 - Supporting Public Evidence:
   * [Evidence #03-01 | Source: Reddit r]: "Trump Admin Ends Rule Requiring Shell Companies to Disclose Their Ownership, Further Facilitating Corruption in the U.S.. "
-  * [Evidence #03-02 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
-  * [Evidence #03-03 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
-  * [Evidence #03-04 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
-  * [Evidence #03-05 | Source: Reddit r]: "The FMU has implemented an Anti-Money Laundering system for the automated detection of possible money laundering and terror financing that uses the banking system. The data centre ..."
+  * [Evidence #03-02 | Source: Reddit r]: "Why aren't there laws that require shell companies to identify their owner?. Like there is an incredibly small number of companies operating a HUGE number of shell companies, often..."
+  * [Evidence #03-03 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
+  * [Evidence #03-04 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
+  * [Evidence #03-05 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
 
 ### [Idea #04] A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through
 - Format: Headline to what it means for you | Pillar: A score is not a defense
@@ -100,10 +101,10 @@
 - Suggested Visual Metaphor: Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
 - Supporting Public Evidence:
   * [Evidence #04-01 | Source: Reddit r]: "Trump Admin Ends Rule Requiring Shell Companies to Disclose Their Ownership, Further Facilitating Corruption in the U.S.. "
-  * [Evidence #04-02 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
-  * [Evidence #04-03 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
-  * [Evidence #04-04 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
-  * [Evidence #04-05 | Source: Reddit r]: "The FMU has implemented an Anti-Money Laundering system for the automated detection of possible money laundering and terror financing that uses the banking system. The data centre ..."
+  * [Evidence #04-02 | Source: Reddit r]: "Why aren't there laws that require shell companies to identify their owner?. Like there is an incredibly small number of companies operating a HUGE number of shell companies, often..."
+  * [Evidence #04-03 | Source: Reddit r]: "Why am i on the AML LIST????. Okay so yesterday my brother was trying to update his CNIC on his easypaisa child acc or wtvr becuz he’s turning 18 next month so it kept asking to up..."
+  * [Evidence #04-04 | Source: Reddit r]: "Can you get fined if you don't screen for sanctions?. If you are in import/export business or international logistics (or any other international business) can you actually get aud..."
+  * [Evidence #04-05 | Source: Reddit r]: "This is the equivalent of asking “Can I get jailed for driving drunk”.    Yes. You can get fined.  Will you get caught, well, that depends.  Screening takes 45 seconds, do it.  Avo..."
 
 ### [Idea #05] The Practitioner Reality of Sanctions Screening & OFAC Rules
 - Format: Pain mirror | Pillar: The Frankenstack Reckoning
@@ -122,154 +123,149 @@
   * [Evidence #05-04 | Source: Reddit r]: "Best OFAC Sanctions Screening Tools in 2026 — Free & Paid Options Compared. Been researching sanctions screening tools for a compliance project and figured I'd share what I found. ..."
   * [Evidence #05-05 | Source: Reddit r]: "How are you handling sanctions compliance, if I may ask? Are you just manually looking up the entities on the OFAC website? Did you hire a third party compliance service provider?"
 
-### [Idea #06] From 6 Tabs to 1 Query: Solving Sanctions Screening & OFAC Rules
-- Format: Product as relief | Pillar: The Frankenstack Reckoning
-- The Hook: "The manual workaround for Sanctions Screening & OFAC Rules takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
-- Suggested Visual Metaphor: Before/after UI workflow comparison with clear source documentation attached.
-- Supporting Public Evidence:
-  * [Evidence #06-01 | Source: Reddit r]: "Is this a serious question?
-    
-      You can and will be unbanked for doing business with sanctioned entities. 
-    
-      OFAC charges are up to ~$356,000 per transaction, or 2x..."
-  * [Evidence #06-02 | Source: Reddit r]: "Looking for opportunities in AML / Financial Crime / Sanctions Screening (2 yrs experience). Hi everyone,
-    
-      I’m currently looking for opportunities in AML / Financial Crim..."
-  * [Evidence #06-03 | Source: reddit.com]: "FinCEN and OFAC enforcement actions show that relying on an automated black-box score without source documents guarantees a penalty notice."
-  * [Evidence #06-04 | Source: Reddit r]: "Best OFAC Sanctions Screening Tools in 2026 — Free & Paid Options Compared. Been researching sanctions screening tools for a compliance project and figured I'd share what I found. ..."
-  * [Evidence #06-05 | Source: Reddit r]: "How are you handling sanctions compliance, if I may ask? Are you just manually looking up the entities on the OFAC website? Did you hire a third party compliance service provider?"
-
-### [Idea #07] The Practitioner Reality of UBO, Shell Companies & Transshipment
+### [Idea #06] The Practitioner Reality of UBO, Shell Companies & Transshipment
 - Format: Pain mirror | Pillar: The Frankenstack Reckoning
 - The Hook: "What the sales pitch says about UBO, Shell Companies & Transshipment vs what actually lands in your inbox at 8:00 AM on Monday."
 - Suggested Visual Metaphor: Two-panel meme or clean typographic contrast card.
 - Supporting Public Evidence:
-  * [Evidence #07-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
-  * [Evidence #07-02 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
-  * [Evidence #07-03 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
-  * [Evidence #07-04 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
-  * [Evidence #07-05 | Source: reddit.com]: "Questionnaires are security theater. The moment an illicit actor routes ownership through a Belize or Cyprus shell company, their questionnaire comes back 100% clean. Without primary registry corporate ownership records, you cannot prove beneficial ownership to a regulator."
+  * [Evidence #06-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
+  * [Evidence #06-02 | Source: Reddit r]: "Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human Trafficking?. Human trafficking and other illicit..."
+  * [Evidence #06-03 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
+  * [Evidence #06-04 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
+  * [Evidence #06-05 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
 
-### [Idea #08] One Residential Apartment, 147 Export Trading Firms
-- Format: The receipts | Pillar: The risk hiding in plain sight
-- The Hook: "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
-- Suggested Visual Metaphor: Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
-- Supporting Public Evidence:
-  * [Evidence #08-01 | Source: Reddit r]: "Is this a serious question?
-    
-      You can and will be unbanked for doing business with sanctioned entities. 
-    
-      OFAC charges are up to ~$356,000 per transaction, or 2x..."
-  * [Evidence #08-02 | Source: Reddit r]: "Looking for opportunities in AML / Financial Crime / Sanctions Screening (2 yrs experience). Hi everyone,
-    
-      I’m currently looking for opportunities in AML / Financial Crim..."
-  * [Evidence #08-03 | Source: reddit.com]: "FinCEN and OFAC enforcement actions show that relying on an automated black-box score without source documents guarantees a penalty notice."
-  * [Evidence #08-04 | Source: Reddit r]: "Best OFAC Sanctions Screening Tools in 2026 — Free & Paid Options Compared. Been researching sanctions screening tools for a compliance project and figured I'd share what I found. ..."
-  * [Evidence #08-05 | Source: Reddit r]: "How are you handling sanctions compliance, if I may ask? Are you just manually looking up the entities on the OFAC website? Did you hire a third party compliance service provider?"
-
-### [Idea #09] A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through
-- Format: Headline to what it means for you | Pillar: A score is not a defense
-- The Hook: "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
-- Suggested Visual Metaphor: Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
-- Supporting Public Evidence:
-  * [Evidence #09-01 | Source: Reddit r]: "Is this a serious question?
-    
-      You can and will be unbanked for doing business with sanctioned entities. 
-    
-      OFAC charges are up to ~$356,000 per transaction, or 2x..."
-  * [Evidence #09-02 | Source: Reddit r]: "Looking for opportunities in AML / Financial Crime / Sanctions Screening (2 yrs experience). Hi everyone,
-    
-      I’m currently looking for opportunities in AML / Financial Crim..."
-  * [Evidence #09-03 | Source: reddit.com]: "FinCEN and OFAC enforcement actions show that relying on an automated black-box score without source documents guarantees a penalty notice."
-  * [Evidence #09-04 | Source: Reddit r]: "Best OFAC Sanctions Screening Tools in 2026 — Free & Paid Options Compared. Been researching sanctions screening tools for a compliance project and figured I'd share what I found. ..."
-  * [Evidence #09-05 | Source: Reddit r]: "How are you handling sanctions compliance, if I may ask? Are you just manually looking up the entities on the OFAC website? Did you hire a third party compliance service provider?"
-
-### [Idea #10] 72% of Flagged Risk Was on Zero Watchlists (The Nested Ownership Blindspot)
+### [Idea #07] From 6 Tabs to 1 Query: Solving Sanctions Screening & OFAC Rules
 - Format: Product as relief | Pillar: The Frankenstack Reckoning
-- The Hook: "For a global telecom screening 60,000+ partners, 72% of high-risk entities appeared clean on every commercial watchlist. The exposure was buried 3 layers deep in nested corporate ownership."
-- Suggested Visual Metaphor: Two-panel contrast: Left panel shows '0 Watchlist Matches' on legacy vendor check; Right panel shows Sayari graph revealing 51% ownership by an SDN via offshore holding company.
+- The Hook: "The manual workaround for Sanctions Screening & OFAC Rules takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
+- Suggested Visual Metaphor: Before/after UI workflow comparison with clear source documentation attached.
 - Supporting Public Evidence:
-  * [Evidence #10-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
-  * [Evidence #10-02 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
-  * [Evidence #10-03 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
-  * [Evidence #10-04 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
-  * [Evidence #10-05 | Source: reddit.com]: "Questionnaires are security theater. The moment an illicit actor routes ownership through a Belize or Cyprus shell company, their questionnaire comes back 100% clean. Without primary registry corporate ownership records, you cannot prove beneficial ownership to a regulator."
+  * [Evidence #07-01 | Source: Reddit r]: "Is this a serious question?
+    
+      You can and will be unbanked for doing business with sanctioned entities. 
+    
+      OFAC charges are up to ~$356,000 per transaction, or 2x..."
+  * [Evidence #07-02 | Source: Reddit r]: "Looking for opportunities in AML / Financial Crime / Sanctions Screening (2 yrs experience). Hi everyone,
+    
+      I’m currently looking for opportunities in AML / Financial Crim..."
+  * [Evidence #07-03 | Source: reddit.com]: "FinCEN and OFAC enforcement actions show that relying on an automated black-box score without source documents guarantees a penalty notice."
+  * [Evidence #07-04 | Source: Reddit r]: "Best OFAC Sanctions Screening Tools in 2026 — Free & Paid Options Compared. Been researching sanctions screening tools for a compliance project and figured I'd share what I found. ..."
+  * [Evidence #07-05 | Source: Reddit r]: "How are you handling sanctions compliance, if I may ask? Are you just manually looking up the entities on the OFAC website? Did you hire a third party compliance service provider?"
 
-### [Idea #11] One Residential Apartment, 147 Export Trading Firms
-- Format: The receipts | Pillar: The risk hiding in plain sight
-- The Hook: "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
-- Suggested Visual Metaphor: Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
-- Supporting Public Evidence:
-  * [Evidence #11-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
-  * [Evidence #11-02 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
-  * [Evidence #11-03 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
-  * [Evidence #11-04 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
-  * [Evidence #11-05 | Source: reddit.com]: "Questionnaires are security theater. The moment an illicit actor routes ownership through a Belize or Cyprus shell company, their questionnaire comes back 100% clean. Without primary registry corporate ownership records, you cannot prove beneficial ownership to a regulator."
-
-### [Idea #12] A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through
-- Format: Headline to what it means for you | Pillar: A score is not a defense
-- The Hook: "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
-- Suggested Visual Metaphor: Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
-- Supporting Public Evidence:
-  * [Evidence #12-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
-  * [Evidence #12-02 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
-  * [Evidence #12-03 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
-  * [Evidence #12-04 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
-  * [Evidence #12-05 | Source: reddit.com]: "Questionnaires are security theater. The moment an illicit actor routes ownership through a Belize or Cyprus shell company, their questionnaire comes back 100% clean. Without primary registry corporate ownership records, you cannot prove beneficial ownership to a regulator."
-
-### [Idea #13] Name-Match Purgatory: 4 Hours on 'Same Company, Different Vowel'
+### [Idea #08] Name-Match Purgatory: 4 Hours on 'Same Company, Different Vowel'
 - Format: Pain mirror | Pillar: The Frankenstack Reckoning
 - The Hook: "You know you're in compliance when your Friday afternoon is deciding whether 'Global Electronics Ltd' and 'Global Electronic Ltd' are the same sanctioned front."
 - Suggested Visual Metaphor: Mock dictionary card or side-by-side search bar showing 3 identical search tabs with slightly altered spellings.
 - Supporting Public Evidence:
-  * [Evidence #13-01 | Source: reddit.com]: "Our L1 review queue has 800 alerts backlog. The screening tool flags every Jose Gomez regardless of DOB or jurisdiction. Swivel chairing between 6 tabs to find the beneficial ownership record is a nightmare."
-  * [Evidence #13-02 | Source: reddit.com]: "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
-  * [Evidence #13-03 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
-  * [Evidence #13-04 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
-  * [Evidence #13-05 | Source: Reddit r]: "Welcome to the sub, advertiser.
-    
-      Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."
+  * [Evidence #08-01 | Source: reddit.com]: "Our L1 review queue has 800 alerts backlog. The screening tool flags every Jose Gomez regardless of DOB or jurisdiction. Swivel chairing between 6 tabs to find the beneficial ownership record is a nightmare."
+  * [Evidence #08-02 | Source: reddit.com]: "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
+  * [Evidence #08-03 | Source: Reddit r]: "How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."
+  * [Evidence #08-04 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
+  * [Evidence #08-05 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
 
-### [Idea #14] It's Not You, It's the Frankenstack: Breakup Note to 7 Separate Logins
-- Format: Pain mirror | Pillar: The Frankenstack Reckoning
-- The Hook: "Dear Dow Jones, Moody's, Panjiva, and Excel: it's not me, it's you. I can't keep copying registry numbers between four monitors."
-- Suggested Visual Metaphor: Mock text-message breakup thread between an exhausted analyst and 'Tool #4'.
+### [Idea #09] 72% of Flagged Risk Was on Zero Watchlists (The Nested Ownership Blindspot)
+- Format: Product as relief | Pillar: The Frankenstack Reckoning
+- The Hook: "For a global telecom screening 60,000+ partners, 72% of high-risk entities appeared clean on every commercial watchlist. The exposure was buried 3 layers deep in nested corporate ownership."
+- Suggested Visual Metaphor: Two-panel contrast: Left panel shows '0 Watchlist Matches' on legacy vendor check; Right panel shows Sayari graph revealing 51% ownership by an SDN via offshore holding company.
 - Supporting Public Evidence:
-  * [Evidence #14-01 | Source: reddit.com]: "We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings."
-  * [Evidence #14-02 | Source: reddit.com]: "We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings across 6 tabs."
-  * [Evidence #14-03 | Source: reddit.com]: "Dear vendor stack: I cannot keep copy-pasting business registration numbers from registry PDFs into Excel final_v7.xlsx. Swivel chair review is destroying our analysts."
-  * [Evidence #14-04 | Source: Reddit r]: "Deinfluence me: S&R Swivel Chair for first time mom. Ang dami kasi nagsasabi na okay daw to as nursing chair.."
-  * [Evidence #14-05 | Source: Reddit r]: "Swivel chair. "
+  * [Evidence #09-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
+  * [Evidence #09-02 | Source: Reddit r]: "Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human Trafficking?. Human trafficking and other illicit..."
+  * [Evidence #09-03 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
+  * [Evidence #09-04 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
+  * [Evidence #09-05 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
 
-### [Idea #15] The 500-Alert Queue and the Friday 4:45 PM Panic
-- Format: Pain mirror | Pillar: The Frankenstack Reckoning
-- The Hook: "Closing 40 alerts an hour isn't screening. It's playing whack-a-mole while hoping the regulator never asks for your audit trail."
-- Suggested Visual Metaphor: Realistic fake spreadsheet screenshot showing a comments column filled with 'Rechecked - clear ???' and escalating red status badges.
+### [Idea #10] One Residential Apartment, 147 Export Trading Firms
+- Format: The receipts | Pillar: The risk hiding in plain sight
+- The Hook: "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
+- Suggested Visual Metaphor: Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
 - Supporting Public Evidence:
-  * [Evidence #15-01 | Source: reddit.com]: "The regulator audit asked how we verified tier-2 suppliers under UFLPA. Our compliance stack gave us a risk score of 87, but the examiner said a score is not a defense without registry proof."
-  * [Evidence #15-02 | Source: reddit.com]: "Our EDD workflow requires querying 5 databases, exporting CSVs, and manually reconciling corporate hierarchies. The backlog is now 6 weeks deep."
-  * [Evidence #15-03 | Source: reddit.com]: "The regulator audit asked how we verified tier-2 suppliers under UFLPA. Our compliance stack gave us a risk score of 87, but the examiner said a score is not a defense without registry proof."
-  * [Evidence #15-04 | Source: Reddit r]: "Huge backlog in Candidate screening. How are recruiters current handling a huge influx of applications for a job role?
+  * [Evidence #10-01 | Source: Reddit r]: "Is this a serious question?
     
-      Which tools are best for screening candidates?"
+      You can and will be unbanked for doing business with sanctioned entities. 
+    
+      OFAC charges are up to ~$356,000 per transaction, or 2x..."
+  * [Evidence #10-02 | Source: Reddit r]: "Looking for opportunities in AML / Financial Crime / Sanctions Screening (2 yrs experience). Hi everyone,
+    
+      I’m currently looking for opportunities in AML / Financial Crim..."
+  * [Evidence #10-03 | Source: reddit.com]: "FinCEN and OFAC enforcement actions show that relying on an automated black-box score without source documents guarantees a penalty notice."
+  * [Evidence #10-04 | Source: Reddit r]: "Best OFAC Sanctions Screening Tools in 2026 — Free & Paid Options Compared. Been researching sanctions screening tools for a compliance project and figured I'd share what I found. ..."
+  * [Evidence #10-05 | Source: Reddit r]: "How are you handling sanctions compliance, if I may ask? Are you just manually looking up the entities on the OFAC website? Did you hire a third party compliance service provider?"
 
-### [Idea #16] From 6 Tabs to 1 Query: Solving Entity Resolution & Name Matching
+### [Idea #11] A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through
+- Format: Headline to what it means for you | Pillar: A score is not a defense
+- The Hook: "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
+- Suggested Visual Metaphor: Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
+- Supporting Public Evidence:
+  * [Evidence #11-01 | Source: Reddit r]: "Is this a serious question?
+    
+      You can and will be unbanked for doing business with sanctioned entities. 
+    
+      OFAC charges are up to ~$356,000 per transaction, or 2x..."
+  * [Evidence #11-02 | Source: Reddit r]: "Looking for opportunities in AML / Financial Crime / Sanctions Screening (2 yrs experience). Hi everyone,
+    
+      I’m currently looking for opportunities in AML / Financial Crim..."
+  * [Evidence #11-03 | Source: reddit.com]: "FinCEN and OFAC enforcement actions show that relying on an automated black-box score without source documents guarantees a penalty notice."
+  * [Evidence #11-04 | Source: Reddit r]: "Best OFAC Sanctions Screening Tools in 2026 — Free & Paid Options Compared. Been researching sanctions screening tools for a compliance project and figured I'd share what I found. ..."
+  * [Evidence #11-05 | Source: Reddit r]: "How are you handling sanctions compliance, if I may ask? Are you just manually looking up the entities on the OFAC website? Did you hire a third party compliance service provider?"
+
+### [Idea #12] One Residential Apartment, 147 Export Trading Firms
+- Format: The receipts | Pillar: The risk hiding in plain sight
+- The Hook: "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
+- Suggested Visual Metaphor: Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
+- Supporting Public Evidence:
+  * [Evidence #12-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
+  * [Evidence #12-02 | Source: Reddit r]: "Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human Trafficking?. Human trafficking and other illicit..."
+  * [Evidence #12-03 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
+  * [Evidence #12-04 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
+  * [Evidence #12-05 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
+
+### [Idea #13] A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through
+- Format: Headline to what it means for you | Pillar: A score is not a defense
+- The Hook: "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
+- Suggested Visual Metaphor: Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
+- Supporting Public Evidence:
+  * [Evidence #13-01 | Source: Reddit r]: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
+  * [Evidence #13-02 | Source: Reddit r]: "Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human Trafficking?. Human trafficking and other illicit..."
+  * [Evidence #13-03 | Source: reddit.com]: "Supplier screening questionnaire was completely clean. But when we pulled the corporate ownership chain, the Cyprus holding company is 51% owned by a sanctioned entity under the 50 percent rule."
+  * [Evidence #13-04 | Source: reddit.com]: "Investigating a wire transfer for electronic components. Found a single residential address housing over two hundred registered trading entities. Pure transshipment evasion front."
+  * [Evidence #13-05 | Source: reddit.com]: "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
+
+### [Idea #14] From 6 Tabs to 1 Query: Solving Entity Resolution & Name Matching
 - Format: Product as relief | Pillar: The Frankenstack Reckoning
 - The Hook: "The manual workaround for Entity Resolution & Name Matching takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
 - Suggested Visual Metaphor: Before/after UI workflow comparison with clear source documentation attached.
 - Supporting Public Evidence:
+  * [Evidence #14-01 | Source: reddit.com]: "Our L1 review queue has 800 alerts backlog. The screening tool flags every Jose Gomez regardless of DOB or jurisdiction. Swivel chairing between 6 tabs to find the beneficial ownership record is a nightmare."
+  * [Evidence #14-02 | Source: reddit.com]: "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
+  * [Evidence #14-03 | Source: Reddit r]: "How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."
+  * [Evidence #14-04 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
+  * [Evidence #14-05 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
+
+### [Idea #15] One Residential Apartment, 147 Export Trading Firms
+- Format: The receipts | Pillar: The risk hiding in plain sight
+- The Hook: "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
+- Suggested Visual Metaphor: Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
+- Supporting Public Evidence:
+  * [Evidence #15-01 | Source: reddit.com]: "Our L1 review queue has 800 alerts backlog. The screening tool flags every Jose Gomez regardless of DOB or jurisdiction. Swivel chairing between 6 tabs to find the beneficial ownership record is a nightmare."
+  * [Evidence #15-02 | Source: reddit.com]: "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
+  * [Evidence #15-03 | Source: Reddit r]: "How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."
+  * [Evidence #15-04 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
+  * [Evidence #15-05 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
+
+### [Idea #16] A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through
+- Format: Headline to what it means for you | Pillar: A score is not a defense
+- The Hook: "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
+- Suggested Visual Metaphor: Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
+- Supporting Public Evidence:
   * [Evidence #16-01 | Source: reddit.com]: "Our L1 review queue has 800 alerts backlog. The screening tool flags every Jose Gomez regardless of DOB or jurisdiction. Swivel chairing between 6 tabs to find the beneficial ownership record is a nightmare."
   * [Evidence #16-02 | Source: reddit.com]: "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
-  * [Evidence #16-03 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
-  * [Evidence #16-04 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
-  * [Evidence #16-05 | Source: Reddit r]: "Welcome to the sub, advertiser.
-    
-      Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."
+  * [Evidence #16-03 | Source: Reddit r]: "How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."
+  * [Evidence #16-04 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
+  * [Evidence #16-05 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
 
-### [Idea #17] Retiring a Homegrown System: Collapsing 75+ Data Feeds into One Screen
-- Format: Product as relief | Pillar: The Frankenstack Reckoning
-- The Hook: "A Fortune 50 energy supermajor collapsed 75+ fragmented point solutions and internal databases into a single query. Result: real-time screening across 1.2M records instead of a 48-hour delay."
-- Suggested Visual Metaphor: Before/After flow diagram: Left shows 75 disjointed feed arrows feeding an analyst desk; Right shows 1 unified graph query delivering immediate disposition evidence.
+### [Idea #17] It's Not You, It's the Frankenstack: Breakup Note to 7 Separate Logins
+- Format: Pain mirror | Pillar: The Frankenstack Reckoning
+- The Hook: "Dear Dow Jones, Moody's, Panjiva, and Excel: it's not me, it's you. I can't keep copying registry numbers between four monitors."
+- Suggested Visual Metaphor: Mock text-message breakup thread between an exhausted analyst and 'Tool #4'.
 - Supporting Public Evidence:
   * [Evidence #17-01 | Source: reddit.com]: "We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings."
   * [Evidence #17-02 | Source: reddit.com]: "We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings across 6 tabs."
@@ -277,31 +273,28 @@
   * [Evidence #17-04 | Source: Reddit r]: "Deinfluence me: S&R Swivel Chair for first time mom. Ang dami kasi nagsasabi na okay daw to as nursing chair.."
   * [Evidence #17-05 | Source: Reddit r]: "Swivel chair. "
 
-### [Idea #18] One Residential Apartment, 147 Export Trading Firms
-- Format: The receipts | Pillar: The risk hiding in plain sight
-- The Hook: "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
-- Suggested Visual Metaphor: Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
+### [Idea #18] The 500-Alert Queue and the Friday 4:45 PM Panic
+- Format: Pain mirror | Pillar: The Frankenstack Reckoning
+- The Hook: "Closing 40 alerts an hour isn't screening. It's playing whack-a-mole while hoping the regulator never asks for your audit trail."
+- Suggested Visual Metaphor: Realistic fake spreadsheet screenshot showing a comments column filled with 'Rechecked - clear ???' and escalating red status badges.
 - Supporting Public Evidence:
-  * [Evidence #18-01 | Source: reddit.com]: "Our L1 review queue has 800 alerts backlog. The screening tool flags every Jose Gomez regardless of DOB or jurisdiction. Swivel chairing between 6 tabs to find the beneficial ownership record is a nightmare."
-  * [Evidence #18-02 | Source: reddit.com]: "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
-  * [Evidence #18-03 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
-  * [Evidence #18-04 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
-  * [Evidence #18-05 | Source: Reddit r]: "Welcome to the sub, advertiser.
+  * [Evidence #18-01 | Source: reddit.com]: "The regulator audit asked how we verified tier-2 suppliers under UFLPA. Our compliance stack gave us a risk score of 87, but the examiner said a score is not a defense without registry proof."
+  * [Evidence #18-02 | Source: reddit.com]: "Our EDD workflow requires querying 5 databases, exporting CSVs, and manually reconciling corporate hierarchies. The backlog is now 6 weeks deep."
+  * [Evidence #18-03 | Source: reddit.com]: "The regulator audit asked how we verified tier-2 suppliers under UFLPA. Our compliance stack gave us a risk score of 87, but the examiner said a score is not a defense without registry proof."
+  * [Evidence #18-04 | Source: Reddit r]: "Huge backlog in Candidate screening. How are recruiters current handling a huge influx of applications for a job role?
     
-      Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."
+      Which tools are best for screening candidates?"
 
-### [Idea #19] A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through
-- Format: Headline to what it means for you | Pillar: A score is not a defense
-- The Hook: "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
-- Suggested Visual Metaphor: Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
+### [Idea #19] Retiring a Homegrown System: Collapsing 75+ Data Feeds into One Screen
+- Format: Product as relief | Pillar: The Frankenstack Reckoning
+- The Hook: "A Fortune 50 energy supermajor collapsed 75+ fragmented point solutions and internal databases into a single query. Result: real-time screening across 1.2M records instead of a 48-hour delay."
+- Suggested Visual Metaphor: Before/After flow diagram: Left shows 75 disjointed feed arrows feeding an analyst desk; Right shows 1 unified graph query delivering immediate disposition evidence.
 - Supporting Public Evidence:
-  * [Evidence #19-01 | Source: reddit.com]: "Our L1 review queue has 800 alerts backlog. The screening tool flags every Jose Gomez regardless of DOB or jurisdiction. Swivel chairing between 6 tabs to find the beneficial ownership record is a nightmare."
-  * [Evidence #19-02 | Source: reddit.com]: "Every vendor claims zero false positives until you put common Spanish or Arabic patronymics into it. How does your tool handle fuzzy name matching across non-Latin scripts, or are you just wrapping another Dow Jones API and leaving our L1 review queue to clear the backlog?"
-  * [Evidence #19-03 | Source: Reddit r]: "44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."
-  * [Evidence #19-04 | Source: g2.com]: "We get 400 false positives a day on Mexican and Spanish corporate entities. The name matching logic ignores basic company suffix distinctions."
-  * [Evidence #19-05 | Source: Reddit r]: "Welcome to the sub, advertiser.
-    
-      Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."
+  * [Evidence #19-01 | Source: reddit.com]: "We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings."
+  * [Evidence #19-02 | Source: reddit.com]: "We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings across 6 tabs."
+  * [Evidence #19-03 | Source: reddit.com]: "Dear vendor stack: I cannot keep copy-pasting business registration numbers from registry PDFs into Excel final_v7.xlsx. Swivel chair review is destroying our analysts."
+  * [Evidence #19-04 | Source: Reddit r]: "Deinfluence me: S&R Swivel Chair for first time mom. Ang dami kasi nagsasabi na okay daw to as nursing chair.."
+  * [Evidence #19-05 | Source: Reddit r]: "Swivel chair. "
 
 ### [Idea #20] From 6 Tabs to 1 Query: Solving Alert Fatigue & Backlog
 - Format: Product as relief | Pillar: The Frankenstack Reckoning
@@ -817,6 +810,85 @@
 - Excerpt/Quote: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or..."
 - Context Summary: "How to Research Company Ownership? (Shell Company). I'm not sure if this is the right subreddit for this, but does anyone have any tools or recommendations for researching company ..."
 - Theme: UBO, Shell Companies & Transshipment | Emotion Intensity: 1/5 (frustration)
+
+[Trace ID #64]
+- Source Channel: reddit:r/r/AMLCompliance:post
+- Title/Topic: AML professionals: What causes the most false-positive transaction alerts in your experience?
+- Excerpt/Quote: "AML professionals: What causes the most false-positive transaction alerts in your experience?. I'm studying AML and financial crime compliance and had a question for those..."
+- Context Summary: "AML professionals: What causes the most false-positive transaction alerts in your experience?. I'm studying AML and financial crime compliance and had a question for those who work..."
+- Theme: Adverse Media & Negative News Noise | Emotion Intensity: 4/5 (frustration)
+
+[Trace ID #65]
+- Source Channel: reddit:r/r/AMLCompliance:post
+- Title/Topic: What does a good AML investigation actually look like?
+- Excerpt/Quote: "What does a good AML investigation actually look like?. For those working in AML/KYC, I'm curious about something. When you receive a suspicious transaction alert,..."
+- Context Summary: "What does a good AML investigation actually look like?. For those working in AML/KYC, I'm curious about something.
+    
+      When you receive a suspicious transaction alert, what ..."
+- Theme: Adverse Media & Negative News Noise | Emotion Intensity: 4/5 (frustration)
+
+[Trace ID #66]
+- Source Channel: reddit:r/r/AMLCompliance:comment
+- Title/Topic: Practitioner comment on r/r/AMLCompliance ('Exactly. I think curiosity is one of the biggest differentia...')
+- Excerpt/Quote: "Exactly. I think curiosity is one of the biggest differentiators in AML. The ability to keep digging and ask “what doesn’t make sense here?” is..."
+- Context Summary: "Exactly. I think curiosity is one of the biggest differentiators in AML. The ability to keep digging and ask “what doesn’t make sense here?” is difficult to teach from theory alone..."
+- Theme: Adverse Media & Negative News Noise | Emotion Intensity: 1/5 (frustration)
+
+[Trace ID #67]
+- Source Channel: reddit:r/r/AMLCompliance:comment
+- Title/Topic: Practitioner comment on r/r/AMLCompliance ('a good aml investigation seems less about cheking boxes & mo...')
+- Excerpt/Quote: "a good aml investigation seems less about cheking boxes & more about connectiing the alert to the customers broader activity."
+- Context Summary: "a good aml investigation seems less about cheking boxes & more about connectiing the alert to the customers broader activity."
+- Theme: Adverse Media & Negative News Noise | Emotion Intensity: 1/5 (frustration)
+
+[Trace ID #68]
+- Source Channel: reddit:r/r/moneylaundering:comment
+- Title/Topic: Practitioner comment on r/r/moneylaundering ('Yes, a sanctions screening software can help reduce false po...')
+- Excerpt/Quote: "Yes, a sanctions screening software can help reduce false positives & streamline the compliance process."
+- Context Summary: "Yes, a sanctions screening software can help reduce false positives & streamline the compliance process."
+- Theme: Entity Resolution & Name Matching | Emotion Intensity: 1/5 (frustration)
+
+[Trace ID #69]
+- Source Channel: reddit:r/r/fintech:post
+- Title/Topic: How are fintech startups handling sanctions screening without constant false positives?
+- Excerpt/Quote: "How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watchlists..."
+- Context Summary: "How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."
+- Theme: Entity Resolution & Name Matching | Emotion Intensity: 1/5 (frustration)
+
+[Trace ID #70]
+- Source Channel: reddit:r/r/fintech:comment
+- Title/Topic: Practitioner comment on r/r/fintech ('From the standpoint of the KYC provider, I believe that reco...')
+- Excerpt/Quote: "From the standpoint of the KYC provider, I believe that recognizing a possible match as something to look into rather than an automatic reason to..."
+- Context Summary: "From the standpoint of the KYC provider, I believe that recognizing a possible match as something to look into rather than an automatic reason to flag or reject someone is the larg..."
+- Theme: Adverse Media & Negative News Noise | Emotion Intensity: 4/5 (frustration)
+
+[Trace ID #71]
+- Source Channel: reddit:r/r/fintech:comment
+- Title/Topic: Practitioner comment on r/r/fintech ('sanctions screening is something i want to build into onboar...')
+- Excerpt/Quote: "sanctions screening is something i want to build into onboarding and ongoing monitoring from the beginning not a one time checkbox sanctions screening needs a..."
+- Context Summary: "sanctions screening is something i want to build into onboarding and ongoing monitoring from the beginning not a one time checkbox sanctions screening needs a process for reviewing..."
+- Theme: Sanctions Screening & OFAC Rules | Emotion Intensity: 1/5 (frustration)
+
+[Trace ID #72]
+- Source Channel: reddit:r/r/conspiracy:post
+- Title/Topic: Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human Trafficking?
+- Excerpt/Quote: "Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human Trafficking?. Human trafficking and other..."
+- Context Summary: "Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human Trafficking?. Human trafficking and other illicit..."
+- Theme: UBO, Shell Companies & Transshipment | Emotion Intensity: 4/5 (frustration)
+
+[Trace ID #73]
+- Source Channel: reddit:r/r/NoStupidQuestions:post
+- Title/Topic: Why aren't there laws that require shell companies to identify their owner?
+- Excerpt/Quote: "Why aren't there laws that require shell companies to identify their owner?. Like there is an incredibly small number of companies operating a HUGE number..."
+- Context Summary: "Why aren't there laws that require shell companies to identify their owner?. Like there is an incredibly small number of companies operating a HUGE number of shell companies, often..."
+- Theme: Adverse Media & Negative News Noise | Emotion Intensity: 1/5 (frustration)
+
+[Trace ID #74]
+- Source Channel: reddit:r/r/NoStupidQuestions:comment
+- Title/Topic: Practitioner comment on r/r/NoStupidQuestions ('Shell companies meet legal requirements in terms of ownershi...')
+- Excerpt/Quote: "Shell companies meet legal requirements in terms of ownership, otherwise they couldn't be formed. If I pay you to pay someone to pay someone else..."
+- Context Summary: "Shell companies meet legal requirements in terms of ownership, otherwise they couldn't be formed. If I pay you to pay someone to pay someone else to start a company to start a comp..."
+- Theme: Adverse Media & Negative News Noise | Emotion Intensity: 3/5 (frustration)
 
 ## 6. INSTRUCTIONS FOR CLAUDE
 Use the signals, quotes, and proof points above to draft authentic LinkedIn posts for Sayari.
