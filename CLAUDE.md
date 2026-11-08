@@ -2,9 +2,14 @@
 
 ## Status
 - **Summary**: Local research and public discussion mining tool for Sayari LinkedIn content generation. Captures practitioner language, frustrations, and opinions from Reddit, RSS/news feeds, and manual imports, clustering them into ranked content ideas mapped to Sayari's 4 core formats.
-- **Current Phase**: Signal & Psychographic Intelligence Reporting complete; dual Reddit listening active (Apify live actor ready + official PRAW pending request review).
-- **In Progress**: Reddit official API review approval; continuous multi-source ingestion.
-- **What's Next**: Ingesting live community queries and feeding extracted signals into Claude for post copywriting.
+- **Current Phase**: Deployed to GitHub Pages as an installable Progressive Web App (PWA); automated cloud listening active via GitHub Actions (sweeps every 6 hours without laptop required).
+- **In Progress**: Autonomous cloud ingestion across Apify and RSS feeds.
+- **What's Next**: Review live feedback on mobile/desktop dashboard and copy trace-numbered prompts into Claude.
+
+## Live PWA & Links
+- **GitHub Repository**: https://github.com/terriblyoffendedmarketer-stack/sayari
+- **Live PWA Dashboard (Shareable)**: https://terriblyoffendedmarketer-stack.github.io/sayari/
+- **Cloud Automation**: Runs every 6 hours via `.github/workflows/scheduled-sweep.yml` using GitHub Actions + Apify Secret.
 
 ## Roadmap
 - [x] Phase 1: Local SQLite schema, strict privacy rules (no usernames, <=25 words excerpt, paraphrases).
