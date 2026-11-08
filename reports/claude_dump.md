@@ -40,15 +40,15 @@
 - SPREADSHEETS AND GOOGLE [AUTHENTIC PRACTITIONER TERM]: >25% of compliance teams manage periodic reviews in spreadsheets; 65% rely on manual Google searches for adverse media.
 - KYC REFRESH VS PKYC [AUTHENTIC PRACTITIONER TERM]: Periodic KYC review cycles vs perpetual KYC (pKYC) continuous monitoring.
 - UBO & NESTED OWNERSHIP [AUTHENTIC PRACTITIONER TERM]: Ultimate Beneficial Ownership obscured behind opaque multi-jurisdiction holding layers.
-- JUDGMENT INFRASTRUCTURE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- LEVERAGE SYNERGIES [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - PARADIGM SHIFT [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- SINGLE PANE OF GLASS [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - NEXT-GEN RISK ECOSYSTEM [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- BEST-IN-BREED SEAMLESS INTEGRATION [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- FRICTIONLESS COMPLIANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - HOLISTIC END-TO-END [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - ZERO-RESISTANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- SINGLE PANE OF GLASS [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- JUDGMENT INFRASTRUCTURE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- LEVERAGE SYNERGIES [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- FRICTIONLESS COMPLIANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- BEST-IN-BREED SEAMLESS INTEGRATION [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 
 ## 3. SAYARI VERIFIED PROOF ANCHORS
 - [Proof #1] No. 3 Global Telecom: 72% of flagged risk was on zero watchlists anywhere, hidden in nested ownership (60K+ partners screened continuously).
