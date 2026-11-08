@@ -6,3 +6,5 @@ cams exam drop filter assertion failure | Sample test post lacked compliance see
 ollama timeout on cold start | LLM cluster call took >10s on first invocation | Added fallback heuristic clustering in src/analyzer.py so pipeline runs immediately even if Ollama is slow or offline
 paywall/login response on feeds | ACAMS and FCPA Blog returned 403/401 HTTP codes | Followed hard rules: logged to blocked_sources.md and SQLite rather than attempting bot bypass or proxy rotation
 zero ideas generated on sparse clusters | Strict threshold required >=3 items per theme, returning 0 when only 4 sample items were provided | Added 12 realistic seed items across themes and adaptive min_sources fallback in src/ideator.py
+github push protection rejection | Git history contained a commit with the Apify token in src/collectors/apify.py | Reset commits before the secret was introduced, moved token to gitignored .env and GitHub Actions secrets, and recommitted cleanly
+github pages 404 on initial enable | GitHub Pages repository creation defaults to off on free accounts | Enabled Pages via gh api with build_type=workflow and added automated upload-pages-artifact step to the workflow
