@@ -36,6 +36,20 @@ VENDOR_MARKETING_TERMS = {
     "next-gen risk ecosystem"
 }
 
+FOUNDATIONAL_PRACTITIONER_TERMS = {
+    "alert fatigue": "Most common category term for alert overload, used by Sayari's own blog and practitioners.",
+    "swivel chair": "Used for analysts doing repetitive work across fragmented systems ('swivel chair effect' across multiple logins). Real equivalent to Frankenstack.",
+    "point solutions & silos": "The standard practitioner way of describing disconnected tools that rarely communicate with each other.",
+    "backlog & clearing alerts": "The queue backs up, and the day is spent clearing it. Analysts say 'disposition alerts' and call first-line review 'L1'.",
+    "false positives": "Industry benchmark of 90% to 95% false positives in sanctions screening.",
+    "spreadsheets and google": ">25% of compliance teams manage periodic reviews in spreadsheets; 65% rely on manual Google searches for adverse media.",
+    "name matching": "Entity resolution bottleneck; hours spent triaging Latin/Cyrillic/Arabic spelling variations and initials.",
+    "kyc refresh vs pkyc": "Periodic KYC review cycles vs perpetual KYC (pKYC) continuous monitoring.",
+    "ubo & nested ownership": "Ultimate Beneficial Ownership obscured behind opaque multi-jurisdiction holding layers.",
+    "edd": "Enhanced Due Diligence triggered when high-risk ownership, PEPs, or transshipment hubs are flagged.",
+    "audit trail": "Defensible paper trail proving to regulatory examiners why an alert was cleared or escalated."
+}
+
 PRACTITIONER_TERM_PATTERNS = [
     r"\bswivel[- ]chair(?: effect)?\b",
     r"\bname[- ]match(?:ing)?\b",
@@ -273,6 +287,21 @@ def extract_glossary_from_items(items: List[Dict[str, Any]]) -> List[Dict[str, A
             "example_context": term_contexts.get(term, ""),
             "is_vendor_marketing_only": is_vendor
         })
+
+    # Ensure foundational practitioner terms from Sayari brief are present
+    for pterm, pnote in FOUNDATIONAL_PRACTITIONER_TERMS.items():
+        existing = next((g for g in glossary if g["term"].lower() == pterm.lower()), None)
+        if existing:
+            if not existing.get("example_context"):
+                existing["example_context"] = pnote
+        else:
+            glossary.append({
+                "term": pterm,
+                "frequency": 1,
+                "source_count": 1,
+                "example_context": pnote,
+                "is_vendor_marketing_only": 0
+            })
 
     # Also add known vendor marketing buzzwords as flagged examples if not already present
     for vterm in VENDOR_MARKETING_TERMS:

@@ -20,7 +20,8 @@
 
 ## File Map
 - `config.yaml`: Central editable configuration (sources, keywords, drop patterns, format weights, LLM config).
-- `run.py`: CLI entry point (`analyze-text`, `discover`, `collect-reddit`, `collect-rss`, `import-manual`, `generate-ideas`, `pipeline`).
+- `run.py`: CLI entry point (`analyze-text`, `discover`, `collect-apify`, `collect-reddit`, `collect-rss`, `import-manual`, `generate-ideas`, `pipeline`).
+- `src/collectors/apify.py`: Live Reddit scraper via Apify actor with time-stratified signal tagging.
 - `reports/compliance_psychographic_report.md`: Master psychographic report, practitioner lexicon, cross-channel patterns, and Claude hand-off prompt templates.
 - `source_candidates.md`: Discovered subreddits, publications, and target career pages for user review.
 - `ideas.csv` / `ideas.md`: Ranked content ideas with hooks, visual metaphors, evidence citations, and risk notes.

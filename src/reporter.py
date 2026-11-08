@@ -126,12 +126,78 @@ def export_blocked_sources_md(conn: sqlite3.Connection, filepath: str = "blocked
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
+def generate_claude_dump_text(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, Any]], glossary: List[Dict[str, Any]]) -> str:
+    lines = [
+        "# SAYARI COMPLIANCE SIGNAL BANK & INTELLIGENCE DUMP",
+        "# (Link-free format with unique trace IDs for direct input into Claude)",
+        "",
+        "## 1. VOICE, AUDIENCE & STRATEGY CONTEXT",
+        "- Brand: Sayari (Corporate ownership and supply chain risk intelligence).",
+        "- Primary Audience: Compliance officers (sanctions, financial crime, KYB) and investigations/L1 analysts. NOT C-suite budget approvers.",
+        "- Audience Psychographics: Powerless but accountable, drowning in alerts, cynical of new tools, quietly afraid of audits.",
+        "- Tone: Validating, unflinching, human, a little funny, proof-backed. Must pass the 'Beer Test'.",
+        "- Banned Vendor Buzzwords: 'judgment infrastructure', 'zero-resistance', 'leverage synergies', 'holistic ecosystem', 'single pane of glass'.",
+        "- 4 Formats: Pain Mirror (35%), Product as Relief (25%), The Receipts / Investigation Teardown (20%), Headline to Lesson / Newsjack (20%).",
+        "",
+        "## 2. THE 'BEER TEST' LEXICON (PRACTITIONER SLANG VS VENDOR FLUFF)",
+    ]
+    
+    for g in glossary:
+        term = g.get("term", "")
+        vendor_val = str(g.get("is_vendor_marketing_only", "")).upper()
+        is_vendor = "BANNED VENDOR BUZZWORD" if ("YES" in vendor_val or vendor_val == "1") else "AUTHENTIC PRACTITIONER TERM"
+        lines.append(f"- {term.upper()} [{is_vendor}]: {g.get('example_context', '')}")
+
+    lines.append("\n## 3. SAYARI VERIFIED PROOF ANCHORS")
+    lines.append("- [Proof #1] No. 3 Global Telecom: 72% of flagged risk was on zero watchlists anywhere, hidden in nested ownership (60K+ partners screened continuously).")
+    lines.append("- [Proof #2] Fortune 50 Energy Supermajor: 1.2M records screened in real time (competing platform required 24–48 hours).")
+    lines.append("- [Proof #3] Fortune 50 Energy Company: 75+ disparate data sources collapsed into one; costly homegrown system retired.")
+    lines.append("- [Proof #4] Top-5 Global Tech Company: Chose Sayari over supply-chain incumbent for sub-tier mapping.")
+    lines.append("- [Benchmark #1] Sanctions screening false positive rate is 90% to 95%.")
+    lines.append("- [Benchmark #2] 81% of compliance teams say their risk tools are not integrated.")
+    lines.append("- [Benchmark #3] 65% rely on manual Google searches for adverse media; >25% manage periodic reviews in spreadsheets.")
+
+    lines.append("\n## 4. MASTER RANKED IDEAS BANK (WITH HOOKS & METAPHORS)")
+    for idx, idea in enumerate(ideas, 1):
+        lines.append(f"\n### [Idea #{idx:02d}] {idea.get('title')}")
+        lines.append(f"- Format: {idea.get('format')} | Pillar: {idea.get('pillar')}")
+        lines.append(f"- The Hook: \"{idea.get('hook')}\"")
+        lines.append(f"- Suggested Visual Metaphor: {idea.get('suggested_visual')}")
+        lines.append(f"- Supporting Public Evidence:")
+        for ev_idx, ev in enumerate(idea.get("evidence_sources", []), 1):
+            source_clean = ev.get("url", "").replace("https://www.reddit.com/r/", "Reddit r/").replace("https://", "").split("/")[0]
+            lines.append(f"  * [Evidence #{idx:02d}-{ev_idx:02d} | Source: {source_clean}]: \"{ev.get('paraphrase')}\"")
+
+    lines.append("\n## 5. COMPLETE EVIDENCE BANK (SOURCED WITH UNIQUE TRACE IDS)")
+    for idx, it in enumerate(raw_items, 1):
+        source_clean = it.get("source", "").replace("pasted:", "").replace("rss:", "").replace("manual:", "")
+        lines.append(f"\n[Trace ID #{idx:02d}]")
+        lines.append(f"- Source Channel: {source_clean}")
+        lines.append(f"- Title/Topic: {it.get('title')}")
+        lines.append(f"- Excerpt/Quote: \"{it.get('short_excerpt')}\"")
+        lines.append(f"- Context Summary: \"{it.get('paraphrase')}\"")
+        lines.append(f"- Theme: {it.get('theme', 'General')} | Emotion Intensity: {it.get('intensity', 1)}/5 ({it.get('emotion', 'frustration')})")
+
+    lines.append("\n## 6. INSTRUCTIONS FOR CLAUDE")
+    lines.append("Use the signals, quotes, and proof points above to draft authentic LinkedIn posts for Sayari.")
+    lines.append("Follow the 4 core formats, strictly maintain the human/unflinching tone, and avoid all vendor buzzwords.")
+
+    return "\n".join(lines)
+
+def export_claude_dump_md(dump_text: str, filepath: str = "reports/claude_dump.md"):
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(dump_text)
+
 def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, Any]], glossary: List[Dict[str, Any]], dropped_items: List[Dict[str, Any]], sweep_time: str, filepath: str = "viewer/index.html"):
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     ideas_json = json.dumps(ideas)
     items_json = json.dumps(raw_items)
     glossary_json = json.dumps(glossary)
     dropped_json = json.dumps(dropped_items)
+    claude_dump_text = generate_claude_dump_text(ideas, raw_items, glossary)
+    claude_dump_json = json.dumps(claude_dump_text)
+    export_claude_dump_md(claude_dump_text, "reports/claude_dump.md")
 
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -139,6 +205,15 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sayari Compliance Signal Radar & Living Brain</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="alternate icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sayari Radar">
+<meta name="theme-color" content="#090d16">
+<meta name="description" content="Living psychographic compliance radar & content ideas for Sayari.">
 <style>
   :root {{
     --bg: #090d16;
@@ -155,23 +230,24 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
     --tag-news: #818cf8;
     --btn-copy: #0284c7;
     --btn-copy-hover: #0369a1;
+    --btn-dump: #10b981;
+    --btn-dump-hover: #059669;
   }}
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); color: var(--text); padding: 24px 32px; line-height: 1.5; }}
   
   /* Header */
-  header {{ margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }}
+  header {{ margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }}
   .title-area h1 {{ font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }}
   .title-area h1 span.radar {{ color: var(--accent); }}
   p.subtitle {{ color: var(--muted); font-size: 14px; margin-top: 4px; }}
   
-  .sweep-badge {{ background: var(--card); border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; font-size: 13px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }}
+  .header-actions {{ display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }}
+  .btn-dump-all {{ background: var(--btn-dump); color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }}
+  .btn-dump-all:hover {{ background: var(--btn-dump-hover); transform: translateY(-1px); }}
+
+  .sweep-badge {{ background: var(--card); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-size: 12.5px; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }}
   .sweep-time {{ color: var(--accent); font-weight: 700; }}
-  .status-indicators {{ display: flex; gap: 8px; margin-top: 4px; }}
-  .pill {{ font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; }}
-  .pill-green {{ background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }}
-  .pill-blue {{ background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }}
-  .pill-amber {{ background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }}
 
   /* Tabs */
   .tabs {{ display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 8px; flex-wrap: wrap; }}
@@ -197,6 +273,7 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
   .badge-receipts {{ background: rgba(251, 191, 36, 0.15); color: var(--tag-receipts); border: 1px solid rgba(251, 191, 36, 0.4); }}
   .badge-news {{ background: rgba(129, 140, 248, 0.15); color: var(--tag-news); border: 1px solid rgba(129, 140, 248, 0.4); }}
   
+  .trace-id {{ font-size: 11px; font-family: monospace; color: var(--accent); background: #080d1a; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); }}
   .idea-title {{ font-size: 17px; font-weight: 700; color: #fff; line-height: 1.35; }}
   .hook-box {{ background: #080d1a; border-left: 3px solid var(--accent); padding: 12px 14px; border-radius: 6px; font-size: 13.5px; color: #e2e8f0; font-style: italic; }}
   .meta-grid {{ display: grid; grid-template-columns: 1fr; gap: 6px; font-size: 12.5px; color: var(--muted); }}
@@ -205,11 +282,9 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
   .evidence-section {{ margin-top: auto; border-top: 1px solid var(--border); padding-top: 12px; }}
   .evidence-header {{ font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }}
   .evidence-item {{ font-size: 12px; color: #cbd5e1; margin-bottom: 6px; line-height: 1.4; }}
-  .evidence-item a {{ color: var(--accent); text-decoration: none; word-break: break-all; }}
-  .evidence-item a:hover {{ text-decoration: underline; }}
   
   /* Copy Button */
-  .copy-btn {{ background: var(--btn-copy); color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-size: 12.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s; margin-top: 8px; width: 100%; }}
+  .copy-btn {{ background: var(--btn-copy); color: #fff; border: none; padding: 9px 14px; border-radius: 6px; font-size: 12.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s; margin-top: 8px; width: 100%; }}
   .copy-btn:hover {{ background: var(--btn-copy-hover); }}
 
   /* Tables */
@@ -220,7 +295,7 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
   .table-view tr:hover {{ background: rgba(255,255,255,0.02); }}
   
   /* Toast */
-  #toast {{ visibility: hidden; min-width: 280px; background-color: #0284c7; color: #fff; text-align: center; border-radius: 8px; padding: 14px 20px; position: fixed; z-index: 100; right: 30px; bottom: 30px; font-size: 14px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }}
+  #toast {{ visibility: hidden; min-width: 320px; background-color: #0284c7; color: #fff; text-align: center; border-radius: 8px; padding: 14px 20px; position: fixed; z-index: 100; right: 30px; bottom: 30px; font-size: 14px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }}
   #toast.show {{ visibility: visible; animation: fadein 0.3s, fadeout 0.5s 2.5s; }}
   @keyframes fadein {{ from {{ bottom: 0; opacity: 0; }} to {{ bottom: 30px; opacity: 1; }} }}
   @keyframes fadeout {{ from {{ bottom: 30px; opacity: 1; }} to {{ bottom: 0; opacity: 0; }} }}
@@ -233,12 +308,16 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
     <h1><span class="radar">📡</span> Sayari Compliance Signal Radar & Living Brain</h1>
     <p class="subtitle">Continuous public discussion mining, practitioner psychographics, and 4-format LinkedIn idea bank</p>
   </div>
-  <div class="sweep-badge">
-    <div>Last Sweep: <span class="sweep-time">{sweep_time}</span></div>
-    <div class="status-indicators">
-      <span class="pill pill-green">Reddit (Apify/PRAW Active)</span>
-      <span class="pill pill-blue">RSS Feeds Active</span>
-      <span class="pill pill-amber">Manual Drops Ready</span>
+  <div class="header-actions">
+    <button id="pwaInstallBtn" style="display:none; background:#38bdf8; color:#090d16; border:none; padding:10px 16px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13.5px; transition:all 0.2s;" onclick="installPWA()">
+      📱 Install App
+    </button>
+    <button class="btn-dump-all" onclick="dumpEntireBrainToClipboard()">
+      📋 Dump Entire Brain for Claude (No Links, Trace IDs)
+    </button>
+    <div class="sweep-badge">
+      <div>Last Sweep: <span class="sweep-time">{sweep_time}</span></div>
+      <div style="font-size:11px; color:#34d399;">● {len(raw_items)} Signals Active</div>
     </div>
   </div>
 </header>
@@ -299,12 +378,13 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
   <table class="table-view">
     <thead>
       <tr>
+        <th>Trace ID</th>
         <th>Source</th>
-        <th>Title</th>
-        <th>Short Excerpt (Max 25w)</th>
+        <th>Title / News / Topic</th>
+        <th>Short Excerpt</th>
         <th>Theme</th>
-        <th>Emotion (1-5)</th>
-        <th>URL</th>
+        <th>Emotion</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody id="rawTbody"></tbody>
@@ -327,13 +407,14 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
   </table>
 </div>
 
-<div id="toast">✅ Prompt Copied to Clipboard! Paste into Claude.</div>
+<div id="toast">✅ Text Copied to Clipboard!</div>
 
 <script>
 const IDEAS = {ideas_json};
 const RAW_ITEMS = {items_json};
 const GLOSSARY = {glossary_json};
 const DROPPED_ITEMS = {dropped_json};
+const CLAUDE_DUMP = {claude_dump_json};
 
 let currentTab = 'ideas';
 
@@ -344,17 +425,70 @@ function showToast(msg) {{
   setTimeout(() => {{ toast.className = toast.className.replace('show', ''); }}, 2800);
 }}
 
-function copyClaudePrompt(ideaTitle, format, pillar, hook, visual, evidenceList) {{
+function copyTextToClipboard(text, successMsg) {{
+  if (navigator.clipboard && window.isSecureContext) {{
+    navigator.clipboard.writeText(text).then(() => {{
+      showToast(successMsg);
+    }}).catch(() => {{
+      fallbackCopy(text, successMsg);
+    }});
+  }} else {{
+    fallbackCopy(text, successMsg);
+  }}
+}}
+
+function fallbackCopy(text, successMsg) {{
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-999999px';
+  ta.style.top = '-999999px';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {{
+    document.execCommand('copy');
+    showToast(successMsg);
+  }} catch (err) {{
+    alert('Copy failed. Please manually copy from reports/claude_dump.md');
+  }}
+  document.body.removeChild(ta);
+}}
+
+function dumpEntireBrainToClipboard() {{
+  copyTextToClipboard(CLAUDE_DUMP, '📋 Full Brain Copied (No links, Sourced with IDs)! Paste into Claude.');
+}}
+
+function formatEvidenceLines(idx, sources) {{
+  if (!sources || !sources.length) return "- (No evidence attached)";
+  return sources.map(function(ev, i) {{
+    var cleanSrc = ev.url.replace('https://www.reddit.com/r/', 'Reddit r/').replace('https://', '').split('/')[0];
+    return "- [Trace ID #" + (idx + 1) + "-" + (i + 1) + " | Source: " + cleanSrc + "]: \\"" + ev.paraphrase + "\\"";
+  }}).join('\\n');
+}}
+
+function formatEvidenceHtml(idx, sources) {{
+  if (!sources || !sources.length) return "";
+  return sources.map(function(ev, i) {{
+    var cleanSrc = ev.url.replace('https://www.reddit.com/r/', 'Reddit r/').replace('https://', '').split('/')[0];
+    return '<div class="evidence-item"><span class="trace-id" style="font-size:10px;">#' + (idx + 1) + '-' + (i + 1) + '</span> <strong>' + cleanSrc + '</strong> (' + ev.upvotes + ' upvotes): <em>\\"' + ev.paraphrase + '\\"</em></div>';
+  }}).join('');
+}}
+
+function copyIdeaPrompt(idx) {{
+  const idea = IDEAS[idx];
+  if (!idea) return;
+
   const prompt = `I am drafting a LinkedIn post for Sayari targeting compliance officers and financial crime / sanctions analysts.
 
-Format: ${{format}}
-Pillar: ${{pillar}}
-Post Concept: ${{ideaTitle}}
-The Hook: "${{hook}}"
-Visual Metaphor: ${{visual}}
+Format: ${{idea.format}}
+Pillar: ${{idea.pillar}}
+Post Concept: ${{idea.title}}
+The Hook: "${{idea.hook}}"
+Visual Metaphor: ${{idea.suggested_visual}}
 
-Real Practitioner Evidence & Sourced Sentiment:
-${{evidenceList.map(e => '- ' + e.paraphrase + ' (Source: ' + e.url + ')').join('\\n')}}
+Verified Evidence & Real Quotes (Sourced with Trace IDs):
+` + formatEvidenceLines(idx, idea.evidence_sources) + `
 
 Voice Guidelines:
 - Validating, unflinching, human, a little funny, proof-backed.
@@ -363,9 +497,43 @@ Voice Guidelines:
 
 Please write 2 variations of this LinkedIn post ready to publish.`;
 
-  navigator.clipboard.writeText(prompt).then(() => {{
-    showToast('📋 Copied Claude Prompt! Paste into Claude to generate your post.');
-  }});
+  copyTextToClipboard(prompt, `📋 Copied Idea #${{idx+1}} Prompt for Claude!`);
+}}
+
+function copyThemePrompt(themeKey) {{
+  const b = THEME_BUCKETS[themeKey];
+  if (!b) return;
+
+  var angleLines = b.ideas.map(function(i, aIdx) {{
+    return "- Angle " + (aIdx + 1) + ': "' + i.title + '" (Hook: "' + i.hook + '")';
+  }}).join('\\n');
+
+  const prompt = `I am drafting a LinkedIn post for Sayari focusing on this core compliance theme:
+
+Theme: ` + themeKey + `
+The Practitioner Reality: ` + b.desc + `
+Sayari Sourced Proof Anchor: ` + b.proof + `
+
+Angles & Hooks to explore:
+` + angleLines + `
+
+Voice Guidelines:
+- Validating, unflinching, human, a little funny. Pass the "Beer Test".
+- Zero vendor buzzwords.
+
+Please write 2 LinkedIn post variations for this theme.`;
+
+  copyTextToClipboard(prompt, "📋 Copied Theme Prompt for Claude!");
+}}
+
+function copySignalPrompt(idx) {{
+  const it = RAW_ITEMS[idx];
+  if (!it) return;
+
+  const cleanSrc = it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '');
+  const text = "[Trace ID #" + (idx + 1) + " | Source: " + cleanSrc + "]\\nTopic: " + it.title + "\\nQuote: \\"" + it.short_excerpt + "\\"\\nContext: " + it.paraphrase + "\\nTheme: " + (it.theme || 'General');
+
+  copyTextToClipboard(text, "📋 Copied Trace ID #" + (idx + 1) + "!");
 }}
 
 function getBadgeClass(fmt) {{
@@ -407,9 +575,10 @@ function switchTab(tab) {{
   render();
 }}
 
+let THEME_BUCKETS = {{}};
+
 function renderBrain() {{
-  // Group ideas and evidence into master theme buckets (the growing brain)
-  const buckets = {{
+  THEME_BUCKETS = {{
     "The Frankenstack & Swivel Chair Effect": {{
       desc: "Analysts drowning across 5-7 disconnected tabs, Excel files, and PDF registries.",
       proof: "Sayari Fortune 50 Energy case: 75+ data sources collapsed into one; costly homegrown system retired.",
@@ -432,7 +601,7 @@ function renderBrain() {{
     }}
   }};
 
-  const html = Object.entries(buckets).map(([title, b]) => `
+  const html = Object.entries(THEME_BUCKETS).map(([title, b]) => `
     <div class="card" style="border-top: 3px solid var(--accent);">
       <div class="idea-title" style="color:var(--accent); font-size:18px;">${{title}}</div>
       <p style="font-size:13px; color:#cbd5e1;">${{b.desc}}</p>
@@ -448,6 +617,9 @@ function renderBrain() {{
           </div>
         `).join('') || '<div style="font-size:12px; color:var(--muted);">More signals being slotted on next sweep...</div>'}}
       </div>
+      <button class="copy-btn" onclick="copyThemePrompt('${{title}}')">
+        📋 Copy Theme Prompt for Claude
+      </button>
     </div>
   `).join('');
   document.getElementById('brainContainer').innerHTML = html;
@@ -493,7 +665,10 @@ function render() {{
       <div class="card">
         <div class="card-header">
           <span class="badge ${{getBadgeClass(idea.format)}}">${{idea.format}}</span>
-          <span style="font-size: 12px; font-weight:700; color:var(--accent);">Score: ${{idea.rank_score}}</span>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span class="trace-id">Idea #${{idx+1}}</span>
+            <span style="font-size: 12px; font-weight:700; color:var(--accent);">Score: ${{idea.rank_score}}</span>
+          </div>
         </div>
         <div class="idea-title">${{idea.title}}</div>
         <div class="hook-box">"${{idea.hook}}"</div>
@@ -504,17 +679,13 @@ function render() {{
           <div><strong>Verify Before Use:</strong> ${{idea.verify_before_use}}</div>
         </div>
         
-        <button class="copy-btn" onclick='copyClaudePrompt("${{idea.title.replace(/"/g, '&quot;')}}", "${{idea.format}}", "${{idea.pillar}}", "${{idea.hook.replace(/"/g, '&quot;')}}", "${{idea.suggested_visual.replace(/"/g, '&quot;')}}", ${{JSON.stringify(idea.evidence_sources)}})'>
-          📋 Copy Prompt for Claude
+        <button class="copy-btn" onclick="copyIdeaPrompt(${{idx}})">
+          📋 Copy Prompt for Claude (Link-free, Sourced)
         </button>
 
         <div class="evidence-section">
           <div class="evidence-header">Real Public Sourced Proof (${{idea.evidence_sources.length}} sources):</div>
-          ${{idea.evidence_sources.map(ev => `
-            <div class="evidence-item">
-              &bull; <a href="${{ev.url}}" target="_blank" rel="noopener">${{ev.url.replace('https://', '')}}</a> (${{ev.upvotes}} upvotes): <em>"${{ev.paraphrase}}"</em>
-            </div>
-          `).join('')}}
+          ${{formatEvidenceHtml(idx, idea.evidence_sources)}}
         </div>
       </div>
     `).join('');
@@ -526,18 +697,51 @@ function render() {{
       return matchInt && matchQ;
     }});
 
-    const html = filtered.map(it => `
+    const html = filtered.map((it, idx) => `
       <tr>
-        <td>${{it.source}}</td>
+        <td><span class="trace-id">#${{idx+1}}</span></td>
+        <td>${{it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '')}}</td>
         <td><strong>${{it.title}}</strong></td>
         <td>${{it.short_excerpt}}</td>
         <td><span style="color:var(--accent); font-weight:600;">${{it.theme || 'General'}}</span></td>
         <td>${{it.emotion || 'frustration'}} (${{it.intensity || 1}}/5)</td>
-        <td><a href="${{it.url}}" target="_blank" rel="noopener" style="color:var(--accent);">Open Link &rarr;</a></td>
+        <td>
+          <button class="copy-btn" style="padding:4px 8px; font-size:11px; margin:0;" onclick="copySignalPrompt(${{idx}})">
+            📋 Copy
+          </button>
+        </td>
       </tr>
     `).join('');
     document.getElementById('rawTbody').innerHTML = html;
   }}
+}}
+
+// PWA Service Worker & Install Handler
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {{
+  e.preventDefault();
+  deferredPrompt = e;
+  const btn = document.getElementById('pwaInstallBtn');
+  if (btn) btn.style.display = 'inline-flex';
+}});
+
+function installPWA() {{
+  if (deferredPrompt) {{
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {{
+      deferredPrompt = null;
+      const btn = document.getElementById('pwaInstallBtn');
+      if (btn) btn.style.display = 'none';
+    }});
+  }}
+}}
+
+if ('serviceWorker' in navigator) {{
+  window.addEventListener('load', () => {{
+    navigator.serviceWorker.register('./sw.js').catch(err => {{
+      console.log('SW registration note:', err);
+    }});
+  }});
 }}
 
 render();
@@ -551,6 +755,8 @@ render();
 def generate_all_outputs(conn: sqlite3.Connection, ideas: List[Dict[str, Any]], glossary: List[Dict[str, Any]]):
     """Exports all required files: CSVs, Markdown, logs, and interactive viewer."""
     import time
+    from src.pwa_assets import build_all_pwa_assets
+
     export_raw_items_csv(conn, "raw_items.csv")
     export_ideas_csv(ideas, "ideas.csv")
     export_ideas_markdown(ideas, "ideas.md")
@@ -567,3 +773,5 @@ def generate_all_outputs(conn: sqlite3.Connection, ideas: List[Dict[str, Any]], 
     
     sweep_time = time.strftime('%Y-%m-%d %H:%M:%S')
     export_html_viewer(ideas, raw_items, glossary, dropped_items, sweep_time, "viewer/index.html")
+    export_html_viewer(ideas, raw_items, glossary, dropped_items, sweep_time, "docs/index.html")
+    build_all_pwa_assets(["viewer", "docs"])
