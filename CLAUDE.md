@@ -2,9 +2,9 @@
 
 ## Status
 - **Summary**: Local research and public discussion mining tool for Sayari LinkedIn content generation. Captures practitioner language, frustrations, and opinions from Reddit, RSS/news feeds, and manual imports, clustering them into ranked content ideas mapped to Sayari's 4 core formats.
-- **Current Phase**: Phase 1 Complete (Analysis engine, Reddit collector, RSS collector, manual importer, filter tests, source discovery, and HTML viewer active).
-- **In Progress**: Reddit API credentials hand-off and source candidates approval review.
-- **What's Next**: Live Reddit ingestion once API keys are provided in `config.yaml`.
+- **Current Phase**: Signal & Psychographic Intelligence Reporting complete; dual Reddit listening active (Apify live actor ready + official PRAW pending request review).
+- **In Progress**: Reddit official API review approval; continuous multi-source ingestion.
+- **What's Next**: Ingesting live community queries and feeding extracted signals into Claude for post copywriting.
 
 ## Roadmap
 - [x] Phase 1: Local SQLite schema, strict privacy rules (no usernames, <=25 words excerpt, paraphrases).
@@ -21,6 +21,7 @@
 ## File Map
 - `config.yaml`: Central editable configuration (sources, keywords, drop patterns, format weights, LLM config).
 - `run.py`: CLI entry point (`analyze-text`, `discover`, `collect-reddit`, `collect-rss`, `import-manual`, `generate-ideas`, `pipeline`).
+- `reports/compliance_psychographic_report.md`: Master psychographic report, practitioner lexicon, cross-channel patterns, and Claude hand-off prompt templates.
 - `source_candidates.md`: Discovered subreddits, publications, and target career pages for user review.
 - `ideas.csv` / `ideas.md`: Ranked content ideas with hooks, visual metaphors, evidence citations, and risk notes.
 - `glossary.csv`: Extracted practitioner terms vs. flagged vendor marketing buzzwords.
