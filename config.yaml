@@ -1,0 +1,156 @@
+# config.yaml — Configuration for Sayari LinkedIn Research Tool
+# All sources, keywords, filters, format targets, and paths are editable here.
+
+database:
+  path: "data/sayari.db"
+
+storage:
+  raw_items_csv: "raw_items.csv"
+  ideas_csv: "ideas.csv"
+  ideas_md: "ideas.md"
+  glossary_csv: "glossary.csv"
+  blocked_sources_md: "blocked_sources.md"
+  manual_import_dir: "data/imports"
+  html_viewer_dir: "viewer"
+
+privacy_and_compliance:
+  store_usernames: false
+  max_excerpt_words: 25
+  respect_robots_txt: true
+  user_agent: "SayariContentResearch/1.0 (Non-commercial research tool for B2B compliance content analysis)"
+
+reddit:
+  # Official Reddit API credentials (register at https://www.reddit.com/prefs/apps)
+  # Free tier covers non-commercial personal scripts (100 queries/min via OAuth)
+  client_id: ""
+  client_secret: ""
+  user_agent: "SayariContentResearch/1.0 by NonCommercialResearcher"
+  subreddits:
+    - "AMLCompliance"
+    - "financialcrime"
+    - "compliance"
+    - "RegulatoryCompliance"
+  skip_flairs:
+    - "vendor"
+    - "promotion"
+    - "advertisement"
+    - "promo"
+  skip_title_patterns:
+    - "weekly promo"
+    - "self-promotion"
+    - "vendor showcase"
+    - "monthly recruitment"
+  limit_per_sub: 25
+  cache_responses: true
+
+rss_sources:
+  major:
+    - name: "ACAMS moneylaundering.com"
+      url: "https://www.moneylaundering.com/feed/"
+      enabled: true
+    - name: "Compliance Week"
+      url: "https://www.complianceweek.com/rss"
+      enabled: true
+    - name: "Global Trade Review"
+      url: "https://www.gtreview.com/feed/"
+      enabled: true
+    - name: "FCPA Blog"
+      url: "https://fcpablog.com/feed/"
+      enabled: true
+  independent:
+    - name: "FiveBy Risk News & Insights (Substack)"
+      url: "https://fiveby.substack.com/feed"
+      enabled: true
+    - name: "AML Intelligence"
+      url: "https://www.amlintelligence.com/feed/"
+      enabled: true
+    - name: "Steptoe International Compliance Blog"
+      url: "https://www.steptoeinternationalcomplianceblog.com/feed/"
+      enabled: true
+    - name: "Holland & Hart Trade Sanctions"
+      url: "https://www.tradesanctions.com/feed/"
+      enabled: true
+    - name: "Export Control Navigator"
+      url: "https://exportcontrolnavigator.substack.com/feed"
+      enabled: true
+
+keywords:
+  seed_keywords:
+    - "alert fatigue"
+    - "false positive"
+    - "name matching"
+    - "sanctions screening"
+    - "kyc"
+    - "kyb"
+    - "ubo"
+    - "beneficial ownership"
+    - "third-party risk"
+    - "tprm"
+    - "supplier screening"
+    - "uflpa"
+    - "forced labor"
+    - "ofac"
+    - "export controls"
+    - "transshipment"
+    - "shell company"
+    - "audit"
+    - "regulator exam"
+    - "spreadsheet"
+    - "backlog"
+    - "queue"
+    - "l1 review"
+    - "disposition"
+    - "edd"
+    - "adverse media"
+    - "swivel chair"
+    - "manual review"
+    - "frankenstack"
+    - "entity resolution"
+
+filter_rules:
+  drop_patterns:
+    - "resume review"
+    - "cams exam"
+    - "cams certification"
+    - "study guide"
+    - "how to break into"
+    - "entry level salary"
+    - "job interview"
+    - "passed cams"
+    - "course discount"
+    - "promo code"
+  # Exception: keep career/exam posts if they mention actual daily-work frustrations
+  frustration_exception_words:
+    - "nightmare"
+    - "swivel chair"
+    - "drowning"
+    - "backlog"
+    - "frustration"
+    - "broken"
+    - "tedious"
+    - "unrealistic"
+    - "audit panic"
+
+formats:
+  pain_mirror:
+    target_share: 0.35
+    pillar: "The Frankenstack Reckoning"
+    description: "Memes or realistic fake artifacts that name the daily grind ('that's literally my job')"
+  product_as_relief:
+    target_share: 0.25
+    pillar: "The Frankenstack Reckoning"
+    description: "Before/after with the source document attached, never a tutorial ('wait, you can just do that?')"
+  the_receipts:
+    target_share: 0.20
+    pillar: "The risk hiding in plain sight"
+    description: "A real case mapped as a carousel; ownership chains, shell companies, public enforcement teardowns"
+  newsjack:
+    target_share: 0.20
+    pillar: "A score is not a defense"
+    description: "Headline-to-lesson newsjack, two-line compliance takeaway on live news, relief instead of fear"
+
+llm_clustering:
+  enabled: true
+  provider: "ollama" # ollama or local_tfidf
+  ollama_url: "http://localhost:11434"
+  ollama_model: "qwen2.5-coder:7b" # fallback to gemma3:4b or tfidf

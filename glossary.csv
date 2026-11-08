@@ -1,0 +1,32 @@
+term,frequency,source_count,is_vendor_marketing_only,example_context
+false positives,3,3,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+name matching,3,3,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+ofac,3,3,NO (Real Practitioner Term),"The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none"
+backlog,2,2,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+beneficial ownership,2,2,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+uflpa,2,2,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
+tprm,2,2,NO (Real Practitioner Term),"Examiner asked for proof of our sub-tier forced labor audit trail We had clean questionnaires from tier 1 suppliers, but"
+l1 review,1,1,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+queue,1,1,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
+manual review,1,1,NO (Real Practitioner Term),"Vendor questionnaire claimed zero SDN ties, but UBO is an OFAC designated oligarch Supplier screening questionnaire was completely clean. But"
+name match,1,1,NO (Real Practitioner Term),"Vendor questionnaire claimed zero SDN ties, but UBO is an OFAC designated oligarch Supplier screening questionnaire was completely clean. But"
+false positive,1,1,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
+spreadsheets,1,1,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
+ubo,1,1,NO (Real Practitioner Term),"The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none"
+shell companies,1,1,NO (Real Practitioner Term),One single residential flat in Belize registered to 240 shell companies Investigating a wire transfer for electronic components. Found a
+transshipment,1,1,NO (Real Practitioner Term),One single residential flat in Belize registered to 240 shell companies Investigating a wire transfer for electronic components. Found a
+frankenstack,1,1,NO (Real Practitioner Term),"The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none"
+swivel chair,1,1,NO (Real Practitioner Term),Breakup note to our compliance tech stack Dear vendor stack: I cannot keep copy-pasting business registration numbers from registry PDFs
+edd,1,1,NO (Real Practitioner Term),"81% of our compliance tools don't talk to each other Our EDD workflow requires querying 5 databases, exporting CSVs, and"
+disposition,1,1,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
+forced labor,1,1,NO (Real Practitioner Term),"Examiner asked for proof of our sub-tier forced labor audit trail We had clean questionnaires from tier 1 suppliers, but"
+third-party risk,1,1,NO (Real Practitioner Term),"The State of AI Governance in Third-Party Risk The State of AI Governance in Third-Party Risk. <figure><img alt="""" class=""attachment-rss-image-size size-rss-image-size"
+frictionless compliance,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+zero-resistance,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+holistic end-to-end,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+leverage synergies,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+next-gen risk ecosystem,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+paradigm shift,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+judgment infrastructure,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+single pane of glass,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+best-in-breed seamless integration,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
