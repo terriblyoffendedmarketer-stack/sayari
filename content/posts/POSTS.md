@@ -9,7 +9,7 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Shared with Sayari (not live) |
 | P02 | Frankenstack bingo | Pain mirror | Frankenstack | 3×3 bingo card | Shared with Sayari (not live) |
 | P03 | 25% + 25% (questionnaire vs record) | Product as relief | Hidden risk | Split compare (kit L3) | Shared with Sayari (not live), 2 caption options |
-| P04 | The PURE case: "No match found" (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Draft, hook C (hook B version next) |
+| P04 | The PURE case: "No match found" (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Draft, 2 versions (hook C, hook B) |
 
 Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack → **next: a newsjack or a Friday-3pm piece.**
 
@@ -110,7 +110,24 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack �
 > Sayari puts them in the same place: owners and the companies they own, linked, sourced, and watched for new designations. So "no match" actually means no match.
 >
 > Where does ownership info live at your company: in the screening, or in a folder?
-- **First comment (proof):** OFAC's settlement release: https://ofac.treasury.gov/recent-actions/20231221_33
+- **Version B (hook B, "The answer was in their own files."):** `drafts/P04b-pure-carousel.pdf` (+ PNGs; cover also at `assets/P04b-pure-carousel-cover.png`). Same slides 2–4 and 6; new cover ("The answer was in **their own files**." / "The screening never saw it. It cost $466,200."); slide 5 line changed to "39 violations across four policies, for a name that sat in a folder."
+- **Caption (draft, version B):**
+> The answer was in their own files.
+> Since 2010, in fact.
+>
+> That year, a client questionnaire named the only owner of a Panama company: Viktor Vekselberg. Filed. Done.
+> April 2018: he's sanctioned. Under OFAC's 50% rule, the company he owns is now blocked too.
+> Its own name? On no list. So a name search comes back clean.
+> The insurer, PURE, keeps four policies running. 39 violations by July 2020. A $466,200 settlement with OFAC in 2023.
+>
+> Nobody hid anything. The form and the screening just never met.
+>
+> That's the gap nobody budgets for: the record lives in one system, the screen runs in another.
+>
+> Sayari puts them in the same place: owners and the companies they own, linked, sourced, and watched for new designations. So "no match" actually means no match.
+>
+> Be honest: how many owners are sitting in a folder your screening has never seen?
+- **First comment (proof, both versions):** OFAC's settlement release: https://ofac.treasury.gov/recent-actions/20231221_33
 - **Personality moves:** deadpan ("Into the file it goes."), the quotable close ("'no match' actually means no match").
 - **Checks before posting:** facts re-checked against OFAC's PDF · factual tone about PURE · Sayari OK on "watched for new designations" (Signal).
 - **Results:** (add)

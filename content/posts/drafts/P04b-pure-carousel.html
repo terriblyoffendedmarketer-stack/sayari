@@ -1,0 +1,63 @@
+<!doctype html><meta charset="utf-8"><title>P04 · PURE carousel (hook B)</title><link rel="stylesheet" href="../../../design/kit/kit.css">
+<!-- P04 draft, kit L6 story carousel. Hook B: "The answer was in their own files." Same story as the hook-C version; new cover and receipt line.
+     Facts: OFAC settlement with Privilege Underwriters Reciprocal Exchange (PURE), 21 Dec 2023. Every slide = one beat, one gold moment. -->
+<div class="slides">
+  <!-- 1 · cover (hook B) -->
+  <div class="canvas mode-navy center" style="gap:44px">
+    <span class="slide-count">1/6</span>
+    <div class="tag">A real OFAC case</div>
+    <div class="headline">The answer was in <span class="hl">their own files</span>.</div>
+    <div class="body" style="color:var(--ink)">The screening never saw it. It cost $466,200.</div>
+    <div class="swipe" style="color:var(--ink-muted)">swipe →</div>
+    <div class="wordmark br"></div>
+  </div>
+  <!-- 2 · 2010 the form -->
+  <div class="canvas mode-beige center">
+    <span class="slide-count">2/6</span>
+    <div class="tag">2010 · The questionnaire</div>
+    <div class="headline sm">A client form names the company's <span class="hl">only owner</span>.</div>
+    <div class="card" style="gap:16px">
+      <div class="card-note" style="font-family:var(--mono)">Client questionnaire · Medallion, Inc. (Panama)</div>
+      <div class="card-title" style="font-weight:600">Sole shareholder: Viktor Vekselberg</div>
+    </div>
+    <div class="body">It goes into the file. The file goes into a folder.</div>
+    <div class="wordmark br"></div>
+  </div>
+  <!-- 3 · 2018 the designation -->
+  <div class="canvas mode-navy center">
+    <span class="slide-count">3/6</span>
+    <div class="tag">April 2018 · The designation</div>
+    <div class="headline sm">The owner is sanctioned. Under the 50% rule, his company is <span class="hl">blocked too</span>.</div>
+    <div class="body" style="color:var(--ink)">Its own name? Not on any list.</div>
+    <div class="wordmark br"></div>
+  </div>
+  <!-- 4 · the screen -->
+  <div class="canvas mode-beige center">
+    <span class="slide-count">4/6</span>
+    <div class="tag">2018 – 2020 · The screen</div>
+    <div class="headline sm">The screening checks the name. The name is clean.</div>
+    <div class="panel"><div class="field"><span class="icon-search"></span><span class="panel-text">Medallion, Inc.</span></div><span class="badge ok">no match found</span></div>
+    <div class="body">Four insurance policies keep running. <b style="color:var(--accent)">39 violations</b> by July 2020.</div>
+    <div class="wordmark br"></div>
+  </div>
+  <!-- 5 · the receipt -->
+  <div class="canvas mode-navy center">
+    <span class="slide-count">5/6</span>
+    <div class="tag">December 2023 · The receipt</div>
+    <div class="stat" style="font-size:150px">$466,200</div>
+    <div class="headline sm">OFAC settlement. 39 violations across four policies, for a name that sat in a folder.</div>
+    <div class="source">source: OFAC enforcement release, 21 Dec 2023</div>
+    <div class="wordmark br"></div>
+  </div>
+  <!-- 6 · the lesson -->
+  <div class="canvas mode-beige center">
+    <span class="slide-count">6/6</span>
+    <div class="headline">A name search tells you if the name is on a list.<br><span class="hl">It doesn't tell you who owns it.</span></div>
+    <div class="body">Where does ownership info live at your company: in the screening, or in a folder?</div>
+    <div class="wordmark br"></div>
+  </div>
+</div>
+<script>
+const n = parseInt(location.hash.slice(1)), s = [...document.querySelectorAll('.slides .canvas')];
+if (n) s.forEach((c,i) => c.style.display = i === n-1 ? 'flex' : 'none');
+</script>
