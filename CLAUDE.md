@@ -5,6 +5,7 @@
 - **Current Phase**: Deployed to GitHub Pages as an installable Progressive Web App (PWA); automated cloud listening active via GitHub Actions (sweeps every 6 hours without laptop required).
 - **In Progress**: Autonomous cloud ingestion across Apify and RSS feeds.
 - **What's Next**: Review live feedback on mobile/desktop dashboard and copy trace-numbered prompts into Claude.
+- **Content production (2026-11-09)**: Brand-page LinkedIn posts. Posts 1–2 are done (in the Google Doc). Selected ideas are 1, 3, 4, 5, 8. **No memes for now**: storytelling images and carousels only. The meme ideas are kept for their insight. Visuals are made with the Claude Design artifact type and the 'Sayari' design system.
 
 ## Live PWA & Links
 - **GitHub Repository**: https://github.com/terriblyoffendedmarketer-stack/sayari
@@ -44,6 +45,10 @@
 - `src/reporter.py`: Exports CSVs, Markdown briefs, and interactive HTML viewer.
 - `viewer/index.html`: Interactive local dashboard with format, theme, and intensity filters.
 - `tests/test_filters.py`: Pytest suite for compliance keyword and drop rules.
+- `client-private/` (**gitignored, repo is public**): client-confidential work.
+  - `research/sayari_usp_competitors.md`: Sayari products, USP, competitor gaps, proof points, open questions.
+  - `idea-doc-images/IMAGE_IDEAS.md` + `images/`: all 49 images from the idea-bank doc, numbered in doc order, each tagged format / pulse / brief with a non-meme Sayari adaptation.
+- `scripts/extract_doc_images.py`: Exports a link-shared Google Doc's images and maps each to its section.
 - `learnings.md`: Debugging notes and operational learnings (`what broke | why | what fixed it`).
 
 ## Setup & Run Instructions
@@ -68,4 +73,5 @@
 - *Promotional Posts vs. Comments*: Promotional vendor posts and tool pitches are dropped from the idea bank, BUT their comments sections are actively harvested. Practitioner objections, skepticism, questions, and praise left under vendor ads represent unfiltered goldmine signals.
 - *Reddit credentials*: Modern PRAW requires OAuth script credentials (`client_id` + `client_secret`). Register at `https://www.reddit.com/prefs/apps`.
 - *Paywalled feeds*: ACAMS moneylaundering.com (403) and FCPA Blog (401) block automated RSS requests. Per project rules, they are logged to `blocked_sources.md` rather than scraped.
+- *Public repo*: GitHub Pages repo is PUBLIC. Brief numbers (ARR split, customer proofs) and reference memes live only in gitignored `client-private/`.
 - *Privacy*: No usernames or profile data are ever stored in SQLite or CSV outputs. Excerpts are clipped to max 25 words.

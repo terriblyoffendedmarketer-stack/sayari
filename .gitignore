@@ -5,3 +5,6 @@ __pycache__/
 .env
 *.env
 .DS_Store
+
+# Client-confidential material (brief, research, reference images). Repo is PUBLIC.
+client-private/
