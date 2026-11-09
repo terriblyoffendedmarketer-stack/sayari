@@ -18,10 +18,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  sweep-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  sweep:
+    # Only run the full scraping sweep on schedule or manual dispatch
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -54,6 +53,18 @@ jobs:
           else
             echo "No data changes to commit."
           fi
+
+  deploy-pages:
+    # Always deploy docs/ to GitHub Pages (on push, schedule, or workflow_dispatch)
+    needs: [sweep]
+    if: always() && (needs.sweep.result == 'success' || needs.sweep.result == 'skipped')
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
