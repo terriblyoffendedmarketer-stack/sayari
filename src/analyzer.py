@@ -8,6 +8,7 @@
 
 import json
 import re
+import html
 import math
 from typing import Dict, Any, List, Tuple
 from collections import Counter
@@ -360,8 +361,9 @@ def extract_glossary_from_items(items: List[Dict[str, Any]]) -> List[Dict[str, A
 
     for it in items:
         source_id = it.get("source", "unknown")
-        text = f"{it.get('title','')} {it.get('short_excerpt','')} {it.get('paraphrase','')}"
-        terms = it.get("used_terms") or extract_practitioner_terms(text)
+        raw_text = f"{it.get('title','')} {it.get('short_excerpt','')} {it.get('paraphrase','')}"
+        clean_text = " ".join(html.unescape(re.sub(r'<[^>]+>', ' ', raw_text)).split())
+        terms = it.get("used_terms") or extract_practitioner_terms(clean_text)
         if isinstance(terms, str):
             try:
                 terms = json.loads(terms)
@@ -372,8 +374,8 @@ def extract_glossary_from_items(items: List[Dict[str, Any]]) -> List[Dict[str, A
             term_counts[t] += 1
             term_sources.setdefault(t, set()).add(source_id)
             if t not in term_contexts:
-                # 15-word window around term
-                words = text.split()
+                # 20-word window around term
+                words = clean_text.split()
                 snippet = " ".join(words[:20])
                 term_contexts[t] = snippet
 

@@ -844,6 +844,16 @@ function showToast(msg) {{
   setTimeout(() => {{ toast.className = toast.className.replace('show', ''); }}, 2800);
 }}
 
+function escapeHtml(str) {{
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}}
+
 function copyTextToClipboard(text, successMsg) {{
   if (navigator.clipboard && window.isSecureContext) {{
     navigator.clipboard.writeText(text).then(() => {{
@@ -1177,11 +1187,11 @@ function renderLexicon() {{
     const isVendor = String(g.is_vendor_marketing_only).includes('YES') || g.is_vendor_marketing_only === 1 || String(g.is_vendor_marketing_only) === '1';
     return `
       <tr>
-        <td><strong style="color:#fff; font-size:13.5px;">${{g.term}}</strong></td>
+        <td><strong style="color:#fff; font-size:13.5px;">${{escapeHtml(g.term)}}</strong></td>
         <td><span class="pill ${{isVendor ? 'badge-pain' : 'badge-relief'}}">${{isVendor ? 'Banned Vendor Fluff' : 'Real Practitioner Slang'}}</span></td>
-        <td><strong style="color:var(--accent);">${{g.frequency}}</strong></td>
-        <td style="color:#e2e8f0; line-height:1.45; font-size:12.5px;">${{g.meaning || 'Practitioner terminology referring to operational workflows and challenges.'}}</td>
-        <td style="color:#cbd5e1; font-style:italic; line-height:1.4; font-size:12px;">${{g.example_context || 'Practitioner term mined from compliance community discussions.'}}</td>
+        <td><strong style="color:var(--accent);">${{escapeHtml(g.frequency)}}</strong></td>
+        <td style="color:#e2e8f0; line-height:1.45; font-size:12.5px;">${{escapeHtml(g.meaning || 'Practitioner terminology referring to operational workflows and challenges.')}}</td>
+        <td style="color:#cbd5e1; font-style:italic; line-height:1.4; font-size:12px;">${{escapeHtml(g.example_context || 'Practitioner term mined from compliance community discussions.')}}</td>
       </tr>
     `;
   }}).join('');
@@ -1200,30 +1210,30 @@ function renderRawStream() {{
   }});
 
   const html = filtered.map((it, idx) => {{
-    const linkHtml = it.url ? `<a href="${{it.url}}" target="_blank" rel="noopener" class="source-link">${{it.title}} ↗</a>` : `<strong>${{it.title}}</strong>`;
+    const linkHtml = it.url ? `<a href="${{it.url}}" target="_blank" rel="noopener" class="source-link">${{escapeHtml(it.title)}} ↗</a>` : `<strong>${{escapeHtml(it.title)}}</strong>`;
     const cleanSrc = it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '');
     const collapseId = 'excerpt-' + idx;
 
     return `
       <tr>
         <td><span class="trace-id">#${{idx+1}}</span></td>
-        <td><span style="font-size:11.5px; color:var(--muted); font-weight:600;">${{cleanSrc}}</span></td>
+        <td><span style="font-size:11.5px; color:var(--muted); font-weight:600;">${{escapeHtml(cleanSrc)}}</span></td>
         <td>
           <div style="font-size:13px; font-weight:700; margin-bottom:4px;">${{linkHtml}}</div>
-          <span style="font-size:11px; color:#64748b;">${{it.date || 'Recent'}}</span>
+          <span style="font-size:11px; color:#64748b;">${{escapeHtml(it.date || 'Recent')}}</span>
         </td>
         <td>
-          <div style="font-size:12.5px; color:#cbd5e1; line-height:1.4;">${{it.paraphrase || it.title}}</div>
+          <div style="font-size:12.5px; color:#cbd5e1; line-height:1.4;">${{escapeHtml(it.paraphrase || it.title)}}</div>
         </td>
         <td>
           <div id="${{collapseId}}" class="collapsible-text">
-            <span style="font-style:italic; color:#94a3b8; font-size:12px;">"${{it.short_excerpt}}"</span>
+            <span style="font-style:italic; color:#94a3b8; font-size:12px;">"${{escapeHtml(it.short_excerpt)}}"</span>
           </div>
           <button id="${{collapseId}}-btn" class="expand-btn" onclick="toggleExpand('${{collapseId}}')">[+] Expand full text</button>
         </td>
         <td>
-          <span style="color:var(--accent); font-weight:600; font-size:11.5px;">${{it.theme || 'General'}}</span><br>
-          <span style="color:var(--muted); font-size:11px;">Intensity: ${{it.intensity || 1}}/5</span>
+          <span style="color:var(--accent); font-weight:600; font-size:11.5px;">${{escapeHtml(it.theme || 'General')}}</span><br>
+          <span style="color:var(--muted); font-size:11px;">Intensity: ${{escapeHtml(it.intensity || 1)}}/5</span>
         </td>
         <td>
           <button class="copy-btn" style="padding:4px 8px; font-size:11px; margin:0;" onclick="copySignalPrompt(${{idx}})">
@@ -1263,14 +1273,14 @@ function formatDropReason(reason, excerpt) {{
 // 5. Render Noise Shield
 function renderNoise() {{
   const html = DROPPED_ITEMS.map((d, idx) => {{
-    const linkHtml = d.url ? `<a href="${{d.url}}" target="_blank" rel="noopener" class="source-link">${{d.title}} ↗</a>` : `<strong>${{d.title}}</strong>`;
+    const linkHtml = d.url ? `<a href="${{d.url}}" target="_blank" rel="noopener" class="source-link">${{escapeHtml(d.title)}} ↗</a>` : `<strong>${{escapeHtml(d.title)}}</strong>`;
     const cleanReason = formatDropReason(d.drop_reason, d.short_excerpt);
     return `
       <tr>
-        <td><span style="font-size:12px; color:var(--muted); font-weight:600;">${{d.source || 'Public Source'}}</span></td>
+        <td><span style="font-size:12px; color:var(--muted); font-weight:600;">${{escapeHtml(d.source || 'Public Source')}}</span></td>
         <td><div style="font-size:13px; font-weight:700; margin-bottom:4px;">${{linkHtml}}</div></td>
-        <td><span style="color:#f87171; font-weight:600; font-size:12px; line-height:1.4; display:block;">${{cleanReason}}</span></td>
-        <td style="color:#94a3b8; font-size:12px; font-style:italic; line-height:1.45;">${{d.short_excerpt || 'No excerpt available'}}</td>
+        <td><span style="color:#f87171; font-weight:600; font-size:12px; line-height:1.4; display:block;">${{escapeHtml(cleanReason)}}</span></td>
+        <td style="color:#94a3b8; font-size:12px; font-style:italic; line-height:1.45;">${{escapeHtml(d.short_excerpt || 'No excerpt available')}}</td>
       </tr>
     `;
   }}).join('');

@@ -9,6 +9,8 @@
 import sqlite3
 import json
 import os
+import re
+import html
 from typing import Dict, Any, List, Optional
 
 def get_db_connection(db_path: str = "data/sayari.db") -> sqlite3.Connection:
@@ -141,11 +143,20 @@ def get_recent_pipeline_runs(conn: sqlite3.Connection, limit: int = 20) -> List[
     """, (limit,))
     return [dict(r) for r in cur.fetchall()]
 
-def clip_to_25_words(text: str) -> str:
-    """Strictly clips text to at most 25 words to comply with copyright & fair excerpt rules."""
+def clean_html_text(text: str) -> str:
+    """Strips raw HTML tags and decodes HTML entities."""
     if not text:
         return ""
-    words = text.strip().split()
+    clean = re.sub(r'<[^>]+>', ' ', text)
+    clean = html.unescape(clean)
+    return " ".join(clean.split())
+
+def clip_to_25_words(text: str) -> str:
+    """Strictly strips HTML and clips text to at most 25 words to comply with copyright & fair excerpt rules."""
+    if not text:
+        return ""
+    cleaned = clean_html_text(text)
+    words = cleaned.split()
     if len(words) <= 25:
         return " ".join(words)
     return " ".join(words[:25]) + "..."
