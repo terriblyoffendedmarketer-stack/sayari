@@ -10,6 +10,7 @@
 ## Live PWA & Links
 - **GitHub Repository**: https://github.com/terriblyoffendedmarketer-stack/sayari
 - **Content Hub (claude.ai page, shared "anyone with the link" by owner choice 2026-11-10; includes the meme images, which stay out of git)**: https://claude.ai/artifact/Gmw5L8TenBeGWB3iVTRHaj (posts, themes, templates, ideas, memes, research). Rebuild after editing any content markdown: `python3 -I scripts/build_hub.py`, then republish `content/hub/hub.html` to that URL (from a new chat, pass it as `url`).
+- **Claude Design canvas "Sayari LinkedIn Posts" (private)**: https://claude.ai/artifact/Qf9AmewWkDheDkufUh7b1n. One artboard per post, using the Sayari design system (installed in the canvas). P03 is the first artboard (`Main.dc.html`). Add new posts as new artboards. For hand-tweaks it becomes the post's source of truth; mirror final changes back to `content/posts/`.
 - **Live PWA Dashboard (Shareable)**: https://terriblyoffendedmarketer-stack.github.io/sayari/
 - **Cloud Automation**: Runs every 6 hours via `.github/workflows/scheduled-sweep.yml` using GitHub Actions + Apify Secret.
 

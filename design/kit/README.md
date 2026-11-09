@@ -23,6 +23,9 @@ Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas 
 - **Never put a disclaimer on an image**: no "illustrative", "invented", "fictional", "example" or "for illustration" lines. Sources and caveats go in the caption or the first comment.
 - A `source` line on the image is only for a **real, public source behind a number that is the point of the post** (e.g. an OFAC settlement amount). Otherwise leave it off.
 
+## Kit vs Claude Design
+The kit is the master for building and rendering. When a post needs hand-tweaking, it also goes onto the Claude Design canvas "Sayari LinkedIn Posts" (https://claude.ai/artifact/Qf9AmewWkDheDkufUh7b1n) as an artboard with inline styles. Once tweaked there, the canvas is that post's source of truth; export the final image from it and save it to `content/posts/assets/`.
+
 ## Render
 ```bash
 python3 -I scripts/render_post.py design/kit/layouts/L3-split-compare.html --out content/posts/drafts/P03.png
