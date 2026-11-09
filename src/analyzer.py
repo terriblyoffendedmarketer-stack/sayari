@@ -63,6 +63,7 @@ TERM_DEFINITIONS = {
     "l1 review": "First-line triage analysts responsible for reviewing high-volume initial alert queues and discarding obvious false matches.",
     "department of no": "Front-office sales perception of compliance as a rigid business blocker when tools lack entity clarity to clear safe deals.",
     "cost centre": "How executive leadership traditionally views compliance departments—as an expensive overhead liability rather than a risk shield.",
+    "frankenstack": "The unwieldy, costly tangle of 5-8 disparate vendor point solutions, databases, and spreadsheets patched together across an enterprise compliance department.",
     "trade surveillance": "Monitoring capital markets transactions for market abuse, insider trading, and wash sales—notoriously tedious without automated context.",
     "sar factory": "Compliance teams pressured to file low-quality Suspicious Activity Reports in bulk to satisfy regulatory metrics rather than real intelligence.",
     "judgment infrastructure": "Banned vendor buzzword — empty marketing speak claiming automated software can magically replace human investigative judgment.",
@@ -87,10 +88,12 @@ FOUNDATIONAL_PRACTITIONER_TERMS = {
     "kyc refresh vs pkyc": "Periodic KYC review cycles vs perpetual KYC (pKYC) continuous monitoring.",
     "ubo & nested ownership": "Ultimate Beneficial Ownership obscured behind opaque multi-jurisdiction holding layers.",
     "edd": "Enhanced Due Diligence triggered when high-risk ownership, PEPs, or transshipment hubs are flagged.",
-    "audit trail": "Defensible paper trail proving to regulatory examiners why an alert was cleared or escalated."
+    "audit trail": "Defensible paper trail proving to regulatory examiners why an alert was cleared or escalated.",
+    "frankenstack": "Enterprise shorthand for the fragmented 5-8 vendor point solutions and spreadsheets compliance teams are forced to glue together."
 }
 
 PRACTITIONER_TERM_PATTERNS = [
+    r"\bfrankenstack\b",
     r"\bswivel[- ]chair(?: effect)?\b",
     r"\bname[- ]match(?:ing)?\b",
     r"\bfalse positive[s]?\b",
