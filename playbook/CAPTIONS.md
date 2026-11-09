@@ -14,6 +14,7 @@ Personality is the edge: most B2B accounts are drab and corporate. We **inform, 
 5. **The close:** an easy reply prompt (count, tag, worst story), or a P.S. with a wink.
 
 ## Personality moves (use 1–2 per caption, not all)
+- **Surprise beat:** when the hook is surprising, follow line 1 with a disbelief beat ("Wait. What?"), then pay it off immediately (from P03).
 - **Translation joke:** "Translation: that's your problem now."
 - **Comic specificity:** "7 Google searches and a note you hope you can find later."
 - **Deadpan understatement:** "It holds. Mostly."
