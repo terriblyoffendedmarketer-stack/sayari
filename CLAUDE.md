@@ -4,7 +4,7 @@
 - **Summary**: Local research and public discussion mining tool for Sayari LinkedIn content generation. Captures practitioner language, frustrations, and opinions from Reddit, RSS/news feeds, and manual imports, clustering them into ranked content ideas mapped to Sayari's 4 core formats.
 - **Current Phase**: Deployed to GitHub Pages as an installable Progressive Web App (PWA); automated cloud listening active via GitHub Actions (sweeps every 6 hours without laptop required).
 - **In Progress**: Autonomous cloud ingestion across Apify and RSS feeds.
-- **What's Next**: Review live feedback on mobile/desktop dashboard and copy trace-numbered prompts into Claude.
+- **What's Next**: Build `content/themes.md` together: validate the 9 candidate themes in FRAMEWORK.md, then templates, then buckets. One bucket at a time.
 - **Content production (2026-11-09)**: Brand-page LinkedIn posts. Posts 1–2 are done (in the Google Doc). Selected ideas are 1, 3, 4, 5, 8. **Done: Post 1 = idea 1 (name match, Brightwell), Post 2 = idea 3 (bingo).** Next: 4, 5, 8. **No memes for now**: storytelling images and carousels only. The meme ideas are kept for their insight. Visuals are made with the Claude Design artifact type and the 'Sayari' design system.
 
 ## Live PWA & Links
@@ -45,11 +45,11 @@
 - `src/reporter.py`: Exports CSVs, Markdown briefs, and interactive HTML viewer.
 - `viewer/index.html`: Interactive local dashboard with format, theme, and intensity filters.
 - `tests/test_filters.py`: Pytest suite for compliance keyword and drop rules.
-- `content/` : content research and planning (committed; only the images/ subfolder is gitignored).
-  - `research/sayari_usp_competitors.md`: Sayari products, USP, competitor gaps, proof points, open questions.
-  - `sharpened/`: one file per idea after sharpening (real case, UGC, 2–3 angle options). Done so far: idea 4.
-  - `listener_audit.md`: why ~35–40% of kept items are noise, and the fixes. `content_engine_plan.md`: the listen → patterns → ideas → wireframes → approve pipeline plan.
-  - `idea-doc-images/gallery.html`: local visual gallery of all 49 images (open it in a browser). `IMAGE_IDEAS.md` + `images/`: all 49 images from the idea-bank doc, numbered in doc order, each tagged format / pulse / brief with a non-meme Sayari adaptation.
+- `content/`: content layers. **Start at `content/FRAMEWORK.md`** (the foundation: themes → templates → meme library → idea buckets, plus rules and workflow).
+  - `sharpened/`: one file per idea after sharpening. `buckets/`: idea buckets as we fill them. `brand/`: Sayari logos.
+  - `idea-doc-images/`: `IMAGE_IDEAS.md` (49 images catalogued), `gallery.html` (local visual gallery). `images/` is gitignored (copyrighted memes; regenerate with the extractor).
+- `research/`: inputs. `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.
+- `.claude/skills/sayari-content/SKILL.md`: project skill that loads the framework rules for content work.
 - `scripts/build_image_gallery.py`: Rebuilds gallery.html from IMAGE_IDEAS.md.
 - `scripts/extract_doc_images.py`: Exports a link-shared Google Doc's images and maps each to its section.
 - `learnings.md`: Debugging notes and operational learnings (`what broke | why | what fixed it`).
@@ -78,5 +78,5 @@
 - *Reddit credentials*: Modern PRAW requires OAuth script credentials (`client_id` + `client_secret`). Register at `https://www.reddit.com/prefs/apps`.
 - *Paywalled feeds*: ACAMS moneylaundering.com (403) and FCPA Blog (401) block automated RSS requests. Per project rules, they are logged to `blocked_sources.md` rather than scraped.
 - *Public repo*: GitHub Pages repo is PUBLIC. Only `content/idea-doc-images/images/` is gitignored (copyrighted memes). Customer proof points are public in config.yaml by owner decision (2026-11-09); the ARR split is deliberately not written anywhere.
-- *Listener noise (fixed 2026-11-09)*: v1 kept 155/249 items, about 40% noise (off-topic subs, career chat, fake seed CSV). Filter v2 keeps 71. Tune it via `config.yaml` `source_tiers` and `keywords`, then run `refilter`. See `content/listener_audit.md`.
+- *Listener noise (fixed 2026-11-09)*: v1 kept 155/249 items, about 40% noise (off-topic subs, career chat, fake seed CSV). Filter v2 keeps 71. Tune it via `config.yaml` `source_tiers` and `keywords`, then run `refilter`. See `research/listener_audit.md`.
 - *Privacy*: No usernames or profile data are ever stored in SQLite or CSV outputs. Excerpts are clipped to max 25 words.
