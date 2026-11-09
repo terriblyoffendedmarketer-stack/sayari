@@ -18,7 +18,7 @@ import time
 
 from src.config import load_config
 from src.db import init_db, get_db_connection, insert_raw_item
-from src.filters import evaluate_item
+from src.filters import evaluate_item, source_lane
 from src.analyzer import analyze_item, cluster_items_ollama, extract_glossary_from_items
 from src.ideator import generate_ranked_ideas
 from src.discovery import export_discovery_markdown, discover_candidates
@@ -287,7 +287,7 @@ def cmd_collect_rss(config):
         items = collect_from_rss_source(src, config, conn)
         print(f"      -> {len(items)} items received.")
         for item in items:
-            passed, reason, matched = evaluate_item(item["title"], item["short_excerpt"], config)
+            passed, reason, matched = evaluate_item(item["title"], item["short_excerpt"], config, source=item.get("source", ""))
             analysis = analyze_item(item["title"], item["short_excerpt"], config)
             item.update(analysis)
             item["passed_filters"] = passed
@@ -319,6 +319,29 @@ def cmd_import_manual(config):
     conn.close()
     print(f"Imported {len(items)} manual entries into SQLite.")
 
+def cmd_refilter(config):
+    """Re-applies the current filter rules to every stored item (so rule changes clean old data too)."""
+    print("\n--- Re-filtering stored items with current rules ---")
+    db_path = config.get("database", {}).get("path", "data/sayari.db")
+    init_db(db_path)
+    conn = get_db_connection(db_path)
+    cur = conn.cursor()
+    cur.execute("SELECT id, source, title, short_excerpt, passed_filters FROM raw_items")
+    rows = cur.fetchall()
+    flipped_out = flipped_in = 0
+    for r in rows:
+        passed, reason, _ = evaluate_item(r["title"], r["short_excerpt"], config, source=r["source"])
+        if bool(r["passed_filters"]) and not passed:
+            flipped_out += 1
+        elif not r["passed_filters"] and passed:
+            flipped_in += 1
+        cur.execute("UPDATE raw_items SET passed_filters=?, drop_reason=? WHERE id=?", (int(passed), reason, r["id"]))
+    conn.commit()
+    cur.execute("SELECT COUNT(*) FROM raw_items WHERE passed_filters=1")
+    kept = cur.fetchone()[0]
+    conn.close()
+    print(f"Re-filtered {len(rows)} items: {kept} kept, {flipped_out} newly dropped, {flipped_in} newly kept.")
+
 def cmd_generate_ideas(config):
     print("\n--- Generating Idea Bank & Glossary ---")
     db_path = config.get("database", {}).get("path", "data/sayari.db")
@@ -336,7 +359,8 @@ def cmd_generate_ideas(config):
         return
 
     clusters = cluster_items_ollama(rows, config)
-    glossary = extract_glossary_from_items(rows)
+    voice_rows = [r for r in rows if source_lane(r.get("source", ""), config) in ("practitioner", "edge")]
+    glossary = extract_glossary_from_items(voice_rows)
     ideas = generate_ranked_ideas(clusters)
 
     generate_all_outputs(conn, ideas, glossary)
@@ -411,6 +435,7 @@ def cmd_pipeline(config):
     cmd_collect_rss(config)
     cmd_collect_apify(config)
     cmd_collect_reddit(config)
+    cmd_refilter(config)
     cmd_generate_ideas(config)
 
     # Log execution run with pull ranges and learnings
@@ -455,6 +480,7 @@ def main():
     apify_parser.add_argument("--urls", nargs="+", default=None, help="Specific Reddit post URLs to scrape and analyze")
     subparsers.add_parser("import-manual", help="Import hand-collected CSV or text files")
     subparsers.add_parser("generate-ideas", help="Cluster items and generate ranked idea bank")
+    subparsers.add_parser("refilter", help="Re-apply current filter rules to all stored items")
     subparsers.add_parser("pipeline", help="Run full end-to-end collection and idea generation")
 
     args = parser.parse_args()
@@ -472,6 +498,8 @@ def main():
         cmd_collect_apify(config, getattr(args, "urls", None))
     elif args.command == "import-manual":
         cmd_import_manual(config)
+    elif args.command == "refilter":
+        cmd_refilter(config)
     elif args.command == "generate-ideas":
         cmd_generate_ideas(config)
     elif args.command == "pipeline":

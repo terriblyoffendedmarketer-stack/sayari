@@ -1,6 +1,6 @@
 # build_image_gallery.py — Builds a local HTML gallery (gallery.html) of the idea-doc images,
 # pairing each image with its row from IMAGE_IDEAS.md (what it is + Sayari non-meme version).
-# Usage: python -I scripts/build_image_gallery.py client-private/idea-doc-images
+# Usage: python -I scripts/build_image_gallery.py content/idea-doc-images
 # Requires: stdlib only. Output stays local (images are confidential/copyrighted; don't publish).
 #
 # Gotchas:

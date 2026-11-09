@@ -23,3 +23,5 @@ Exported doc images are numbered by file, not doc order | Google zip export nami
 Local vision_caption takes ~60s/image | SmolVLM on CPU | for 40+ images read originals directly; don't downscale memes (small text gets lost)
 Browser pane can't show local images in a file:// gallery | pane renders local files as static data: snapshots | open the gallery in the default browser with `open`
 Listener kept off-topic Reddit (nursing "swivel chair", recruiting "backlog") | cross-Reddit keyword search + 1 generic keyword passes + subreddit name counted as keyword | allowlist subs, require specific terms, add an LLM speaker/relevance judge
+Filter v1 kept "Thanks man" from r/compliance | subreddit name was added to the keyword haystack | never feed source text into keyword matching (filters v2)
+Core-sub thread comments dropped for missing exact keyword ("analysts" vs "analyst") | exact word-boundary match, no plurals | allow optional trailing s in term regex

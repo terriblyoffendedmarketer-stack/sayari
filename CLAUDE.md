@@ -35,7 +35,7 @@
 - `raw_items.csv`: All ingested and filtered public items.
 - `blocked_sources.md`: Log of paywalled or blocked sources (no scraping bypasses).
 - `src/db.py`: SQLite schema and data operations enforcing privacy and excerpt word limits.
-- `src/filters.py`: Keyword filter and drop rule evaluator with frustration exception logic.
+- `src/filters.py`: Filter v2. Source tiers (core subs = practitioner lane, adjacent = edge lane, RSS = news lane, other subs dropped), specific vs generic terms, career/promo drops. `source_lane()` decides what feeds the lexicon.
 - `src/analyzer.py`: Emotion/intensity, audience, post type, practitioner terminology, and clustering.
 - `src/ideator.py`: Four-format idea generator, doc idea extension mapping, and ranking algorithm.
 - `src/discovery.py`: Discovers candidate subreddits, authors, publications, and companies for review.
@@ -45,7 +45,7 @@
 - `src/reporter.py`: Exports CSVs, Markdown briefs, and interactive HTML viewer.
 - `viewer/index.html`: Interactive local dashboard with format, theme, and intensity filters.
 - `tests/test_filters.py`: Pytest suite for compliance keyword and drop rules.
-- `client-private/` (**gitignored, repo is public**): client-confidential work.
+- `content/` : content research and planning (committed; only the images/ subfolder is gitignored).
   - `research/sayari_usp_competitors.md`: Sayari products, USP, competitor gaps, proof points, open questions.
   - `listener_audit.md`: why ~35–40% of kept items are noise, and the fixes. `content_engine_plan.md`: the listen → patterns → ideas → wireframes → approve pipeline plan.
   - `idea-doc-images/gallery.html`: local visual gallery of all 49 images (open it in a browser). `IMAGE_IDEAS.md` + `images/`: all 49 images from the idea-bank doc, numbered in doc order, each tagged format / pulse / brief with a non-meme Sayari adaptation.
@@ -67,6 +67,7 @@
    - Collect RSS feeds: `python run.py collect-rss`
    - Ingest manual files: `python run.py import-manual`
    - Run Reddit collector: `python run.py collect-reddit --sub AMLCompliance`
+   - Re-apply filter rules to stored items: `python run.py refilter` (the pipeline runs this automatically)
    - Run full pipeline: `python run.py pipeline`
    - Run tests: `PYTHONPATH=. pytest tests/`
    - Open viewer: open `viewer/index.html` in any browser.
@@ -75,6 +76,6 @@
 - *Promotional Posts vs. Comments*: Promotional vendor posts and tool pitches are dropped from the idea bank, BUT their comments sections are actively harvested. Practitioner objections, skepticism, questions, and praise left under vendor ads represent unfiltered goldmine signals.
 - *Reddit credentials*: Modern PRAW requires OAuth script credentials (`client_id` + `client_secret`). Register at `https://www.reddit.com/prefs/apps`.
 - *Paywalled feeds*: ACAMS moneylaundering.com (403) and FCPA Blog (401) block automated RSS requests. Per project rules, they are logged to `blocked_sources.md` rather than scraped.
-- *Public repo*: GitHub Pages repo is PUBLIC. Brief numbers (ARR split, customer proofs) and reference memes live only in gitignored `client-private/`.
-- *Listener noise (2026-11-09 audit)*: cross-Reddit keyword search plus single generic keywords (audit, backlog, swivel chair) let in off-topic subs. The subreddit name also counts as a keyword match. `data/imports/sample_manual_reviews.csv` is FAKE seed data. See `client-private/listener_audit.md`.
+- *Public repo*: GitHub Pages repo is PUBLIC. Only `content/idea-doc-images/images/` is gitignored (copyrighted memes). Customer proof points are public in config.yaml by owner decision (2026-11-09); the ARR split is deliberately not written anywhere.
+- *Listener noise (fixed 2026-11-09)*: v1 kept 155/249 items, about 40% noise (off-topic subs, career chat, fake seed CSV). Filter v2 keeps 71. Tune it via `config.yaml` `source_tiers` and `keywords`, then run `refilter`. See `content/listener_audit.md`.
 - *Privacy*: No usernames or profile data are ever stored in SQLite or CSV outputs. Excerpts are clipped to max 25 words.

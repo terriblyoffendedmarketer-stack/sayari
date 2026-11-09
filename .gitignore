@@ -6,5 +6,6 @@ __pycache__/
 *.env
 .DS_Store
 
-# Client-confidential material (brief, research, reference images). Repo is PUBLIC.
-client-private/
+# Third-party reference memes/cartoons from the idea doc: copyrighted + ~28MB, so not redistributed in this public repo.
+# Regenerate with: python -I scripts/extract_doc_images.py <doc-id> content/idea-doc-images
+content/idea-doc-images/images/

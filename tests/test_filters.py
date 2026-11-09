@@ -1,96 +1,85 @@
-# tests/test_filters.py — Unit tests for compliance filtering rules
-# Usage: pytest tests/test_filters.py
+# tests/test_filters.py — Unit tests for listener relevance filtering (filters v2)
+# Usage: PYTHONPATH=. pytest tests/
 
 import pytest
-from src.filters import evaluate_item
+from src.filters import evaluate_item, source_lane
+
 
 @pytest.fixture
-def sample_config():
+def cfg():
     return {
         "keywords": {
-            "seed_keywords": [
-                "alert fatigue",
-                "false positive",
-                "name matching",
-                "sanctions screening",
-                "kyc",
-                "kyb",
-                "ubo",
-                "swivel chair",
-                "backlog",
-                "frankenstack",
-                "manual review"
-            ]
+            "specific_terms": ["false positive", "false positives", "name matching", "sanctions screening",
+                               "kyc", "kyb", "ubo", "ofac", "frankenstack", "cost centre"],
+            "generic_terms": ["compliance", "swivel chair", "backlog", "manual review", "audit", "screening"],
         },
+        "source_tiers": {"core": ["AMLCompliance", "compliance"], "adjacent": ["business", "FinancialCareers"]},
         "filter_rules": {
-            "drop_patterns": [
-                "cams exam",
-                "study guide",
-                "resume review",
-                "promo code"
-            ],
-            "frustration_exception_words": [
-                "swivel chair",
-                "backlog",
-                "nightmare",
-                "frustration",
-                "drowning"
-            ]
-        }
+            "drop_patterns": ["cams exam", "study guide", "resume review", "promo code", "salary", "i passed"],
+            "frustration_exception_words": ["swivel chair", "backlog", "nightmare", "drowning"],
+        },
     }
 
-def test_irrelevant_post_dropped(sample_config):
-    title = "Best dinner recipes for Friday"
-    body = "Looking for easy pasta recipes with garlic and olive oil."
-    passed, reason, matched = evaluate_item(title, body, sample_config)
-    assert passed is False
-    assert "No compliance seed keywords matched" in reason
 
-def test_relevant_kyc_post_passed(sample_config):
-    title = "Stuck in name matching hell"
-    body = "Our KYC analyst queue is overflowing because of false positives on common Latin names."
-    passed, reason, matched = evaluate_item(title, body, sample_config)
-    assert passed is True
-    assert "name matching" in matched
-    assert "kyc" in matched
+def test_irrelevant_post_dropped(cfg):
+    passed, reason, _ = evaluate_item("Best dinner recipes", "Easy garlic pasta.", cfg)
+    assert not passed and "No compliance seed keywords" in reason
 
-def test_career_exam_post_dropped(sample_config):
-    title = "Passed my CAMS exam today! Tips for KYC job search"
-    body = "Used the official study guide for 3 months and passed with 95. Ready to break into KYC."
-    passed, reason, matched = evaluate_item(title, body, sample_config)
-    assert passed is False
-    assert "Dropped: career/exam-prep" in reason
 
-def test_career_exam_post_with_daily_frustration_passed(sample_config):
-    title = "Passed CAMS exam, but real L1 review is a nightmare"
-    body = "The CAMS exam never warned me about this backlog and swivel chair manual review across 6 tabs."
-    passed, reason, matched = evaluate_item(title, body, sample_config)
-    assert passed is True
-    assert "swivel chair" in matched
-    assert "manual review" in matched
+def test_core_kyc_post_passed(cfg):
+    passed, _, matched = evaluate_item("Stuck in name matching hell",
+                                       "Our KYC queue is overflowing with false positives.", cfg,
+                                       source="reddit:r/AMLCompliance:post:hot")
+    assert passed and "name matching" in matched and "kyc" in matched
 
-def test_no_false_positive_acronym_substring_match(sample_config):
-    # 'ubo' shouldn't match 'suborbital'
-    title = "Space travel and suborbital flights"
-    body = "Discussion on rocket telemetry."
-    passed, reason, matched = evaluate_item(title, body, sample_config)
-    assert passed is False
-    assert matched == []
 
-def test_vendor_promo_post_dropped(sample_config):
-    # Vendor trying to sell a tool in the subreddit
-    sample_config["filter_rules"]["drop_patterns"].extend(["we built a tool", "schedule a demo", "free trial"])
-    title = "We built a tool to automate sanctions screening"
-    body = "Tired of manual review? Check out our tool and schedule a demo for a free trial."
-    passed, reason, matched = evaluate_item(title, body, sample_config)
-    assert passed is False
-    assert "Dropped: career/exam-prep" in reason or "Dropped" in reason
+def test_offtopic_subreddit_dropped_even_with_keyword(cfg):
+    # v1 bug: "swivel chair" for a nursing chair passed from r/deinfluencingPH
+    passed, reason, _ = evaluate_item("Deinfluence me: swivel chair for first time mom", "nursing chair", cfg,
+                                      source="reddit:r/r/deinfluencingPH:post")
+    assert not passed and "Off-topic" in reason
 
-def test_practitioner_comment_on_ad_passed(sample_config):
-    # An analyst roasting or questioning a vendor promo thread
-    sample_config["filter_rules"]["drop_patterns"].extend(["we built a tool", "schedule a demo", "free trial"])
-    title = "Practitioner reaction to vendor pitch ('We built a tool to automate sanctions screening...')"
-    comment_body = "Another tool promising zero false positives? Does this actually handle fuzzy name matching or is our backlog still stuck with 90% manual review?"
-    passed, reason, matched = evaluate_item(title, comment_body, sample_config)
-    assert passed is True
-    assert "false positive" in matched or "name matching" in matched or "backlog" in matched
+
+def test_subreddit_name_is_not_a_keyword(cfg):
+    # v1 bug: r/compliance auto-matched "compliance", so this passed
+    passed, _, _ = evaluate_item("Practitioner reaction", "Thanks man", cfg, source="reddit:r/compliance:comment")
+    assert not passed
+
+
+def test_core_sub_generic_term_is_enough(cfg):
+    passed, _, _ = evaluate_item("Third analyst gone in 4 months", "The backlog keeps growing.", cfg,
+                                 source="reddit:r/AMLCompliance:post:targeted")
+    assert passed
+
+
+def test_edge_sub_single_generic_term_dropped(cfg):
+    passed, reason, _ = evaluate_item("Career question", "Is compliance a good career?", cfg,
+                                      source="reddit:r/FinancialCareers:comment:targeted")
+    assert not passed and "Weak signal" in reason
+
+
+def test_edge_sub_specific_term_passed(cfg):
+    passed, _, _ = evaluate_item("Sanctions", "Are you manually looking up each entity on the OFAC website?", cfg,
+                                 source="reddit:r/r/business:comment")
+    assert passed
+
+
+def test_rss_is_news_lane(cfg):
+    assert source_lane("rss:Compliance Week", cfg) == "news"
+    assert source_lane("reddit:r/r/AMLCompliance:comment", cfg) == "practitioner"
+    assert source_lane("reddit:r/business:comment", cfg) == "edge"
+
+
+def test_career_post_dropped_unless_frustration(cfg):
+    passed, reason, _ = evaluate_item("I passed! KYC exam", "Used the study guide", cfg,
+                                      source="reddit:r/AMLCompliance:post:hot")
+    assert not passed and "career/exam-prep" in reason
+    passed, _, _ = evaluate_item("Passed CAMS exam, but L1 is a nightmare",
+                                 "Nobody warned me about this backlog and swivel chair manual review.", cfg,
+                                 source="reddit:r/AMLCompliance:post:hot")
+    assert passed
+
+
+def test_no_acronym_substring_match(cfg):
+    passed, _, matched = evaluate_item("Space travel and suborbital flights", "Rocket telemetry.", cfg)
+    assert not passed and matched == []
