@@ -91,8 +91,20 @@ footer{color:var(--muted);font-size:13px;padding-block:0 32px}
 .meta-grid{display:grid;gap:10px 20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .version{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:14px}
 .version h4{margin:0;font:600 15px/1.35 var(--body);color:var(--gold)}
-.strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
-.strip .thumb{flex:0 0 auto;width:min(260px,70vw);scroll-snap-align:start}
+.strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+.strip .slide{flex:0 0 auto;width:min(300px,72vw);display:flex;flex-direction:column;gap:6px;scroll-snap-align:start}
+.strip .slide .thumb{width:100%}
+.post-split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
+.post-media{display:flex;flex-direction:column;gap:8px}
+.post-media .thumb img{height:auto;max-height:none;aspect-ratio:4/5}
+.post-side{display:flex;flex-direction:column;gap:10px;min-width:0}
+.post-side .meta-grid{grid-template-columns:1fr 1fr}
+.dl-row{display:flex;gap:8px;flex-wrap:wrap}
+.dl-row:empty{display:none}
+button.dl{background:var(--ink);color:var(--paper)}
+button.dl:hover{background:var(--gold);color:#1d2440}
+.lb-actions{display:flex;gap:10px}
+@media (max-width:760px){.post-split{grid-template-columns:1fr}}
 .strip .thumb img{height:auto;aspect-ratio:4/5;max-height:none}
 .prose{gap:10px;max-width:860px}
 .prose p,.prose li{max-width:72ch}
@@ -123,7 +135,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 32px}
 </header>
 <main class="wrap" id="main"></main>
 <footer class="wrap" id="foot"></footer>
-<div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Full-size image"><img id="lbimg" alt=""><p id="lbcap"></p><button id="lbclose">Close</button></div>
+<div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Full-size image"><img id="lbimg" alt=""><p id="lbcap"></p><div class="lb-actions"><button class="dl" id="lbdl" data-dl="" data-name="" hidden>Download</button><button id="lbclose">Close</button></div></div>
 
 <script>
 const D = /*__HUB_DATA__*/null;
@@ -175,27 +187,39 @@ function overview(){
 const voice = v => `<div class="voice searchable"><q>${esc(v.text)}</q><span class="small muted">${esc(v.src)} · ${v.up} upvotes · <a href="${esc(v.url)}" target="_blank" rel="noopener">thread</a></span></div>`;
 
 function posts(){
-  const strip = (imgs, cap) => imgs.length ? `<div class="strip">${imgs.map((src,k)=>`<button class="thumb" data-img="${esc(src)}" data-cap="${esc(cap)}${imgs.length>1?` · slide ${k+1}/${imgs.length}`:""}" aria-label="View ${imgs.length>1?`slide ${k+1}`:"image"} full size"><img loading="lazy" src="${esc(src)}" alt="${esc(cap)}"></button>`).join("")}</div>` : `<p class="small muted">Image not added yet (drop it in content/posts/assets/).</p>`;
-  return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Posts with options show each version separately. Source: content/posts/POSTS.md.</p></div>
-  <div class="stack-posts">${D.posts.map((p,i)=>`
-    <article class="card searchable">
-      <div class="row"><div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3></div>${pill(p.status||"created")}</div>
-      ${chips([p.format,p.pillar,p.bucket])}
-      <div class="meta-grid">
+  const fname = (src, pid) => "Sayari-" + src.split("/").pop();
+  const thumb = (src, cap) => `<button class="thumb" data-img="${esc(src)}" data-cap="${esc(cap)}" aria-label="View full size"><img loading="lazy" src="${esc(src)}" alt="${esc(cap)}"></button>`;
+  const dlBtn = (src, label, name) => `<button class="dl" data-dl="${esc(src)}" data-name="${esc(name)}" hidden>${label}</button>`;
+  const meta = p => `<div class="meta-grid">
         <p class="small"><span class="label">Template</span><br>${esc(p.template)}</p>
         <p class="small"><span class="label">Theme</span><br>${esc(p.theme)}</p>
         <p class="small"><span class="label">Hook</span><br>${esc(p.hook)}</p>
         <p class="small"><span class="label">Personality moves</span><br>${esc(p.moves)}</p>
-      </div>
-      ${p.versions.map((v,j)=>`
-        <section class="version">
+      </div>`;
+  const caption = (p, v, i, j) => `<div class="row"><span class="label">Caption</span><button data-copy="${i}:${j}">Copy caption</button></div><pre class="caption">${esc(v.caption)}</pre>`;
+  const head = p => `<div class="row"><div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3></div>${pill(p.status||"created")}</div>${chips([p.format,p.pillar,p.bucket])}`;
+  return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Posts with options show each version separately. Tap an image to see it full size. Source: content/posts/POSTS.md.</p></div>
+  <div class="stack-posts">${D.posts.map((p,i)=>{
+    const carousel = p.versions.some(v => v.imgs.length > 1);
+    if (!carousel) {
+      const imgs = [...new Set(p.versions.flatMap(v => v.imgs))];
+      return `<article class="card searchable post-split">
+        <div class="post-media">${imgs.map(src => thumb(src, p.id + " · " + p.title) + `<div class="dl-row">${dlBtn(src, "Download image", fname(src))}</div>`).join("") || `<p class="small muted">Image not added yet (drop it in content/posts/assets/).</p>`}</div>
+        <div class="post-side">${head(p)}${meta(p)}
+          ${p.versions.map((v,j)=>`<section class="version">${v.label?`<h4>${esc(v.label)}</h4>`:""}${caption(p,v,i,j)}</section>`).join("")}
+          <p class="small muted">Results: ${esc(p.results)}</p></div>
+      </article>`;
+    }
+    return `<article class="card searchable">${head(p)}${meta(p)}
+      ${p.versions.map((v,j)=>`<section class="version">
           ${v.label?`<h4>${esc(v.label)}</h4>`:""}
-          ${strip(v.imgs, p.id + (v.label?` · ${v.label}`:""))}
-          <div class="row"><span class="label">Caption</span><button data-copy="${i}:${j}">Copy caption</button></div>
-          <pre class="caption">${esc(v.caption)}</pre>
+          <div class="strip">${v.imgs.map((src,k)=>`<div class="slide">${thumb(src, `${p.id} · ${v.label} · slide ${k+1}/${v.imgs.length}`)}<div class="dl-row">${dlBtn(src, `Slide ${k+1}`, fname(src))}</div></div>`).join("")}</div>
+          <div class="dl-row">${v.pdf?dlBtn(v.pdf, "Download carousel (PDF)", "Sayari-" + v.pdf.split("/").pop()):""}</div>
+          ${caption(p,v,i,j)}
         </section>`).join("")}
       <p class="small muted">Results: ${esc(p.results)}</p>
-    </article>`).join("")}</div>`;
+    </article>`;
+  }).join("")}</div>`;
 }
 
 function themes(){
@@ -279,7 +303,7 @@ function current(){ const h = location.hash.slice(1); return RENDER[h] ? h : "ov
 function render(){
   const v = current();
   document.getElementById("tabs").innerHTML = VIEWS.map(([id,label,n]) => `<a href="#${id}" ${id===v?'aria-current="page"':""}>${label}${n!=null?`<span class="n">${n}</span>`:""}</a>`).join("");
-  main.innerHTML = `<section data-view="${v}">${RENDER[v]()}</section>`;
+  main.innerHTML = `<section data-view="${v}">${RENDER[v]()}</section>`; if (typeof showDl === "function") showDl();
   q.value = ""; q.hidden = v === "overview";
 }
 main.addEventListener("click", e => {
@@ -289,7 +313,7 @@ main.addEventListener("click", e => {
     const done = () => { b.textContent = "Copied"; setTimeout(()=>b.textContent="Copy caption",1500); };
     try { navigator.clipboard.writeText(text).then(done, () => selectCaption(b)); } catch { selectCaption(b); }
   }
-  if (b.dataset.img) { lbimg.src = b.dataset.img; lbimg.alt = b.dataset.cap; lbcap.textContent = b.dataset.cap; lightbox.hidden = false; lbclose.focus(); }
+  if (b.dataset.img) { lbimg.src = b.dataset.img; lbimg.alt = b.dataset.cap; lbcap.textContent = b.dataset.cap; const d = document.getElementById("lbdl"); d.dataset.dl = b.dataset.img; d.dataset.name = "Sayari-" + b.dataset.img.split("/").pop(); lightbox.hidden = false; lbclose.focus(); }
   if (b.dataset.tpl) { tplFilter = b.dataset.tpl; render(); }
   if (b.dataset.istatus) { ideaStatus = b.dataset.istatus; render(); }
   if (b.dataset.ibucket) { ideaBucket = b.dataset.ibucket; render(); }
@@ -302,6 +326,21 @@ q.addEventListener("input", () => {
   main.querySelectorAll(".searchable").forEach(el => el.hidden = t && !el.textContent.toLowerCase().includes(t));
 });
 addEventListener("hashchange", render);
+let downloads = null;
+const showDl = () => document.querySelectorAll(".dl").forEach(el => el.hidden = !downloads);
+(async () => { try { downloads = await window.claude?.use?.("downloads"); } catch { downloads = null; } showDl(); })();
+document.addEventListener("click", async e => {
+  const b = e.target.closest("button.dl"); if (!b || !downloads) return;
+  const label = b.textContent;
+  try {
+    b.disabled = true; b.textContent = "Preparing…";
+    const blob = await (await fetch(b.dataset.dl)).blob();
+    await downloads.save({ filename: b.dataset.name, data: blob });
+    b.textContent = "Saved";
+  } catch (err) {
+    b.textContent = err && err.code === "declined" ? label : "Couldn't save";
+  } finally { b.disabled = false; setTimeout(() => b.textContent = label, 1800); }
+});
 const lightbox = document.getElementById("lightbox"), lbimg = document.getElementById("lbimg"), lbcap = document.getElementById("lbcap"), lbclose = document.getElementById("lbclose");
 const closeLb = () => { lightbox.hidden = true; lbimg.removeAttribute("src"); };
 lbclose.addEventListener("click", closeLb);

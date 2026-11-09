@@ -48,7 +48,8 @@ def posts():
                 if l.startswith(">"): lines.append(l[2:] if l.startswith("> ") else l[1:])
                 elif lines and l.startswith("- **"): break
             return "\n".join(lines)
-        assets = sorted(os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*")))
+        assets = sorted(os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*.png")))
+        pdfs = {os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*.pdf"))}
         shared = ["posts/" + a for a in assets if not re.match(num + r"-v\d+-", a)]
         parts = re.split(r"\n#### Version (\d+) · ([^\n]*)\n", body)
         versions = []
@@ -56,9 +57,10 @@ def posts():
             for i in range(1, len(parts), 3):
                 k, label, txt = parts[i], parts[i + 1], parts[i + 2]
                 imgs = ["posts/" + a for a in assets if a.startswith(f"{num}-v{k}-")] or shared
-                versions.append({"label": f"Version {k} · {strip_md(label)}", "caption": quote(txt), "imgs": imgs})
+                versions.append({"label": f"Version {k} · {strip_md(label)}", "caption": quote(txt), "imgs": imgs,
+                                 "pdf": f"posts/{num}-v{k}.pdf" if f"{num}-v{k}.pdf" in pdfs else ""})
         else:
-            versions.append({"label": "", "caption": quote(body), "imgs": shared})
+            versions.append({"label": "", "caption": quote(body), "imgs": shared, "pdf": ""})
         out.append({
             "id": num, "title": title,
             "format": strip_md(tags.get("Format", "")), "pillar": strip_md(tags.get("Pillar", "") or tags.get("Pillars", "")),
