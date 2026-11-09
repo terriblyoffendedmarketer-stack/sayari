@@ -173,7 +173,9 @@ def insert_raw_item(conn: sqlite3.Connection, item: Dict[str, Any]) -> bool:
             intensity=COALESCE(excluded.intensity, raw_items.intensity),
             post_type=COALESCE(excluded.post_type, raw_items.post_type),
             audience=COALESCE(excluded.audience, raw_items.audience),
-            used_terms=COALESCE(excluded.used_terms, raw_items.used_terms)
+            used_terms=COALESCE(excluded.used_terms, raw_items.used_terms),
+            passed_filters=excluded.passed_filters,
+            drop_reason=excluded.drop_reason
         """, (
             item["id"],
             item["source"],

@@ -29,7 +29,7 @@ def find_matched_terms(text: str, term_list: List[str]) -> List[str]:
             matched.append(term)
     return matched
 
-def evaluate_item(title: str, text_content: str, config: Dict[str, Any]) -> Tuple[bool, str, List[str]]:
+def evaluate_item(title: str, text_content: str, config: Dict[str, Any], source: str = "") -> Tuple[bool, str, List[str]]:
     """
     Evaluates whether an item should be kept or dropped.
     Returns:
@@ -43,7 +43,15 @@ def evaluate_item(title: str, text_content: str, config: Dict[str, Any]) -> Tupl
     drop_patterns = get_drop_patterns(config)
     frustration_exceptions = get_frustration_exceptions(config)
 
-    matched_keywords = find_matched_terms(combined_text, seed_keywords)
+    # Allow source context (e.g., r/AMLCompliance -> AML Compliance) to supply domain grounding
+    source_words = ""
+    if source:
+        s = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\1 \2', source)
+        s = re.sub(r'([a-z])([A-Z])', r'\1 \2', s)
+        source_words = re.sub(r'[^a-zA-Z0-9]', ' ', s)
+
+    text_for_keywords = f"{source_words} {combined_text}".strip()
+    matched_keywords = find_matched_terms(text_for_keywords, seed_keywords)
 
     # Must match at least one relevant compliance keyword
     if not matched_keywords:

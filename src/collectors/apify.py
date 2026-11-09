@@ -113,6 +113,97 @@ def run_apify_community(api_token: str, subreddit_name: str, sort: str = "top-al
         print(f"[apify] Error executing community run: {e}")
         return []
 
+def run_apify_urls(api_token: str, urls: List[str], max_top_comments: int = 25) -> List[Dict[str, Any]]:
+    """Runs a targeted postUrls query on Reddit-Scraper-Pro to scrape specific Reddit threads with their comments."""
+    url = f"https://api.apify.com/v2/acts/{ACTOR_ID}/runs"
+    headers = {"Authorization": f"Bearer {api_token}"}
+    payload = {
+        "postUrls": [{"url": u} for u in urls],
+        "includeComments": True,
+        "maxTopCommentsPerPost": max_top_comments,
+        "maxCommentsDepth": 3
+    }
+
+    try:
+        resp = requests.post(url, json=payload, headers=headers, timeout=15)
+        if resp.status_code not in (200, 201):
+            print(f"[apify] Failed to trigger URL run for {len(urls)} URLs: HTTP {resp.status_code}")
+            return []
+
+        run_data = resp.json().get("data", {})
+        run_id = run_data.get("id")
+        print(f"[apify] Launched targeted URL run {run_id} for {len(urls)} threads...")
+
+        for _ in range(25):
+            time.sleep(3)
+            status_resp = requests.get(f"https://api.apify.com/v2/actor-runs/{run_id}", headers=headers, timeout=10)
+            if status_resp.status_code == 200:
+                status = status_resp.json().get("data", {}).get("status")
+                if status == "SUCCEEDED":
+                    ds_id = status_resp.json().get("data", {}).get("defaultDatasetId")
+                    items_resp = requests.get(f"https://api.apify.com/v2/datasets/{ds_id}/items", headers=headers, timeout=15)
+                    if items_resp.status_code == 200:
+                        return items_resp.json()
+                    break
+                elif status in ("FAILED", "ABORTED", "TIMED-OUT"):
+                    print(f"[apify] Targeted URL run {run_id} ended with status: {status}")
+                    break
+
+        return []
+    except Exception as e:
+        print(f"[apify] Error executing targeted URL run: {e}")
+        return []
+
+def collect_from_apify_urls(urls: List[str], config: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Sweeps and standardizes signals from specific user-submitted Reddit URLs."""
+    api_token = config.get("apify", {}).get("api_token", "").strip() or _load_env_token()
+    raw_items = run_apify_urls(api_token, urls)
+    print(f"[apify] Harvested {len(raw_items)} items from {len(urls)} targeted URLs.")
+
+    collected = []
+    seen_ids = set()
+
+    for item in raw_items:
+        sub_id = item.get("submissionId") or item.get("parentId")
+        if not sub_id or sub_id in seen_ids:
+            continue
+        seen_ids.add(sub_id)
+
+        sub_type = item.get("submissionType", "post")
+        subreddit = item.get("subreddit", "compliance").replace("r/", "")
+        date_str = (item.get("submittedAt") or time.strftime("%Y-%m-%d"))[:10]
+        time_bucket = determine_time_bucket(item.get("submittedAt"))
+        url = item.get("submissionUrl") or item.get("parentPostUrl") or f"https://reddit.com/{sub_id}"
+
+        if sub_type == "comment":
+            body = item.get("bodyText") or ""
+            if len(body) < 15 or body.lower().startswith("i am a bot"):
+                continue
+            title = f"Practitioner reaction on r/{subreddit} ('{body[:60]}...')"
+            short_excerpt = clip_to_25_words(body)
+            paraphrase = body[:180] + ("..." if len(body) > 180 else "")
+        else:
+            title = item.get("title") or "Reddit compliance discussion"
+            body = item.get("bodyText") or ""
+            short_excerpt = clip_to_25_words(f"{title}. {body}")
+            paraphrase = f"{title}. {body}"[:180] + ("..." if len(f"{title}. {body}") > 180 else "")
+
+        collected.append({
+            "id": f"apify_{sub_id}",
+            "source": f"reddit:r/{subreddit}:{sub_type}:targeted",
+            "url": url,
+            "date": date_str,
+            "time_bucket": time_bucket,
+            "title": title.strip(),
+            "short_excerpt": short_excerpt,
+            "paraphrase": paraphrase,
+            "upvotes": int(item.get("score") or 0),
+            "comment_count": int(item.get("numComments") or 0),
+            "paraphrased_top_comments": []
+        })
+
+    return collected
+
 def _load_env_token() -> str:
     token = os.environ.get("APIFY_TOKEN", "").strip()
     if token:

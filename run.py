@@ -23,7 +23,7 @@ from src.analyzer import analyze_item, cluster_items_ollama, extract_glossary_fr
 from src.ideator import generate_ranked_ideas
 from src.discovery import export_discovery_markdown, discover_candidates
 from src.collectors.reddit import collect_from_reddit
-from src.collectors.apify import collect_from_apify
+from src.collectors.apify import collect_from_apify, collect_from_apify_urls
 from src.collectors.rss import collect_from_rss_source
 from src.collectors.manual import import_manual_files
 from src.reporter import generate_all_outputs
@@ -309,7 +309,7 @@ def cmd_import_manual(config):
     print(f"Found {len(items)} items across manual import files.")
 
     for item in items:
-        passed, reason, matched = evaluate_item(item["title"], item["short_excerpt"], config)
+        passed, reason, matched = evaluate_item(item["title"], item["short_excerpt"], config, source=item.get("source", ""))
         analysis = analyze_item(item["title"], item["short_excerpt"], config)
         item.update(analysis)
         item["passed_filters"] = passed
@@ -351,18 +351,22 @@ def cmd_generate_ideas(config):
     print("  - blocked_sources.md (Compliance & robots.txt log)")
     print("  - viewer/index.html (Interactive local viewer)")
 
-def cmd_collect_apify(config):
+def cmd_collect_apify(config, urls=None):
     print("\n--- Sweeping Reddit via Apify Actor (Live Real Discussions) ---")
     db_path = config.get("database", {}).get("path", "data/sayari.db")
     init_db(db_path)
     conn = get_db_connection(db_path)
 
-    items = collect_from_apify(config)
-    print(f"[apify] Received {len(items)} items across subreddits & queries.")
+    if urls:
+        print(f"[apify] Scraping {len(urls)} specific targeted Reddit thread URLs...")
+        items = collect_from_apify_urls(urls, config)
+    else:
+        items = collect_from_apify(config)
+    print(f"[apify] Received {len(items)} items.")
     
     added = 0
     for item in items:
-        passed, reason, matched = evaluate_item(item["title"], item["short_excerpt"], config)
+        passed, reason, matched = evaluate_item(item["title"], item["short_excerpt"], config, source=item.get("source", ""))
         analysis = analyze_item(item["title"], item["short_excerpt"], config)
         item.update(analysis)
         item["passed_filters"] = passed
@@ -424,7 +428,8 @@ def main():
     reddit_parser.add_argument("--sub", type=str, default=None, help="Specific subreddit to collect")
 
     subparsers.add_parser("collect-rss", help="Collect from public RSS news and commentary feeds")
-    subparsers.add_parser("collect-apify", help="Collect from live Reddit posts and comments via Apify actor")
+    apify_parser = subparsers.add_parser("collect-apify", help="Collect from live Reddit posts and comments via Apify actor")
+    apify_parser.add_argument("--urls", nargs="+", default=None, help="Specific Reddit post URLs to scrape and analyze")
     subparsers.add_parser("import-manual", help="Import hand-collected CSV or text files")
     subparsers.add_parser("generate-ideas", help="Cluster items and generate ranked idea bank")
     subparsers.add_parser("pipeline", help="Run full end-to-end collection and idea generation")
@@ -441,7 +446,7 @@ def main():
     elif args.command == "collect-rss":
         cmd_collect_rss(config)
     elif args.command == "collect-apify":
-        cmd_collect_apify(config)
+        cmd_collect_apify(config, getattr(args, "urls", None))
     elif args.command == "import-manual":
         cmd_import_manual(config)
     elif args.command == "generate-ideas":

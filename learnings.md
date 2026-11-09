@@ -13,3 +13,5 @@ PWA stale viewer cache | Browsers cached index.html via service worker preventin
 GitHub push conflict with scheduled runs | Scraper committing to master conflicted with local push | Separated deploy-pages on push from scheduled scraper sweeps
 Infinite auto-refresh loop in viewer | sw.js?t=Date.now() triggered continuous controllerchange events with location.reload() | Removed location.reload() and dynamic query timestamp; simplified SW registration to static ./sw.js
 HTML attribute quotation breakout on copy button | Passing JSON.stringify into onclick broke HTML tag attributes and exposed raw JS code | Made OPINION_MAP global and passed clean numeric opIdx to copyOpinionPrompt
+Word boundary regex failure on concatenated subreddits | AMLCompliance as a single token failed \baml\b boundary check | Added camel/uppercase token splitting so r/AMLCompliance properly supplies aml and compliance keywords
+SQLite conflict update omitted filter columns | insert_raw_item ON CONFLICT DO UPDATE didn't update passed_filters or drop_reason | Added passed_filters and drop_reason to conflict update clause

@@ -82,12 +82,19 @@ rss_sources:
 
 keywords:
   seed_keywords:
+    - "compliance"
+    - "regulatory compliance"
     - "aml"
     - "anti-money laundering"
     - "sanctions"
     - "sanction"
     - "sanctions screening"
     - "alert fatigue"
+    - "alert volume"
+    - "alerts"
+    - "alert queue"
+    - "burnout"
+    - "turnover"
     - "swivel chair"
     - "swivel chair effect"
     - "false positive"
