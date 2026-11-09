@@ -29,6 +29,9 @@ news)       world      across
 | Caption craft | `playbook/CAPTIONS.md` | **Yes** (the client's voice goes in `content/VOICE.md`) |
 | Design kit | `design/kit/` (kit.css + base layouts + `scripts/render_post.py`) | **The structure, yes**: swap kit.css tokens and the logo for a new client |
 
+## Starting points (all equally valid)
+A post can start from an **idea** (a concrete concept), an **insight** (an industry truth or pattern), an **angle** (a direction or series), or just a **hook** (a strong line). All live in the idea bank, tagged by type, so any of them can be picked up later.
+
 ## Rules for every idea
 1. **Hook first.** The hook is the idea and decides the format. We never bolt one on at the end.
 2. **The best format wins.** Carousel when each beat tops the last; single image for one sharp contrast; we never preset it.

@@ -11,7 +11,7 @@ description: Use when working on Sayari LinkedIn content in this repo — findin
 3. Where things live:
    - Research inputs: `research/` (brief_summary.md, lexicon.md, case studies in `research/sayari-site/case-studies/`, an index of other site content, competitors, the listener audit)
    - Listener data: `data/sayari.db` (use only `passed_filters=1`; the practitioner lane is the core subreddits)
-   - Idea bank (all ideas, tagged): `content/buckets/IDEA_BANK.md`. Add new ideas as rows, never only in chat.
+   - Idea bank: `content/buckets/IDEA_BANK.md`, every starting point (idea / insight / angle / hook), tagged. Add new ones as rows, never only in chat.
    - Content layers: `content/themes.md`, `playbook/templates.md`, `content/buckets/`, `content/sharpened/`, `content/idea-doc-images/IMAGE_IDEAS.md`
    - Shipped posts + captions: `content/posts/POSTS.md` (log every new post there, tagged)
 4. No raw memes for now. Rebuild a meme's insight as a realistic artifact, typographic card, chart or carousel.

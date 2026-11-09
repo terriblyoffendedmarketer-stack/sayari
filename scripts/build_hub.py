@@ -109,8 +109,8 @@ def memes():
 
 def idea_bank():
     rows = table_rows(read("content/buckets/IDEA_BANK.md"), "| ID")
-    keys = ["id", "idea", "gist", "format", "bucket", "status", "needs", "doc"]
-    return [dict(zip(keys, r + [""] * (8 - len(r)))) for r in rows]
+    keys = ["id", "start", "idea", "gist", "format", "bucket", "status", "needs", "doc"]
+    return [dict(zip(keys, r + [""] * (9 - len(r)))) for r in rows]
 
 
 def sharpened():

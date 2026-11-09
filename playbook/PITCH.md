@@ -9,7 +9,7 @@ Not a form to fill mechanically: answer each in plain words, briefly, with real 
 3. **Is it real?** Evidence that it's a genuine, common problem worth talking about: practitioner talk (listener), the client's case studies, enforcement actions, regulator guidance, trends. Say how strong the evidence is.
 4. **Strategy fit.** Which pillar, content type (and what the current mix needs), theme, and where it sits in the 3-month plan.
 5. **Product fit.** Does the product genuinely help with this problem? How does the post's essence connect to the product's essence? Could the post end on the brand credibly, even if we choose not to? Be honest about limits.
-6. **Hooks.** 2–4 options. For each: the line, what it means, and why it would land. Then my pick (one hook) and why. **Don't combine hooks into a caption plan in the pitch.** How lines combine is decided at the caption stage. Good hooks we don't use go into `content/HOOKS.md` for later.
+6. **Hooks.** 2–4 options. For each: the line, what it means, and why it would land. Then my pick (one hook) and why. **Don't combine hooks into a caption plan in the pitch.** How lines combine is decided at the caption stage. Good hooks we don't use go into the idea bank as `hook` rows (`H##`) for later.
 7. **Format and proof.** The best format (and kit layout), the UGC/proof we can use, and the checks before posting (sources, wording, invented names).
 
 Then the human picks or pushes back, and we move to the caption and design.

@@ -149,7 +149,7 @@ function overview(){
   <div class="block"><h2>Where we are</h2>
     <div class="stats">
       <div class="stat"><b>${D.posts.length}</b><span>posts shared with Sayari</span></div>
-      <div class="stat"><b>${D.ideas.length}</b><span>ideas in the bank</span></div>
+      <div class="stat"><b>${D.ideas.length}</b><span>starting points in the bank</span></div>
       <div class="stat"><b>${thV}/${D.themes.length}</b><span>themes validated</span></div>
       <div class="stat"><b>${tpB}/${D.templates.length}</b><span>templates built</span></div>
       <div class="stat"><b>${D.cases.length}</b><span>case studies on file</span></div>
@@ -202,19 +202,21 @@ function templates(){
   </tbody></table></div>`;
 }
 
-let ideaStatus = "all", ideaBucket = "all";
+let ideaStatus = "all", ideaBucket = "all", ideaStart = "all";
 const STATUS_ORDER = ["done","sharpened","selected","open","later","hold"];
 function ideas(){
   const statuses = ["all", ...STATUS_ORDER.filter(s => D.ideas.some(i => i.status === s))];
   const buckets = ["all", ...new Set(D.ideas.map(i => i.bucket))];
-  const rows = D.ideas.filter(i => (ideaStatus==="all"||i.status===ideaStatus) && (ideaBucket==="all"||i.bucket===ideaBucket));
+  const starts = ["all", ...["idea","insight","angle","hook"].filter(t => D.ideas.some(i => i.start === t))];
+  const rows = D.ideas.filter(i => (ideaStatus==="all"||i.status===ideaStatus) && (ideaBucket==="all"||i.bucket===ideaBucket) && (ideaStart==="all"||i.start===ideaStart));
   const cnt = s => s==="all" ? D.ideas.length : D.ideas.filter(i=>i.status===s).length;
-  return `<div><h2>Ideas</h2><p class="lede">The full idea bank: every idea from the Google Doc plus ones found since, each tagged with format, bucket and status. Each idea can become several posts. Source: content/buckets/IDEA_BANK.md.</p></div>
+  return `<div><h2>Ideas</h2><p class="lede">Every starting point for a post: an idea, an insight, an angle, or just a hook. Each is tagged with format, bucket and status, and each can become several posts. Source: content/buckets/IDEA_BANK.md.</p></div>
   <div class="block">
+    <div class="filters" role="group" aria-label="Filter by starting point">${starts.map(t=>`<button data-istart="${t}" aria-pressed="${t===ideaStart}">${t==="all"?"all starting points":t+"s"} <span class="muted">${t==="all"?D.ideas.length:D.ideas.filter(i=>i.start===t).length}</span></button>`).join("")}</div>
     <div class="filters" role="group" aria-label="Filter by status">${statuses.map(s=>`<button data-istatus="${s}" aria-pressed="${s===ideaStatus}">${s} <span class="muted">${cnt(s)}</span></button>`).join("")}</div>
     <div class="filters" role="group" aria-label="Filter by bucket">${buckets.map(b=>`<button data-ibucket="${esc(b)}" aria-pressed="${b===ideaBucket}">${esc(b)}</button>`).join("")}</div>
-    <div class="tablewrap"><table><thead><tr><th>ID</th><th>Idea</th><th>Format</th><th>Bucket</th><th>Needs</th><th>Status</th></tr></thead><tbody>
-    ${rows.map(i=>`<tr class="searchable"><td class="small muted" style="font-family:var(--mono)">${esc(i.id)}</td><td><b>${esc(i.idea)}</b><br><span class="small muted">${esc(i.gist)}</span></td><td class="small">${esc(i.format)}</td><td class="small">${esc(i.bucket)}</td><td class="small muted">${esc(i.needs)}</td><td>${pill(i.status)}</td></tr>`).join("") || `<tr><td colspan="6" class="empty">No ideas match these filters.</td></tr>`}
+    <div class="tablewrap"><table><thead><tr><th>ID</th><th>Start</th><th>Idea</th><th>Format</th><th>Bucket</th><th>Needs</th><th>Status</th></tr></thead><tbody>
+    ${rows.map(i=>`<tr class="searchable"><td class="small muted" style="font-family:var(--mono)">${esc(i.id)}</td><td class="small">${esc(i.start)}</td><td><b>${esc(i.idea)}</b><br><span class="small muted">${esc(i.gist)}</span></td><td class="small">${esc(i.format)}</td><td class="small">${esc(i.bucket)}</td><td class="small muted">${esc(i.needs)}</td><td>${pill(i.status)}</td></tr>`).join("") || `<tr><td colspan="7" class="empty">No ideas match these filters.</td></tr>`}
     </tbody></table></div></div>
   <div class="block"><h3>Sharpened</h3><div class="grid">${D.sharpened.map(s=>`<div class="card searchable"><div class="row"><h3>${esc(s.title)}</h3>${pill("pipeline")}</div><p class="small">${esc(s.core)}</p>${s.angles.length?`<p class="small muted"><span class="label">Angles</span><br>${s.angles.map(esc).join("<br>")}</p>`:""}<p class="small muted">${esc(s.file)}</p></div>`).join("") || `<p class="empty">None yet.</p>`}</div></div>
   <div class="block"><h3>In the pipeline</h3><div class="grid">${D.pipeline.map(p=>`<div class="card searchable"><h3>${esc(p.title)}</h3><p class="small muted">${esc(p.note)}</p></div>`).join("")}</div></div>
@@ -277,6 +279,7 @@ main.addEventListener("click", e => {
   if (b.dataset.tpl) { tplFilter = b.dataset.tpl; render(); }
   if (b.dataset.istatus) { ideaStatus = b.dataset.istatus; render(); }
   if (b.dataset.ibucket) { ideaBucket = b.dataset.ibucket; render(); }
+  if (b.dataset.istart) { ideaStart = b.dataset.istart; render(); }
   if (b.dataset.meme) { memeFilter = b.dataset.meme; render(); }
 });
 function selectCaption(b){ const pre = b.closest(".card").querySelector(".caption"); const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected, press ⌘C"; }
