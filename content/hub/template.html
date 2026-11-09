@@ -1,0 +1,234 @@
+<title>Sayari Content Hub</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a working library — sticky header with search + section tabs; each section is a scannable list of
+   tagged entries. Sayari brand: navy ink on warm paper, gold used once per view for the thing that matters. */
+:root{
+  --paper:#FAF8F4; --surface:#FFFFFF; --ink:#1D2440; --muted:#6A6760; --line:#E6E1D7;
+  --gold:#C57F27; --gold-soft:#F6EAD7; --chip:#EFEBE3;
+  --ok:#2F6B4F; --ok-soft:#E3EFE8; --warn:#8A5A12; --warn-soft:#F7ECD8; --idle:#5E6475; --idle-soft:#E9EAEF;
+  --display:"Merriweather",Georgia,"Times New Roman",serif;
+  --body:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#141A2E; --surface:#1D2440; --ink:#F1ECE2; --muted:#A9A69F; --line:#2E3654;
+  --gold:#F4B941; --gold-soft:#3A3322; --chip:#262E4D;
+  --ok:#8FD1AE; --ok-soft:#1F3A30; --warn:#F2C877; --warn-soft:#3B3020; --idle:#B4B9C9; --idle-soft:#2A3150; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141A2E; --surface:#1D2440; --ink:#F1ECE2; --muted:#A9A69F; --line:#2E3654;
+  --gold:#F4B941; --gold-soft:#3A3322; --chip:#262E4D;
+  --ok:#8FD1AE; --ok-soft:#1F3A30; --warn:#F2C877; --warn-soft:#3B3020; --idle:#B4B9C9; --idle-soft:#2A3150; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-block:16px 10px}
+.brand{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 260px}
+.brand .eyebrow{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:900 24px/1.15 var(--display);margin:0;text-wrap:balance}
+#q{flex:1 1 240px;max-width:360px;font:15px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px}
+#q:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+nav{display:flex;gap:4px;overflow-x:auto;padding-block:0 8px;scrollbar-width:none}
+nav a{font:500 14px var(--body);color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:999px;white-space:nowrap}
+nav a:hover{color:var(--ink);background:var(--chip)}
+nav a[aria-current="page"]{color:var(--paper);background:var(--ink)}
+nav a .n{font:12px var(--mono);opacity:.7;margin-left:4px}
+main{padding-block:24px 64px}
+section[data-view]{display:flex;flex-direction:column;gap:28px}
+h2{font:700 20px/1.25 var(--display);margin:0;text-wrap:balance}
+h3{font:600 16px/1.35 var(--body);margin:0}
+.lede{color:var(--muted);max-width:68ch;margin:6px 0 0}
+.block{display:flex;flex-direction:column;gap:12px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card p{margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 12px/1 var(--mono);background:var(--chip);color:var(--ink);padding:5px 8px;border-radius:6px}
+.pill{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.pill.built,.pill.validated,.pill.created{background:var(--ok-soft);color:var(--ok)}
+.pill.seed,.pill.candidate{background:var(--idle-soft);color:var(--idle)}
+.pill.pipeline{background:var(--warn-soft);color:var(--warn)}
+.label{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.caption{white-space:pre-wrap;font:14.5px/1.6 var(--body);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px;margin:0;max-height:none}
+button{font:500 13px var(--body);color:var(--ink);background:var(--chip);border:0;border-radius:6px;padding:7px 10px;cursor:pointer}
+button:hover{background:var(--gold-soft)}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font:700 26px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted)}
+.mix{display:flex;flex-direction:column;gap:10px}
+.mixrow{display:grid;grid-template-columns:minmax(120px,170px) 1fr 70px;gap:12px;align-items:center}
+.bar{position:relative;height:12px;background:var(--chip);border-radius:6px;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);border-radius:6px}
+.bar s{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--gold)}
+.mixrow .v{font:13px var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+.callout{border-left:3px solid var(--gold);background:var(--gold-soft);padding:12px 14px;border-radius:0 8px 8px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--paper)}
+tr:last-child td{border-bottom:0}
+.voice{display:flex;flex-direction:column;gap:4px;padding:12px 0;border-bottom:1px solid var(--line)}
+.voice:last-child{border-bottom:0}
+.voice q{quotes:"\201C" "\201D"}
+a{color:var(--ink);text-decoration-color:var(--gold);text-underline-offset:3px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.empty{color:var(--muted);font-style:italic}
+footer{color:var(--muted);font-size:13px;padding-block:0 32px}
+@media (max-width:520px){.mixrow{grid-template-columns:1fr 64px}.mixrow .bar{grid-column:1/-1;order:3}h1{font-size:21px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><span class="eyebrow">Sayari · LinkedIn content library</span><h1>Sayari Content Hub</h1></div>
+      <input id="q" type="search" placeholder="Search this section" aria-label="Search this section">
+    </div>
+    <nav id="tabs" aria-label="Sections"></nav>
+  </div>
+</header>
+<main class="wrap" id="main"></main>
+<footer class="wrap" id="foot"></footer>
+
+<script>
+const D = /*__HUB_DATA__*/null;
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slug = s => String(s||"").toLowerCase().replace(/[^a-z]+/g,"-");
+const pill = s => `<span class="pill ${slug(s).split("-")[0]}">${esc(s)}</span>`;
+const chips = arr => `<div class="meta">${arr.filter(Boolean).map(a=>`<span class="chip">${esc(a)}</span>`).join("")}</div>`;
+
+const VIEWS = [
+  ["overview","Overview",null],
+  ["posts","Posts",D.posts.length],
+  ["themes","Themes",D.themes.length],
+  ["templates","Templates",D.templates.length],
+  ["ideas","Ideas",D.sharpened.length + D.pipeline.length],
+  ["memes","Meme library",D.memes.length],
+  ["research","Research",D.cases.length + D.briefs.length],
+];
+
+const FORMATS = [["Pain mirror",35],["Product as relief",25],["Receipts",20],["Newsjack",20]];
+
+function overview(){
+  const n = D.posts.length || 1;
+  const count = f => D.posts.filter(p => (p.format||"").toLowerCase().startsWith(f.toLowerCase().split(" ")[0])).length;
+  const mix = FORMATS.map(([f,t]) => { const c = count(f), pct = Math.round(c/n*100);
+    return `<div class="mixrow"><span>${esc(f)}</span><div class="bar" role="img" aria-label="${esc(f)}: ${pct}% of posts, target ${t}%"><i style="width:${pct}%"></i><s style="left:${t}%"></s></div><span class="v">${c} · ${pct}%</span></div>`}).join("");
+  const thV = D.themes.filter(t=>t.status==="validated").length, tpB = D.templates.filter(t=>/built/i.test(t.status)).length;
+  const L = D.listener || {};
+  return `
+  <div class="block"><h2>Where we are</h2>
+    <div class="stats">
+      <div class="stat"><b>${D.posts.length}</b><span>posts created</span></div>
+      <div class="stat"><b>${thV}/${D.themes.length}</b><span>themes validated</span></div>
+      <div class="stat"><b>${tpB}/${D.templates.length}</b><span>templates built</span></div>
+      <div class="stat"><b>${D.cases.length}</b><span>case studies on file</span></div>
+      <div class="stat"><b>${L.kept ?? "–"}</b><span>listener items kept</span></div>
+    </div></div>
+  <div class="block"><h2>Format mix vs target</h2>
+    <p class="lede">Dark bar is what we've posted; the gold mark is the brief's target share.</p>
+    <div class="card mix">${mix}</div>
+    ${D.mix ? `<div class="callout small">${esc(D.mix)}</div>` : ""}</div>
+  <div class="block"><h2>Up next</h2>
+    <div class="grid">${D.pipeline.map(p=>`<div class="card"><div class="row"><h3>${esc(p.title)}</h3>${pill("pipeline")}</div><p class="small muted">${esc(p.note)}</p></div>`).join("") || `<p class="empty">Nothing queued.</p>`}</div></div>
+  <div class="block"><h2>Loudest practitioner voices</h2>
+    <p class="lede">Top kept Reddit items by upvotes, from the listener's practitioner and edge lanes.</p>
+    <div class="card">${(L.voices||[]).slice(0,6).map(voice).join("") || `<p class="empty">No listener data.</p>`}</div></div>`;
+}
+const voice = v => `<div class="voice searchable"><q>${esc(v.text)}</q><span class="small muted">${esc(v.src)} · ${v.up} upvotes · <a href="${esc(v.url)}" target="_blank" rel="noopener">thread</a></span></div>`;
+
+function posts(){
+  return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Source: content/posts/POSTS.md.</p></div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr))">${D.posts.map((p,i)=>`
+    <article class="card searchable">
+      <div class="row"><div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3></div>${pill("created")}</div>
+      ${chips([p.format,p.pillar,p.bucket])}
+      <p class="small"><span class="label">Template</span><br>${esc(p.template)}</p>
+      <p class="small"><span class="label">Theme</span><br>${esc(p.theme)}</p>
+      <p class="small"><span class="label">Hook</span><br>${esc(p.hook)}</p>
+      <div class="row"><span class="label">Caption</span><button data-copy="${i}">Copy caption</button></div>
+      <pre class="caption">${esc(p.caption)}</pre>
+      <p class="small"><span class="label">Personality moves</span><br>${esc(p.moves)}</p>
+      <p class="small muted">Results: ${esc(p.results)}</p>
+    </article>`).join("")}</div>`;
+}
+
+function themes(){
+  return `<div><h2>Themes</h2><p class="lede">Recurring patterns across the listener and case studies. Candidates become validated once we agree on them together.</p></div>
+  <div class="grid">${D.themes.map((t,i)=>`<div class="card searchable"><div class="row"><h3>${esc(t.name)}</h3>${pill(t.status)}</div><p class="small">${esc(t.desc)}</p>${t.evidence?`<p class="small muted"><span class="label">Evidence</span><br>${esc(t.evidence)}</p>`:""}</div>`).join("")}</div>`;
+}
+
+let tplFilter = "all";
+function templates(){
+  const st = ["all", ...new Set(D.templates.map(t=>t.status))];
+  const rows = D.templates.filter(t => tplFilter==="all" || t.status===tplFilter);
+  return `<div><h2>Template library</h2><p class="lede">Reusable meme and design mechanics. One mechanic, many designs, any client. Source: playbook/templates.md.</p></div>
+  <div class="filters" role="group" aria-label="Filter by status">${st.map(s=>`<button data-tpl="${esc(s)}" aria-pressed="${s===tplFilter}">${esc(s)}</button>`).join("")}</div>
+  <div class="tablewrap"><table><thead><tr><th>Mechanic</th><th>Why it works</th><th>Variants</th><th>Best for</th><th>Status</th></tr></thead><tbody>
+  ${rows.map(t=>`<tr class="searchable"><td><b>${esc(t.mechanic)}</b><br><span class="small muted">${esc(t.seen_in)}</span></td><td>${esc(t.why)}</td><td>${esc(t.variants)}</td><td>${esc(t.best_for)}</td><td>${pill(t.status)}</td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+
+function ideas(){
+  return `<div><h2>Ideas</h2><p class="lede">Buckets hold ideas; each idea can become several posts. Sharpened ideas have a real case, UGC and angle options.</p></div>
+  <div class="block"><h3>Sharpened</h3><div class="grid">${D.sharpened.map(s=>`<div class="card searchable"><div class="row"><h3>${esc(s.title)}</h3>${pill("pipeline")}</div><p class="small">${esc(s.core)}</p>${s.angles.length?`<p class="small muted"><span class="label">Angles</span><br>${s.angles.map(esc).join("<br>")}</p>`:""}<p class="small muted">${esc(s.file)}</p></div>`).join("") || `<p class="empty">None yet.</p>`}</div></div>
+  <div class="block"><h3>In the pipeline</h3><div class="grid">${D.pipeline.map(p=>`<div class="card searchable"><h3>${esc(p.title)}</h3><p class="small muted">${esc(p.note)}</p></div>`).join("")}</div></div>
+  <div class="block"><h3>Idea buckets</h3><div class="tablewrap"><table style="min-width:520px"><thead><tr><th>Bucket</th><th>Example ideas</th></tr></thead><tbody>${D.buckets.map(b=>`<tr class="searchable"><td><b>${esc(b.name)}</b></td><td>${esc(b.examples)}</td></tr>`).join("")}</tbody></table></div></div>`;
+}
+
+let memeFilter = "pulse";
+function memes(){
+  const rows = D.memes.filter(m => memeFilter==="all" || m.kind===memeFilter);
+  return `<div><h2>Meme library</h2><p class="lede">What the idea-doc references say about the job, and how each becomes a non-meme Sayari post. Text only: the original images are copyrighted and stay local.</p></div>
+  ${D.picks.length?`<div class="block"><h3>Top picks to build</h3><div class="callout small">${D.picks.map(p=>`<div>${esc(p.title)} <span class="muted">(${esc(p.why)})</span></div>`).join("")}</div></div>`:""}
+  <div class="filters" role="group" aria-label="Filter by kind">${["pulse","format","brief","all"].map(s=>`<button data-meme="${s}" aria-pressed="${s===memeFilter}">${s==="pulse"?"compliance pulse":s==="format"?"format references":s}</button>`).join("")}</div>
+  <div class="grid">${rows.map(m=>`<div class="card searchable"><div class="row"><span class="label">#${esc(m.n)} · ${esc(m.kind)}</span></div><h3>${esc(m.name)}</h3><p class="small">${esc(m.what)}</p>${m.insight?`<p class="small"><span class="label">Insight</span><br>${esc(m.insight)}</p>`:""}<p class="small"><span class="label">Sayari version</span><br>${esc(m.sayari)}</p></div>`).join("")}</div>`;
+}
+
+function research(){
+  const L = D.listener || {};
+  return `<div><h2>Research</h2><p class="lede">Inputs the ideas draw on. Case studies are saved in research/sayari-site/case-studies/.</p></div>
+  <div class="block"><h3>Sayari case studies</h3><div class="grid">${D.cases.map(c=>`<div class="card searchable"><span class="label">${esc(c.date)} · ${esc(c.type)}</span><h3>${esc(c.who || c.title)}</h3><p class="small">${esc(c.summary)}</p>${c.quote?`<p class="small muted"><q>${esc(c.quote)}</q></p>`:""}<p class="small"><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a></p></div>`).join("")}</div></div>
+  <div class="block"><h3>Investigation briefs and buyer guides</h3><div class="tablewrap"><table style="min-width:520px"><thead><tr><th>Type</th><th>Title</th></tr></thead><tbody>${D.briefs.map(b=>`<tr class="searchable"><td class="small muted">${esc(b.kind)}</td><td><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a></td></tr>`).join("")}</tbody></table></div></div>
+  <div class="block"><h3>Listener</h3><p class="small muted">${L.kept ?? 0} of ${L.total ?? 0} items kept · ${Object.entries(L.lanes||{}).map(([k,v])=>`${esc(k)} ${v}`).join(" · ")} · last run ${esc(L.last_run||"–")}</p>
+  <div class="card">${(L.voices||[]).map(voice).join("")}</div></div>`;
+}
+
+const RENDER = {overview, posts, themes, templates, ideas, memes, research};
+const main = document.getElementById("main"), q = document.getElementById("q");
+function current(){ const h = location.hash.slice(1); return RENDER[h] ? h : "overview"; }
+function render(){
+  const v = current();
+  document.getElementById("tabs").innerHTML = VIEWS.map(([id,label,n]) => `<a href="#${id}" ${id===v?'aria-current="page"':""}>${label}${n!=null?`<span class="n">${n}</span>`:""}</a>`).join("");
+  main.innerHTML = `<section data-view="${v}">${RENDER[v]()}</section>`;
+  q.value = ""; q.hidden = v === "overview";
+}
+main.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.copy != null) {
+    const text = D.posts[+b.dataset.copy].caption;
+    const done = () => { b.textContent = "Copied"; setTimeout(()=>b.textContent="Copy caption",1500); };
+    try { navigator.clipboard.writeText(text).then(done, () => selectCaption(b)); } catch { selectCaption(b); }
+  }
+  if (b.dataset.tpl) { tplFilter = b.dataset.tpl; render(); }
+  if (b.dataset.meme) { memeFilter = b.dataset.meme; render(); }
+});
+function selectCaption(b){ const pre = b.closest(".card").querySelector(".caption"); const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected, press ⌘C"; }
+q.addEventListener("input", () => {
+  const t = q.value.trim().toLowerCase();
+  main.querySelectorAll(".searchable").forEach(el => el.hidden = t && !el.textContent.toLowerCase().includes(t));
+});
+addEventListener("hashchange", render);
+document.getElementById("foot").textContent = `Built ${D.built} from the Sayari repo (scripts/build_hub.py). Read-only view; edits happen in the markdown files.`;
+render();
+</script>

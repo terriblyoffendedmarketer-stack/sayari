@@ -9,6 +9,7 @@
 
 ## Live PWA & Links
 - **GitHub Repository**: https://github.com/terriblyoffendedmarketer-stack/sayari
+- **Content Hub (private claude.ai page)**: https://claude.ai/artifact/Gmw5L8TenBeGWB3iVTRHaj (posts, themes, templates, ideas, memes, research). Rebuild after editing any content markdown: `python3 -I scripts/build_hub.py`, then republish `content/hub/hub.html` to that URL (from a new chat, pass it as `url`).
 - **Live PWA Dashboard (Shareable)**: https://terriblyoffendedmarketer-stack.github.io/sayari/
 - **Cloud Automation**: Runs every 6 hours via `.github/workflows/scheduled-sweep.yml` using GitHub Actions + Apify Secret.
 
@@ -51,6 +52,7 @@
   - `idea-doc-images/`: `IMAGE_IDEAS.md` (49 images catalogued), `gallery.html` (local visual gallery). `images/` is gitignored (copyrighted memes; regenerate with the extractor).
 - `research/`: inputs. `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.
 - `.claude/skills/sayari-content/SKILL.md`: project skill that loads the framework rules for content work.
+- `scripts/build_hub.py` + `content/hub/template.html`: generate `content/hub/hub.html` (the Content Hub) from POSTS, FRAMEWORK, templates, IMAGE_IDEAS, sharpened ideas, case studies and the listener DB.
 - `scripts/build_image_gallery.py`: Rebuilds gallery.html from IMAGE_IDEAS.md.
 - `scripts/extract_doc_images.py`: Exports a link-shared Google Doc's images and maps each to its section.
 - `learnings.md`: Debugging notes and operational learnings (`what broke | why | what fixed it`).

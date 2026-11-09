@@ -51,6 +51,7 @@ We learn and decide together. The human stays on top of the work, so:
 - `content/` = the client's living library. Every new idea, theme or template gets added to its file, tagged, not left in chat.
 - `content/posts/POSTS.md` = the source of truth for what shipped.
 - `.claude/skills/<client>-content/SKILL.md` = loads the rules at the start of content work.
+- **Content Hub** = a private page generated from these files (`scripts/build_hub.py`). Rebuild and republish it whenever the library changes, so the human can browse everything visually.
 - Done when: a new chat can read CLAUDE.md → SPEC → POSTS and continue without asking what happened.
 
 ## Quality bar for a finished post

@@ -49,5 +49,6 @@ Mix so far: 2/2 pain mirror, 0 product-as-relief, 0 receipts, 0 newsjack → **t
 ---
 
 ## In the pipeline (not shipped)
-- **Idea 4 · "No match found" is the start of the question:** sharpened with the PURE OFAC case (`content/sharpened/idea-04_no-match-is-not-an-answer.md`). Format still to decide together.
-- **Idea 5 · Questionnaire vs record**, **Idea 8 · Questions to ask any screening demo:** selected, not yet sharpened.
+- **Idea 4 · "No match found" is the start of the question**: sharpened with the PURE OFAC case (`content/sharpened/idea-04_no-match-is-not-an-answer.md`). Format still to decide together.
+- **Idea 5 · Questionnaire vs record**: selected, not yet sharpened. Strong case-study support (grocery <50% questionnaire response, telecom's "owners were not checked", PURE).
+- **Idea 8 · Questions to ask any screening demo**: selected, not yet sharpened. Check Sayari can answer each question well.

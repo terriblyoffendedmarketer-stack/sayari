@@ -15,3 +15,4 @@ description: Use when working on Sayari LinkedIn content in this repo — findin
    - Shipped posts + captions: `content/posts/POSTS.md` (log every new post there, tagged)
 4. No raw memes for now. Rebuild a meme's insight as a realistic artifact, typographic card, chart or carousel.
 5. Never fetch sayari.com with curl/requests or a spoofed User-Agent; it's blocked. See `research/sayari-site/OTHER_CONTENT_INDEX.md` for the browser method.
+6. After changing any content file, rebuild the hub (`python3 -I scripts/build_hub.py`) and republish `content/hub/hub.html` to https://claude.ai/artifact/Gmw5L8TenBeGWB3iVTRHaj (pass it as `url` from a new chat).
