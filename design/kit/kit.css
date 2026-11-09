@@ -1,0 +1,91 @@
+/* kit.css — Sayari social design kit. Tokens copied exactly from the "Sayari" design system artifact
+   (https://claude.ai/artifact/LeM3wtgJYhXNR8hC3GyhG2, project/tokens.json). Canvas 1080x1350 (4:5).
+   Rules from that system's README: one mode per image (navy or beige); accent once per image; one scrawl max;
+   nothing under 26px; panels for any product/search/alert/chat mock; wordmark small in one corner. */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@700&display=swap");
+
+:root{
+  --serif:"Merriweather",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; --hand:"Caveat",cursive;
+  --panel-terminal:#0f1318; --ink-panel:#f2efe8; --ink-panel-muted:#aeb5c3; --panel-raised:#1f2530;
+  --panel-border:#ffffff1f; --card-light:#ffffff; --risk:#a83c2c; --risk-tint:#f8eae7;
+  --margin-social:80px; --gap-panel:24px; --pad-panel:22px; --space-sm:14px;
+  --radius-panel:20px; --radius-field:14px; --radius-card:28px; --radius-pill:999px;
+  --shadow-panel:0 12px 32px #00000059;
+}
+.mode-navy{--surface-page:#1d2440; --ink:#faf8f4; --ink-muted:#a8aab6; --accent:#f4b941; --wordmark:url("assets/wordmark-white.svg")}
+.mode-beige{--surface-page:#faf8f4; --ink:#1d2440; --ink-muted:#6a6760; --accent:#c57f27; --wordmark:url("assets/wordmark-navy.svg")}
+
+*{box-sizing:border-box;margin:0}
+html,body{background:#555}
+.canvas{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--surface-page);color:var(--ink);
+  font:400 32px/1.4 var(--sans);padding:96px var(--margin-social) 160px;display:flex;flex-direction:column;gap:40px}
+
+/* Type styles (sizes from the design system) */
+.headline{font:700 72px/1.15 var(--serif);color:var(--ink);text-wrap:balance}
+.headline.sm{font-size:60px}
+.headline .hl{color:var(--accent)}
+.quote{font:italic 700 56px/1.2 var(--serif);color:var(--accent)}
+.subhead{font:600 40px/1.2 var(--sans);color:var(--accent)}
+.body{font:400 32px/1.4 var(--sans);color:var(--ink-muted)}
+.tag{font:600 28px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
+.mode-navy .tag{color:var(--accent)}
+.tag.mono{font:500 28px/1.2 var(--mono);letter-spacing:0;text-transform:none;color:var(--ink-muted)}
+.stat{font:700 160px/1 var(--mono);color:var(--accent);letter-spacing:-.02em}
+.source{font:400 26px/1.3 var(--mono);color:var(--ink-muted)}
+.scrawl{font:700 156px/1 var(--hand);color:var(--accent)}
+.scrawl.sm{font-size:110px}
+
+/* Wordmark: small, one corner */
+.wordmark{position:absolute;width:200px;height:35px;background:var(--wordmark) no-repeat center/contain}
+.wordmark.br{right:var(--margin-social);bottom:72px}
+.wordmark.tl{left:var(--margin-social);top:64px}
+.wordmark.tr{right:var(--margin-social);top:64px}
+
+/* Panels: product, search, alert, chat, terminal mocks */
+.panel{background:var(--panel-terminal);color:var(--ink-panel);border:2px solid var(--panel-border);border-radius:var(--radius-panel);
+  box-shadow:var(--shadow-panel);padding:var(--pad-panel) calc(var(--pad-panel) + 6px);display:flex;flex-direction:column;gap:var(--space-sm)}
+.panel-text{font:500 34px/1.3 var(--mono);color:var(--ink-panel)}
+.panel-muted{font:400 26px/1.3 var(--mono);color:var(--ink-panel-muted)}
+.stack{display:flex;flex-direction:column;gap:var(--gap-panel)}
+.field{display:flex;align-items:center;gap:16px;background:var(--panel-raised);border-radius:var(--radius-field);padding:14px 18px}
+.badge{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:var(--panel-raised);color:var(--ink-panel-muted);
+  border:2px solid var(--panel-border);border-radius:var(--radius-pill);padding:6px 18px;font:500 28px/1.2 var(--mono)}
+.badge::before{content:"";width:12px;height:12px;border-radius:50%;background:currentColor}
+.badge.risk{background:var(--risk-tint);color:var(--risk);border-color:transparent}
+.badge.ok{color:#8fd1ae}
+.icon-search{width:34px;height:34px;flex:none;border:2.6px solid var(--ink-panel-muted);border-radius:50%;position:relative}
+.icon-search::after{content:"";position:absolute;width:13px;height:2.6px;background:var(--ink-panel-muted);border-radius:2px;right:-11px;bottom:-4px;transform:rotate(45deg)}
+
+/* Cards (beige): white with a 4px ink outline */
+.card{background:var(--card-light);border:4px solid var(--ink);border-radius:var(--radius-card);padding:28px;display:flex;flex-direction:column;gap:12px;color:#1d2440}
+.card.dark{background:#1d2440;color:#faf8f4;border-color:#1d2440}
+.card .card-title{font:700 34px/1.2 var(--sans)}
+.card .card-note{font:400 28px/1.3 var(--sans);color:#6a6760}
+.card.dark .card-note{color:#a8aab6}
+.card .tick{position:absolute;right:22px;bottom:22px;width:56px;height:56px;border-radius:50%;background:var(--accent)}
+.card .tick::after{content:"";position:absolute;left:17px;top:12px;width:14px;height:26px;border:solid #1d2440;border-width:0 6px 6px 0;transform:rotate(45deg)}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;flex:1}
+.card,.panel{overflow-wrap:anywhere}
+.grid-3 .card{position:relative;min-height:0}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start}
+
+/* Hand-drawn annotation strokes (accent) */
+.annot{position:absolute;pointer-events:none;overflow:visible}
+.annot path{fill:none;stroke:var(--accent);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+
+/* Carousel helpers */
+.slide-count{position:absolute;right:var(--margin-social);top:64px;font:500 26px/1 var(--mono);color:var(--ink-muted)}
+.swipe{font:500 28px/1 var(--mono);color:var(--accent)}
+.photo-slot{width:180px;height:180px;border-radius:50%;background:linear-gradient(#1d2440,#ffffff);border:4px solid var(--accent);display:grid;place-items:center;
+  font:500 22px/1.2 var(--mono);color:#faf8f4;text-align:center}
+.spacer{flex:1}
+
+/* Placeholder marker: anything in [brackets] is content to replace */
+.ph{outline:2px dashed #ff3b9a;outline-offset:4px}
+
+/* Carousel print mode: every slide becomes one PDF page */
+@page{size:1080px 1350px;margin:0}
+@media print{html,body{background:none}.slides .canvas{break-after:page}.slides[data-mode="one"] .canvas{display:flex!important}}
+
+.center{justify-content:center}

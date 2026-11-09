@@ -1,0 +1,48 @@
+<!doctype html><meta charset="utf-8"><title>L6 · Story carousel</title><link rel="stylesheet" href="../kit.css">
+<!-- L6 · Story carousel (alternates navy/beige). For: receipts: a real case told as setup → trap → move → result → rule.
+     One .canvas per slide. View one slide with #1, #2…; print all to PDF for LinkedIn (scripts/render_post.py --pdf).
+     Swap: the slides. Keep: slide counter, one gold moment per slide, a source line on the receipt slide, an analyst face if Sayari provides one. -->
+<div class="slides">
+  <div class="canvas mode-navy" style="justify-content:center">
+    <span class="slide-count">1/5</span>
+    <div class="tag">A real OFAC case</div>
+    <div class="headline">In 2010, a client told them exactly who owned the company.</div>
+    <div class="spacer" style="flex:0 0 40px"></div>
+    <div class="swipe">swipe →</div>
+    <div class="wordmark br"></div>
+  </div>
+  <div class="canvas mode-beige center">
+    <span class="slide-count">2/5</span>
+    <div class="tag">2010 · the questionnaire</div>
+    <div class="headline sm">One company. One shareholder. One name on the form.</div>
+    <div class="card" style="gap:18px"><div class="card-note" style="font-family:var(--mono)">Client questionnaire</div><div class="card-title" style="font-weight:600">Sole shareholder: [named individual]</div></div>
+    <div class="wordmark br"></div>
+  </div>
+  <div class="canvas mode-navy center">
+    <span class="slide-count">3/5</span>
+    <div class="tag">2018 · the screen</div>
+    <div class="headline sm">The shareholder gets sanctioned. The company's name never does.</div>
+    <div class="panel"><div class="field"><span class="icon-search"></span><span class="panel-text">Medallion, Inc.</span></div><span class="badge ok">no match found</span></div>
+    <div class="scrawl sm">39 times.</div>
+    <div class="wordmark br"></div>
+  </div>
+  <div class="canvas mode-beige" style="justify-content:center">
+    <span class="slide-count">4/5</span>
+    <div class="tag">2023 · the receipt</div>
+    <div class="stat" style="font-size:140px">$466,200</div>
+    <div class="headline sm">OFAC settlement. The answer was in their own files.</div>
+    <div class="source">source: OFAC enforcement release, 21 Dec 2023</div>
+    <div class="wordmark br"></div>
+  </div>
+  <div class="canvas mode-navy" style="justify-content:center">
+    <span class="slide-count">5/5</span>
+    <div class="quote">A name search tells you if the name is on a list. It doesn't tell you who owns it.</div>
+    <div class="body" style="color:var(--ink)">How does your team connect the ownership file to the screen?</div>
+    <div class="wordmark br"></div>
+  </div>
+</div>
+<script>
+// Show one slide when a hash like #3 is present (for PNG renders); show all when printing.
+const n = parseInt(location.hash.slice(1)), s = [...document.querySelectorAll('.slides .canvas')];
+if (n) s.forEach((c,i) => c.style.display = i === n-1 ? 'flex' : 'none');
+</script>

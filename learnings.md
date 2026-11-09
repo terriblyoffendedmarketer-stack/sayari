@@ -31,3 +31,4 @@ Commits appeared on GitHub without an explicit push | something on the Mac (like
 Content Hub artifact never existed though user expected it | only a local gallery.html was opened; a review page was proposed, not built | built scripts/build_hub.py -> content/hub/hub.html, published privately; republish after every content change
 Hub showed 4 ideas, user had 40+ | the idea bank lived only in the Google Doc; the hub reads repo files | imported it to content/buckets/IDEA_BANK.md (44 rows, tagged) and the hub reads that table
 Post images in a private Google Doc | Drive MCP download is too big for the context window | export as application/zip; the harness saves big results to a tool-results file; decode the base64 from that file with python
+Kit grid column blew out on a long filename | CSS grid 1fr = minmax(auto,1fr) won't shrink below min-content | use repeat(3,minmax(0,1fr)) + overflow-wrap:anywhere

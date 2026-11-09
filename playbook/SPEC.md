@@ -27,6 +27,7 @@ news)       world      across
 | Sharpened ideas | `content/sharpened/` | No |
 | Posts log | `content/posts/POSTS.md` | No |
 | Caption craft | `playbook/CAPTIONS.md` | **Yes** (the client's voice goes in `content/VOICE.md`) |
+| Design kit | `design/kit/` (kit.css + base layouts + `scripts/render_post.py`) | **The structure, yes**: swap kit.css tokens and the logo for a new client |
 
 ## Rules for every idea
 1. **Hook first.** The hook is the idea and decides the format. We never bolt one on at the end.

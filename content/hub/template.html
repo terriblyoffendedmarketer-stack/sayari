@@ -191,10 +191,12 @@ function themes(){
 
 let tplFilter = "all";
 function templates(){
-  const st = ["all", ...new Set(D.templates.map(t=>t.status))];
-  const rows = D.templates.filter(t => tplFilter==="all" || t.status===tplFilter);
+  const word = t => t.status.split(" ")[0];
+  const st = ["all", ...new Set(D.templates.map(word))];
+  const rows = D.templates.filter(t => tplFilter==="all" || word(t)===tplFilter);
   return `<div><h2>Template library</h2><p class="lede">Reusable meme and design mechanics. One mechanic, many designs, any client. Source: playbook/templates.md.</p></div>
-  <div class="filters" role="group" aria-label="Filter by status">${st.map(s=>`<button data-tpl="${esc(s)}" aria-pressed="${s===tplFilter}">${esc(s)}</button>`).join("")}</div>
+  ${D.kit.length?`<div class="block"><h3>Design kit: base layouts</h3><p class="small muted">Starting points in Sayari's design system (design/kit/). Tap to see full size.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">${D.kit.map(k=>{const name=k.split("/").pop().replace(".png","").replace(/-1$/," (carousel)");return `<div class="card searchable" style="padding:10px"><button class="thumb" data-img="${esc(k)}" data-cap="${esc(name)}" aria-label="View ${esc(name)} full size"><img loading="lazy" src="${esc(k)}" alt="${esc(name)}"></button><span class="small">${esc(name)}</span></div>`}).join("")}</div></div>`:""}
+  <div class="filters" role="group" aria-label="Filter by status">${st.map(s=>`<button data-tpl=""${esc(s)}" aria-pressed="${s===tplFilter}">${esc(s)}</button>`).join("")}</div>
   <div class="tablewrap"><table><thead><tr><th>Mechanic</th><th>Why it works</th><th>Variants</th><th>Best for</th><th>Status</th></tr></thead><tbody>
   ${rows.map(t=>`<tr class="searchable"><td><b>${esc(t.mechanic)}</b><br><span class="small muted">${esc(t.seen_in)}</span></td><td>${esc(t.why)}</td><td>${esc(t.variants)}</td><td>${esc(t.best_for)}</td><td>${pill(t.status)}</td></tr>`).join("")}
   </tbody></table></div>`;
