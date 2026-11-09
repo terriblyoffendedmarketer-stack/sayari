@@ -30,7 +30,7 @@ Limit: we must not claim Sayari would have caught PURE's specific case (we don't
 ## 6. Hooks (one per option; my pick at the end)
 - **A. "In 2010, a client told them exactly who owned the company."** A story opener that creates suspense; the reader swipes to find out what went wrong.
 - **B. "The answer was in their own files."** Leads with the twist. Lands because everyone has information stuck in a system the screening never sees; instant recognition, a little dread.
-- **C. "'No match found.' 39 times. Then a $466,200 penalty."** Numbers as the punch. Stark and scroll-stopping, but colder and more fear-led than our voice usually is.
+- **C. "'No match found.' 39 violations later: a $466,200 penalty."** (First drafted as "39 times", which was wrong: OFAC's 39 = violations, not searches.) Numbers as the punch. Stark and scroll-stopping, but colder and more fear-led than our voice usually is.
 - **D. "A clean name search is the start of the question, not the answer."** The lesson as a contrarian line. Clear and useful, but it gives away the payoff, so there's less reason to swipe.
 **My pick: B.** It's the most relatable and the most "us": not fear, but recognition ("that could be our setup"). It also sets up the Frankenstack point without saying the word.
 
