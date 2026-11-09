@@ -258,7 +258,10 @@ def export_html_viewer(
   .header-actions {{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }}
   .btn-dump-all {{ background: var(--btn-dump); color: #fff; border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }}
   .btn-dump-all:hover {{ background: var(--btn-dump-hover); transform: translateY(-1px); }}
-  .sweep-badge {{ background: var(--card); border: 1px solid var(--border); padding: 7px 12px; border-radius: 8px; font-size: 12px; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }}
+  
+  /* Interactive Sweep Badge / Tile */
+  .sweep-badge {{ background: var(--card); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-size: 12px; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; cursor: pointer; transition: all 0.2s; }}
+  .sweep-badge:hover {{ border-color: var(--accent); background: #17243b; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15); }}
   .sweep-time {{ color: var(--accent); font-weight: 700; }}
 
   /* Tabs */
@@ -288,14 +291,6 @@ def export_html_viewer(
 
   .idea-title {{ font-size: 16.5px; font-weight: 700; color: #fff; line-height: 1.35; }}
   .hook-box {{ background: #0b1220; border-left: 3px solid var(--accent); padding: 10px 14px; font-style: italic; color: #e2e8f0; font-size: 13px; border-radius: 0 6px 6px 0; }}
-  
-  .meta-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: var(--muted); }}
-  .meta-grid div {{ background: #0f172a; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); }}
-  .meta-grid strong {{ color: #cbd5e1; }}
-  
-  .evidence-section {{ background: #0c1424; padding: 10px 12px; border-radius: 6px; font-size: 12px; border: 1px dashed var(--border); }}
-  .evidence-header {{ font-weight: 700; color: #cbd5e1; margin-bottom: 6px; }}
-  .evidence-item {{ margin-bottom: 6px; color: #94a3b8; line-height: 1.4; }}
   
   .copy-btn {{ background: var(--btn-copy); color: #fff; border: none; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; }}
   .copy-btn:hover {{ background: var(--btn-copy-hover); }}
@@ -334,12 +329,21 @@ def export_html_viewer(
   .badge-cloud {{ background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; }}
   .badge-local {{ background: rgba(148, 163, 184, 0.2); color: #94a3b8; border: 1px solid #64748b; }}
 
-  /* Knowledge Graph Canvas Area */
+  /* Knowledge Graph Area */
   #graphContainer {{ background: #070b14; border: 1px solid var(--border); border-radius: 12px; position: relative; overflow: hidden; }}
-  #graphCanvas {{ width: 100%; height: 620px; display: block; }}
-  .graph-legend {{ position: absolute; bottom: 16px; left: 16px; background: rgba(19, 28, 46, 0.9); border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; font-size: 12px; display: flex; gap: 14px; backdrop-filter: blur(4px); }}
+  #graphCanvas {{ width: 100%; height: 560px; display: block; }}
+  .graph-legend {{ position: absolute; top: 14px; right: 16px; background: rgba(19, 28, 46, 0.9); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 11.5px; display: flex; gap: 12px; backdrop-filter: blur(4px); z-index: 2; }}
   .legend-item {{ display: flex; align-items: center; gap: 6px; }}
-  .legend-dot {{ width: 10px; height: 10px; border-radius: 50%; display: inline-block; }}
+  .legend-dot {{ width: 9px; height: 9px; border-radius: 50%; display: inline-block; }}
+
+  /* Inspector Panel */
+  .inspector-panel {{ background: #0b1220; border-top: 1px solid var(--border); padding: 18px 22px; }}
+
+  /* Modal Dialog for Pull Logs */
+  .modal {{ display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.78); backdrop-filter: blur(4px); }}
+  .modal-content {{ background-color: var(--card); margin: 30px auto; padding: 22px 26px; border: 1px solid var(--border); border-radius: 14px; width: 92%; max-width: 1050px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); position: relative; }}
+  .modal-close {{ position: absolute; top: 16px; right: 20px; color: var(--muted); font-size: 24px; font-weight: bold; cursor: pointer; background: transparent; border: none; }}
+  .modal-close:hover {{ color: #fff; }}
 
   /* Toast Notification */
   #toast {{ visibility: hidden; min-width: 250px; background-color: #10b981; color: #fff; text-align: center; border-radius: 8px; padding: 12px 18px; position: fixed; z-index: 9999; right: 30px; bottom: 30px; font-size: 13.5px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }}
@@ -362,8 +366,12 @@ def export_html_viewer(
     <button class="btn-dump-all" onclick="dumpEntireBrainToClipboard()">
       📋 Dump Entire Brain for Claude (No Links, Trace IDs)
     </button>
-    <div class="sweep-badge">
-      <div>Last Sweep: <span class="sweep-time">{sweep_time}</span></div>
+    <div class="sweep-badge" onclick="openRunLogsModal()" title="Click to view full pull history and run learnings">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="color:#94a3b8; font-size:11px;">⏱️ Last Sweep:</span>
+        <span class="sweep-time">{sweep_time}</span>
+        <span style="font-size:10px; background:#1e293b; color:#38bdf8; padding:1px 6px; border-radius:4px; font-weight:700;">View Pull Logs ↗</span>
+      </div>
       <div style="font-size:11px; color:#34d399;">● {len(raw_items)} Signals Active | {len(pipeline_runs)} Runs Logged</div>
     </div>
   </div>
@@ -371,7 +379,6 @@ def export_html_viewer(
 
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('living_brain')">🧠 Living Brain: Key Opinions & Angles</button>
-  <button class="tab-btn" onclick="switchTab('run_logs')">📜 Pull History & Run Logs ({len(pipeline_runs)})</button>
   <button class="tab-btn" onclick="switchTab('lexicon')">🍺 "The Beer Test" Lexicon ({len(glossary)})</button>
   <button class="tab-btn" onclick="switchTab('raw')">🔍 Raw Signals Stream ({len(raw_items)} Passed)</button>
   <button class="tab-btn" onclick="switchTab('noise')">🛡️ Noise Shield ({len(dropped_items)} Blocked)</button>
@@ -406,25 +413,17 @@ def export_html_viewer(
 <!-- Tab 1: Combined Living Brain & Key Opinions -->
 <div id="livingBrainContainer" class="grid"></div>
 
-<!-- Tab 2: Run History & Pull Logs -->
-<div id="runLogsContainer" style="display:none;" class="table-container">
-  <table class="table-view">
-    <thead>
-      <tr>
-        <th style="width: 130px;">Timestamp (UTC)</th>
-        <th style="width: 140px;">Trigger</th>
-        <th style="width: 25%;">Sources Swept</th>
-        <th style="width: 20%;">Time Range</th>
-        <th style="width: 100px;">Counts</th>
-        <th style="width: 30%;">Pull Learnings & Summary</th>
-      </tr>
-    </thead>
-    <tbody id="runLogsTbody"></tbody>
-  </table>
-</div>
-
-<!-- Tab 3: Beer Test Lexicon -->
+<!-- Tab 2: Beer Test Lexicon -->
 <div id="lexiconContainer" style="display:none;" class="table-container">
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#0f182c; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:10px;">
+    <div>
+      <strong style="color:#fff; font-size:14px;">🍺 "The Beer Test" Lexicon</strong>
+      <span style="color:var(--muted); font-size:12px; margin-left:8px;">Authentic practitioner slang vs. banned vendor brochure fluff.</span>
+    </div>
+    <button class="copy-btn" onclick="copyAuthenticLexicon()">
+      📋 Copy Authentic Practitioner Terms (Excludes Banned Fluff)
+    </button>
+  </div>
   <table class="table-view">
     <thead>
       <tr>
@@ -438,9 +437,9 @@ def export_html_viewer(
   </table>
 </div>
 
-<!-- Tab 4: Raw Signals Stream -->
+<!-- Tab 3: Raw Signals Stream -->
 <div id="rawContainer" style="display:none;">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; background:var(--card); padding:10px 14px; border-radius:8px; border:1px solid var(--border);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; background:var(--card); padding:10px 14px; border-radius:8px; border:1px solid var(--border); flex-wrap:wrap; gap:10px;">
     <span style="font-size:13px; color:var(--muted);">Showing verified compliance signals with clickable original sources and expandable full text.</span>
     <button class="copy-btn" onclick="copyAllRawSignalsToClipboard()">
       📋 Copy All Raw Signals (Formatted for Claude)
@@ -464,7 +463,7 @@ def export_html_viewer(
   </div>
 </div>
 
-<!-- Tab 5: Noise Shield (Blocked) -->
+<!-- Tab 4: Noise Shield (Blocked) -->
 <div id="noiseContainer" style="display:none;" class="table-container">
   <div style="padding:12px 16px; background:#0c1424; border-bottom:1px solid var(--border); font-size:13px; color:var(--muted);">
     🛡️ <strong>Noise Shield Active:</strong> Items filtered out because they were vendor product advertisements without practitioner debate, or generic career questions. Click any title to inspect the original post.
@@ -482,21 +481,54 @@ def export_html_viewer(
   </table>
 </div>
 
-<!-- Tab 6: Knowledge Graph -->
+<!-- Tab 5: Knowledge Graph -->
 <div id="graphContainer" style="display:none;">
   <div style="padding:12px 18px; border-bottom:1px solid var(--border); background:#0c1424; display:flex; justify-content:space-between; align-items:center;">
     <div>
       <strong style="color:#fff; font-size:14px;">🕸️ Compliance Intelligence Knowledge Graph</strong>
-      <span style="color:var(--muted); font-size:12px; margin-left:10px;">Drag nodes to explore. Click/hover to highlight connected pains, evasion tactics, regulators, and Sayari proof points.</span>
+      <span style="color:var(--muted); font-size:12px; margin-left:10px;">Click any node to inspect how it was built, its underlying Reddit/RSS evidence posts, and connected concepts.</span>
     </div>
     <button class="copy-btn" style="padding:4px 8px; font-size:11px;" onclick="resetGraph()">↺ Reset Graph</button>
   </div>
   <canvas id="graphCanvas"></canvas>
   <div class="graph-legend">
-    <div class="legend-item"><span class="legend-dot" style="background:#f87171;"></span> 🔴 Practitioner Pains</div>
-    <div class="legend-item"><span class="legend-dot" style="background:#fbbf24;"></span> 🟡 Evasion & Hidden Risk</div>
-    <div class="legend-item"><span class="legend-dot" style="background:#818cf8;"></span> 🟣 Regulators & Laws</div>
-    <div class="legend-item"><span class="legend-dot" style="background:#34d399;"></span> 🟢 Sayari Proof Anchors</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#f87171;"></span> 🔴 Pains</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#fbbf24;"></span> 🟡 Evasion</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#818cf8;"></span> 🟣 Regulators</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#34d399;"></span> 🟢 Sayari Proof</div>
+  </div>
+
+  <!-- Dynamic Graph Inspector -->
+  <div id="graphInspector" class="inspector-panel"></div>
+</div>
+
+<!-- Run Logs Modal Dialog -->
+<div id="runLogsModal" class="modal" onclick="closeRunLogsModalOnBg(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeRunLogsModal()">✕</button>
+    <div style="margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+      <h2 style="font-size:20px; color:#fff; display:flex; align-items:center; gap:8px;">
+        <span>📜</span> Automated Sweep History & Ingestion Logs
+      </h2>
+      <p style="font-size:13px; color:var(--muted); margin-top:4px;">
+        Detailed history of every listening sweep (cloud scheduled vs local manual), including sources queried, time ranges, and overall intelligence learnings.
+      </p>
+    </div>
+    <div class="table-container" style="max-height: 480px; overflow-y: auto;">
+      <table class="table-view">
+        <thead>
+          <tr>
+            <th style="width: 135px;">Timestamp (UTC)</th>
+            <th style="width: 130px;">Trigger</th>
+            <th style="width: 25%;">Sources Swept</th>
+            <th style="width: 18%;">Time Range</th>
+            <th style="width: 100px;">Counts</th>
+            <th style="width: 32%;">Pull Learnings & Summary</th>
+          </tr>
+        </thead>
+        <tbody id="runLogsTbody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -573,6 +605,39 @@ function copyAllRawSignalsToClipboard() {{
   copyTextToClipboard(lines.join('\\n'), '📋 Copied All Raw Signals for Claude!');
 }}
 
+function copyAuthenticLexicon() {{
+  const authentic = GLOSSARY.filter(g => {{
+    const isVendor = String(g.is_vendor_marketing_only).includes('YES') || g.is_vendor_marketing_only === 1 || String(g.is_vendor_marketing_only) === '1';
+    return !isVendor;
+  }});
+  const lines = [
+    "# SAYARI COMPLIANCE PRACTITIONER LEXICON (THE BEER TEST)",
+    "# Mined real language, slang, and usage rules (Banned vendor fluff excluded)",
+    ""
+  ];
+  authentic.forEach(g => {{
+    lines.push("- " + g.term.toUpperCase() + " (Frequency: " + g.frequency + "): " + (g.example_context || 'Practitioner term mined from community discussions.'));
+  }});
+  copyTextToClipboard(lines.join('\\n'), '📋 Copied ' + authentic.length + ' Authentic Practitioner Terms!');
+}}
+
+function openRunLogsModal() {{
+  document.getElementById('runLogsModal').style.display = 'block';
+  renderRunLogs();
+}}
+
+function closeRunLogsModal() {{
+  document.getElementById('runLogsModal').style.display = 'none';
+}}
+
+function closeRunLogsModalOnBg(e) {{
+  if (e.target.id === 'runLogsModal') closeRunLogsModal();
+}}
+
+window.addEventListener('keydown', (e) => {{
+  if (e.key === 'Escape') closeRunLogsModal();
+}});
+
 function toggleExpand(id) {{
   const el = document.getElementById(id);
   const btn = document.getElementById(id + '-btn');
@@ -585,15 +650,6 @@ function toggleExpand(id) {{
       if (btn) btn.innerText = '[-] Collapse';
     }}
   }}
-}}
-
-function formatEvidenceHtml(sources) {{
-  if (!sources || !sources.length) return "<div style='color:var(--muted); font-size:11px;'>No direct quotes attached.</div>";
-  return sources.map(function(ev, i) {{
-    var cleanSrc = ev.url ? ev.url.replace('https://www.reddit.com/r/', 'r/').replace('https://', '').split('/')[0] : 'Community Source';
-    var linkHtml = ev.url ? '<a href="' + ev.url + '" target="_blank" rel="noopener" class="source-link">' + cleanSrc + ' ↗</a>' : cleanSrc;
-    return '<div class="evidence-item">• ' + linkHtml + ' (' + ev.upvotes + ' upvotes): <em>\\"' + (ev.paraphrase || '') + '\\"</em></div>';
-  }}).join('');
 }}
 
 function copyIdeaPrompt(idx) {{
@@ -649,6 +705,38 @@ Please write 2 publish-ready LinkedIn posts for this opinion.`;
   copyTextToClipboard(prompt, "📋 Copied Key Opinion Package for Claude!");
 }}
 
+function copyNodePrompt(nodeId) {{
+  const node = graphNodes.find(n => n.id === nodeId);
+  if (!node) return;
+
+  const queryTerms = (node.query_terms || [node.label.toLowerCase()]);
+  const matchingPosts = RAW_ITEMS.filter(it => {{
+    const text = (it.title + " " + (it.short_excerpt || "") + " " + (it.paraphrase || "")).toLowerCase();
+    return queryTerms.some(qt => text.includes(qt.toLowerCase()));
+  }}).slice(0, 4);
+
+  const evidenceQuotes = matchingPosts.map((it, idx) => `  * [${{it.source}}]: "${{it.short_excerpt}}"`).join('\\n');
+
+  const prompt = `I am drafting LinkedIn content for Sayari exploring this core compliance intelligence concept:
+
+Concept: ${{node.label}}
+Category: ${{node.category.toUpperCase()}}
+Core Practitioner Reality: ${{node.desc}}
+Sayari Proof Anchor: ${{node.proof || 'Primary source registry records'}}
+Beer Test Lexicon Terms: ${{(node.lexicon || []).join(', ')}}
+
+Underlying Public Chatter & Signals:
+${{evidenceQuotes || '  * Synthesized practitioner tension across multiple investigations.'}}
+
+Voice Guidelines:
+- Validating, unflinching, human, a little funny. Pass the "Beer Test".
+- Avoid all vendor buzzwords.
+
+Please write 2 high-impact LinkedIn posts grounded in this specific reality.`;
+
+  copyTextToClipboard(prompt, `📋 Copied Concept Brief for Claude!`);
+}}
+
 function getBadgeClass(fmt) {{
   if (fmt.includes('Pain')) return 'badge-pain';
   if (fmt.includes('relief')) return 'badge-relief';
@@ -659,7 +747,7 @@ function getBadgeClass(fmt) {{
 function switchTab(tab) {{
   currentTab = tab;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  ['livingBrainContainer', 'runLogsContainer', 'lexiconContainer', 'rawContainer', 'noiseContainer', 'graphContainer'].forEach(id => {{
+  ['livingBrainContainer', 'lexiconContainer', 'rawContainer', 'noiseContainer', 'graphContainer'].forEach(id => {{
     const el = document.getElementById(id);
     if (el) el.style.display = 'none';
   }});
@@ -670,20 +758,17 @@ function switchTab(tab) {{
   if (tab === 'living_brain') {{
     document.querySelectorAll('.tab-btn')[0].classList.add('active');
     document.getElementById('livingBrainContainer').style.display = 'grid';
-  }} else if (tab === 'run_logs') {{
-    document.querySelectorAll('.tab-btn')[1].classList.add('active');
-    document.getElementById('runLogsContainer').style.display = 'block';
   }} else if (tab === 'lexicon') {{
-    document.querySelectorAll('.tab-btn')[2].classList.add('active');
+    document.querySelectorAll('.tab-btn')[1].classList.add('active');
     document.getElementById('lexiconContainer').style.display = 'block';
   }} else if (tab === 'raw') {{
-    document.querySelectorAll('.tab-btn')[3].classList.add('active');
+    document.querySelectorAll('.tab-btn')[2].classList.add('active');
     document.getElementById('rawContainer').style.display = 'block';
   }} else if (tab === 'noise') {{
-    document.querySelectorAll('.tab-btn')[4].classList.add('active');
+    document.querySelectorAll('.tab-btn')[3].classList.add('active');
     document.getElementById('noiseContainer').style.display = 'block';
   }} else if (tab === 'graph') {{
-    document.querySelectorAll('.tab-btn')[5].classList.add('active');
+    document.querySelectorAll('.tab-btn')[4].classList.add('active');
     document.getElementById('graphContainer').style.display = 'block';
     initGraph();
   }}
@@ -696,7 +781,6 @@ function renderLivingBrain() {{
   const minInt = parseFloat(document.getElementById('filterIntensity').value);
   const q = document.getElementById('filterSearch').value.toLowerCase().trim();
 
-  // Group ideas bottom-up into Key Practitioner Opinions
   const OPINION_MAP = [
     {{
       title: "Vendor Questionnaires Are Compliance Theater",
@@ -736,7 +820,6 @@ function renderLivingBrain() {{
       matchingIdeas = IDEAS.slice(opIdx * 3, opIdx * 3 + 3);
     }}
 
-    // Apply filters
     const filteredAngles = matchingIdeas.filter(idea => {{
       const matchFmt = (fmt === 'all' || idea.format === fmt);
       const matchInt = (idea.avg_intensity >= minInt);
@@ -796,7 +879,7 @@ function renderLivingBrain() {{
   document.getElementById('livingBrainContainer').innerHTML = html || '<p style="padding:20px; color:var(--muted)">No themes matched your search criteria.</p>';
 }}
 
-// 2. Render Run Logs
+// 2. Render Run Logs (Shown in modal)
 function renderRunLogs() {{
   const html = PIPELINE_RUNS.map((run, idx) => `
     <tr>
@@ -817,7 +900,7 @@ function renderRunLogs() {{
   document.getElementById('runLogsTbody').innerHTML = html || '<tr><td colspan="6" style="padding:20px; text-align:center; color:var(--muted);">No run logs recorded yet.</td></tr>';
 }}
 
-// 3. Render Beer Test Lexicon (Fixed bug: string/boolean safe)
+// 3. Render Beer Test Lexicon
 function renderLexicon() {{
   const html = GLOSSARY.map(g => {{
     const isVendor = String(g.is_vendor_marketing_only).includes('YES') || g.is_vendor_marketing_only === 1 || String(g.is_vendor_marketing_only) === '1';
@@ -833,7 +916,7 @@ function renderLexicon() {{
   document.getElementById('lexiconTbody').innerHTML = html;
 }}
 
-// 4. Render Raw Streams (With Summary, Clickable Links, Expand Toggle, Decreased Width)
+// 4. Render Raw Streams
 function renderRawStream() {{
   const minInt = parseFloat(document.getElementById('filterIntensity').value);
   const q = document.getElementById('filterSearch').value.toLowerCase().trim();
@@ -882,7 +965,7 @@ function renderRawStream() {{
   document.getElementById('rawTbody').innerHTML = html || '<tr><td colspan="7" style="padding:20px; text-align:center; color:var(--muted);">No signals match your filter.</td></tr>';
 }}
 
-// 5. Render Noise Shield (With Clickable Links)
+// 5. Render Noise Shield
 function renderNoise() {{
   const html = DROPPED_ITEMS.map((d, idx) => {{
     const linkHtml = d.url ? `<a href="${{d.url}}" target="_blank" rel="noopener" class="source-link">${{d.title}} ↗</a>` : `<strong>${{d.title}}</strong>`;
@@ -915,54 +998,233 @@ Theme: ${{it.theme || 'General'}} | Emotion: ${{it.emotion || 'frustration'}} ($
 
 function renderCurrentTab() {{
   if (currentTab === 'living_brain') renderLivingBrain();
-  else if (currentTab === 'run_logs') renderRunLogs();
   else if (currentTab === 'lexicon') renderLexicon();
   else if (currentTab === 'raw') renderRawStream();
   else if (currentTab === 'noise') renderNoise();
 }}
 
-// 6. Interactive Knowledge Graph Implementation
+// 6. Interactive Knowledge Graph Implementation with Rich Inspector
 let graphNodes = [];
 let graphEdges = [];
 let animFrameId = null;
 let hoveredNode = null;
 let draggedNode = null;
+let selectedNode = null;
 
 function initGraph() {{
   const canvas = document.getElementById('graphCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   
-  // Set internal resolution
   canvas.width = canvas.parentElement.clientWidth || 900;
-  canvas.height = 620;
+  canvas.height = 560;
 
   const W = canvas.width;
   const H = canvas.height;
 
   graphNodes = [
     // Pains (Red)
-    {{ id: 'p1', label: 'Alert Fatigue & Backlog', category: 'pain', color: '#f87171', x: W * 0.25, y: H * 0.25, vx: 0, vy: 0, r: 24, desc: '90-95% false positives swamping L1 analyst review.' }},
-    {{ id: 'p2', label: 'Swivel Chair (7+ Logins)', category: 'pain', color: '#f87171', x: W * 0.18, y: H * 0.55, vx: 0, vy: 0, r: 22, desc: '45 mins lost copy-pasting numbers across disconnected tabs.' }},
-    {{ id: 'p3', label: 'Name Match Purgatory', category: 'pain', color: '#f87171', x: W * 0.32, y: H * 0.40, vx: 0, vy: 0, r: 22, desc: 'Common surname false hits vs evasion spelling tricks.' }},
-    {{ id: 'p4', label: 'Audit Dread & Exam Panic', category: 'pain', color: '#f87171', x: W * 0.28, y: H * 0.75, vx: 0, vy: 0, r: 22, desc: 'Regulators rejecting black-box automated risk scores.' }},
+    {{
+      id: 'p1',
+      label: 'Alert Fatigue & Backlog',
+      category: 'pain',
+      color: '#f87171',
+      x: W * 0.22,
+      y: H * 0.26,
+      vx: 0, vy: 0, r: 24,
+      desc: '90-95% false positives swamping L1 analyst review queues.',
+      proof: 'Fortune 50 Energy Supermajor: 1.2M records screened in real time vs 24–48 hours on competitor.',
+      lexicon: ['Alert Fatigue', 'Backlog & Clearing Alerts', 'L1 Review', 'Disposition Alerts', 'Queue'],
+      query_terms: ['alert fatigue', 'backlog', 'queue', 'disposition', 'l1', '800 alerts']
+    }},
+    {{
+      id: 'p2',
+      label: 'Swivel Chair (7+ Logins)',
+      category: 'pain',
+      color: '#f87171',
+      x: W * 0.16,
+      y: H * 0.58,
+      vx: 0, vy: 0, r: 22,
+      desc: '45 mins lost manually copy-pasting numbers across disconnected tabs and spreadsheets.',
+      proof: 'Fortune 50 Energy: 75+ disparate data sources collapsed into a single unified registry query.',
+      lexicon: ['Swivel Chair Effect', 'Frankenstack', 'Point Solutions & Silos', 'Spreadsheets and Google'],
+      query_terms: ['swivel chair', 'frankenstack', 'tabs', 'spreadsheets', 'excel', 'multiple logins', '6 tabs']
+    }},
+    {{
+      id: 'p3',
+      label: 'Name Match Purgatory',
+      category: 'pain',
+      color: '#f87171',
+      x: W * 0.30,
+      y: H * 0.44,
+      vx: 0, vy: 0, r: 22,
+      desc: 'Legacy tools matching on common surnames while genuine sanctioned entities evade detection.',
+      proof: 'Fortune 50 Energy Supermajor: Instant multi-attribute entity resolution across 1.2M records.',
+      lexicon: ['Name Matching', 'Entity Resolution', 'False Positives (90-95%)'],
+      query_terms: ['name match', 'name matching', 'spelling', 'vowel', 'fuzzy', 'latin names', 'alias']
+    }},
+    {{
+      id: 'p4',
+      label: 'Audit Dread & Exam Panic',
+      category: 'pain',
+      color: '#f87171',
+      x: W * 0.28,
+      y: H * 0.80,
+      vx: 0, vy: 0, r: 22,
+      desc: 'Regulators rejecting black-box automated risk scores without verifiable registry audit trails.',
+      proof: 'Regulatory doctrine: An automated risk score is not a legal defense without primary source records.',
+      lexicon: ['Audit Trail', 'Defensible Evidence', 'Periodic Review vs pKYC'],
+      query_terms: ['audit', 'exam', 'regulator', 'defensible', 'score', 'audit trail']
+    }},
 
     // Evasion & Risk (Amber)
-    {{ id: 'e1', label: 'Nested UBO (3+ Layers Deep)', category: 'evasion', color: '#fbbf24', x: W * 0.52, y: H * 0.22, vx: 0, vy: 0, r: 24, desc: 'Clean tier-1 supplier hiding sanctioned oligarch across offshore hops.' }},
-    {{ id: 'e2', label: '147 Shells at 1 Flat', category: 'evasion', color: '#fbbf24', x: W * 0.48, y: H * 0.48, vx: 0, vy: 0, r: 22, desc: 'Residential addresses in Belize/Cyprus routing $42M dual-use tech.' }},
-    {{ id: 'e3', label: 'Transshipment Hubs', category: 'evasion', color: '#fbbf24', x: W * 0.55, y: H * 0.72, vx: 0, vy: 0, r: 22, desc: 'Sub-tier component routes skirting export sanctions.' }},
+    {{
+      id: 'e1',
+      label: 'Nested UBO (3+ Layers Deep)',
+      category: 'evasion',
+      color: '#fbbf24',
+      x: W * 0.52,
+      y: H * 0.22,
+      vx: 0, vy: 0, r: 24,
+      desc: 'Clean tier-1 supplier hiding sanctioned oligarch across offshore shell hops.',
+      proof: 'No. 3 Global Telecom: 72% of high-risk partners were on zero watchlists anywhere, hidden in nested ownership.',
+      lexicon: ['UBO & Nested Ownership', 'Beneficial Ownership', '50% Rule'],
+      query_terms: ['ubo', 'nested ownership', 'beneficial owner', 'cyprus', 'holding', '50 percent rule']
+    }},
+    {{
+      id: 'e2',
+      label: '147 Shells at 1 Flat',
+      category: 'evasion',
+      color: '#fbbf24',
+      x: W * 0.46,
+      y: H * 0.50,
+      vx: 0, vy: 0, r: 22,
+      desc: 'Residential flats in Belize/Cyprus routing $42M dual-use electronics to restricted destinations.',
+      proof: 'Sayari Graph: Unmasking mass company registrations clustered at single physical residential coordinates.',
+      lexicon: ['Shell Companies', 'Corporate Secrecy Havens', 'Front Companies'],
+      query_terms: ['shell company', 'shell companies', 'apartment', 'belize', 'cyprus', 'flat', 'residential']
+    }},
+    {{
+      id: 'e3',
+      label: 'Transshipment Hubs',
+      category: 'evasion',
+      color: '#fbbf24',
+      x: W * 0.54,
+      y: H * 0.76,
+      vx: 0, vy: 0, r: 22,
+      desc: 'Intermediary export routes obscuring forced labor and export-controlled technology.',
+      proof: 'Top-5 Global Tech Giant: Chose Sayari over incumbent for Tier-2 and Tier-3 sub-tier mapping.',
+      lexicon: ['Transshipment Hubs', 'Sub-Tier Supply Chain', 'Export Controls'],
+      query_terms: ['transshipment', 'vietnam', 'smelter', 'forced labor', 'customs', 'dual-use']
+    }},
 
     // Regulators (Purple)
-    {{ id: 'r1', label: 'OFAC 50% Rule', category: 'reg', color: '#818cf8', x: W * 0.40, y: H * 0.15, vx: 0, vy: 0, r: 20, desc: 'Aggregate ownership thresholds triggering automatic sanctions.' }},
-    {{ id: 'r2', label: 'UFLPA Forced Labor', category: 'reg', color: '#818cf8', x: W * 0.62, y: H * 0.85, vx: 0, vy: 0, r: 20, desc: 'Sub-tier polysilicon and component detentions at customs.' }},
-    {{ id: 'r3', label: 'FinCEN Whistleblower', category: 'reg', color: '#818cf8', x: W * 0.38, y: H * 0.90, vx: 0, vy: 0, r: 20, desc: 'Spike in whistleblower reports triggering immediate audits.' }},
-    {{ id: 'r4', label: 'DOJ Penalties (e.g. Webull)', category: 'reg', color: '#818cf8', x: W * 0.15, y: H * 0.82, vx: 0, vy: 0, r: 20, desc: 'Multi-million dollar settlements for inadequate AML scrutiny.' }},
+    {{
+      id: 'r1',
+      label: 'OFAC 50% Rule',
+      category: 'reg',
+      color: '#818cf8',
+      x: W * 0.38,
+      y: H * 0.14,
+      vx: 0, vy: 0, r: 20,
+      desc: 'Aggregate ownership thresholds triggering automatic sanctions designation.',
+      proof: 'Sayari automatically calculates cumulative ownership percentages across multi-jurisdictional holding chains.',
+      lexicon: ['OFAC', '50% Rule', 'Sanctions Screening'],
+      query_terms: ['ofac', '50 percent rule', 'sanctions', 'sdn']
+    }},
+    {{
+      id: 'r2',
+      label: 'UFLPA Forced Labor',
+      category: 'reg',
+      color: '#818cf8',
+      x: W * 0.62,
+      y: H * 0.88,
+      vx: 0, vy: 0, r: 20,
+      desc: 'Sub-tier polysilicon and component detentions at customs without warning.',
+      proof: 'Customs-ready audit trails for Uyghur Forced Labor Prevention Act sub-tier compliance.',
+      lexicon: ['UFLPA', 'Forced Labor', 'Sub-Tier Mapping'],
+      query_terms: ['uflpa', 'forced labor', 'tier 1', 'tier 2', 'tier 3', 'customs']
+    }},
+    {{
+      id: 'r3',
+      label: 'FinCEN Whistleblower',
+      category: 'reg',
+      color: '#818cf8',
+      x: W * 0.38,
+      y: H * 0.90,
+      vx: 0, vy: 0, r: 20,
+      desc: 'Spike in whistleblower reports triggering immediate audits and examinations.',
+      proof: 'Defensible documentation preventing internal escalation and regulatory scrutiny.',
+      lexicon: ['Whistleblower', 'FinCEN', 'Regulatory Examination'],
+      query_terms: ['whistleblower', 'fincen', 'reporting']
+    }},
+    {{
+      id: 'r4',
+      label: 'DOJ Penalties (e.g. Webull)',
+      category: 'reg',
+      color: '#818cf8',
+      x: W * 0.14,
+      y: H * 0.84,
+      vx: 0, vy: 0, r: 20,
+      desc: 'Multi-million dollar settlements for inadequate AML scrutiny and surveillance gaps.',
+      proof: 'Real newsjack: Webull $4.2M settlement demonstrating regulatory crackdown on automated AML gaps.',
+      lexicon: ['Settlement', 'Enforcement Action', 'Civil Monetary Penalty'],
+      query_terms: ['webull', 'settlement', 'penalty', 'fined', 'pleaded', '4.2 million']
+    }},
 
     // Sayari Proof Anchors (Green)
-    {{ id: 's1', label: '72% Unlisted Risk Unmasked', category: 'sayari', color: '#34d399', x: W * 0.78, y: H * 0.25, vx: 0, vy: 0, r: 25, desc: 'Global telecom case: 72% of high-risk partners were on zero watchlists.' }},
-    {{ id: 's2', label: '1.2M Records in Real Time', category: 'sayari', color: '#34d399', x: W * 0.75, y: H * 0.50, vx: 0, vy: 0, r: 25, desc: 'Energy supermajor: instant screening vs 48-hour competitor lag.' }},
-    {{ id: 's3', label: '75+ Data Feeds Collapsed', category: 'sayari', color: '#34d399', x: W * 0.80, y: H * 0.72, vx: 0, vy: 0, r: 25, desc: 'Retired homegrown frankenstack into a single graph query.' }},
-    {{ id: 's4', label: 'Sub-Tier Tech Mapping', category: 'sayari', color: '#34d399', x: W * 0.70, y: H * 0.88, vx: 0, vy: 0, r: 24, desc: 'Top-5 tech giant chose Sayari over incumbent for Tier-2/Tier-3 traceability.' }}
+    {{
+      id: 's1',
+      label: '72% Unlisted Risk Unmasked',
+      category: 'sayari',
+      color: '#34d399',
+      x: W * 0.80,
+      y: H * 0.24,
+      vx: 0, vy: 0, r: 25,
+      desc: 'No. 3 Global Telecom: 72% of high-risk partners were on zero watchlists anywhere.',
+      proof: 'No. 3 Global Telecom screened 60K+ partners continuously; 72% of flagged risk had no watchlist match.',
+      lexicon: ['Nested Ownership', 'Zero Watchlist Matches', 'Sayari Graph'],
+      query_terms: ['72%', 'telecom', '60k', 'watchlists']
+    }},
+    {{
+      id: 's2',
+      label: '1.2M Records in Real Time',
+      category: 'sayari',
+      color: '#34d399',
+      x: W * 0.76,
+      y: H * 0.50,
+      vx: 0, vy: 0, r: 25,
+      desc: 'Energy supermajor: instant screening vs 48-hour competitor batch lag.',
+      proof: 'Fortune 50 Energy Supermajor screened 1.2M records in real time (competitor needed 24–48 hours).',
+      lexicon: ['Real-Time Screening', 'Sub-Second Graph Query', 'Batch Delay Elimination'],
+      query_terms: ['1.2m', 'energy supermajor', 'real time', '24-48 hours']
+    }},
+    {{
+      id: 's3',
+      label: '75+ Data Feeds Collapsed',
+      category: 'sayari',
+      color: '#34d399',
+      x: W * 0.82,
+      y: H * 0.72,
+      vx: 0, vy: 0, r: 25,
+      desc: 'Retired costly homegrown frankenstack into a single graph query.',
+      proof: 'Fortune 50 Energy Company collapsed 75+ disparate data feeds into one solution.',
+      lexicon: ['Unified Graph', 'Retiring Homegrown Tools', 'Frankenstack Elimination'],
+      query_terms: ['75+', 'homegrown', 'collapsed', 'single query']
+    }},
+    {{
+      id: 's4',
+      label: 'Sub-Tier Tech Mapping',
+      category: 'sayari',
+      color: '#34d399',
+      x: W * 0.72,
+      y: H * 0.90,
+      vx: 0, vy: 0, r: 24,
+      desc: 'Top-5 tech giant chose Sayari over incumbent for Tier-2/Tier-3 traceability.',
+      proof: 'Top-5 global technology company chose Sayari over supply-chain incumbent for sub-tier component mapping.',
+      lexicon: ['Sub-Tier Mapping', 'Tier-2/Tier-3 Traceability', 'Component Smelters'],
+      query_terms: ['top-5', 'tech giant', 'sub-tier', 'incumbent']
+    }}
   ];
 
   graphEdges = [
@@ -986,6 +1248,112 @@ function initGraph() {{
 
   setupGraphInteractivity(canvas);
   animateGraph(canvas, ctx);
+
+  // Pre-select first node so inspector is immediately informative
+  selectedNode = graphNodes[0];
+  hoveredNode = graphNodes[0];
+  renderGraphInspector(graphNodes[0]);
+}}
+
+function renderGraphInspector(node) {{
+  if (!node) {{
+    document.getElementById('graphInspector').innerHTML = `
+      <div style="color:var(--muted); font-size:13px; text-align:center; padding:10px;">
+        💡 Click any node on the graph above to inspect its underlying Reddit/RSS evidence posts, Beer Test slang terms, and connected concepts.
+      </div>
+    `;
+    return;
+  }}
+
+  const outgoing = graphEdges.filter(e => e.from === node.id).map(e => {{
+    const target = graphNodes.find(n => n.id === e.to);
+    return target ? `<span class="pill" style="background:#1e293b; color:#cbd5e1; cursor:pointer; margin:2px;" onclick="selectNodeById('${{target.id}}')">→ <em>${{e.label}}</em> <strong>${{target.label}}</strong></span>` : '';
+  }}).filter(Boolean);
+
+  const incoming = graphEdges.filter(e => e.to === node.id).map(e => {{
+    const src = graphNodes.find(n => n.id === e.from);
+    return src ? `<span class="pill" style="background:#1e293b; color:#cbd5e1; cursor:pointer; margin:2px;" onclick="selectNodeById('${{src.id}}')">← <em>${{e.label}}</em> <strong>${{src.label}}</strong></span>` : '';
+  }}).filter(Boolean);
+
+  const queryTerms = (node.query_terms || [node.label.toLowerCase()]);
+  const matchingPosts = RAW_ITEMS.filter(it => {{
+    const text = (it.title + " " + (it.short_excerpt || "") + " " + (it.paraphrase || "")).toLowerCase();
+    return queryTerms.some(qt => text.includes(qt.toLowerCase()));
+  }}).slice(0, 4);
+
+  const postsHtml = matchingPosts.length ? matchingPosts.map((it, idx) => {{
+    const cleanSrc = it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '');
+    const linkHtml = it.url ? `<a href="${{it.url}}" target="_blank" rel="noopener" class="source-link">${{it.title}} ↗</a>` : `<strong>${{it.title}}</strong>`;
+    return `
+      <div style="background:#090f1d; border:1px solid var(--border); border-radius:6px; padding:10px; margin-top:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <span style="font-size:11px; color:#38bdf8; font-weight:700;">${{cleanSrc}}</span>
+          <span style="font-size:10px; color:#64748b;">${{it.date || 'Recent'}} | ${{it.upvotes || 0}} upvotes</span>
+        </div>
+        <div style="font-size:12.5px; font-weight:600; margin-bottom:4px;">${{linkHtml}}</div>
+        <div style="font-size:12px; color:#94a3b8; font-style:italic;">"${{it.short_excerpt}}"</div>
+      </div>
+    `;
+  }}).join('') : `<p style="font-size:12px; color:var(--muted); padding:6px 0;">Synthesized concept connecting compliance evasion with Sayari resolution.</p>`;
+
+  const lexiconPills = (node.lexicon || []).map(term => `<span class="pill badge-news" style="margin-right:6px; margin-bottom:4px;">${{term}}</span>`).join('');
+
+  const catNames = {{
+    'pain': '🔴 Practitioner Pain',
+    'evasion': '🟡 Evasion & Hidden Risk',
+    'reg': '🟣 Regulators & Laws',
+    'sayari': '🟢 Sayari Proof Anchor'
+  }};
+
+  const html = `
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:10px; flex-wrap:wrap; gap:8px;">
+      <div>
+        <span class="pill" style="background:${{node.color}}22; color:${{node.color}}; border:1px solid ${{node.color}}; margin-bottom:6px;">${{catNames[node.category] || node.category}}</span>
+        <h3 style="font-size:18px; color:#fff; font-weight:800;">${{node.label}}</h3>
+        <p style="font-size:13px; color:#cbd5e1; margin-top:3px;">${{node.desc}}</p>
+      </div>
+      <button class="copy-btn" onclick="copyNodePrompt('${{node.id}}')">
+        📋 Copy Concept Brief for Claude
+      </button>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
+      <div>
+        <strong style="font-size:12px; color:var(--muted); text-transform:uppercase;">Connected Graph Components (Click to Hop):</strong>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+          ${{[...outgoing, ...incoming].join('') || '<span style="color:var(--muted); font-size:11px;">Central anchor</span>'}}
+        </div>
+
+        <div style="margin-top:14px;">
+          <strong style="font-size:12px; color:var(--muted); text-transform:uppercase;">Connected "Beer Test" Slang / Terms:</strong>
+          <div style="margin-top:6px;">${{lexiconPills || '<span style="color:var(--muted); font-size:11px;">Mined practitioner terms</span>'}}</div>
+        </div>
+
+        <div style="margin-top:14px; background:#080d1a; padding:10px 12px; border-radius:6px; font-size:12px; border-left:3px solid #34d399;">
+          <strong style="color:#34d399;">Sayari Solution Anchor:</strong>
+          <div style="color:#e2e8f0; margin-top:2px;">${{node.proof || 'Defensible primary source corporate ownership records.'}}</div>
+        </div>
+      </div>
+
+      <div>
+        <strong style="font-size:12px; color:var(--muted); text-transform:uppercase;">Underlying Real Posts & Evidence (${{matchingPosts.length}} matches):</strong>
+        <div style="max-height: 280px; overflow-y:auto; padding-right:4px;">
+          ${{postsHtml}}
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('graphInspector').innerHTML = html;
+}}
+
+function selectNodeById(nodeId) {{
+  const n = graphNodes.find(item => item.id === nodeId);
+  if (n) {{
+    selectedNode = n;
+    hoveredNode = n;
+    renderGraphInspector(n);
+  }}
 }}
 
 function setupGraphInteractivity(canvas) {{
@@ -993,7 +1361,13 @@ function setupGraphInteractivity(canvas) {{
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
-    draggedNode = graphNodes.find(n => Math.hypot(n.x - mx, n.y - my) < n.r);
+    const clicked = graphNodes.find(n => Math.hypot(n.x - mx, n.y - my) < (n.r + 6));
+    if (clicked) {{
+      draggedNode = clicked;
+      selectedNode = clicked;
+      hoveredNode = clicked;
+      renderGraphInspector(clicked);
+    }}
   }};
 
   canvas.onmousemove = (e) => {{
@@ -1005,7 +1379,7 @@ function setupGraphInteractivity(canvas) {{
       draggedNode.x = mx;
       draggedNode.y = my;
     }} else {{
-      hoveredNode = graphNodes.find(n => Math.hypot(n.x - mx, n.y - my) < n.r);
+      hoveredNode = graphNodes.find(n => Math.hypot(n.x - mx, n.y - my) < (n.r + 6)) || selectedNode;
     }}
   }};
 
@@ -1027,7 +1401,8 @@ function animateGraph(canvas, ctx) {{
     const n2 = graphNodes.find(n => n.id === e.to);
     if (!n1 || !n2) return;
 
-    const isHighlight = hoveredNode && (hoveredNode.id === n1.id || hoveredNode.id === n2.id);
+    const isHighlight = (hoveredNode && (hoveredNode.id === n1.id || hoveredNode.id === n2.id)) ||
+                        (selectedNode && (selectedNode.id === n1.id || selectedNode.id === n2.id));
 
     ctx.beginPath();
     ctx.moveTo(n1.x, n1.y);
@@ -1036,7 +1411,6 @@ function animateGraph(canvas, ctx) {{
     ctx.lineWidth = isHighlight ? 2.5 : 1.2;
     ctx.stroke();
 
-    // Draw relation label
     if (isHighlight) {{
       const mx = (n1.x + n2.x) / 2;
       const my = (n1.y + n2.y) / 2;
@@ -1048,29 +1422,27 @@ function animateGraph(canvas, ctx) {{
 
   // Draw Nodes
   graphNodes.forEach(n => {{
+    const isSelected = selectedNode && selectedNode.id === n.id;
     const isHovered = hoveredNode && hoveredNode.id === n.id;
-    const isNeighbor = hoveredNode && graphEdges.some(e => (e.from === hoveredNode.id && e.to === n.id) || (e.to === hoveredNode.id && e.from === n.id));
 
     ctx.beginPath();
-    ctx.arc(n.x, n.y, isHovered ? n.r + 4 : n.r, 0, Math.PI * 2);
+    ctx.arc(n.x, n.y, (isHovered || isSelected) ? n.r + 4 : n.r, 0, Math.PI * 2);
     ctx.fillStyle = n.color;
-    ctx.shadowBlur = isHovered ? 16 : 6;
+    ctx.shadowBlur = (isHovered || isSelected) ? 16 : 6;
     ctx.shadowColor = n.color;
     ctx.fill();
     ctx.shadowBlur = 0;
 
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = isHovered ? 2 : 1;
+    ctx.strokeStyle = isSelected ? '#38bdf8' : '#fff';
+    ctx.lineWidth = isSelected ? 3 : (isHovered ? 2 : 1);
     ctx.stroke();
 
-    // Node text
     ctx.fillStyle = '#fff';
     ctx.font = '11px -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText(n.label, n.x, n.y + n.r + 14);
 
-    // Tooltip for hovered node
-    if (isHovered) {{
+    if (isHovered && !isSelected) {{
       ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
       ctx.strokeStyle = n.color;
       ctx.lineWidth = 1;
