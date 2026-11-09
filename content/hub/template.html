@@ -87,6 +87,13 @@ a{color:var(--ink);text-decoration-color:var(--gold);text-underline-offset:3px}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .empty{color:var(--muted);font-style:italic}
 footer{color:var(--muted);font-size:13px;padding-block:0 32px}
+.stack-posts{display:flex;flex-direction:column;gap:16px}
+.meta-grid{display:grid;gap:10px 20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.version{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.version h4{margin:0;font:600 15px/1.35 var(--body);color:var(--gold)}
+.strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+.strip .thumb{flex:0 0 auto;width:min(260px,70vw);scroll-snap-align:start}
+.strip .thumb img{height:auto;aspect-ratio:4/5;max-height:none}
 .prose{gap:10px;max-width:860px}
 .prose p,.prose li{max-width:72ch}
 .prose ul,.prose ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
@@ -168,18 +175,25 @@ function overview(){
 const voice = v => `<div class="voice searchable"><q>${esc(v.text)}</q><span class="small muted">${esc(v.src)} · ${v.up} upvotes · <a href="${esc(v.url)}" target="_blank" rel="noopener">thread</a></span></div>`;
 
 function posts(){
-  return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Source: content/posts/POSTS.md.</p></div>
-  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr))">${D.posts.map((p,i)=>`
+  const strip = (imgs, cap) => imgs.length ? `<div class="strip">${imgs.map((src,k)=>`<button class="thumb" data-img="${esc(src)}" data-cap="${esc(cap)}${imgs.length>1?` · slide ${k+1}/${imgs.length}`:""}" aria-label="View ${imgs.length>1?`slide ${k+1}`:"image"} full size"><img loading="lazy" src="${esc(src)}" alt="${esc(cap)}"></button>`).join("")}</div>` : `<p class="small muted">Image not added yet (drop it in content/posts/assets/).</p>`;
+  return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Posts with options show each version separately. Source: content/posts/POSTS.md.</p></div>
+  <div class="stack-posts">${D.posts.map((p,i)=>`
     <article class="card searchable">
       <div class="row"><div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3></div>${pill(p.status||"created")}</div>
-      ${p.img?`<button class="thumb" data-img="${esc(p.img)}" data-cap="${esc(p.id)} · ${esc(p.title)}" aria-label="View ${esc(p.id)} image full size"><img loading="lazy" src="${esc(p.img)}" alt="${esc(p.title)}"></button>`:`<p class="small muted">Image not added yet (drop it in content/posts/assets/).</p>`}
       ${chips([p.format,p.pillar,p.bucket])}
-      <p class="small"><span class="label">Template</span><br>${esc(p.template)}</p>
-      <p class="small"><span class="label">Theme</span><br>${esc(p.theme)}</p>
-      <p class="small"><span class="label">Hook</span><br>${esc(p.hook)}</p>
-      <div class="row"><span class="label">Caption</span><button data-copy="${i}">Copy caption</button></div>
-      <pre class="caption">${esc(p.caption)}</pre>
-      <p class="small"><span class="label">Personality moves</span><br>${esc(p.moves)}</p>
+      <div class="meta-grid">
+        <p class="small"><span class="label">Template</span><br>${esc(p.template)}</p>
+        <p class="small"><span class="label">Theme</span><br>${esc(p.theme)}</p>
+        <p class="small"><span class="label">Hook</span><br>${esc(p.hook)}</p>
+        <p class="small"><span class="label">Personality moves</span><br>${esc(p.moves)}</p>
+      </div>
+      ${p.versions.map((v,j)=>`
+        <section class="version">
+          ${v.label?`<h4>${esc(v.label)}</h4>`:""}
+          ${strip(v.imgs, p.id + (v.label?` · ${v.label}`:""))}
+          <div class="row"><span class="label">Caption</span><button data-copy="${i}:${j}">Copy caption</button></div>
+          <pre class="caption">${esc(v.caption)}</pre>
+        </section>`).join("")}
       <p class="small muted">Results: ${esc(p.results)}</p>
     </article>`).join("")}</div>`;
 }
@@ -271,7 +285,7 @@ function render(){
 main.addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   if (b.dataset.copy != null) {
-    const text = D.posts[+b.dataset.copy].caption;
+    const [pi, vi] = b.dataset.copy.split(":").map(Number); const text = D.posts[pi].versions[vi].caption;
     const done = () => { b.textContent = "Copied"; setTimeout(()=>b.textContent="Copy caption",1500); };
     try { navigator.clipboard.writeText(text).then(done, () => selectCaption(b)); } catch { selectCaption(b); }
   }

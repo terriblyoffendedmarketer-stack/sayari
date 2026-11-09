@@ -14,7 +14,7 @@ Starting points for every post, in Sayari's own design system (tokens copied fro
 Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas in the idea bank (L3 = idea I05, L6 = idea I04), so they double as first wireframes.
 
 ## Rules baked in (from the design system)
-- One mode per image (navy or beige); alternate modes across the feed.
+- One mode per image (navy or beige). Across the feed (and across carousel slides), vary modes with intent: alternating is the default, but two of the same back to back is fine when there's an organic reason. Strict alternation everywhere gets monotonous too, so don't force it either way.
 - Gold (`accent`) once per image: a key word, the annotation, or one tag.
 - One handwritten `scrawl` phrase per image at most.
 - Nothing under 26px on the 1080×1350 canvas. Left-aligned. 80px side margins.

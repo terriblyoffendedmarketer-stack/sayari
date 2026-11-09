@@ -1,6 +1,6 @@
 # Sayari posts log (source of truth for what shipped)
 
-Read this first when starting a batch. One entry per post, newest at the bottom. Images go in `content/posts/assets/` as `P<nn>-<slug>.png` (the hub picks them up automatically).
+Read this first when starting a batch. One entry per post, newest at the bottom. Images go in `content/posts/assets/`: `P<nn>-<slug>.png` for a single image, `P<nn>-v<k>-<nn>.png` for version k's slides (the hub picks them up automatically). Multiple versions go under `#### Version k · <label>` headings, each with its caption.
 Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pillar** (Frankenstack / score ≠ defense / hidden risk) · **theme** (from `content/themes.md`) · **template** (from `playbook/templates.md`) · **bucket** · **hook type**.
 
 ## Running tally
@@ -53,7 +53,7 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack �
 - **Format:** product as relief · **Pillar:** hidden risk · **Template:** split compare (kit L3), headline carries the hook
 - **Image:** `assets/P03-questionnaire-vs-record.png` (draft source: `drafts/P03-questionnaire-vs-record.html`; editable copy on the Claude Design canvas https://claude.ai/artifact/Qf9AmewWkDheDkufUh7b1n). Beige; gold "25% + 25% =" / "a sanctioned company."; left: supplier questionnaire, "Any sanctioned beneficial owners? ☑ No, signed, not checked against anything"; right: dark registry panel, Northgate Supply Ltd (invented; no sanctions hits found), Owner A 25% and Owner B 25%, both "blocked person", "Together: 50% → the company is blocked too". No disclaimer line on the image (by rule).
 - **Hook type:** a surprising rule (hook C). Unused alternatives are banked as hooks H01–H03 in `content/buckets/IDEA_BANK.md`.
-- **Caption option 1 (as submitted to Sayari):**
+#### Version 1 · caption option 1 ("Wait. What?"), as submitted to Sayari
 > 25% + 25% = a sanctioned company.
 > Wait. What?
 > Yep, the supplier questionnaire can’t do that math.
@@ -68,7 +68,7 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack �
 > Sayari reads the registry, not the form: the owners, their owners, and the source behind each one. So when someone asks “how did you know?”, you’ve got more than a tick box.
 > What’s the cleanest-looking questionnaire that turned out not to be? (No names. We know.)
 > P.S. Northgate Supply Ltd is fictional.  The pattern, sadly, is not.
-- **Caption option 2 (as submitted to Sayari):**
+#### Version 2 · caption option 2 ("W H A T?"), as submitted to Sayari
 > 25% + 25% = a sanctioned company? 
 > W H A T?
 > Yep, the supplier questionnaire can’t do that math.
@@ -89,10 +89,11 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack �
 ## P04 · The PURE case: "No match found" (carousel)
 - **Idea source:** doc tab 4 (I04), pitch in `content/sharpened/idea-04_no-match-is-not-an-answer.md` · **Bucket:** case studies as stories · **Theme:** the name passed, the owner didn't
 - **Format:** receipts · **Pillars:** hidden risk + a score is not a defense · **Template:** story carousel (kit L6), 6 slides
-- **Image:** `assets/P04-pure-carousel.png` (cover); editable on the Claude Design canvas (rows 2–3); all slides + PDF in `drafts/P04-pure-carousel-*.png` / `.pdf`; source `drafts/P04-pure-carousel.html`.
+- **Image:** two 6-slide versions (`assets/P04-v1-*.png`, `assets/P04-v2-*.png`); editable on the Claude Design canvas (rows 2–3); sources `drafts/P04-pure-carousel.html` (v1) and `drafts/P04b-pure-carousel.html` (v2). Slide 3 has the ownership diagram (Vekselberg → owns 100% → Medallion, blocked too); receipt label is grey so $466,200 is the one gold moment.
   Slides: 1 cover (search "Medallion, Inc." → no match found; "39 violations later: a $466,200 penalty.") · 2 2010, the questionnaire names the only owner (Viktor Vekselberg) · 3 April 2018, he's sanctioned; 50% rule makes the company blocked too; its name is on no list · 4 2018–2020, the screen checks the name, the name is clean; 4 policies, 39 violations by July 2020 · 5 the receipt: $466,200, OFAC settlement, owner's name in their files since 2010 (real source line) · 6 the lesson: "A name search tells you if the name is on a list. It doesn't tell you who owns it."
 - **Hook:** C, adjusted for accuracy: OFAC's 39 = violations (transactions), not searches, so not "39 times".
-- **Caption (draft, hook C):**
+#### Version 1 · hook C: "No match found." 39 violations later: a $466,200 penalty.
+Slides: `assets/P04-v1-01..06.png`, PDF `drafts/P04-pure-carousel.pdf`.
 > "No match found."
 > 39 violations later: a $466,200 penalty.
 >
@@ -110,8 +111,8 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack �
 > Sayari puts them in the same place: owners and the companies they own, linked, sourced, and watched for new designations. So "no match" actually means no match.
 >
 > Where does ownership info live at your company: in the screening, or in a folder?
-- **Version B (hook B, "The answer was in their own files."):** `drafts/P04b-pure-carousel.pdf` (+ PNGs; cover also at `assets/P04b-pure-carousel-cover.png`). Same slides 2–4 and 6; new cover ("The answer was in **their own files**." / "The screening never saw it. It cost $466,200."); slide 5 line changed to "39 violations across four policies, for a name that sat in a folder."
-- **Caption (draft, version B):**
+#### Version 2 · hook B: "The answer was in their own files."
+Slides: `assets/P04-v2-01..06.png`, PDF `drafts/P04b-pure-carousel.pdf`. Same slides 2–4 and 6; new cover; slide 5 line: "39 violations across four policies, for a name that sat in a folder."
 > The answer was in their own files.
 > Since 2010, in fact.
 >

@@ -56,4 +56,4 @@ Proof gates (no unsourced numbers; client clearance for customer proof) · never
 Government lane or commercial only? Push Sayari Guide (the Frankenstack story) or Trade & Export Controls? Ghostwritten exec posts in scope for us? (They'd carry the most personal, opinionated pieces.)
 
 ## The current sprint (now)
-Get to **5–6 images**. Two are done (I01, I03). Next, in order: **I05 questionnaire vs record** (relief) → **I04 the PURE story carousel** (receipts) → **I08 demo questions** (saveable) → **I40 or I38** (a Friday 3pm piece). That set covers all four content types and stays on one validated theme.
+Get to **5–6 images**. Done: P01 (I01), P02 (I03), P03 (I05, relief), P04 (I04, receipts; 2 versions). Next: **post 5**, a Friday-3pm relatable piece (I40 calendar / I38 "Did you mean") or a saveable list (I08 demo questions). After that, a newsjack when real news lands.

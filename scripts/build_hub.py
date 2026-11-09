@@ -42,19 +42,32 @@ def posts():
         body = "\n".join(rest)
         field = lambda k: (re.search(r"\*\*" + k + r":\*\*\s*(.+)", body) or [None, ""])[1].split(" · **")[0].strip()
         tags = dict(re.findall(r"\*\*([A-Za-z ]+):\*\*\s*([^·\n]+)", body))
-        caption = "\n".join(l[2:] if l.startswith("> ") else l[1:] for l in body.splitlines() if l.startswith(">"))
+        def quote(txt):
+            lines = []
+            for l in txt.splitlines():
+                if l.startswith(">"): lines.append(l[2:] if l.startswith("> ") else l[1:])
+                elif lines and l.startswith("- **"): break
+            return "\n".join(lines)
+        assets = sorted(os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*")))
+        shared = ["posts/" + a for a in assets if not re.match(num + r"-v\d+-", a)]
+        parts = re.split(r"\n#### Version (\d+) · ([^\n]*)\n", body)
+        versions = []
+        if len(parts) > 1:
+            for i in range(1, len(parts), 3):
+                k, label, txt = parts[i], parts[i + 1], parts[i + 2]
+                imgs = ["posts/" + a for a in assets if a.startswith(f"{num}-v{k}-")] or shared
+                versions.append({"label": f"Version {k} · {strip_md(label)}", "caption": quote(txt), "imgs": imgs})
+        else:
+            versions.append({"label": "", "caption": quote(body), "imgs": shared})
         out.append({
             "id": num, "title": title,
-            "format": strip_md(tags.get("Format", "")), "pillar": strip_md(tags.get("Pillar", "")),
+            "format": strip_md(tags.get("Format", "")), "pillar": strip_md(tags.get("Pillar", "") or tags.get("Pillars", "")),
             "template": strip_md(tags.get("Template", "")), "bucket": strip_md(tags.get("Bucket", "")),
-            "theme": strip_md(tags.get("Theme", "")), "hook": strip_md(field("Hook type")),
+            "theme": strip_md(tags.get("Theme", "")), "hook": strip_md(field("Hook type") or field("Hook")),
             "moves": strip_md(field("Personality moves")), "image": strip_md(field("Image")),
-            "results": strip_md(field("Results")), "caption": caption,
+            "results": strip_md(field("Results")), "versions": versions,
             "status": (re.search(r"\|\s*" + num + r"\s*\|.*\|\s*([^|]+?)\s*\|\s*$", md, re.M) or [None, "created"])[1],
         })
-        asset = glob.glob(P("content/posts/assets", num + "-*"))
-        if asset:
-            out[-1]["img"] = "posts/" + os.path.basename(asset[0])
     pipeline = re.findall(r"^- \*\*(.+?)\*\*:?\s*(.*)$", md.split("## In the pipeline")[-1], re.M) if "## In the pipeline" in md else []
     mix_note = (re.search(r"^Mix so far:.*$", md, re.M) or [""])[0]
     return out, [{"title": strip_md(t), "note": strip_md(n)} for t, n in pipeline], strip_md(mix_note)
