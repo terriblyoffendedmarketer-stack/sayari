@@ -9,8 +9,9 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Shared with Sayari (not live) |
 | P02 | Frankenstack bingo | Pain mirror | Frankenstack | 3×3 bingo card | Shared with Sayari (not live) |
 | P03 | 25% + 25% (questionnaire vs record) | Product as relief | Hidden risk | Split compare (kit L3) | Shared with Sayari (not live), 2 caption options |
+| P04 | The PURE case: "No match found" (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Draft, hook C (hook B version next) |
 
-Mix so far: 2 pain mirror, 1 product-as-relief, 0 receipts, 0 newsjack → **next: receipts (idea 4, the PURE carousel).**
+Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack → **next: a newsjack or a Friday-3pm piece.**
 
 ---
 
@@ -85,8 +86,36 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 0 receipts, 0 newsjack → **nex
 - **Checks before posting:** the 50% rule wording against OFAC FAQ 398–401 · the invented name re-checked on OFAC's SDN search · Sayari OK on "reads the registry".
 - **Results:** (add)
 
+## P04 · The PURE case: "No match found" (carousel)
+- **Idea source:** doc tab 4 (I04), pitch in `content/sharpened/idea-04_no-match-is-not-an-answer.md` · **Bucket:** case studies as stories · **Theme:** the name passed, the owner didn't
+- **Format:** receipts · **Pillars:** hidden risk + a score is not a defense · **Template:** story carousel (kit L6), 6 slides
+- **Image:** `assets/P04-pure-carousel.png` (cover); all slides + PDF in `drafts/P04-pure-carousel-*.png` / `.pdf`; source `drafts/P04-pure-carousel.html`.
+  Slides: 1 cover (search "Medallion, Inc." → no match found; "39 violations later: a $466,200 penalty.") · 2 2010, the questionnaire names the only owner (Viktor Vekselberg) · 3 April 2018, he's sanctioned; 50% rule makes the company blocked too; its name is on no list · 4 2018–2020, the screen checks the name, the name is clean; 4 policies, 39 violations by July 2020 · 5 the receipt: $466,200, OFAC settlement, owner's name in their files since 2010 (real source line) · 6 the lesson: "A name search tells you if the name is on a list. It doesn't tell you who owns it."
+- **Hook:** C, adjusted for accuracy: OFAC's 39 = violations (transactions), not searches, so not "39 times".
+- **Caption (draft, hook C):**
+> "No match found."
+> 39 violations later: a $466,200 penalty.
+>
+> This one's real. Here's how it happened.
+>
+> 2010: a client questionnaire names the only owner of a Panama company. Viktor Vekselberg. Into the file it goes.
+> April 2018: he's sanctioned. Under OFAC's 50% rule, the company he owns is now blocked too.
+> Its own name? On no list. So a name search comes back clean.
+> The insurer, PURE, keeps four policies running. 39 violations by July 2020. Settled with OFAC in 2023.
+>
+> The owner's name was in their files the whole time. It just never met the screening.
+>
+> That's the gap nobody budgets for: the record lives in one system, the screen runs in another.
+>
+> Sayari puts them in the same place: owners and the companies they own, linked, sourced, and watched for new designations. So "no match" actually means no match.
+>
+> Where does ownership info live at your company: in the screening, or in a folder?
+- **First comment (proof):** OFAC's settlement release: https://ofac.treasury.gov/recent-actions/20231221_33
+- **Personality moves:** deadpan ("Into the file it goes."), the quotable close ("'no match' actually means no match").
+- **Checks before posting:** facts re-checked against OFAC's PDF · factual tone about PURE · Sayari OK on "watched for new designations" (Signal).
+- **Results:** (add)
+
 ---
 
 ## In the pipeline (not shipped)
-- **Idea 4 · "No match found" is the start of the question**: sharpened with the PURE OFAC case (`content/sharpened/idea-04_no-match-is-not-an-answer.md`). Format still to decide together.
 - **Idea 8 · Questions to ask any screening demo**: selected, not yet sharpened. Check Sayari can answer each question well.
