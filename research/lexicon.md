@@ -1,6 +1,7 @@
 # Practitioner lexicon: the words the ICP actually uses
 
 Source: the "words practitioners use" screenshot in the idea doc (image #03, research notes with sources), the brief's banned words, and listener findings. Use it to make captions and mock images sound like the real job.
+**The bar: hyper-relevant and relatable, not hyper-niche.** Only use terms that recur across many practitioners; prefer the most common phrasing.
 **Beginner test:** "Safe" = a beginner in compliance gets it. "Explain" = define it in the same line if used.
 
 ## Words that name the pain (use these)
