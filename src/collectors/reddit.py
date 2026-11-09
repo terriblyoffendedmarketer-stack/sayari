@@ -71,82 +71,96 @@ def collect_from_reddit(subreddit_name: str, config: Dict[str, Any]) -> List[Dic
         )
         
         sub = reddit.subreddit(subreddit_name)
-        # Fetch top and hot to get a balanced view of recurring frustrations
-        for post in sub.hot(limit=limit):
-            if post.stickied:
-                continue
+        seen_post_ids = set()
 
-            flair = post.link_flair_text
-            created_utc = time.strftime('%Y-%m-%d', time.gmtime(post.created_utc))
-            post_is_promotional = is_promo(post.title, flair, skip_flairs, skip_patterns)
+        # Multi-stream sweep: Top (All Time), Top (Past Year), Hot, and Controversial (Heated debates)
+        streams = [
+            ("top_all", lambda: sub.top(time_filter="all", limit=20)),
+            ("top_year", lambda: sub.top(time_filter="year", limit=25)),
+            ("hot", lambda: sub.hot(limit=25)),
+            ("controversial", lambda: sub.controversial(time_filter="year", limit=15))
+        ]
 
-            # NUANCE: If the post is an ad or vendor promo, we do NOT keep the sales pitch.
-            # BUT the comments are a goldmine of raw practitioner reactions (cynicism, objections, reality checks, or praise).
-            if post_is_promotional:
-                if post.num_comments > 0:
-                    try:
-                        post.comments.replace_more(limit=0)
-                        for c_idx, comment in enumerate(post.comments[:5]):
-                            c_body = comment.body or ""
-                            # Ignore automoderator bot comments and trivial short phrases
-                            if len(c_body) > 20 and not c_body.lower().startswith("i am a bot"):
-                                c_id = f"reddit_{post.id}_ad_reaction_{c_idx}"
-                                c_url = f"https://www.reddit.com{comment.permalink}"
-                                c_short = clip_to_25_words(c_body)
-                                c_para = paraphrase_text(c_body, max_words=60)
+        for stream_name, stream_fn in streams:
+            try:
+                for post in stream_fn():
+                    if post.id in seen_post_ids or post.stickied:
+                        continue
+                    seen_post_ids.add(post.id)
 
-                                collected_items.append({
-                                    "id": c_id,
-                                    "source": f"reddit:r/{subreddit_name}:ad_reaction",
-                                    "url": c_url,
-                                    "date": created_utc,
-                                    "title": f"Practitioner reaction to vendor pitch ('{post.title[:60]}...')",
-                                    "short_excerpt": c_short,
-                                    "paraphrase": c_para,
-                                    "upvotes": int(comment.score or 0),
-                                    "comment_count": 0,
-                                    "paraphrased_top_comments": []
-                                })
-                    except Exception:
-                        pass
-                continue
+                    flair = post.link_flair_text
+                    created_utc = time.strftime('%Y-%m-%d', time.gmtime(post.created_utc))
+                    post_is_promotional = is_promo(post.title, flair, skip_flairs, skip_patterns)
 
-            post_id = f"reddit_{post.id}"
-            url = f"https://www.reddit.com{post.permalink}"
-            created_utc = time.strftime('%Y-%m-%d', time.gmtime(post.created_utc))
-            
-            # Short excerpt max 25 words strictly enforced
-            body_text = post.selftext or ""
-            short_excerpt = clip_to_25_words(f"{post.title}. {body_text}")
-            paraphrase = paraphrase_text(f"{post.title}. {body_text}", max_words=60)
+                    # NUANCE: If the post is an ad or vendor promo, we do NOT keep the sales pitch.
+                    # BUT the comments are a goldmine of raw practitioner reactions (cynicism, objections, reality checks, or praise).
+                    if post_is_promotional:
+                        if post.num_comments > 0:
+                            try:
+                                post.comments.replace_more(limit=0)
+                                for c_idx, comment in enumerate(post.comments[:5]):
+                                    c_body = comment.body or ""
+                                    # Ignore automoderator bot comments and trivial short phrases
+                                    if len(c_body) > 20 and not c_body.lower().startswith("i am a bot"):
+                                        c_id = f"reddit_{post.id}_ad_reaction_{c_idx}"
+                                        c_url = f"https://www.reddit.com{comment.permalink}"
+                                        c_short = clip_to_25_words(c_body)
+                                        c_para = paraphrase_text(c_body, max_words=60)
 
-            # Top comments (paraphrased, NO usernames)
-            paraphrased_comments = []
-            if post.num_comments > 0:
-                try:
-                    post.comments.replace_more(limit=0)
-                    for comment in post.comments[:3]:
-                        if comment.body and len(comment.body) > 10:
-                            cleaned_c = clip_to_25_words(comment.body)
-                            paraphrased_comments.append(cleaned_c)
-                except Exception:
-                    pass
+                                        collected_items.append({
+                                            "id": c_id,
+                                            "source": f"reddit:r/{subreddit_name}:ad_reaction:{stream_name}",
+                                            "url": c_url,
+                                            "date": created_utc,
+                                            "title": f"Practitioner reaction to vendor pitch ('{post.title[:60]}...')",
+                                            "short_excerpt": c_short,
+                                            "paraphrase": c_para,
+                                            "upvotes": int(comment.score or 0),
+                                            "comment_count": 0,
+                                            "paraphrased_top_comments": []
+                                        })
+                            except Exception:
+                                pass
+                        continue
 
-            collected_items.append({
-                "id": post_id,
-                "source": f"reddit:r/{subreddit_name}",
-                "url": url,
-                "date": created_utc,
-                "title": post.title.strip(),
-                "short_excerpt": short_excerpt,
-                "paraphrase": paraphrase,
-                "upvotes": int(post.score or 0),
-                "comment_count": int(post.num_comments or 0),
-                "paraphrased_top_comments": paraphrased_comments
-            })
+                    post_id = f"reddit_{post.id}"
+                    url = f"https://www.reddit.com{post.permalink}"
+                    created_utc = time.strftime('%Y-%m-%d', time.gmtime(post.created_utc))
+                    
+                    # Short excerpt max 25 words strictly enforced
+                    body_text = post.selftext or ""
+                    short_excerpt = clip_to_25_words(f"{post.title}. {body_text}")
+                    paraphrase = paraphrase_text(f"{post.title}. {body_text}", max_words=60)
 
-            # Respect rate limit
-            time.sleep(0.5)
+                    # Top comments (paraphrased, NO usernames)
+                    paraphrased_comments = []
+                    if post.num_comments > 0:
+                        try:
+                            post.comments.replace_more(limit=0)
+                            for comment in post.comments[:4]:
+                                if comment.body and len(comment.body) > 10:
+                                    cleaned_c = clip_to_25_words(comment.body)
+                                    paraphrased_comments.append(cleaned_c)
+                        except Exception:
+                            pass
+
+                    collected_items.append({
+                        "id": post_id,
+                        "source": f"reddit:r/{subreddit_name}:{stream_name}",
+                        "url": url,
+                        "date": created_utc,
+                        "title": post.title.strip(),
+                        "short_excerpt": short_excerpt,
+                        "paraphrase": paraphrase,
+                        "upvotes": int(post.score or 0),
+                        "comment_count": int(post.num_comments or 0),
+                        "paraphrased_top_comments": paraphrased_comments
+                    })
+
+                    # Respect rate limit
+                    time.sleep(0.3)
+            except Exception as stream_err:
+                print(f"[reddit] Note on stream {stream_name} for r/{subreddit_name}: {stream_err}")
 
     except (ResponseException, OAuthException) as e:
         print(f"[reddit error] Authentication or network error for r/{subreddit_name}: {e}")

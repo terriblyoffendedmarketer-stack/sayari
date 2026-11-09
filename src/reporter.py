@@ -542,6 +542,39 @@ const DROPPED_ITEMS = {dropped_json};
 const PIPELINE_RUNS = {runs_json};
 const CLAUDE_DUMP = {claude_dump_json};
 
+const OPINION_MAP = [
+  {{
+    title: "Vendor Questionnaires Are Compliance Theater",
+    tension: "Self-disclosure forms are useless; illicit networks never check 'Yes' on SDN ties; 72% of flagged risk is hidden 3+ layers deep in nested ownership.",
+    proof: "No. 3 Global Telecom: 72% of high-risk entities appeared clean on watchlists, hidden in nested corporate structures.",
+    match: i => i.title.toLowerCase().includes('watchlist') || i.title.toLowerCase().includes('72%') || i.title.toLowerCase().includes('questionnaire') || i.title.toLowerCase().includes('ubo') || i.title.toLowerCase().includes('apartment')
+  }},
+  {{
+    title: "Alert Fatigue is a Tool Failure, Not an Analyst Failure",
+    tension: "Industry false-positive rates of 90-95% are caused by crude keyword tools, turning L1 review into soul-crushing whack-a-mole.",
+    proof: "Fortune 50 Energy Supermajor: 1.2M records screened in real time vs 24-48 hours on legacy platform.",
+    match: i => i.title.toLowerCase().includes('alert') || i.title.toLowerCase().includes('queue') || i.title.toLowerCase().includes('name') || i.title.toLowerCase().includes('purgatory')
+  }},
+  {{
+    title: "The Swivel Chair Trap: Fragmented Tools Paralyze Investigation",
+    tension: "Analysts waste 45 minutes per vendor manually copy-pasting numbers across 6-8 disconnected vendor tabs and spreadsheets.",
+    proof: "Fortune 50 Energy: 75+ disparate data feeds collapsed into a single unified registry query.",
+    match: i => i.title.toLowerCase().includes('frankenstack') || i.title.toLowerCase().includes('tabs') || i.title.toLowerCase().includes('75+') || i.title.toLowerCase().includes('breakup')
+  }},
+  {{
+    title: "A Vendor Risk Score is Not an Audit Defense",
+    tension: "Regulators reject automated black-box risk scores; examiners demand primary registry documents and defensible provenance.",
+    proof: "Recent regulatory enforcement doctrine: an algorithm score cannot substitute for verified registry audit trails.",
+    match: i => i.title.toLowerCase().includes('score') || i.title.toLowerCase().includes('regulator') || i.title.toLowerCase().includes('audit') || i.title.toLowerCase().includes('settle') || i.title.toLowerCase().includes('defense')
+  }},
+  {{
+    title: "The Sub-Tier Supply Chain Blind Spot (Beyond Tier 1)",
+    tension: "Tier-1 suppliers pass questionnaires easily; UFLPA detentions and export bans strike Tier-2 and Tier-3 raw component hubs.",
+    proof: "Top-5 Global Tech Company: Chose Sayari over supply-chain incumbent specifically for sub-tier component mapping.",
+    match: i => i.title.toLowerCase().includes('supply') || i.title.toLowerCase().includes('tier') || i.title.toLowerCase().includes('tech') || i.title.toLowerCase().includes('labor')
+  }}
+];
+
 let currentTab = 'living_brain';
 
 function showToast(msg) {{
@@ -682,23 +715,32 @@ Please write 2 variations of this LinkedIn post ready to publish.`;
   copyTextToClipboard(prompt, `📋 Copied Idea #${{idx+1}} Prompt for Claude!`);
 }}
 
-function copyOpinionPrompt(opinionTitle, opinionDesc, angles) {{
-  var angleLines = angles.map(function(a, idx) {{
-    return "Angle #" + (idx + 1) + " (" + a.format + "): \\"" + a.title + "\\"\\nHook: \\"" + a.hook + "\\"\\nVisual: " + a.suggested_visual;
+function copyOpinionPrompt(opIdx) {{
+  const op = OPINION_MAP[opIdx];
+  if (!op) return;
+
+  let matchingIdeas = IDEAS.filter(op.match);
+  if (!matchingIdeas.length) {{
+    matchingIdeas = IDEAS.slice(opIdx * 3, opIdx * 3 + 3);
+  }}
+
+  var angleLines = matchingIdeas.map(function(a, idx) {{
+    return 'Angle #' + (idx + 1) + ' (' + a.format + '): "' + a.title + '"\\nHook: "' + a.hook + '"\\nVisual: ' + a.suggested_visual;
   }}).join('\\n\\n');
 
   const prompt = `I am drafting LinkedIn content for Sayari based on this core practitioner opinion:
 
-Key Opinion / Tension: ` + opinionTitle + `
-Practitioner Reality: ` + opinionDesc + `
+Key Practitioner Stance: ` + op.title + `
+Practitioner Reality & Tension: ` + op.tension + `
+Sayari Proof Anchor: ` + op.proof + `
 
 Actionable Post Angles:
 ` + angleLines + `
 
 Voice Guidelines:
 - Validating, unflinching, human, a little funny. Pass the "Beer Test".
-- Zero vendor buzzwords.
-- Use Sayari proof anchors (e.g., 72% unlisted risk in nested ownership, 1.2M records screened real-time vs 48h competitor).
+- Zero vendor buzzwords (no "judgment infrastructure", "zero-resistance", or "synergies").
+- Meet them mid-drown, name the Frankenstack as the real enemy, and show the shift to primary records.
 
 Please write 2 publish-ready LinkedIn posts for this opinion.`;
 
@@ -781,39 +823,6 @@ function renderLivingBrain() {{
   const minInt = parseFloat(document.getElementById('filterIntensity').value);
   const q = document.getElementById('filterSearch').value.toLowerCase().trim();
 
-  const OPINION_MAP = [
-    {{
-      title: "Vendor Questionnaires Are Compliance Theater",
-      tension: "Self-disclosure forms are useless; illicit networks never check 'Yes' on SDN ties; 72% of flagged risk is hidden 3+ layers deep in nested ownership.",
-      proof: "No. 3 Global Telecom: 72% of high-risk entities appeared clean on watchlists, hidden in nested corporate structures.",
-      match: i => i.title.toLowerCase().includes('watchlist') || i.title.toLowerCase().includes('72%') || i.title.toLowerCase().includes('questionnaire') || i.title.toLowerCase().includes('ubo') || i.title.toLowerCase().includes('apartment')
-    }},
-    {{
-      title: "Alert Fatigue is a Tool Failure, Not an Analyst Failure",
-      tension: "Industry false-positive rates of 90-95% are caused by crude keyword tools, turning L1 review into soul-crushing whack-a-mole.",
-      proof: "Fortune 50 Energy Supermajor: 1.2M records screened in real time vs 24-48 hours on legacy platform.",
-      match: i => i.title.toLowerCase().includes('alert') || i.title.toLowerCase().includes('queue') || i.title.toLowerCase().includes('name') || i.title.toLowerCase().includes('purgatory')
-    }},
-    {{
-      title: "The Swivel Chair Trap: Fragmented Tools Paralyze Investigation",
-      tension: "Analysts waste 45 minutes per vendor manually copy-pasting numbers across 6-8 disconnected vendor tabs and spreadsheets.",
-      proof: "Fortune 50 Energy: 75+ disparate data feeds collapsed into a single unified registry query.",
-      match: i => i.title.toLowerCase().includes('frankenstack') || i.title.toLowerCase().includes('tabs') || i.title.toLowerCase().includes('75+') || i.title.toLowerCase().includes('breakup')
-    }},
-    {{
-      title: "A Vendor Risk Score is Not an Audit Defense",
-      tension: "Regulators reject automated black-box risk scores; examiners demand primary registry documents and defensible provenance.",
-      proof: "Recent regulatory enforcement doctrine: an algorithm score cannot substitute for verified registry audit trails.",
-      match: i => i.title.toLowerCase().includes('score') || i.title.toLowerCase().includes('regulator') || i.title.toLowerCase().includes('audit') || i.title.toLowerCase().includes('settle') || i.title.toLowerCase().includes('defense')
-    }},
-    {{
-      title: "The Sub-Tier Supply Chain Blind Spot (Beyond Tier 1)",
-      tension: "Tier-1 suppliers pass questionnaires easily; UFLPA detentions and export bans strike Tier-2 and Tier-3 raw component hubs.",
-      proof: "Top-5 Global Tech Company: Chose Sayari over supply-chain incumbent specifically for sub-tier component mapping.",
-      match: i => i.title.toLowerCase().includes('supply') || i.title.toLowerCase().includes('tier') || i.title.toLowerCase().includes('tech') || i.title.toLowerCase().includes('labor')
-    }}
-  ];
-
   const html = OPINION_MAP.map((op, opIdx) => {{
     let matchingIdeas = IDEAS.filter(op.match);
     if (!matchingIdeas.length) {{
@@ -868,7 +877,7 @@ function renderLivingBrain() {{
 
         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:10px; border-top:1px solid var(--border);">
           <span style="font-size:11px; color:var(--muted);">Grounded in public Reddit/RSS chatter</span>
-          <button class="copy-btn" onclick="copyOpinionPrompt('${{op.title}}', '${{op.tension}}', ${{JSON.stringify(filteredAngles)}})">
+          <button class="copy-btn" onclick="copyOpinionPrompt(${{opIdx}})">
             📋 Copy Complete Opinion Package
           </button>
         </div>
