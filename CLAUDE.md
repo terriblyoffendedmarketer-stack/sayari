@@ -47,6 +47,7 @@
 - `tests/test_filters.py`: Pytest suite for compliance keyword and drop rules.
 - `content/` : content research and planning (committed; only the images/ subfolder is gitignored).
   - `research/sayari_usp_competitors.md`: Sayari products, USP, competitor gaps, proof points, open questions.
+  - `sharpened/`: one file per idea after sharpening (real case, UGC, 2–3 angle options). Done so far: idea 4.
   - `listener_audit.md`: why ~35–40% of kept items are noise, and the fixes. `content_engine_plan.md`: the listen → patterns → ideas → wireframes → approve pipeline plan.
   - `idea-doc-images/gallery.html`: local visual gallery of all 49 images (open it in a browser). `IMAGE_IDEAS.md` + `images/`: all 49 images from the idea-bank doc, numbered in doc order, each tagged format / pulse / brief with a non-meme Sayari adaptation.
 - `scripts/build_image_gallery.py`: Rebuilds gallery.html from IMAGE_IDEAS.md.
