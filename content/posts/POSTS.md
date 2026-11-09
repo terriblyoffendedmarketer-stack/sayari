@@ -8,8 +8,9 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 |---|---|---|---|---|---|
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Shared with Sayari (not live) |
 | P02 | Frankenstack bingo | Pain mirror | Frankenstack | 3×3 bingo card | Shared with Sayari (not live) |
+| P03 | 25% + 25% (questionnaire vs record) | Product as relief | Hidden risk | Split compare (kit L3) | Draft (for review) |
 
-Mix so far: 2/2 pain mirror, 0 product-as-relief, 0 receipts, 0 newsjack → **the next batch should add relief and receipts.**
+Mix so far: 2 pain mirror, 1 product-as-relief (draft), 0 receipts, 0 newsjack → **next: receipts (idea 4, the PURE carousel).**
 
 ---
 
@@ -46,9 +47,29 @@ Mix so far: 2/2 pain mirror, 0 product-as-relief, 0 receipts, 0 newsjack → **t
 - **Personality moves:** precise moment, deadpan ("It holds. Mostly."), taking their side ("It's not you. It's the stack.")
 - **Results:** (add)
 
+## P03 · 25% + 25% (questionnaire vs record)
+- **Idea source:** idea bank #5 (I04), pitch in `content/sharpened/idea-05_questionnaire-vs-record.md` · **Bucket:** realistic artifacts · **Theme:** the name passed, the owner didn't / trust but can't verify
+- **Format:** product as relief · **Pillar:** hidden risk · **Template:** split compare (kit L3), headline carries the hook
+- **Image:** `assets/P03-questionnaire-vs-record.png` (draft source: `drafts/P03-questionnaire-vs-record.html`). Beige; gold "25% + 25% =" / "a sanctioned company."; left: supplier questionnaire, "Any sanctioned beneficial owners? ☑ No, signed, not checked against anything"; right: dark registry panel, Northgate Supply Ltd (invented; no sanctions hits found), Owner A 25% and Owner B 25%, both "blocked person", "Together: 50% → the company is blocked too"; source line "illustrative: invented company · 50% rule per OFAC guidance".
+- **Hook type:** a surprising rule (hook C). Unused alternatives are banked in `content/HOOKS.md`.
+- **Caption (draft):**
+> 25% + 25% = a sanctioned company.
+> The supplier questionnaire can't do that math.
+> It asks: "Any sanctioned owners?"
+> Someone ticks No. Signs. Files it. Everyone moves on.
+> Meanwhile, in the registry: two owners, 25% each. Both on a sanctions list.
+> Neither one is a majority. The company's own name is on no list. And it's still blocked, because under OFAC's 50% rule, ownership adds up. Together, they make 50%.
+> One of these documents is a promise. The other is a record you can attach to the file.
+> Sayari reads the registry, not the form: the owners, the owners' owners, and the source behind each one. So when someone asks "how did you know?", you can show them.
+> Ever had a clean questionnaire turn out not so clean? Tell us how you caught it.
+> P.S. Northgate Supply Ltd is invented. The pattern, sadly, is not.
+- **First comment (proof):** OFAC's own example of two 25% owners (FAQ 401): https://ofac.treasury.gov/faqs/401
+- **Personality moves:** deadpan beats ("Signs. Files it. Everyone moves on."), comic specificity, the wink P.S.
+- **Checks before posting:** the 50% rule wording against OFAC FAQ 398–401 · the invented name re-checked on OFAC's SDN search · Sayari OK on "reads the registry".
+- **Results:** (add)
+
 ---
 
 ## In the pipeline (not shipped)
 - **Idea 4 · "No match found" is the start of the question**: sharpened with the PURE OFAC case (`content/sharpened/idea-04_no-match-is-not-an-answer.md`). Format still to decide together.
-- **Idea 5 · Questionnaire vs record**: selected, not yet sharpened. Strong case-study support (grocery <50% questionnaire response, telecom's "owners were not checked", PURE).
 - **Idea 8 · Questions to ask any screening demo**: selected, not yet sharpened. Check Sayari can answer each question well.

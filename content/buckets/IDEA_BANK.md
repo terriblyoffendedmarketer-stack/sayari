@@ -10,7 +10,7 @@ Doc # = the numbered idea in the doc's tabs (idea 1–9), where it has one.
 | I01 | Name-match purgatory | One invented company in three spellings, all "potential match": same company? | Pain mirror | Realistic artifacts | done | — | 1 |
 | I02 | Compliance bingo, Friday 3pm edition | 5×5 card of daily pains; readers comment their count | Pain mirror | Charts-as-jokes | done | — | 3 |
 | I03 | "No match found" is the start of the question | A name search isn't an ownership check (the 50% rule); PURE case | Product as relief | Case studies as stories | sharpened | Pick the angle | 4 |
-| I04 | Questionnaire vs record | Supplier form says "no concerns"; the registry shows two 25% blocked owners | Product as relief | Realistic artifacts | sharpened | Pick the hook (post 3) | 5 |
+| I04 | Questionnaire vs record | Supplier form says "no concerns"; the registry shows two 25% blocked owners | Product as relief | Realistic artifacts | sharpened | P03 draft, in review | 5 |
 | I05 | Questions to ask any screening demo | Saveable checklist: common name with no DOB, non-Latin script, see the source record, explain a clear-out six months later | Product as relief | Lists and tips | selected | Confirm Sayari answers each well | 8 |
 | I06 | Every Jose Gomez | L1 alert queue: six rows of the same name, no DOB, "clear by EOD" sticky note | Pain mirror | Realistic artifacts | open | — | 2 |
 | I07 | A score is not a defense | Examiner: "How did you clear this?" Reply: "Risk score: 87." Triage is a score; a decision is a file | Newsjack | Realistic artifacts | open | Check OFAC guidance wording | 6 |
