@@ -156,23 +156,73 @@ def detect_emotion_and_intensity(text: str) -> Tuple[str, int]:
 
     return primary_emotion, min(5, max(1, base_intensity))
 
-def detect_theme(text: str) -> str:
+KEY_OPINIONS = [
+    {
+        "id": "questionnaires_vs_reality",
+        "stance": "Vendor Questionnaires Are Compliance Theater",
+        "tension": "Self-disclosures are useless; illicit networks never declare ownership; true risk is hidden 3-5 layers deep in nested corporate structures.",
+        "keywords": ["questionnaire", "self-disclosure", "ubo", "shell", "nested ownership", "50 percent rule", "beneficial owner", "belize", "cyprus", "front company", "transshipment"]
+    },
+    {
+        "id": "tool_failure_alert_fatigue",
+        "stance": "Alert Fatigue is a Tool Failure, Not an Analyst Failure",
+        "tension": "90%+ false positive rates are caused by crude keyword filters, turning L1 review into soul-crushing whack-a-mole.",
+        "keywords": ["alert fatigue", "false positive", "queue", "backlog", "disposition", "l1", "first-line", "800 alerts", "cheapest vendor", "monitoring tool"]
+    },
+    {
+        "id": "swivel_chair_frankenstack",
+        "stance": "The Swivel Chair Trap: Fragmented Tools Paralyze Investigation",
+        "tension": "Analysts waste 45 mins copying registry IDs across 6-8 disconnected vendor tabs and spreadsheets that don't talk to each other.",
+        "keywords": ["swivel chair", "frankenstack", "point solution", "disconnected", "silo", "multiple logins", "spreadsheets", "6 tabs", "excel", "manual review"]
+    },
+    {
+        "id": "score_is_not_defense",
+        "stance": "A Vendor Risk Score is Not an Audit Defense",
+        "tension": "Regulators reject automated black-box risk scores; examiners demand verifiable primary registry documents and audit provenance.",
+        "keywords": ["audit", "exam", "regulator", "defensible", "score", "audit trail", "penalties", "settlement", "doj", "fincen", "whistleblower"]
+    },
+    {
+        "id": "subtier_supply_chain",
+        "stance": "The Sub-Tier Supply Chain Blind Spot (Beyond Tier 1)",
+        "tension": "Tier-1 suppliers pass easily; UFLPA seizures happen at Tier-2 and Tier-3 raw component and transshipment hubs.",
+        "keywords": ["uflpa", "forced labor", "supply chain", "tier 1", "tier 2", "tier 3", "sub-tier", "smelter", "customs", "distributor"]
+    },
+    {
+        "id": "entity_resolution_hell",
+        "stance": "Name-Match Purgatory: Triaging Common Spellings & Transliterations",
+        "tension": "Legacy screening tools flood queues with hits on common surnames, while genuine sanctioned entities evade detection with transliteration tricks.",
+        "keywords": ["name match", "name matching", "spelling", "vowel", "fuzzy", "transliteration", "latin names", "alias"]
+    },
+    {
+        "id": "enforcement_reality",
+        "stance": "Enforcement Is Shifting From Box-Checking to Evidentiary Proof",
+        "tension": "Recent penalties (e.g. Webull, TD Bank, Steptoe sanctions advisories) prove that superficial compliance is scrutinized down to root investigation.",
+        "keywords": ["settlement", "enforcement", "penalty", "fined", "whistleblower", "pleaded", "steptoe", "compliance week", "fiveby"]
+    }
+]
+
+def detect_key_opinion(text: str) -> Dict[str, str]:
     text_lower = text.lower()
-    if any(k in text_lower for k in ["name match", "false positive", "spelling", "fuzzy match"]):
-        return "Entity Resolution & Name Matching"
-    if any(k in text_lower for k in ["alert fatigue", "backlog", "queue", "l1 review", "disposition"]):
-        return "Alert Fatigue & Backlog"
-    if any(k in text_lower for k in ["ubo", "beneficial owner", "shell company", "transshipment", "ownership chain"]):
-        return "UBO, Shell Companies & Transshipment"
-    if any(k in text_lower for k in ["uflpa", "forced labor", "supplier screening", "tier 1", "tier 2", "sub-tier"]):
-        return "Supply Chain Risk & Forced Labor (UFLPA)"
-    if any(k in text_lower for k in ["ofac", "sanctions screening", "export control", "50 percent rule", "designated"]):
-        return "Sanctions Screening & OFAC Rules"
-    if any(k in text_lower for k in ["audit", "exam", "regulator", "documentation", "defensible"]):
-        return "Audit Panic & Regulatory Examination"
-    if any(k in text_lower for k in ["swivel chair", "frankenstack", "6 tabs", "spreadsheet", "manual check"]):
-        return "Swivel Chair Manual Review & Frankenstack"
-    return "Adverse Media & Negative News Noise"
+    best_op = None
+    max_matches = 0
+    for op in KEY_OPINIONS:
+        matches = sum(1 for kw in op["keywords"] if kw in text_lower)
+        if matches > max_matches:
+            max_matches = matches
+            best_op = op
+    if best_op and max_matches >= 1:
+        return best_op
+    # Fallback default
+    return {
+        "id": "practitioner_reality",
+        "stance": "The Reality Gap: Vendor Promises vs Practitioner Daily Grind",
+        "tension": "What marketing brochures promise vs what actually lands in the compliance analyst's queue on Monday morning.",
+        "keywords": []
+    }
+
+def detect_theme(text: str) -> str:
+    op = detect_key_opinion(text)
+    return op["stance"]
 
 def extract_practitioner_terms(text: str) -> List[str]:
     text_lower = text.lower()

@@ -95,11 +95,12 @@ def export_glossary_csv(glossary: List[Dict[str, Any]], filepath: str = "glossar
         writer = csv.writer(f)
         writer.writerow(headers)
         for g in glossary:
+            is_vendor_flag = "YES (Vendor Buzzword)" if (str(g.get("is_vendor_marketing_only", "")).upper() in ("1", "YES", "TRUE") or g.get("is_vendor_marketing_only") == 1) else "NO (Real Practitioner Term)"
             writer.writerow([
                 g.get("term"),
                 g.get("frequency"),
                 g.get("source_count"),
-                "YES (Vendor Buzzword)" if g.get("is_vendor_marketing_only") == 1 else "NO (Real Practitioner Term)",
+                is_vendor_flag,
                 g.get("example_context", "")
             ])
 
@@ -189,12 +190,21 @@ def export_claude_dump_md(dump_text: str, filepath: str = "reports/claude_dump.m
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(dump_text)
 
-def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, Any]], glossary: List[Dict[str, Any]], dropped_items: List[Dict[str, Any]], sweep_time: str, filepath: str = "viewer/index.html"):
+def export_html_viewer(
+    ideas: List[Dict[str, Any]],
+    raw_items: List[Dict[str, Any]],
+    glossary: List[Dict[str, Any]],
+    dropped_items: List[Dict[str, Any]],
+    pipeline_runs: List[Dict[str, Any]],
+    sweep_time: str,
+    filepath: str = "viewer/index.html"
+):
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     ideas_json = json.dumps(ideas)
     items_json = json.dumps(raw_items)
     glossary_json = json.dumps(glossary)
     dropped_json = json.dumps(dropped_items)
+    runs_json = json.dumps(pipeline_runs)
     claude_dump_text = generate_claude_dump_text(ideas, raw_items, glossary)
     claude_dump_json = json.dumps(claude_dump_text)
     export_claude_dump_md(claude_dump_text, "reports/claude_dump.md")
@@ -234,69 +244,103 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
     --btn-dump-hover: #059669;
   }}
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); color: var(--text); padding: 24px 32px; line-height: 1.5; }}
+  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); color: var(--text); padding: 20px 28px; line-height: 1.5; }}
   
   /* Header */
-  header {{ margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }}
-  .title-area h1 {{ font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }}
+  header {{ margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }}
+  .title-area h1 {{ font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }}
   .title-area h1 span.radar {{ color: var(--accent); }}
-  p.subtitle {{ color: var(--muted); font-size: 14px; margin-top: 4px; }}
+  p.subtitle {{ color: var(--muted); font-size: 13.5px; margin-top: 4px; }}
   
-  .header-actions {{ display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }}
-  .btn-dump-all {{ background: var(--btn-dump); color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }}
+  .header-actions {{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }}
+  .btn-dump-all {{ background: var(--btn-dump); color: #fff; border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }}
   .btn-dump-all:hover {{ background: var(--btn-dump-hover); transform: translateY(-1px); }}
-
-  .sweep-badge {{ background: var(--card); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-size: 12.5px; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }}
+  .sweep-badge {{ background: var(--card); border: 1px solid var(--border); padding: 7px 12px; border-radius: 8px; font-size: 12px; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }}
   .sweep-time {{ color: var(--accent); font-weight: 700; }}
 
   /* Tabs */
-  .tabs {{ display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 8px; flex-wrap: wrap; }}
-  .tab-btn {{ background: transparent; border: none; color: var(--muted); padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.2s; }}
+  .tabs {{ display: flex; gap: 8px; margin-bottom: 18px; border-bottom: 1px solid var(--border); padding-bottom: 8px; flex-wrap: wrap; }}
+  .tab-btn {{ background: transparent; border: none; color: var(--muted); padding: 9px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13.5px; transition: all 0.2s; }}
   .tab-btn:hover {{ color: #fff; background: var(--card); }}
   .tab-btn.active {{ background: var(--card); color: var(--accent); border-bottom: 2px solid var(--accent); }}
 
   /* Filters */
-  .filters {{ display: flex; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; background: var(--card); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); align-items: flex-end; }}
-  .filter-group {{ display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 180px; }}
+  .filters {{ display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; background: var(--card); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border); align-items: flex-end; }}
+  .filter-group {{ display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 170px; }}
   label {{ font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }}
-  select, input {{ background: #0b1120; color: #fff; border: 1px solid var(--border); padding: 9px 12px; border-radius: 6px; font-size: 13px; outline: none; }}
+  select, input {{ background: #0b1120; color: #fff; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 13px; outline: none; }}
   select:focus, input:focus {{ border-color: var(--accent); }}
 
   /* Grid & Cards */
-  .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 20px; }}
-  .card {{ background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px; transition: all 0.2s; position: relative; }}
+  .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 18px; }}
+  .card {{ background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; transition: all 0.2s; position: relative; }}
   .card:hover {{ border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }}
   .card-header {{ display: flex; justify-content: space-between; align-items: center; gap: 8px; }}
-  .badge {{ font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.4px; }}
-  .badge-pain {{ background: rgba(248, 113, 113, 0.15); color: var(--tag-pain); border: 1px solid rgba(248, 113, 113, 0.4); }}
-  .badge-relief {{ background: rgba(52, 211, 153, 0.15); color: var(--tag-relief); border: 1px solid rgba(52, 211, 153, 0.4); }}
-  .badge-receipts {{ background: rgba(251, 191, 36, 0.15); color: var(--tag-receipts); border: 1px solid rgba(251, 191, 36, 0.4); }}
-  .badge-news {{ background: rgba(129, 140, 248, 0.15); color: var(--tag-news); border: 1px solid rgba(129, 140, 248, 0.4); }}
   
-  .trace-id {{ font-size: 11px; font-family: monospace; color: var(--accent); background: #080d1a; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); }}
-  .idea-title {{ font-size: 17px; font-weight: 700; color: #fff; line-height: 1.35; }}
-  .hook-box {{ background: #080d1a; border-left: 3px solid var(--accent); padding: 12px 14px; border-radius: 6px; font-size: 13.5px; color: #e2e8f0; font-style: italic; }}
-  .meta-grid {{ display: grid; grid-template-columns: 1fr; gap: 6px; font-size: 12.5px; color: var(--muted); }}
+  .badge {{ font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }}
+  .badge-pain {{ background: rgba(248, 113, 113, 0.2); color: var(--tag-pain); border: 1px solid var(--tag-pain); }}
+  .badge-relief {{ background: rgba(52, 211, 153, 0.2); color: var(--tag-relief); border: 1px solid var(--tag-relief); }}
+  .badge-receipts {{ background: rgba(251, 191, 36, 0.2); color: var(--tag-receipts); border: 1px solid var(--tag-receipts); }}
+  .badge-news {{ background: rgba(129, 140, 248, 0.2); color: var(--tag-news); border: 1px solid var(--tag-news); }}
+
+  .idea-title {{ font-size: 16.5px; font-weight: 700; color: #fff; line-height: 1.35; }}
+  .hook-box {{ background: #0b1220; border-left: 3px solid var(--accent); padding: 10px 14px; font-style: italic; color: #e2e8f0; font-size: 13px; border-radius: 0 6px 6px 0; }}
+  
+  .meta-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: var(--muted); }}
+  .meta-grid div {{ background: #0f172a; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); }}
   .meta-grid strong {{ color: #cbd5e1; }}
   
-  .evidence-section {{ margin-top: auto; border-top: 1px solid var(--border); padding-top: 12px; }}
-  .evidence-header {{ font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }}
-  .evidence-item {{ font-size: 12px; color: #cbd5e1; margin-bottom: 6px; line-height: 1.4; }}
+  .evidence-section {{ background: #0c1424; padding: 10px 12px; border-radius: 6px; font-size: 12px; border: 1px dashed var(--border); }}
+  .evidence-header {{ font-weight: 700; color: #cbd5e1; margin-bottom: 6px; }}
+  .evidence-item {{ margin-bottom: 6px; color: #94a3b8; line-height: 1.4; }}
   
-  /* Copy Button */
-  .copy-btn {{ background: var(--btn-copy); color: #fff; border: none; padding: 9px 14px; border-radius: 6px; font-size: 12.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s; margin-top: 8px; width: 100%; }}
+  .copy-btn {{ background: var(--btn-copy); color: #fff; border: none; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; }}
   .copy-btn:hover {{ background: var(--btn-copy-hover); }}
 
-  /* Tables */
-  .table-container {{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }}
-  .table-view {{ width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }}
-  .table-view th, .table-view td {{ padding: 12px 16px; border-bottom: 1px solid var(--border); }}
-  .table-view th {{ color: var(--muted); font-size: 11px; text-transform: uppercase; font-weight: 700; background: #0c1424; }}
-  .table-view tr:hover {{ background: rgba(255,255,255,0.02); }}
+  /* Responsive Table View (No Horizontal Scrolling, Word Wrap) */
+  .table-container {{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 10px; }}
+  .table-view {{ width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; table-layout: fixed; }}
+  .table-view th {{ background: #0f182c; padding: 10px 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }}
+  .table-view td {{ padding: 10px 12px; border-bottom: 1px solid var(--border); color: #e2e8f0; vertical-align: top; word-wrap: break-word; overflow-wrap: break-word; }}
+  .table-view tr:hover td {{ background: #162238; }}
   
-  /* Toast */
-  #toast {{ visibility: hidden; min-width: 320px; background-color: #0284c7; color: #fff; text-align: center; border-radius: 8px; padding: 14px 20px; position: fixed; z-index: 100; right: 30px; bottom: 30px; font-size: 14px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }}
-  #toast.show {{ visibility: visible; animation: fadein 0.3s, fadeout 0.5s 2.5s; }}
+  /* Sized Down Images */
+  .table-view img, .evidence-section img, .card img {{
+    max-width: 120px;
+    max-height: 80px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    display: block;
+    margin: 4px 0;
+  }}
+
+  /* Collapsible Text / Expand Toggle */
+  .collapsible-text {{ max-height: 60px; overflow: hidden; position: relative; line-height: 1.4; }}
+  .collapsible-text.expanded {{ max-height: none; }}
+  .expand-btn {{ background: transparent; border: none; color: var(--accent); font-size: 11px; cursor: pointer; font-weight: 700; padding: 2px 0; display: inline-block; }}
+  .expand-btn:hover {{ text-decoration: underline; }}
+  
+  .source-link {{ color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }}
+  .source-link:hover {{ text-decoration: underline; color: #7dd3fc; }}
+
+  .trace-id {{ display: inline-block; background: #1e293b; color: #38bdf8; font-family: monospace; font-size: 11px; padding: 2px 6px; border-radius: 4px; border: 1px solid #334155; }}
+  .pill {{ font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; display: inline-block; }}
+
+  /* Run Log Badge */
+  .badge-cloud {{ background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; }}
+  .badge-local {{ background: rgba(148, 163, 184, 0.2); color: #94a3b8; border: 1px solid #64748b; }}
+
+  /* Knowledge Graph Canvas Area */
+  #graphContainer {{ background: #070b14; border: 1px solid var(--border); border-radius: 12px; position: relative; overflow: hidden; }}
+  #graphCanvas {{ width: 100%; height: 620px; display: block; }}
+  .graph-legend {{ position: absolute; bottom: 16px; left: 16px; background: rgba(19, 28, 46, 0.9); border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; font-size: 12px; display: flex; gap: 14px; backdrop-filter: blur(4px); }}
+  .legend-item {{ display: flex; align-items: center; gap: 6px; }}
+  .legend-dot {{ width: 10px; height: 10px; border-radius: 50%; display: inline-block; }}
+
+  /* Toast Notification */
+  #toast {{ visibility: hidden; min-width: 250px; background-color: #10b981; color: #fff; text-align: center; border-radius: 8px; padding: 12px 18px; position: fixed; z-index: 9999; right: 30px; bottom: 30px; font-size: 13.5px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }}
+  #toast.show {{ visibility: visible; animation: fadein 0.3s, fadeout 0.3s 2.5s; }}
   @keyframes fadein {{ from {{ bottom: 0; opacity: 0; }} to {{ bottom: 30px; opacity: 1; }} }}
   @keyframes fadeout {{ from {{ bottom: 30px; opacity: 1; }} to {{ bottom: 0; opacity: 0; }} }}
 </style>
@@ -306,10 +350,10 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
 <header>
   <div class="title-area">
     <h1><span class="radar">📡</span> Sayari Compliance Signal Radar & Living Brain</h1>
-    <p class="subtitle">Continuous public discussion mining, practitioner psychographics, and 4-format LinkedIn idea bank</p>
+    <p class="subtitle">Continuous public discussion mining, bottom-up practitioner opinions, and 4-format LinkedIn idea bank</p>
   </div>
   <div class="header-actions">
-    <button id="pwaInstallBtn" style="display:none; background:#38bdf8; color:#090d16; border:none; padding:10px 16px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13.5px; transition:all 0.2s;" onclick="installPWA()">
+    <button id="pwaInstallBtn" style="display:none; background:#38bdf8; color:#090d16; border:none; padding:9px 15px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13px; transition:all 0.2s;" onclick="installPWA()">
       📱 Install App
     </button>
     <button class="btn-dump-all" onclick="dumpEntireBrainToClipboard()">
@@ -317,24 +361,25 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
     </button>
     <div class="sweep-badge">
       <div>Last Sweep: <span class="sweep-time">{sweep_time}</span></div>
-      <div style="font-size:11px; color:#34d399;">● {len(raw_items)} Signals Active</div>
+      <div style="font-size:11px; color:#34d399;">● {len(raw_items)} Signals Active | {len(pipeline_runs)} Runs Logged</div>
     </div>
   </div>
 </header>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('ideas')">🎯 Ranked Idea Bank & Claude Prompts</button>
-  <button class="tab-btn" onclick="switchTab('brain')">🧠 Living Brain (Theme Buckets)</button>
-  <button class="tab-btn" onclick="switchTab('lexicon')">🍺 "The Beer Test" Lexicon</button>
+  <button class="tab-btn active" onclick="switchTab('living_brain')">🧠 Living Brain: Key Opinions & Angles</button>
+  <button class="tab-btn" onclick="switchTab('run_logs')">📜 Pull History & Run Logs ({len(pipeline_runs)})</button>
+  <button class="tab-btn" onclick="switchTab('lexicon')">🍺 "The Beer Test" Lexicon ({len(glossary)})</button>
   <button class="tab-btn" onclick="switchTab('raw')">🔍 Raw Signals Stream ({len(raw_items)} Passed)</button>
   <button class="tab-btn" onclick="switchTab('noise')">🛡️ Noise Shield ({len(dropped_items)} Blocked)</button>
+  <button class="tab-btn" onclick="switchTab('graph')">🕸️ Interactive Knowledge Graph</button>
 </div>
 
 <div class="filters" id="filterBar">
   <div class="filter-group">
-    <label>Format</label>
-    <select id="filterFormat" onchange="render()">
-      <option value="all">All Formats</option>
+    <label>Format Filter</label>
+    <select id="filterFormat" onchange="renderCurrentTab()">
+      <option value="all">All 4 Core Formats</option>
       <option value="Pain mirror">Pain mirror (35%)</option>
       <option value="Product as relief">Product as relief (25%)</option>
       <option value="The receipts">The receipts (20%)</option>
@@ -342,69 +387,114 @@ def export_html_viewer(ideas: List[Dict[str, Any]], raw_items: List[Dict[str, An
     </select>
   </div>
   <div class="filter-group">
-    <label>Min Intensity</label>
-    <select id="filterIntensity" onchange="render()">
+    <label>Min Frustration Intensity</label>
+    <select id="filterIntensity" onchange="renderCurrentTab()">
       <option value="1">1+ (All Signals)</option>
       <option value="2">2+ (Moderate Frustration)</option>
-      <option value="3">3+ (High Frustration/Fear)</option>
+      <option value="3">3+ (High Frustration & Fear)</option>
     </select>
   </div>
   <div class="filter-group">
-    <label>Search Keyword</label>
-    <input type="text" id="filterSearch" placeholder="e.g. name matching, swivel chair, ubo, backlog" oninput="render()">
+    <label>Search Community Term / Topic</label>
+    <input type="text" id="filterSearch" placeholder="e.g. name matching, swivel chair, ubo, backlog, webull" oninput="renderCurrentTab()">
   </div>
 </div>
 
-<!-- Tab Containers -->
-<div id="ideasContainer" class="grid"></div>
+<!-- Tab 1: Combined Living Brain & Key Opinions -->
+<div id="livingBrainContainer" class="grid"></div>
 
-<div id="brainContainer" style="display:none;" class="grid"></div>
+<!-- Tab 2: Run History & Pull Logs -->
+<div id="runLogsContainer" style="display:none;" class="table-container">
+  <table class="table-view">
+    <thead>
+      <tr>
+        <th style="width: 130px;">Timestamp (UTC)</th>
+        <th style="width: 140px;">Trigger</th>
+        <th style="width: 25%;">Sources Swept</th>
+        <th style="width: 20%;">Time Range</th>
+        <th style="width: 100px;">Counts</th>
+        <th style="width: 30%;">Pull Learnings & Summary</th>
+      </tr>
+    </thead>
+    <tbody id="runLogsTbody"></tbody>
+  </table>
+</div>
 
+<!-- Tab 3: Beer Test Lexicon -->
 <div id="lexiconContainer" style="display:none;" class="table-container">
   <table class="table-view">
     <thead>
       <tr>
-        <th>Term (What Practitioners Say)</th>
-        <th>Category</th>
-        <th>Occurrences</th>
-        <th>Sample Real Context</th>
+        <th style="width: 220px;">Term (What Practitioners Say)</th>
+        <th style="width: 180px;">Category</th>
+        <th style="width: 90px;">Frequency</th>
+        <th>Real Practitioner Context / Usage Rule</th>
       </tr>
     </thead>
     <tbody id="lexiconTbody"></tbody>
   </table>
 </div>
 
-<div id="rawContainer" style="display:none;" class="table-container">
-  <table class="table-view">
-    <thead>
-      <tr>
-        <th>Trace ID</th>
-        <th>Source</th>
-        <th>Title / News / Topic</th>
-        <th>Short Excerpt</th>
-        <th>Theme</th>
-        <th>Emotion</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody id="rawTbody"></tbody>
-  </table>
+<!-- Tab 4: Raw Signals Stream -->
+<div id="rawContainer" style="display:none;">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; background:var(--card); padding:10px 14px; border-radius:8px; border:1px solid var(--border);">
+    <span style="font-size:13px; color:var(--muted);">Showing verified compliance signals with clickable original sources and expandable full text.</span>
+    <button class="copy-btn" onclick="copyAllRawSignalsToClipboard()">
+      📋 Copy All Raw Signals (Formatted for Claude)
+    </button>
+  </div>
+  <div class="table-container">
+    <table class="table-view">
+      <thead>
+        <tr>
+          <th style="width: 65px;">Trace ID</th>
+          <th style="width: 110px;">Source</th>
+          <th style="width: 20%;">Original Title & URL</th>
+          <th style="width: 22%;">Summary Takeaway</th>
+          <th style="width: 30%;">Practitioner Excerpt (Expandable)</th>
+          <th style="width: 110px;">Theme</th>
+          <th style="width: 65px;">Action</th>
+        </tr>
+      </thead>
+      <tbody id="rawTbody"></tbody>
+    </table>
+  </div>
 </div>
 
+<!-- Tab 5: Noise Shield (Blocked) -->
 <div id="noiseContainer" style="display:none;" class="table-container">
-  <div style="padding:14px 18px; background:#0c1424; border-bottom:1px solid var(--border); font-size:13px; color:var(--muted);">
-    🛡️ <strong>Noise Shield Active:</strong> Showing posts silently blocked from entering your idea bank (vendor promo spam, career questions, and certification guides without daily-work frustration).
+  <div style="padding:12px 16px; background:#0c1424; border-bottom:1px solid var(--border); font-size:13px; color:var(--muted);">
+    🛡️ <strong>Noise Shield Active:</strong> Items filtered out because they were vendor product advertisements without practitioner debate, or generic career questions. Click any title to inspect the original post.
   </div>
   <table class="table-view">
     <thead>
       <tr>
-        <th>Source</th>
-        <th>Title</th>
-        <th>Reason Blocked</th>
+        <th style="width: 130px;">Source</th>
+        <th style="width: 35%;">Original Post Title & Link</th>
+        <th style="width: 25%;">Reason Blocked</th>
+        <th>Excerpt Preview</th>
       </tr>
     </thead>
     <tbody id="noiseTbody"></tbody>
   </table>
+</div>
+
+<!-- Tab 6: Knowledge Graph -->
+<div id="graphContainer" style="display:none;">
+  <div style="padding:12px 18px; border-bottom:1px solid var(--border); background:#0c1424; display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <strong style="color:#fff; font-size:14px;">🕸️ Compliance Intelligence Knowledge Graph</strong>
+      <span style="color:var(--muted); font-size:12px; margin-left:10px;">Drag nodes to explore. Click/hover to highlight connected pains, evasion tactics, regulators, and Sayari proof points.</span>
+    </div>
+    <button class="copy-btn" style="padding:4px 8px; font-size:11px;" onclick="resetGraph()">↺ Reset Graph</button>
+  </div>
+  <canvas id="graphCanvas"></canvas>
+  <div class="graph-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#f87171;"></span> 🔴 Practitioner Pains</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#fbbf24;"></span> 🟡 Evasion & Hidden Risk</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#818cf8;"></span> 🟣 Regulators & Laws</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#34d399;"></span> 🟢 Sayari Proof Anchors</div>
+  </div>
 </div>
 
 <div id="toast">✅ Text Copied to Clipboard!</div>
@@ -414,9 +504,10 @@ const IDEAS = {ideas_json};
 const RAW_ITEMS = {items_json};
 const GLOSSARY = {glossary_json};
 const DROPPED_ITEMS = {dropped_json};
+const PIPELINE_RUNS = {runs_json};
 const CLAUDE_DUMP = {claude_dump_json};
 
-let currentTab = 'ideas';
+let currentTab = 'living_brain';
 
 function showToast(msg) {{
   const toast = document.getElementById('toast');
@@ -459,25 +550,57 @@ function dumpEntireBrainToClipboard() {{
   copyTextToClipboard(CLAUDE_DUMP, '📋 Full Brain Copied (No links, Sourced with IDs)! Paste into Claude.');
 }}
 
-function formatEvidenceLines(idx, sources) {{
-  if (!sources || !sources.length) return "- (No evidence attached)";
-  return sources.map(function(ev, i) {{
-    var cleanSrc = ev.url.replace('https://www.reddit.com/r/', 'Reddit r/').replace('https://', '').split('/')[0];
-    return "- [Trace ID #" + (idx + 1) + "-" + (i + 1) + " | Source: " + cleanSrc + "]: \\"" + ev.paraphrase + "\\"";
-  }}).join('\\n');
+function copyAllRawSignalsToClipboard() {{
+  var lines = [
+    "# SAYARI RAW COMPLIANCE SIGNALS & PRACTITIONER DISCUSSIONS",
+    "# Formatted for Claude analysis with Trace IDs and Context",
+    ""
+  ];
+  RAW_ITEMS.forEach(function(it, idx) {{
+    var src = it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '');
+    lines.push("[Trace ID #" + (idx + 1) + "]");
+    lines.push("- Source: " + src);
+    lines.push("- Title: " + it.title);
+    if (it.url) lines.push("- Original URL: " + it.url);
+    lines.push("- Summary: " + (it.paraphrase || it.title));
+    lines.push("- Practitioner Excerpt: \\"" + it.short_excerpt + "\\"");
+    lines.push("- Theme: " + (it.theme || 'General') + " | Emotion: " + (it.emotion || 'frustration') + " (" + (it.intensity || 1) + "/5)");
+    lines.push("");
+  }});
+  copyTextToClipboard(lines.join('\\n'), '📋 Copied All Raw Signals for Claude!');
 }}
 
-function formatEvidenceHtml(idx, sources) {{
-  if (!sources || !sources.length) return "";
+function toggleExpand(id) {{
+  const el = document.getElementById(id);
+  const btn = document.getElementById(id + '-btn');
+  if (el) {{
+    if (el.classList.contains('expanded')) {{
+      el.classList.remove('expanded');
+      if (btn) btn.innerText = '[+] Expand full text';
+    }} else {{
+      el.classList.add('expanded');
+      if (btn) btn.innerText = '[-] Collapse';
+    }}
+  }}
+}}
+
+function formatEvidenceHtml(sources) {{
+  if (!sources || !sources.length) return "<div style='color:var(--muted); font-size:11px;'>No direct quotes attached.</div>";
   return sources.map(function(ev, i) {{
-    var cleanSrc = ev.url.replace('https://www.reddit.com/r/', 'Reddit r/').replace('https://', '').split('/')[0];
-    return '<div class="evidence-item"><span class="trace-id" style="font-size:10px;">#' + (idx + 1) + '-' + (i + 1) + '</span> <strong>' + cleanSrc + '</strong> (' + ev.upvotes + ' upvotes): <em>\\"' + ev.paraphrase + '\\"</em></div>';
+    var cleanSrc = ev.url ? ev.url.replace('https://www.reddit.com/r/', 'r/').replace('https://', '').split('/')[0] : 'Community Source';
+    var linkHtml = ev.url ? '<a href="' + ev.url + '" target="_blank" rel="noopener" class="source-link">' + cleanSrc + ' ↗</a>' : cleanSrc;
+    return '<div class="evidence-item">• ' + linkHtml + ' (' + ev.upvotes + ' upvotes): <em>\\"' + (ev.paraphrase || '') + '\\"</em></div>';
   }}).join('');
 }}
 
 function copyIdeaPrompt(idx) {{
   const idea = IDEAS[idx];
   if (!idea) return;
+
+  var evidenceLines = (idea.evidence_sources || []).map(function(ev, i) {{
+    var cleanSrc = ev.url ? ev.url.replace('https://www.reddit.com/r/', 'r/').replace('https://', '').split('/')[0] : 'Source';
+    return "  * [Source: " + cleanSrc + " | " + ev.upvotes + " upvotes]: \\"" + ev.paraphrase + "\\"";
+  }}).join('\\n');
 
   const prompt = `I am drafting a LinkedIn post for Sayari targeting compliance officers and financial crime / sanctions analysts.
 
@@ -487,8 +610,8 @@ Post Concept: ${{idea.title}}
 The Hook: "${{idea.hook}}"
 Visual Metaphor: ${{idea.suggested_visual}}
 
-Verified Evidence & Real Quotes (Sourced with Trace IDs):
-` + formatEvidenceLines(idx, idea.evidence_sources) + `
+Verified Evidence & Real Quotes:
+` + evidenceLines + `
 
 Voice Guidelines:
 - Validating, unflinching, human, a little funny, proof-backed.
@@ -500,40 +623,27 @@ Please write 2 variations of this LinkedIn post ready to publish.`;
   copyTextToClipboard(prompt, `📋 Copied Idea #${{idx+1}} Prompt for Claude!`);
 }}
 
-function copyThemePrompt(themeKey) {{
-  const b = THEME_BUCKETS[themeKey];
-  if (!b) return;
+function copyOpinionPrompt(opinionTitle, opinionDesc, angles) {{
+  var angleLines = angles.map(function(a, idx) {{
+    return "Angle #" + (idx + 1) + " (" + a.format + "): \\"" + a.title + "\\"\\nHook: \\"" + a.hook + "\\"\\nVisual: " + a.suggested_visual;
+  }}).join('\\n\\n');
 
-  var angleLines = b.ideas.map(function(i, aIdx) {{
-    return "- Angle " + (aIdx + 1) + ': "' + i.title + '" (Hook: "' + i.hook + '")';
-  }}).join('\\n');
+  const prompt = `I am drafting LinkedIn content for Sayari based on this core practitioner opinion:
 
-  const prompt = `I am drafting a LinkedIn post for Sayari focusing on this core compliance theme:
+Key Opinion / Tension: ` + opinionTitle + `
+Practitioner Reality: ` + opinionDesc + `
 
-Theme: ` + themeKey + `
-The Practitioner Reality: ` + b.desc + `
-Sayari Sourced Proof Anchor: ` + b.proof + `
-
-Angles & Hooks to explore:
+Actionable Post Angles:
 ` + angleLines + `
 
 Voice Guidelines:
 - Validating, unflinching, human, a little funny. Pass the "Beer Test".
 - Zero vendor buzzwords.
+- Use Sayari proof anchors (e.g., 72% unlisted risk in nested ownership, 1.2M records screened real-time vs 48h competitor).
 
-Please write 2 LinkedIn post variations for this theme.`;
+Please write 2 publish-ready LinkedIn posts for this opinion.`;
 
-  copyTextToClipboard(prompt, "📋 Copied Theme Prompt for Claude!");
-}}
-
-function copySignalPrompt(idx) {{
-  const it = RAW_ITEMS[idx];
-  if (!it) return;
-
-  const cleanSrc = it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '');
-  const text = "[Trace ID #" + (idx + 1) + " | Source: " + cleanSrc + "]\\nTopic: " + it.title + "\\nQuote: \\"" + it.short_excerpt + "\\"\\nContext: " + it.paraphrase + "\\nTheme: " + (it.theme || 'General');
-
-  copyTextToClipboard(text, "📋 Copied Trace ID #" + (idx + 1) + "!");
+  copyTextToClipboard(prompt, "📋 Copied Key Opinion Package for Claude!");
 }}
 
 function getBadgeClass(fmt) {{
@@ -546,173 +656,434 @@ function getBadgeClass(fmt) {{
 function switchTab(tab) {{
   currentTab = tab;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  ['ideasContainer', 'brainContainer', 'lexiconContainer', 'rawContainer', 'noiseContainer'].forEach(id => {{
-    document.getElementById(id).style.display = 'none';
+  ['livingBrainContainer', 'runLogsContainer', 'lexiconContainer', 'rawContainer', 'noiseContainer', 'graphContainer'].forEach(id => {{
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
   }});
 
   const filterBar = document.getElementById('filterBar');
-  filterBar.style.display = (tab === 'ideas' || tab === 'raw') ? 'flex' : 'none';
+  filterBar.style.display = (tab === 'living_brain' || tab === 'raw') ? 'flex' : 'none';
 
-  if (tab === 'ideas') {{
+  if (tab === 'living_brain') {{
     document.querySelectorAll('.tab-btn')[0].classList.add('active');
-    document.getElementById('ideasContainer').style.display = 'grid';
-  }} else if (tab === 'brain') {{
+    document.getElementById('livingBrainContainer').style.display = 'grid';
+  }} else if (tab === 'run_logs') {{
     document.querySelectorAll('.tab-btn')[1].classList.add('active');
-    document.getElementById('brainContainer').style.display = 'grid';
-    renderBrain();
+    document.getElementById('runLogsContainer').style.display = 'block';
   }} else if (tab === 'lexicon') {{
     document.querySelectorAll('.tab-btn')[2].classList.add('active');
     document.getElementById('lexiconContainer').style.display = 'block';
-    renderLexicon();
   }} else if (tab === 'raw') {{
     document.querySelectorAll('.tab-btn')[3].classList.add('active');
     document.getElementById('rawContainer').style.display = 'block';
   }} else if (tab === 'noise') {{
     document.querySelectorAll('.tab-btn')[4].classList.add('active');
     document.getElementById('noiseContainer').style.display = 'block';
-    renderNoise();
+  }} else if (tab === 'graph') {{
+    document.querySelectorAll('.tab-btn')[5].classList.add('active');
+    document.getElementById('graphContainer').style.display = 'block';
+    initGraph();
   }}
-  render();
+  renderCurrentTab();
 }}
 
-let THEME_BUCKETS = {{}};
-
-function renderBrain() {{
-  THEME_BUCKETS = {{
-    "The Frankenstack & Swivel Chair Effect": {{
-      desc: "Analysts drowning across 5-7 disconnected tabs, Excel files, and PDF registries.",
-      proof: "Sayari Fortune 50 Energy case: 75+ data sources collapsed into one; costly homegrown system retired.",
-      ideas: IDEAS.filter(i => i.pillar.includes('Frankenstack') && i.format.includes('Pain'))
-    }},
-    "Entity Resolution & Name-Match Purgatory": {{
-      desc: "Algorithms generating 90-95% false positives on Spanish, Arabic, or corporate suffix variations.",
-      proof: "Fortune 50 Energy Supermajor: 1.2M records screened in real time vs 24-48 hours on competitor.",
-      ideas: IDEAS.filter(i => i.title.toLowerCase().includes('name') || i.title.toLowerCase().includes('tabs'))
-    }},
-    "The Risk in Plain Sight: Nested UBO & Shell Networks": {{
-      desc: "Clean supplier questionnaires hiding designated oligarchs across 3 offshore hops.",
-      proof: "No. 3 Global Telecom: 72% of flagged risk was on zero watchlists anywhere, buried in nested ownership.",
-      ideas: IDEAS.filter(i => i.pillar.includes('plain sight') || i.title.toLowerCase().includes('apartment') || i.title.toLowerCase().includes('ubo'))
-    }},
-    "A Score Is Not a Defense: Audit Dread & Regulators": {{
-      desc: "Regulators rejecting black-box automated risk scores without verifiable registry audit trails.",
-      proof: "Enforcement doctrine: a clean self-certification questionnaire is not an audit defense.",
-      ideas: IDEAS.filter(i => i.pillar.includes('defense') || i.title.toLowerCase().includes('score'))
-    }}
-  }};
-
-  const html = Object.entries(THEME_BUCKETS).map(([title, b]) => `
-    <div class="card" style="border-top: 3px solid var(--accent);">
-      <div class="idea-title" style="color:var(--accent); font-size:18px;">${{title}}</div>
-      <p style="font-size:13px; color:#cbd5e1;">${{b.desc}}</p>
-      <div style="background:#080d1a; padding:10px 12px; border-radius:6px; font-size:12.5px; border-left:3px solid #34d399;">
-        <strong>Sayari Proof Anchor:</strong> ${{b.proof}}
-      </div>
-      <div style="margin-top:8px;">
-        <div style="font-size:12px; font-weight:700; color:var(--muted); margin-bottom:6px;">ASSOCIATED SOURCED ANGLES:</div>
-        ${{b.ideas.map(i => `
-          <div style="font-size:13px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
-            <span>&bull; ${{i.title}}</span>
-            <span class="badge ${{getBadgeClass(i.format)}}" style="font-size:9px;">${{i.format}}</span>
-          </div>
-        `).join('') || '<div style="font-size:12px; color:var(--muted);">More signals being slotted on next sweep...</div>'}}
-      </div>
-      <button class="copy-btn" onclick="copyThemePrompt('${{title}}')">
-        📋 Copy Theme Prompt for Claude
-      </button>
-    </div>
-  `).join('');
-  document.getElementById('brainContainer').innerHTML = html;
-}}
-
-function renderLexicon() {{
-  const html = GLOSSARY.map(g => `
-    <tr>
-      <td><strong style="color:#fff;">${{g.term}}</strong></td>
-      <td><span class="pill ${{g.is_vendor_marketing_only.includes('YES') ? 'badge-pain' : 'badge-relief'}}">${{g.is_vendor_marketing_only.includes('YES') ? 'Banned Vendor Fluff' : 'Real Practitioner Slang'}}</span></td>
-      <td>${{g.frequency}}</td>
-      <td style="color:#cbd5e1; font-style:italic;">${{g.example_context}}</td>
-    </tr>
-  `).join('');
-  document.getElementById('lexiconTbody').innerHTML = html;
-}}
-
-function renderNoise() {{
-  const html = DROPPED_ITEMS.map(d => `
-    <tr>
-      <td>${{d.source || 'Public Feed'}}</td>
-      <td><strong>${{d.title}}</strong></td>
-      <td><span style="color:#f87171;">${{d.drop_reason || 'Vendor Promotion / No Frustration'}}</span></td>
-    </tr>
-  `).join('');
-  document.getElementById('noiseTbody').innerHTML = html;
-}}
-
-function render() {{
+// 1. Render Living Brain (Key Opinions Consolidated with Ideas)
+function renderLivingBrain() {{
   const fmt = document.getElementById('filterFormat').value;
   const minInt = parseFloat(document.getElementById('filterIntensity').value);
   const q = document.getElementById('filterSearch').value.toLowerCase().trim();
 
-  if (currentTab === 'ideas') {{
-    const filtered = IDEAS.filter(idea => {{
+  // Group ideas bottom-up into Key Practitioner Opinions
+  const OPINION_MAP = [
+    {{
+      title: "Vendor Questionnaires Are Compliance Theater",
+      tension: "Self-disclosure forms are useless; illicit networks never check 'Yes' on SDN ties; 72% of flagged risk is hidden 3+ layers deep in nested ownership.",
+      proof: "No. 3 Global Telecom: 72% of high-risk entities appeared clean on watchlists, hidden in nested corporate structures.",
+      match: i => i.title.toLowerCase().includes('watchlist') || i.title.toLowerCase().includes('72%') || i.title.toLowerCase().includes('questionnaire') || i.title.toLowerCase().includes('ubo') || i.title.toLowerCase().includes('apartment')
+    }},
+    {{
+      title: "Alert Fatigue is a Tool Failure, Not an Analyst Failure",
+      tension: "Industry false-positive rates of 90-95% are caused by crude keyword tools, turning L1 review into soul-crushing whack-a-mole.",
+      proof: "Fortune 50 Energy Supermajor: 1.2M records screened in real time vs 24-48 hours on legacy platform.",
+      match: i => i.title.toLowerCase().includes('alert') || i.title.toLowerCase().includes('queue') || i.title.toLowerCase().includes('name') || i.title.toLowerCase().includes('purgatory')
+    }},
+    {{
+      title: "The Swivel Chair Trap: Fragmented Tools Paralyze Investigation",
+      tension: "Analysts waste 45 minutes per vendor manually copy-pasting numbers across 6-8 disconnected vendor tabs and spreadsheets.",
+      proof: "Fortune 50 Energy: 75+ disparate data feeds collapsed into a single unified registry query.",
+      match: i => i.title.toLowerCase().includes('frankenstack') || i.title.toLowerCase().includes('tabs') || i.title.toLowerCase().includes('75+') || i.title.toLowerCase().includes('breakup')
+    }},
+    {{
+      title: "A Vendor Risk Score is Not an Audit Defense",
+      tension: "Regulators reject automated black-box risk scores; examiners demand primary registry documents and defensible provenance.",
+      proof: "Recent regulatory enforcement doctrine: an algorithm score cannot substitute for verified registry audit trails.",
+      match: i => i.title.toLowerCase().includes('score') || i.title.toLowerCase().includes('regulator') || i.title.toLowerCase().includes('audit') || i.title.toLowerCase().includes('settle') || i.title.toLowerCase().includes('defense')
+    }},
+    {{
+      title: "The Sub-Tier Supply Chain Blind Spot (Beyond Tier 1)",
+      tension: "Tier-1 suppliers pass questionnaires easily; UFLPA detentions and export bans strike Tier-2 and Tier-3 raw component hubs.",
+      proof: "Top-5 Global Tech Company: Chose Sayari over supply-chain incumbent specifically for sub-tier component mapping.",
+      match: i => i.title.toLowerCase().includes('supply') || i.title.toLowerCase().includes('tier') || i.title.toLowerCase().includes('tech') || i.title.toLowerCase().includes('labor')
+    }}
+  ];
+
+  const html = OPINION_MAP.map((op, opIdx) => {{
+    let matchingIdeas = IDEAS.filter(op.match);
+    if (!matchingIdeas.length) {{
+      matchingIdeas = IDEAS.slice(opIdx * 3, opIdx * 3 + 3);
+    }}
+
+    // Apply filters
+    const filteredAngles = matchingIdeas.filter(idea => {{
       const matchFmt = (fmt === 'all' || idea.format === fmt);
       const matchInt = (idea.avg_intensity >= minInt);
-      const matchQ = (!q || idea.title.toLowerCase().includes(q) || idea.hook.toLowerCase().includes(q) || idea.suggested_visual.toLowerCase().includes(q));
+      const matchQ = (!q || idea.title.toLowerCase().includes(q) || idea.hook.toLowerCase().includes(q) || op.title.toLowerCase().includes(q));
       return matchFmt && matchInt && matchQ;
     }});
 
-    const html = filtered.map((idea, idx) => `
-      <div class="card">
-        <div class="card-header">
-          <span class="badge ${{getBadgeClass(idea.format)}}">${{idea.format}}</span>
-          <div style="display:flex; align-items:center; gap:6px;">
-            <span class="trace-id">Idea #${{idx+1}}</span>
-            <span style="font-size: 12px; font-weight:700; color:var(--accent);">Score: ${{idea.rank_score}}</span>
-          </div>
-        </div>
-        <div class="idea-title">${{idea.title}}</div>
-        <div class="hook-box">"${{idea.hook}}"</div>
-        <div class="meta-grid">
-          <div><strong>Pillar:</strong> ${{idea.pillar}}</div>
-          <div><strong>Visual Metaphor:</strong> ${{idea.suggested_visual}}</div>
-          <div><strong>Extends Doc Idea:</strong> <em>${{idea.extends_idea}}</em></div>
-          <div><strong>Verify Before Use:</strong> ${{idea.verify_before_use}}</div>
-        </div>
-        
-        <button class="copy-btn" onclick="copyIdeaPrompt(${{idx}})">
-          📋 Copy Prompt for Claude (Link-free, Sourced)
-        </button>
+    if (!filteredAngles.length && (fmt !== 'all' || q)) return '';
 
-        <div class="evidence-section">
-          <div class="evidence-header">Real Public Sourced Proof (${{idea.evidence_sources.length}} sources):</div>
-          ${{formatEvidenceHtml(idx, idea.evidence_sources)}}
+    const anglesHtml = filteredAngles.map((idea, aIdx) => `
+      <div style="background:#090f1d; border:1px solid var(--border); border-radius:8px; padding:12px; margin-top:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span class="badge ${{getBadgeClass(idea.format)}}">${{idea.format}}</span>
+          <span style="font-size:11px; color:var(--muted); font-weight:700;">Score: ${{idea.rank_score}}</span>
         </div>
+        <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:4px;">${{idea.title}}</div>
+        <div class="hook-box" style="margin:6px 0; font-size:12.5px;">"${{idea.hook}}"</div>
+        <div style="font-size:11.5px; color:var(--muted); margin-bottom:8px;">
+          <strong>Visual:</strong> ${{idea.suggested_visual}}
+        </div>
+        <button class="copy-btn" style="padding:4px 9px; font-size:11px;" onclick="copyIdeaPrompt(${{IDEAS.indexOf(idea)}})">
+          📋 Copy Angle Prompt for Claude
+        </button>
       </div>
     `).join('');
-    document.getElementById('ideasContainer').innerHTML = html || '<p style="padding:20px; color:var(--muted)">No ideas matched your filter criteria.</p>';
-  }} else if (currentTab === 'raw') {{
-    const filtered = RAW_ITEMS.filter(it => {{
-      const matchInt = ((it.intensity || 1) >= minInt);
-      const matchQ = (!q || it.title.toLowerCase().includes(q) || (it.short_excerpt && it.short_excerpt.toLowerCase().includes(q)));
-      return matchInt && matchQ;
-    }});
 
-    const html = filtered.map((it, idx) => `
+    return `
+      <div class="card" style="border-top:3px solid var(--accent);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+          <div>
+            <span class="pill badge-news" style="margin-bottom:6px;">Key Practitioner Stance #${{opIdx+1}}</span>
+            <div class="idea-title" style="font-size:17px; color:#fff;">${{op.title}}</div>
+          </div>
+        </div>
+        
+        <p style="font-size:13px; color:#cbd5e1; line-height:1.45;">${{op.tension}}</p>
+        
+        <div style="background:#080d1a; padding:10px 12px; border-radius:6px; font-size:12px; border-left:3px solid #34d399;">
+          <strong style="color:#34d399;">Sayari Proof Anchor:</strong> ${{op.proof}}
+        </div>
+
+        <div style="margin-top:4px;">
+          <strong style="font-size:12px; color:var(--muted); text-transform:uppercase;">Actionable Content Angles (${{filteredAngles.length}} available):</strong>
+          ${{anglesHtml || '<p style="color:var(--muted); font-size:12px; padding:8px 0;">No angles match your current format filter.</p>'}}
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:10px; border-top:1px solid var(--border);">
+          <span style="font-size:11px; color:var(--muted);">Grounded in public Reddit/RSS chatter</span>
+          <button class="copy-btn" onclick="copyOpinionPrompt('${{op.title}}', '${{op.tension}}', ${{JSON.stringify(filteredAngles)}})">
+            📋 Copy Complete Opinion Package
+          </button>
+        </div>
+      </div>
+    `;
+  }}).join('');
+
+  document.getElementById('livingBrainContainer').innerHTML = html || '<p style="padding:20px; color:var(--muted)">No themes matched your search criteria.</p>';
+}}
+
+// 2. Render Run Logs
+function renderRunLogs() {{
+  const html = PIPELINE_RUNS.map((run, idx) => `
+    <tr>
+      <td><strong>${{run.timestamp}}</strong></td>
+      <td><span class="pill ${{run.trigger_type.includes('Cloud') ? 'badge-cloud' : 'badge-local'}}">${{run.trigger_type}}</span></td>
+      <td>${{run.sources_swept}}</td>
+      <td><span style="color:#94a3b8; font-size:12px;">${{run.time_ranges}}</span></td>
+      <td>
+        <div style="font-size:12px;">
+          <strong style="color:#38bdf8;">${{run.raw_collected_count}}</strong> gathered<br>
+          <span style="color:#34d399;">${{run.passed_filters_count}} passed</span><br>
+          <span style="color:#f87171;">${{run.dropped_noise_count}} noise</span>
+        </div>
+      </td>
+      <td style="font-size:12.5px; color:#cbd5e1; line-height:1.4;">${{run.summary_learnings}}</td>
+    </tr>
+  `).join('');
+  document.getElementById('runLogsTbody').innerHTML = html || '<tr><td colspan="6" style="padding:20px; text-align:center; color:var(--muted);">No run logs recorded yet.</td></tr>';
+}}
+
+// 3. Render Beer Test Lexicon (Fixed bug: string/boolean safe)
+function renderLexicon() {{
+  const html = GLOSSARY.map(g => {{
+    const isVendor = String(g.is_vendor_marketing_only).includes('YES') || g.is_vendor_marketing_only === 1 || String(g.is_vendor_marketing_only) === '1';
+    return `
+      <tr>
+        <td><strong style="color:#fff; font-size:13.5px;">${{g.term}}</strong></td>
+        <td><span class="pill ${{isVendor ? 'badge-pain' : 'badge-relief'}}">${{isVendor ? 'Banned Vendor Fluff' : 'Real Practitioner Slang'}}</span></td>
+        <td><strong style="color:var(--accent);">${{g.frequency}}</strong></td>
+        <td style="color:#cbd5e1; font-style:italic;">${{g.example_context || 'Practitioner term mined from compliance community discussions.'}}</td>
+      </tr>
+    `;
+  }}).join('');
+  document.getElementById('lexiconTbody').innerHTML = html;
+}}
+
+// 4. Render Raw Streams (With Summary, Clickable Links, Expand Toggle, Decreased Width)
+function renderRawStream() {{
+  const minInt = parseFloat(document.getElementById('filterIntensity').value);
+  const q = document.getElementById('filterSearch').value.toLowerCase().trim();
+
+  const filtered = RAW_ITEMS.filter(it => {{
+    const matchInt = ((it.intensity || 1) >= minInt);
+    const matchQ = (!q || it.title.toLowerCase().includes(q) || (it.short_excerpt && it.short_excerpt.toLowerCase().includes(q)) || (it.paraphrase && it.paraphrase.toLowerCase().includes(q)));
+    return matchInt && matchQ;
+  }});
+
+  const html = filtered.map((it, idx) => {{
+    const linkHtml = it.url ? `<a href="${{it.url}}" target="_blank" rel="noopener" class="source-link">${{it.title}} ↗</a>` : `<strong>${{it.title}}</strong>`;
+    const cleanSrc = it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '');
+    const collapseId = 'excerpt-' + idx;
+
+    return `
       <tr>
         <td><span class="trace-id">#${{idx+1}}</span></td>
-        <td>${{it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '')}}</td>
-        <td><strong>${{it.title}}</strong></td>
-        <td>${{it.short_excerpt}}</td>
-        <td><span style="color:var(--accent); font-weight:600;">${{it.theme || 'General'}}</span></td>
-        <td>${{it.emotion || 'frustration'}} (${{it.intensity || 1}}/5)</td>
+        <td><span style="font-size:11.5px; color:var(--muted); font-weight:600;">${{cleanSrc}}</span></td>
+        <td>
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">${{linkHtml}}</div>
+          <span style="font-size:11px; color:#64748b;">${{it.date || 'Recent'}}</span>
+        </td>
+        <td>
+          <div style="font-size:12.5px; color:#cbd5e1; line-height:1.4;">${{it.paraphrase || it.title}}</div>
+        </td>
+        <td>
+          <div id="${{collapseId}}" class="collapsible-text">
+            <span style="font-style:italic; color:#94a3b8; font-size:12px;">"${{it.short_excerpt}}"</span>
+          </div>
+          <button id="${{collapseId}}-btn" class="expand-btn" onclick="toggleExpand('${{collapseId}}')">[+] Expand full text</button>
+        </td>
+        <td>
+          <span style="color:var(--accent); font-weight:600; font-size:11.5px;">${{it.theme || 'General'}}</span><br>
+          <span style="color:var(--muted); font-size:11px;">Intensity: ${{it.intensity || 1}}/5</span>
+        </td>
         <td>
           <button class="copy-btn" style="padding:4px 8px; font-size:11px; margin:0;" onclick="copySignalPrompt(${{idx}})">
             📋 Copy
           </button>
         </td>
       </tr>
-    `).join('');
-    document.getElementById('rawTbody').innerHTML = html;
+    `;
+  }}).join('');
+
+  document.getElementById('rawTbody').innerHTML = html || '<tr><td colspan="7" style="padding:20px; text-align:center; color:var(--muted);">No signals match your filter.</td></tr>';
+}}
+
+// 5. Render Noise Shield (With Clickable Links)
+function renderNoise() {{
+  const html = DROPPED_ITEMS.map((d, idx) => {{
+    const linkHtml = d.url ? `<a href="${{d.url}}" target="_blank" rel="noopener" class="source-link">${{d.title}} ↗</a>` : `<strong>${{d.title}}</strong>`;
+    return `
+      <tr>
+        <td><span style="font-size:12px; color:var(--muted);">${{d.source || 'Public Source'}}</span></td>
+        <td>${{linkHtml}}</td>
+        <td><span style="color:#f87171; font-weight:600; font-size:12px;">${{d.drop_reason || 'Vendor Promotion / No Frustration'}}</span></td>
+        <td style="color:#64748b; font-size:11.5px; font-style:italic;">${{d.short_excerpt || 'No excerpt available'}}</td>
+      </tr>
+    `;
+  }}).join('');
+  document.getElementById('noiseTbody').innerHTML = html;
+}}
+
+function copySignalPrompt(idx) {{
+  const it = RAW_ITEMS[idx];
+  if (!it) return;
+
+  const cleanSrc = it.source.replace('pasted:', '').replace('rss:', '').replace('manual:', '');
+  const text = `[Trace ID #${{idx + 1}} | Source: ${{cleanSrc}}]
+Title: ${{it.title}}
+URL: ${{it.url || 'N/A'}}
+Summary: ${{it.paraphrase || it.title}}
+Practitioner Excerpt: "${{it.short_excerpt}}"
+Theme: ${{it.theme || 'General'}} | Emotion: ${{it.emotion || 'frustration'}} (${{it.intensity || 1}}/5)`;
+
+  copyTextToClipboard(text, `📋 Copied Trace ID #${{idx + 1}}!`);
+}}
+
+function renderCurrentTab() {{
+  if (currentTab === 'living_brain') renderLivingBrain();
+  else if (currentTab === 'run_logs') renderRunLogs();
+  else if (currentTab === 'lexicon') renderLexicon();
+  else if (currentTab === 'raw') renderRawStream();
+  else if (currentTab === 'noise') renderNoise();
+}}
+
+// 6. Interactive Knowledge Graph Implementation
+let graphNodes = [];
+let graphEdges = [];
+let animFrameId = null;
+let hoveredNode = null;
+let draggedNode = null;
+
+function initGraph() {{
+  const canvas = document.getElementById('graphCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  // Set internal resolution
+  canvas.width = canvas.parentElement.clientWidth || 900;
+  canvas.height = 620;
+
+  const W = canvas.width;
+  const H = canvas.height;
+
+  graphNodes = [
+    // Pains (Red)
+    {{ id: 'p1', label: 'Alert Fatigue & Backlog', category: 'pain', color: '#f87171', x: W * 0.25, y: H * 0.25, vx: 0, vy: 0, r: 24, desc: '90-95% false positives swamping L1 analyst review.' }},
+    {{ id: 'p2', label: 'Swivel Chair (7+ Logins)', category: 'pain', color: '#f87171', x: W * 0.18, y: H * 0.55, vx: 0, vy: 0, r: 22, desc: '45 mins lost copy-pasting numbers across disconnected tabs.' }},
+    {{ id: 'p3', label: 'Name Match Purgatory', category: 'pain', color: '#f87171', x: W * 0.32, y: H * 0.40, vx: 0, vy: 0, r: 22, desc: 'Common surname false hits vs evasion spelling tricks.' }},
+    {{ id: 'p4', label: 'Audit Dread & Exam Panic', category: 'pain', color: '#f87171', x: W * 0.28, y: H * 0.75, vx: 0, vy: 0, r: 22, desc: 'Regulators rejecting black-box automated risk scores.' }},
+
+    // Evasion & Risk (Amber)
+    {{ id: 'e1', label: 'Nested UBO (3+ Layers Deep)', category: 'evasion', color: '#fbbf24', x: W * 0.52, y: H * 0.22, vx: 0, vy: 0, r: 24, desc: 'Clean tier-1 supplier hiding sanctioned oligarch across offshore hops.' }},
+    {{ id: 'e2', label: '147 Shells at 1 Flat', category: 'evasion', color: '#fbbf24', x: W * 0.48, y: H * 0.48, vx: 0, vy: 0, r: 22, desc: 'Residential addresses in Belize/Cyprus routing $42M dual-use tech.' }},
+    {{ id: 'e3', label: 'Transshipment Hubs', category: 'evasion', color: '#fbbf24', x: W * 0.55, y: H * 0.72, vx: 0, vy: 0, r: 22, desc: 'Sub-tier component routes skirting export sanctions.' }},
+
+    // Regulators (Purple)
+    {{ id: 'r1', label: 'OFAC 50% Rule', category: 'reg', color: '#818cf8', x: W * 0.40, y: H * 0.15, vx: 0, vy: 0, r: 20, desc: 'Aggregate ownership thresholds triggering automatic sanctions.' }},
+    {{ id: 'r2', label: 'UFLPA Forced Labor', category: 'reg', color: '#818cf8', x: W * 0.62, y: H * 0.85, vx: 0, vy: 0, r: 20, desc: 'Sub-tier polysilicon and component detentions at customs.' }},
+    {{ id: 'r3', label: 'FinCEN Whistleblower', category: 'reg', color: '#818cf8', x: W * 0.38, y: H * 0.90, vx: 0, vy: 0, r: 20, desc: 'Spike in whistleblower reports triggering immediate audits.' }},
+    {{ id: 'r4', label: 'DOJ Penalties (e.g. Webull)', category: 'reg', color: '#818cf8', x: W * 0.15, y: H * 0.82, vx: 0, vy: 0, r: 20, desc: 'Multi-million dollar settlements for inadequate AML scrutiny.' }},
+
+    // Sayari Proof Anchors (Green)
+    {{ id: 's1', label: '72% Unlisted Risk Unmasked', category: 'sayari', color: '#34d399', x: W * 0.78, y: H * 0.25, vx: 0, vy: 0, r: 25, desc: 'Global telecom case: 72% of high-risk partners were on zero watchlists.' }},
+    {{ id: 's2', label: '1.2M Records in Real Time', category: 'sayari', color: '#34d399', x: W * 0.75, y: H * 0.50, vx: 0, vy: 0, r: 25, desc: 'Energy supermajor: instant screening vs 48-hour competitor lag.' }},
+    {{ id: 's3', label: '75+ Data Feeds Collapsed', category: 'sayari', color: '#34d399', x: W * 0.80, y: H * 0.72, vx: 0, vy: 0, r: 25, desc: 'Retired homegrown frankenstack into a single graph query.' }},
+    {{ id: 's4', label: 'Sub-Tier Tech Mapping', category: 'sayari', color: '#34d399', x: W * 0.70, y: H * 0.88, vx: 0, vy: 0, r: 24, desc: 'Top-5 tech giant chose Sayari over incumbent for Tier-2/Tier-3 traceability.' }}
+  ];
+
+  graphEdges = [
+    {{ from: 'p1', to: 'p3', label: 'causes' }},
+    {{ from: 'p2', to: 'p1', label: 'amplifies' }},
+    {{ from: 'p3', to: 'e1', label: 'evaded by' }},
+    {{ from: 'e1', to: 'r1', label: 'triggers' }},
+    {{ from: 'e2', to: 'p4', label: 'risks' }},
+    {{ from: 'e3', to: 'r2', label: 'violates' }},
+    {{ from: 'r4', to: 'p4', label: 'escalates' }},
+    {{ from: 'r3', to: 'p4', label: 'triggers' }},
+    
+    // Sayari Connections
+    {{ from: 'e1', to: 's1', label: 'unmasked by' }},
+    {{ from: 'p1', to: 's2', label: 'cured by' }},
+    {{ from: 'p2', to: 's3', label: 'eliminated by' }},
+    {{ from: 'p4', to: 's2', label: 'defended by' }},
+    {{ from: 'r2', to: 's4', label: 'mapped by' }},
+    {{ from: 'e3', to: 's4', label: 'exposed by' }}
+  ];
+
+  setupGraphInteractivity(canvas);
+  animateGraph(canvas, ctx);
+}}
+
+function setupGraphInteractivity(canvas) {{
+  canvas.onmousedown = (e) => {{
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    draggedNode = graphNodes.find(n => Math.hypot(n.x - mx, n.y - my) < n.r);
+  }};
+
+  canvas.onmousemove = (e) => {{
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    if (draggedNode) {{
+      draggedNode.x = mx;
+      draggedNode.y = my;
+    }} else {{
+      hoveredNode = graphNodes.find(n => Math.hypot(n.x - mx, n.y - my) < n.r);
+    }}
+  }};
+
+  window.onmouseup = () => {{
+    draggedNode = null;
+  }};
+}}
+
+function resetGraph() {{
+  initGraph();
+}}
+
+function animateGraph(canvas, ctx) {{
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw Edges
+  graphEdges.forEach(e => {{
+    const n1 = graphNodes.find(n => n.id === e.from);
+    const n2 = graphNodes.find(n => n.id === e.to);
+    if (!n1 || !n2) return;
+
+    const isHighlight = hoveredNode && (hoveredNode.id === n1.id || hoveredNode.id === n2.id);
+
+    ctx.beginPath();
+    ctx.moveTo(n1.x, n1.y);
+    ctx.lineTo(n2.x, n2.y);
+    ctx.strokeStyle = isHighlight ? '#38bdf8' : 'rgba(51, 65, 85, 0.4)';
+    ctx.lineWidth = isHighlight ? 2.5 : 1.2;
+    ctx.stroke();
+
+    // Draw relation label
+    if (isHighlight) {{
+      const mx = (n1.x + n2.x) / 2;
+      const my = (n1.y + n2.y) / 2;
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = '10px -apple-system, sans-serif';
+      ctx.fillText(e.label, mx, my);
+    }}
+  }});
+
+  // Draw Nodes
+  graphNodes.forEach(n => {{
+    const isHovered = hoveredNode && hoveredNode.id === n.id;
+    const isNeighbor = hoveredNode && graphEdges.some(e => (e.from === hoveredNode.id && e.to === n.id) || (e.to === hoveredNode.id && e.from === n.id));
+
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, isHovered ? n.r + 4 : n.r, 0, Math.PI * 2);
+    ctx.fillStyle = n.color;
+    ctx.shadowBlur = isHovered ? 16 : 6;
+    ctx.shadowColor = n.color;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = isHovered ? 2 : 1;
+    ctx.stroke();
+
+    // Node text
+    ctx.fillStyle = '#fff';
+    ctx.font = '11px -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(n.label, n.x, n.y + n.r + 14);
+
+    // Tooltip for hovered node
+    if (isHovered) {{
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
+      ctx.strokeStyle = n.color;
+      ctx.lineWidth = 1;
+      const tw = ctx.measureText(n.desc).width + 24;
+      const tx = Math.min(canvas.width - tw - 10, Math.max(10, n.x - tw / 2));
+      const ty = n.y - n.r - 35;
+      ctx.fillRect(tx, ty, tw, 26);
+      ctx.strokeRect(tx, ty, tw, 26);
+      ctx.fillStyle = '#f8fafc';
+      ctx.textAlign = 'left';
+      ctx.fillText(n.desc, tx + 12, ty + 17);
+    }}
+  }});
+
+  if (currentTab === 'graph') {{
+    animFrameId = requestAnimationFrame(() => animateGraph(canvas, ctx));
   }}
 }}
 
@@ -744,7 +1115,7 @@ if ('serviceWorker' in navigator) {{
   }});
 }}
 
-render();
+renderCurrentTab();
 </script>
 </body>
 </html>
@@ -756,6 +1127,7 @@ def generate_all_outputs(conn: sqlite3.Connection, ideas: List[Dict[str, Any]], 
     """Exports all required files: CSVs, Markdown, logs, and interactive viewer."""
     import time
     from src.pwa_assets import build_all_pwa_assets
+    from src.db import get_recent_pipeline_runs
 
     export_raw_items_csv(conn, "raw_items.csv")
     export_ideas_csv(ideas, "ideas.csv")
@@ -763,15 +1135,18 @@ def generate_all_outputs(conn: sqlite3.Connection, ideas: List[Dict[str, Any]], 
     export_glossary_csv(glossary, "glossary.csv")
     export_blocked_sources_md(conn, "blocked_sources.md")
     
+    # Fetch pipeline runs
+    pipeline_runs = get_recent_pipeline_runs(conn, limit=25)
+
     # Fetch raw items for HTML viewer
     cur = conn.cursor()
-    cur.execute("SELECT source, url, date, title, short_excerpt, paraphrase, upvotes, comment_count, theme, emotion, intensity, audience FROM raw_items WHERE passed_filters=1")
+    cur.execute("SELECT id, source, url, date, title, short_excerpt, paraphrase, upvotes, comment_count, theme, emotion, intensity, audience FROM raw_items WHERE passed_filters=1 ORDER BY created_at DESC")
     raw_items = [dict(r) for r in cur.fetchall()]
     
-    cur.execute("SELECT source, title, drop_reason FROM raw_items WHERE passed_filters=0")
+    cur.execute("SELECT source, url, title, drop_reason, short_excerpt FROM raw_items WHERE passed_filters=0 ORDER BY created_at DESC")
     dropped_items = [dict(r) for r in cur.fetchall()]
     
-    sweep_time = time.strftime('%Y-%m-%d %H:%M:%S')
-    export_html_viewer(ideas, raw_items, glossary, dropped_items, sweep_time, "viewer/index.html")
-    export_html_viewer(ideas, raw_items, glossary, dropped_items, sweep_time, "docs/index.html")
+    sweep_time = time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())
+    export_html_viewer(ideas, raw_items, glossary, dropped_items, pipeline_runs, sweep_time, "viewer/index.html")
+    export_html_viewer(ideas, raw_items, glossary, dropped_items, pipeline_runs, sweep_time, "docs/index.html")
     build_all_pwa_assets(["viewer", "docs"])

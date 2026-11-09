@@ -87,8 +87,58 @@ def init_db(db_path: str = "data/sayari.db"):
     );
     """)
 
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS pipeline_runs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        timestamp TEXT NOT NULL,
+        trigger_type TEXT NOT NULL,
+        sources_swept TEXT NOT NULL,
+        time_ranges TEXT NOT NULL,
+        raw_collected_count INTEGER DEFAULT 0,
+        passed_filters_count INTEGER DEFAULT 0,
+        dropped_noise_count INTEGER DEFAULT 0,
+        summary_learnings TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+
     conn.commit()
     conn.close()
+
+def record_pipeline_run(
+    conn: sqlite3.Connection,
+    trigger_type: str,
+    sources_swept: str,
+    time_ranges: str,
+    raw_collected_count: int,
+    passed_filters_count: int,
+    dropped_noise_count: int,
+    summary_learnings: str
+) -> int:
+    """Logs an execution run of the listening agent with source ranges and overall learnings."""
+    import time
+    cur = conn.cursor()
+    ts = time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())
+    cur.execute("""
+    INSERT INTO pipeline_runs (
+        timestamp, trigger_type, sources_swept, time_ranges,
+        raw_collected_count, passed_filters_count, dropped_noise_count, summary_learnings
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (ts, trigger_type, sources_swept, time_ranges, raw_collected_count, passed_filters_count, dropped_noise_count, summary_learnings))
+    conn.commit()
+    return cur.lastrowid
+
+def get_recent_pipeline_runs(conn: sqlite3.Connection, limit: int = 20) -> List[Dict[str, Any]]:
+    """Retrieves the recent pipeline execution history."""
+    cur = conn.cursor()
+    cur.execute("""
+    SELECT id, timestamp, trigger_type, sources_swept, time_ranges,
+           raw_collected_count, passed_filters_count, dropped_noise_count, summary_learnings
+    FROM pipeline_runs
+    ORDER BY id DESC
+    LIMIT ?
+    """, (limit,))
+    return [dict(r) for r in cur.fetchall()]
 
 def clip_to_25_words(text: str) -> str:
     """Strictly clips text to at most 25 words to comply with copyright & fair excerpt rules."""

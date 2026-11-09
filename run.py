@@ -375,6 +375,8 @@ def cmd_collect_apify(config):
     print(f"[apify] Sweep complete. Ingested {len(items)} items ({added} passed compliance filters).\n")
 
 def cmd_pipeline(config):
+    import os
+    from src.db import record_pipeline_run
     print("\n=======================================================")
     print("SAYARI CONTENT RESEARCH TOOL — FULL RUN PIPELINE")
     print("=======================================================")
@@ -383,7 +385,31 @@ def cmd_pipeline(config):
     cmd_collect_apify(config)
     cmd_collect_reddit(config)
     cmd_generate_ideas(config)
-    print("\nPipeline execution complete! Open viewer/index.html in browser to explore.")
+
+    # Log execution run with pull ranges and learnings
+    db_path = config.get("database", {}).get("path", "data/sayari.db")
+    conn = get_db_connection(db_path)
+    cur = conn.cursor()
+    cur.execute("SELECT COUNT(*) FROM raw_items")
+    total_raw = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM raw_items WHERE passed_filters=1")
+    passed_raw = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM raw_items WHERE passed_filters=0")
+    dropped_raw = cur.fetchone()[0]
+
+    trigger = "Cloud Scheduled Cron (GitHub Actions)" if os.environ.get("GITHUB_ACTIONS") else "Local Manual CLI"
+    record_pipeline_run(
+        conn,
+        trigger_type=trigger,
+        sources_swept="Reddit (Apify: 4 targeted queries), 9 RSS Feeds (Compliance Week, Steptoe, FiveBy Substack)",
+        time_ranges="Reddit: 2024–2026 (Foundational rants & fresh pulse); RSS: Latest 30-day enforcement advisories",
+        raw_collected_count=total_raw,
+        passed_filters_count=passed_raw,
+        dropped_noise_count=dropped_raw,
+        summary_learnings="Continuous intelligence pull across sanctions evasion, L1 false positive rants, swivel chair fatigue, and recent regulatory penalties."
+    )
+    conn.close()
+    print("\nPipeline execution complete! Run logged and exported to viewer.")
 
 def main():
     parser = argparse.ArgumentParser(description="Sayari LinkedIn Research & Idea Bank Tool")
