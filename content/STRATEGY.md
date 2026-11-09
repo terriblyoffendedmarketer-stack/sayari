@@ -17,9 +17,9 @@ Impressions matter least; one hundred of the right people beat ten thousand of t
 
 ### Month 1 (weeks 1–4): "We see you"
 **Job:** earn attention and become recognizable. The reader learns that this account understands their day.
-- Mix: mostly **pain mirror**, with relief and receipts introduced early so it never reads as a meme account. Roughly 50% pain · 25% relief · 15% receipts · 10% news.
+- Mix: the brief's split from day one, **35% pain · 25% relief · 20% receipts · 20% news**. Both posts so far are pain, so the next ones are relief and receipts.
 - Themes: false positives all day · the data assembly tax · the swivel chair / Frankenstack · understaffed and accountable · **the name passed, the owner didn't** (validated).
-- Ideas: ✅ I01 name match · ✅ I02 bingo · I04 questionnaire vs record · I03 the PURE story carousel · I38 "Did you mean" search · I40 the analyst's calendar · I12 the "quick one" Slack thread · I42 "What tool?" "…a spreadsheet." · I06 every Jose Gomez · I05 demo questions (saveable) · I39 the compliance alignment chart · I07 a score is not a defense.
+- Ideas: ✅ I01 name match · ✅ I02 bingo · I04 questionnaire vs record · I03 the PURE story carousel · I38 "Did you mean" search · I40 the analyst's calendar · I12 the "quick one" Slack thread · I42 "What tool?" "…a spreadsheet." · I06 every Jose Gomez · I05 demo questions (saveable) · I39 the compliance alignment chart · I07 a score is not a defense · I45 the Moosavi carousel (the brief's own receipts example, if Sayari shares the case).
 
 ### Month 2 (weeks 5–8): "It's not you, it's the stack, and the owner"
 **Job:** name the real enemy and start **teaching**. The reader learns something they'll use.
@@ -32,7 +32,7 @@ Impressions matter least; one hundred of the right people beat ten thousand of t
 - Mix: keep the target, but lean into **receipts and relief**, which is where product proof lives.
 - Themes: blind exactly where you're growing · three vendors, sixty workflows · deadline and volume crunch.
 - Ideas: I17 six tabs → one query · I41 red-string corkboard → one clean graph · I20 ownership-chain carousel · I19 dashboard screens with striking data · I09 the 72% telecom stat (if approved) · I36 expert quotes (a named Sayari analyst's face) · I31 practitioner screengrabs (UGC) · I33 knowledge graph · I34 the registry-openness map · I08 one address, many companies · I28 AI workflows for compliance teams.
-- *Blocked on Sayari:* cleared product screens, approved proof wording, a named analyst willing to front a teardown.
+- *Blocked on Sayari:* cleared product screens, approved proof wording, a named analyst willing to front a teardown (the brief wants a face on receipts).
 
 ## Weekly rhythm (the default; swap freely)
 | Slot | What | Why |

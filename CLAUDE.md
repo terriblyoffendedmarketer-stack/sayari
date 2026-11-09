@@ -13,6 +13,12 @@
 - **Live PWA Dashboard (Shareable)**: https://terriblyoffendedmarketer-stack.github.io/sayari/
 - **Cloud Automation**: Runs every 6 hours via `.github/workflows/scheduled-sweep.yml` using GitHub Actions + Apify Secret.
 
+## Content Roadmap (where this project is going)
+- [~] **A. Foundation:** research, idea bank, strategy, voice, captions, templates list, posts log, hub. *Remaining: the design kit (base layouts in the Sayari design system) and validating themes as posts use them.*
+- [ ] **B. Production:** make posts one at a time together (hook → format → design → caption), logging each in POSTS.md. Target: the first 5–6 images, then 3–4 a week.
+- [ ] **C. A well-oiled engine:** a library of built templates and wireframes, recurring series, captions that consistently land; making a post becomes matching.
+- [ ] **D. Replicable framework:** `playbook/` proven on Sayari, then reused for new companies (`playbook/ONBOARDING.md`). Don't build for D now; it emerges from doing B and C well.
+
 ## Roadmap
 - [x] Phase 1: Local SQLite schema, strict privacy rules (no usernames, <=25 words excerpt, paraphrases).
 - [x] Phase 2: Analysis engine (keyword filtering, frustration overrides, sentiment/intensity tagging, theme clustering with Ollama + TF-IDF fallback).
