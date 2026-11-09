@@ -5,10 +5,12 @@
 # Requires: stdlib only (re, json, sqlite3). Template: content/hub/template.html (has /*__HUB_DATA__*/).
 #
 # Gotchas:
-# - Parsing relies on the markdown shapes in POSTS.md ("## P01 · Title"), FRAMEWORK.md (numbered
+# - Parsing relies on the markdown shapes in IDEA_BANK.md ("| ID |" table), POSTS.md ("## P01 · Title"), FRAMEWORK.md (numbered
 #   candidate themes, "| Bucket |" table), templates.md and IMAGE_IDEAS.md tables ("| NN | file |...").
 #   Keep those shapes or update the parsers here.
-# - Never embed the idea-doc meme images: they're copyrighted and gitignored. The hub shows text only.
+# - Meme images are referenced as images/<file> and published ONLY to the private hub artifact
+#   (Artifact publish with root=content/idea-doc-images, files=images/*). They're copyrighted and gitignored;
+#   never commit them or publish them anywhere public. If the folder is missing, cards fall back to text only.
 import json, os, re, sqlite3, glob, datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -81,6 +83,8 @@ def templates():
 
 def memes():
     md = read("content/idea-doc-images/IMAGE_IDEAS.md")
+    imgdir = P("content/idea-doc-images/images")
+    files = {f[:2]: f for f in os.listdir(imgdir)} if os.path.isdir(imgdir) else {}
     out, section = [], ""
     for l in md.splitlines():
         if l.startswith("## "):
@@ -93,8 +97,16 @@ def memes():
                 out.append({"n": m.group(1), "kind": kind, "name": c[0], "what": c[1], "insight": c[2], "sayari": c[3]})
             else:
                 out.append({"n": m.group(1), "kind": kind, "name": c[0], "what": c[1], "insight": "", "sayari": c[2] if len(c) > 2 else ""})
+            if m.group(1) in files:
+                out[-1]["img"] = "images/" + files[m.group(1)]
     picks = re.findall(r"^\d+\.\s+\*\*(.+?)\*\*\s*\((.+?)\)", md.split("## Top picks")[-1], re.M) if "## Top picks" in md else []
     return out, [{"title": t, "why": w} for t, w in picks]
+
+
+def idea_bank():
+    rows = table_rows(read("content/buckets/IDEA_BANK.md"), "| ID")
+    keys = ["id", "idea", "gist", "format", "bucket", "status", "needs", "doc"]
+    return [dict(zip(keys, r + [""] * (8 - len(r)))) for r in rows]
 
 
 def sharpened():
@@ -159,7 +171,7 @@ def main():
     mm, picks = memes()
     data = {"built": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), "posts": p, "pipeline": pipeline, "mix": mix,
             "themes": th, "buckets": buckets, "templates": templates(), "memes": mm, "picks": picks,
-            "sharpened": sharpened(), "cases": case_studies(), "briefs": briefs(), "listener": listener()}
+            "ideas": idea_bank(), "sharpened": sharpened(), "cases": case_studies(), "briefs": briefs(), "listener": listener()}
     tpl = read("content/hub/template.html")
     html = tpl.replace("/*__HUB_DATA__*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
     open(P("content/hub/hub.html"), "w", encoding="utf-8").write(html)

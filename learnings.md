@@ -29,3 +29,4 @@ sayari.com returns 403 to curl/requests | Cloudflare bot protection; spoofing th
 Built-in browser pane can't save files | fetch to http://localhost and blob downloads both fail silently from the pane | return text via javascript_tool and write the files from the session
 Commits appeared on GitHub without an explicit push | something on the Mac (likely an editor's git autosync) pushes right after each commit; reflog shows "update by push" within seconds | assume every local commit becomes public on this repo
 Content Hub artifact never existed though user expected it | only a local gallery.html was opened; a review page was proposed, not built | built scripts/build_hub.py -> content/hub/hub.html, published privately; republish after every content change
+Hub showed 4 ideas, user had 40+ | the idea bank lived only in the Google Doc; the hub reads repo files | imported it to content/buckets/IDEA_BANK.md (44 rows, tagged) and the hub reads that table
