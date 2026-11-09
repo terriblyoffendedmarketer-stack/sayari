@@ -49,6 +49,9 @@ Impressions matter least; one hundred of the right people beat ten thousand of t
 - **Headline → what it means for you:** the newsjack template, as events happen.
 A series makes each post easier to make and easier for the audience to recognize.
 
+## Visual and format variety (added 2026-11-10)
+Two colours plus typography/infographics will get monotonous fast. Variety comes from **real content**, not new palettes: screenshots of news and regulator releases, real LinkedIn/Reddit posts (anonymized), Slack chats and emails (realistic fakes are fine), product screenshots (Sayari release notes, product pages), customer quotes and testimonials from case studies. The Sayari frame (logo, type, one accent) stays. Inside the frame, native colours of real artifacts are allowed. Rotate the *approach* too: story, artifact, screenshot, quote, data, list. Don't let consecutive posts all be "designed typography".
+
 ## Guardrails (always)
 Proof gates (no unsourced numbers; client clearance for customer proof) · never name competitors · the beginner-language test · no raw memes for now · personality in every caption (`playbook/CAPTIONS.md`, `content/VOICE.md`).
 
