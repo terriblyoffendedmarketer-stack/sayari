@@ -5,7 +5,7 @@ description: Use when working on Sayari LinkedIn content in this repo — findin
 
 # Sayari content work
 
-1. Read `content/posts/POSTS.md` (what shipped), then `playbook/SPEC.md` (the method and session rules) and `content/FRAMEWORK.md` (Sayari specifics). For captions: `playbook/CAPTIONS.md` + `content/VOICE.md`.
+1. Read `content/posts/POSTS.md` (what shipped) and `content/STRATEGY.md` (where we're heading), then `playbook/SPEC.md` (the method and session rules) and `content/FRAMEWORK.md` (Sayari specifics). For captions: `playbook/CAPTIONS.md` + `content/VOICE.md`.
    Together they define the layers (research → themes → templates → meme library → idea buckets), the rules (hook first, the best format wins, UGC wherever possible, the Sayari value check, proof gates) and the language filter (a beginner in compliance should follow it).
 2. Work **one bucket or one idea at a time**, with the user. Bring back a few strong candidates, not long lists. The user reads everything, so keep it short.
 3. Where things live:

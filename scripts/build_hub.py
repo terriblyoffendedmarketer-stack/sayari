@@ -175,7 +175,7 @@ def main():
     mm, picks = memes()
     data = {"built": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), "posts": p, "pipeline": pipeline, "mix": mix,
             "themes": th, "buckets": buckets, "templates": templates(), "memes": mm, "picks": picks,
-            "ideas": idea_bank(), "sharpened": sharpened(), "cases": case_studies(), "briefs": briefs(), "listener": listener()}
+            "strategy": read("content/STRATEGY.md") if os.path.exists(P("content/STRATEGY.md")) else "", "ideas": idea_bank(), "sharpened": sharpened(), "cases": case_studies(), "briefs": briefs(), "listener": listener()}
     tpl = read("content/hub/template.html")
     html = tpl.replace("/*__HUB_DATA__*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
     open(P("content/hub/hub.html"), "w", encoding="utf-8").write(html)

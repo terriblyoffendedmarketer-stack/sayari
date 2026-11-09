@@ -1,13 +1,13 @@
 # Sayari posts log (source of truth for what shipped)
 
-Read this first when starting a batch. One entry per post, newest at the bottom. Images go in `content/posts/assets/` as `P<nn>-<slug>.png`.
+Read this first when starting a batch. One entry per post, newest at the bottom. Images go in `content/posts/assets/` as `P<nn>-<slug>.png` (the hub picks them up automatically).
 Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pillar** (Frankenstack / score ≠ defense / hidden risk) · **theme** (from `content/themes.md`) · **template** (from `playbook/templates.md`) · **bucket** · **hook type**.
 
 ## Running tally
 | # | Title | Format | Pillar | Template | Status |
 |---|---|---|---|---|---|
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Shared with Sayari (not live) |
-| P02 | Compliance bingo | Pain mirror | Frankenstack | Bingo card | Shared with Sayari (not live) |
+| P02 | Frankenstack bingo | Pain mirror | Frankenstack | 3×3 bingo card | Shared with Sayari (not live) |
 
 Mix so far: 2/2 pain mirror, 0 product-as-relief, 0 receipts, 0 newsjack → **the next batch should add relief and receipts.**
 
@@ -16,7 +16,7 @@ Mix so far: 2/2 pain mirror, 0 product-as-relief, 0 receipts, 0 newsjack → **t
 ## P01 · Name-match purgatory (Brightwell)
 - **Idea source:** idea bank #1 · **Bucket:** realistic artifacts · **Theme:** clearing false positives all day / the name passed, the owner didn't
 - **Format:** pain mirror · **Pillar:** Frankenstack · **Template:** stacked search bars with "potential match" badges + "same company?"
-- **Image:** three spellings of an invented company (Brightwell Components Ltd / Brightwel Components Limited / Bright Well Components), each a "potential match", joined by a red bracket. (Asset in the Google Doc; to be exported to `assets/P01-name-match.png`.)
+- **Image:** `assets/P01-name-match.png`. Navy card, "entity screening · 3 results" in mono: Brightwell Components Ltd / Brightwel Components Limited / Bright Well Components, each with a "potential match" chip, joined by a hand-drawn gold bracket and arrow to "same company?" in gold script. SAYARI wordmark bottom right.
 - **Hook type:** a quote they've heard + a translation joke
 - **Caption (as published):**
 > "Potential match."
@@ -29,10 +29,10 @@ Mix so far: 2/2 pain mirror, 0 product-as-relief, 0 receipts, 0 newsjack → **t
 - **Personality moves:** translation joke, comic specificity, wink P.S.
 - **Results:** (add impressions / comments / saves)
 
-## P02 · Compliance bingo
+## P02 · Frankenstack bingo
 - **Idea source:** idea bank #3 · **Bucket:** charts-as-jokes · **Theme:** three vendors, sixty workflows (Frankenstack) / understaffed and accountable
-- **Format:** pain mirror · **Pillar:** Frankenstack · **Template:** 5×5 bingo card ("Friday 3pm edition")
-- **Image:** bingo squares of daily pains ("same name, different company", "final_v7.xlsx", "it's in tab 5", "who owns the owner?"…). (Asset in the Google Doc; to be exported to `assets/P02-bingo.png`.)
+- **Format:** pain mirror · **Pillar:** Frankenstack · **Template:** 3×3 bingo card, "Frankenstack bingo: Be honest. How many did you hit this week?"
+- **Image:** `assets/P02-frankenstack-bingo.png`. Beige card, 9 squares (navy/white), gold ticks on 4: "The spreadsheet is the system" (the analyst on his 5th Red Bull) · Who owns the owner? (supplier → holding company → A PO box ???) · UBO_tracker_FINAL_v7.xlsx · "Quick one, can you double-check?" (your manager, 5:58pm) · Same Ltd name. Fifth search bar. · "How did you decide this?" (the auditor, 8 months later) · "The intern who understands the spreadsheet is OoO." · Session expired. Start the search again. Mid-case. · "The system says clear. Google says otherwise."
 - **Hook type:** a precise moment + a quote they've heard
 - **Caption (as published):**
 > It's 5:58 pm, and your manager drops this banger:

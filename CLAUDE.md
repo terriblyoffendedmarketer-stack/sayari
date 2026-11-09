@@ -4,7 +4,7 @@
 - **Summary**: Local research and public discussion mining tool for Sayari LinkedIn content generation. Captures practitioner language, frustrations, and opinions from Reddit, RSS/news feeds, and manual imports, clustering them into ranked content ideas mapped to Sayari's 4 core formats.
 - **Current Phase**: Deployed to GitHub Pages as an installable Progressive Web App (PWA); automated cloud listening active via GitHub Actions (sweeps every 6 hours without laptop required).
 - **In Progress**: Autonomous cloud ingestion across Apify and RSS feeds.
-- **What's Next**: Build `content/themes.md` together: validate the 9 candidate themes in FRAMEWORK.md, then templates, then buckets. One bucket at a time.
+- **What's Next**: Sprint to 5–6 images (2 done): I04 questionnaire vs record → I03 PURE carousel → I05 demo questions → a Friday-3pm piece. Setup still open: ICP psychographic research (`research/icp_psychographics.md` §4), validating the other 8 themes. Strategy anchor: `content/STRATEGY.md`.
 - **Content production (2026-11-09)**: Brand-page LinkedIn posts. Posts 1–2 are done (in the Google Doc). Selected ideas are 1, 3, 4, 5, 8. **Done: Post 1 = idea 1 (name match, Brightwell), Post 2 = idea 3 (bingo).** Next: 4, 5, 8. **No memes for now**: storytelling images and carousels only. The meme ideas are kept for their insight. Visuals are made with the Claude Design artifact type and the 'Sayari' design system.
 
 ## Live PWA & Links
@@ -47,11 +47,11 @@
 - `viewer/index.html`: Interactive local dashboard with format, theme, and intensity filters.
 - `tests/test_filters.py`: Pytest suite for compliance keyword and drop rules.
 - `playbook/`: **company-agnostic method, reused for every client.** `SPEC.md` (the content OS: layers, rules, session dialectic, continuity), `ONBOARDING.md` (5 core tasks for a new company), `CAPTIONS.md` (caption craft), `templates.md` (meme and design mechanics library).
-- `content/`: Sayari's content layers. `posts/POSTS.md` = **log of shipped posts with captions and tags (read first)**. `VOICE.md` = Sayari voice. `FRAMEWORK.md` = Sayari specifics plus 9 candidate themes.
+- `content/`: Sayari's content layers. `posts/POSTS.md` = **log of shipped posts with captions and tags (read first)**. `VOICE.md` = Sayari voice. `STRATEGY.md` = the 3-month plan (arc, weekly rhythm, series, current sprint). `FRAMEWORK.md` = Sayari specifics plus 9 candidate themes.
   - `buckets/IDEA_BANK.md`: **every idea, one row each** (ID, gist, format, bucket, status, needs), imported from the Google Doc 2026-11-10 (44 ideas). Add new ideas here.
   - `themes.md`: validated themes (1 so far). `sharpened/`: one file per idea after sharpening. `brand/`: Sayari logos.
   - `idea-doc-images/`: `IMAGE_IDEAS.md` (49 images catalogued), `gallery.html` (local visual gallery). `images/` is gitignored (copyrighted memes; regenerate with the extractor).
-- `research/`: inputs. `brief_summary.md` (the Sayari brief's rules on one page), `lexicon.md` (words practitioners actually use, plain meanings, beginner-safe flags, banned words). `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.
+- `research/`: inputs. `icp_psychographics.md` (who the ICP is beyond work; living file, built lesson by lesson), `brief_summary.md` (the Sayari brief's rules on one page), `lexicon.md` (words practitioners actually use, plain meanings, beginner-safe flags, banned words). `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.
 - `.claude/skills/sayari-content/SKILL.md`: project skill that loads the framework rules for content work.
 - `scripts/build_hub.py` + `content/hub/template.html`: generate `content/hub/hub.html` (the Content Hub) from POSTS, FRAMEWORK, templates, IMAGE_IDEAS, sharpened ideas, case studies and the listener DB.
 - `scripts/build_image_gallery.py`: Rebuilds gallery.html from IMAGE_IDEAS.md.

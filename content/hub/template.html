@@ -87,6 +87,12 @@ a{color:var(--ink);text-decoration-color:var(--gold);text-underline-offset:3px}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .empty{color:var(--muted);font-style:italic}
 footer{color:var(--muted);font-size:13px;padding-block:0 32px}
+.prose{gap:10px;max-width:860px}
+.prose p,.prose li{max-width:72ch}
+.prose ul,.prose ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.prose .md-h2{font:700 19px/1.3 var(--display);margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.prose .md-h3{font:600 16px/1.35 var(--body);margin-top:8px;color:var(--gold)}
+.prose code{font:13px var(--mono);background:var(--chip);padding:1px 5px;border-radius:4px}
 .thumb{display:block;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--paper);overflow:hidden;cursor:zoom-in}
 .thumb img{display:block;width:100%;height:220px;object-fit:contain}
 .thumb:hover{background:var(--paper);border-color:var(--gold)}
@@ -121,6 +127,7 @@ const chips = arr => `<div class="meta">${arr.filter(Boolean).map(a=>`<span clas
 
 const VIEWS = [
   ["overview","Overview",null],
+  ["strategy","Strategy",null],
   ["posts","Posts",D.posts.length],
   ["themes","Themes",D.themes.length],
   ["templates","Templates",D.templates.length],
@@ -230,7 +237,25 @@ function research(){
   <div class="card">${(L.voices||[]).map(voice).join("")}</div></div>`;
 }
 
-const RENDER = {overview, posts, themes, templates, ideas, memes, research};
+
+function md(src){
+  const inline = t => esc(t).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/\*(.+?)\*/g,"<i>$1</i>").replace(/`([^`]+)`/g,'<code>$1</code>');
+  const lines = src.split("\n"); let html = "", i = 0;
+  while (i < lines.length) {
+    const l = lines[i];
+    if (/^#{1,3} /.test(l)) { const n = l.match(/^#+/)[0].length; html += n===1 ? "" : `<h${n+0} class="md-h${n}">${inline(l.replace(/^#+ /,""))}</h${n+0}>`; i++; continue; }
+    if (l.startsWith("|")) { const rows = []; while (i < lines.length && lines[i].startsWith("|")) { if (!/^\|[-| :]+\|$/.test(lines[i])) rows.push(lines[i].trim().replace(/^\||\|$/g,"").split("|")); i++; }
+      html += `<div class="tablewrap"><table style="min-width:520px"><thead><tr>${rows[0].map(c=>`<th>${inline(c.trim())}</th>`).join("")}</tr></thead><tbody>${rows.slice(1).map(r=>`<tr>${r.map(c=>`<td>${inline(c.trim())}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`; continue; }
+    if (/^(- |\d+\. )/.test(l)) { const ol = /^\d+\. /.test(l); let items = ""; while (i < lines.length && /^(- |\d+\. )/.test(lines[i])) { items += `<li>${inline(lines[i].replace(/^(- |\d+\. )/,""))}</li>`; i++; } html += ol ? `<ol>${items}</ol>` : `<ul>${items}</ul>`; continue; }
+    if (l.trim()) { html += `<p>${inline(l)}</p>`; }
+    i++;
+  }
+  return html;
+}
+function strategy(){
+  return D.strategy ? `<div><h2>3-month strategy</h2><p class="lede">Our anchor plan. Flexible; reviewed monthly against results. Source: content/STRATEGY.md.</p></div><article class="card prose searchable">${md(D.strategy)}</article>` : `<p class="empty">No strategy yet.</p>`;
+}
+const RENDER = {overview, strategy, posts, themes, templates, ideas, memes, research};
 const main = document.getElementById("main"), q = document.getElementById("q");
 function current(){ const h = location.hash.slice(1); return RENDER[h] ? h : "overview"; }
 function render(){

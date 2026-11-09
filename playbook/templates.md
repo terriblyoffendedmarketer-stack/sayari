@@ -9,7 +9,7 @@ Status: `seed` (spotted, not built) · `validated` (we agreed it fits) · `built
 | Alignment quadrant (lawful/chaotic × good/evil) | Everyone finds themselves and tags a colleague | 2×2 typographic; with photo stickers | Shareable relatability | #28 | seed |
 | Before / during / after | The "patch" only covers what's inspected | 3-panel timeline; 3-slide carousel | Audit / process theatre | #39 | seed |
 | Calendar block | The absurd time block says it all | Google Calendar day; phone week view | Day-in-the-life pain | #29, #30 | seed |
-| Bingo card | Readers comment their count | 5×5 grid, "Friday 3pm edition" | Engagement | P02 | built |
+| Bingo card | Readers comment their count | 3×3 grid with gold ticks (P02); 5×5 variant | Engagement | P02 | built |
 | Stacked search bars / "same?" | Visual repetition shows the absurdity | 3 bars + bracket; results table | Name-match pain | P01 | built |
 | Realistic chat/email ("quick one…") | Recognition of a real message | Slack thread; email; Teams | Pain mirror | idea bank | seed |
 | Playlist | Track titles tell a story | Spotify list (redrawn art) | Light humour | #25 | seed |
