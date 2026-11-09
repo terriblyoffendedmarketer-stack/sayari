@@ -34,3 +34,5 @@ Post images in a private Google Doc | Drive MCP download is too big for the cont
 Kit grid column blew out on a long filename | CSS grid 1fr = minmax(auto,1fr) won't shrink below min-content | use repeat(3,minmax(0,1fr)) + overflow-wrap:anywhere
 'illustrative: invented company' kept appearing on images | the Sayari Design System README told tools to put 'the source or a disclaimer' in a source line, and the kit copied it | rule rewritten at the source (design system README + tokens) and in kit/SPEC: no disclaimers on images
 Kit wireframe said '39 times' under a 'no match' search | invented placeholder copy in the L6 layout leaked into a pitch hook | kit example text must be factual too; fixed to '39 violations' (OFAC's count is violations)
+Canvas headlines broke awkwardly ('later: a / $466,200') though kit renders were fine | kit.css sets text-wrap:balance on .headline; inline-styled canvas copies lost it | add text-wrap: balance to every canvas headline style
+Built-in browser pane can't open claude.ai artifacts | pane isn't signed in to claude.ai | review canvas artboards with scripts/preview_dc.py (local render of the .dc.html source)

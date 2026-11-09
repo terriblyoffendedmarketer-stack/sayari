@@ -61,6 +61,7 @@
 - `research/`: inputs. `icp_psychographics.md` (who the ICP is beyond work; living file, built lesson by lesson), `brief_summary.md` (the Sayari brief's rules on one page), `lexicon.md` (words practitioners actually use, plain meanings, beginner-safe flags, banned words). `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.
 - `.claude/skills/sayari-content/SKILL.md`: project skill that loads the framework rules for content work.
 - `design/kit/`: **design kit**. `kit.css` (tokens copied from the Sayari Design System artifact), 6 base layouts in `layouts/` (L1 search stack, L2 card grid, L3 split compare, L4 stat + source, L5 message thread, L6 story carousel), `previews/` PNGs, README with rules.
+- `scripts/preview_dc.py`: renders Claude Design artboards (.dc.html) locally + a contact sheet laid out like the canvas, for reviewing without claude.ai sign-in.
 - `scripts/render_post.py`: renders a post HTML to a 1080×1350 PNG (carousels: PNG per slide + PDF) via headless Chrome.
 - `scripts/build_hub.py` + `content/hub/template.html`: generate `content/hub/hub.html` (the Content Hub) from POSTS, FRAMEWORK, templates, IMAGE_IDEAS, sharpened ideas, case studies and the listener DB.
 - `scripts/build_image_gallery.py`: Rebuilds gallery.html from IMAGE_IDEAS.md.
