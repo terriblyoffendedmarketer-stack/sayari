@@ -9,18 +9,18 @@ IDs: `I##` for ideas, insights and angles, `H##` for hooks. Add new rows with th
 Imported 2026-11-10 from the Google Doc "Sayari LinkedIn content: notes and idea bank" (idea bank, ideas 1–9 tabs, "more idea dump", "angles still to develop"). Near-duplicates are merged into one row; the variants are noted in Gist.
 
 Status: `done` (posted) · `selected` (Ekshika picked it) · `sharpened` (has a file in content/sharpened/) · `open` (in the bank) · `hold` (blocked on something) · `later` (parked for now, not rejected)
-Doc # = the numbered idea in the doc's tabs (idea 1–9), where it has one.
+Doc # = the numbered idea in the doc's tabs (idea 1, id2, 3, 4, 5, 6, 7–9), the numbering Ekshika picked from. **I01–I09 match those tab numbers exactly** (I04 = tab 4).
 
 | ID | Start | Idea | Gist | Format | Bucket | Status | Needs | Doc # |
 |---|---|---|---|---|---|---|---|
 | I01 | idea | Name-match purgatory | One invented company in three spellings, all "potential match": same company? | Pain mirror | Realistic artifacts | done | — | 1 |
-| I02 | idea | Compliance bingo, Friday 3pm edition | 5×5 card of daily pains; readers comment their count | Pain mirror | Charts-as-jokes | done | — | 3 |
-| I03 | idea | "No match found" is the start of the question | A name search isn't an ownership check (the 50% rule); PURE case | Receipts | Case studies as stories | sharpened | Pick the hook (post 4) | 4 |
-| I04 | idea | Questionnaire vs record | Supplier form says "no concerns"; the registry shows two 25% blocked owners | Product as relief | Realistic artifacts | sharpened | P03 draft, in review | 5 |
-| I05 | idea | Questions to ask any screening demo | Saveable checklist: common name with no DOB, non-Latin script, see the source record, explain a clear-out six months later | Product as relief | Lists and tips | selected | Confirm Sayari answers each well | 8 |
-| I06 | idea | Every Jose Gomez | L1 alert queue: six rows of the same name, no DOB, "clear by EOD" sticky note | Pain mirror | Realistic artifacts | open | — | 2 |
-| I07 | idea | A score is not a defense | Examiner: "How did you clear this?" Reply: "Risk score: 87." Triage is a score; a decision is a file | Newsjack | Realistic artifacts | open | Check OFAC guidance wording | 6 |
-| I08 | idea | One address, many companies | Carousel: a quiet address, a long list of companies, one owner at the top | Receipts | Case studies as stories | later | A real public case. Ekshika: "skip for now" while we make the first 5–6 images | 7 |
+| I02 | idea | Every Jose Gomez | L1 alert queue: six rows of the same name, no DOB, "clear by EOD" sticky note | Pain mirror | Realistic artifacts | open | — | 2 |
+| I03 | idea | Compliance bingo, Friday 3pm edition | 5×5 card of daily pains; readers comment their count | Pain mirror | Charts-as-jokes | done | — | 3 |
+| I04 | idea | "No match found" is the start of the question | A name search isn't an ownership check (the 50% rule); PURE case | Receipts | Case studies as stories | sharpened | Pick the hook (post 4) | 4 |
+| I05 | idea | Questionnaire vs record | Supplier form says "no concerns"; the registry shows two 25% blocked owners | Product as relief | Realistic artifacts | sharpened | P03 draft, in review | 5 |
+| I06 | idea | A score is not a defense | Examiner: "How did you clear this?" Reply: "Risk score: 87." Triage is a score; a decision is a file | Newsjack | Realistic artifacts | open | Check OFAC guidance wording | 6 |
+| I07 | idea | One address, many companies | Carousel: a quiet address, a long list of companies, one owner at the top | Receipts | Case studies as stories | later | A real public case. Ekshika: "skip for now" while we make the first 5–6 images | 7 |
+| I08 | idea | Questions to ask any screening demo | Saveable checklist: common name with no DOB, non-Latin script, see the source record, explain a clear-out six months later | Product as relief | Lists and tips | selected | Confirm Sayari answers each well | 8 |
 | I09 | idea | The 72% telecom stat | "0 watchlist matches" vs an ownership graph to a designated owner | Product as relief | Product and dashboard screens | hold | Written approval of wording + cleared graph screen | 9 |
 | I10 | idea | A spreadsheet, a Google tab and a prayer | A browser with dozens of tabs open: the brief's own line | Pain mirror | Realistic artifacts | open | — | |
 | I11 | idea | It's not you, it's the Frankenstack | A breakup text from an analyst to their seven tools | Pain mirror | Realistic artifacts | open | — | |
@@ -58,10 +58,10 @@ Doc # = the numbered idea in the doc's tabs (idea 1–9), where it has one.
 | I43 | idea | Before / during / after the audit | Three panels of an evidence file: scattered → scramble → "with the source attached, it's just there" | Pain mirror | Charts-as-jokes | open | — | meme #39 |
 | I44 | idea | Which analyst are you? | Archetype cards: The Tab Hoarder, The Spelling Detective, The Chain Walker, The Screenshot Archivist | Pain mirror | Charts-as-jokes | open | — | ref #13 |
 | I45 | idea | The Moosavi network carousel | The brief's own receipts example: one real designation mapped slide by slide, "one designation, five countries still exposed", ending on "SDN screening is the floor, not the ceiling" | Receipts | Case studies as stories | open | The case material from Sayari + a named analyst's face | brief p.7, p.9 |
-| H01 | hook | "Your supplier isn't lying. They just don't know who owns them either." | Broad, very relatable; takes the blame off everyone and names the real gap (from the grocery case study: "even cooperative suppliers lacked visibility"). The user expects it to perform well | Product as relief | Realistic artifacts | open | A post built around it (could revisit I04's story from the supplier's side) | P03 pitch |
+| H01 | hook | "Your supplier isn't lying. They just don't know who owns them either." | Broad, very relatable; takes the blame off everyone and names the real gap (from the grocery case study: "even cooperative suppliers lacked visibility"). The user expects it to perform well | Product as relief | Realistic artifacts | open | A post built around it (could revisit I05's story from the supplier's side) | P03 pitch |
 | H02 | hook | "Both are 'documents.' Only one answers 'how did you know?'" | Hits the audit fear; leads straight to "source, not score" | Product as relief | Realistic artifacts | open | — | P03 pitch |
 | H03 | hook | "The supplier ticked 'No.' The registry didn't." | Plain contrast every reader has lived | Product as relief | Realistic artifacts | open | — | P03 pitch |
-| H04 | hook | "In 2010, a client told them exactly who owned the company." | A story opener with a twist coming | Receipts | Case studies as stories | open | Option A in the post 4 pitch | I03 pitch |
+| H04 | hook | "In 2010, a client told them exactly who owned the company." | A story opener with a twist coming | Receipts | Case studies as stories | open | Option A in the post 4 pitch | I04 pitch |
 | H05 | hook | "The answer was in their own files." | Leads with the twist; everyone has info stuck in a system the screening never sees | Receipts | Case studies as stories | open | Recommended for post 4 | post 4 pitch |
 | H06 | hook | "'No match found.' 39 times. Then a $466,200 penalty." | Numbers as the punch; stark, but more fear-led than our voice | Receipts | Case studies as stories | open | — | post 4 pitch |
 | H07 | hook | "A clean name search is the start of the question, not the answer." | The lesson as a contrarian line; clear but gives away the payoff | Pain mirror | Lists and tips | open | Could anchor a non-carousel post | post 4 pitch |

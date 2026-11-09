@@ -11,7 +11,7 @@ Starting points for every post, in Sayari's own design system (tokens copied fro
 | `L5-message-thread.html` | navy | Realistic fake Slack / email / auditor chat | Realistic chat/email |
 | `L6-carousel-story.html` | navy/beige alternating | Receipts: a real case told as setup → trap → move → result → rule | Story carousel |
 
-Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas in the idea bank (L3 = idea I04, L6 = idea I03), so they double as first wireframes.
+Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas in the idea bank (L3 = idea I05, L6 = idea I04), so they double as first wireframes.
 
 ## Rules baked in (from the design system)
 - One mode per image (navy or beige); alternate modes across the feed.

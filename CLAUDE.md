@@ -4,7 +4,7 @@
 - **Summary**: Local research and public discussion mining tool for Sayari LinkedIn content generation. Captures practitioner language, frustrations, and opinions from Reddit, RSS/news feeds, and manual imports, clustering them into ranked content ideas mapped to Sayari's 4 core formats.
 - **Current Phase**: Deployed to GitHub Pages as an installable Progressive Web App (PWA); automated cloud listening active via GitHub Actions (sweeps every 6 hours without laptop required).
 - **In Progress**: Autonomous cloud ingestion across Apify and RSS feeds.
-- **What's Next**: Sprint to 5–6 images (2 done): I04 questionnaire vs record → I03 PURE carousel → I05 demo questions → a Friday-3pm piece. Foundation done; posts are built from `design/kit/` layouts in `content/posts/drafts/`. Strategy anchor: `content/STRATEGY.md`.
+- **What's Next**: Sprint to 5–6 images (2 done): I05 questionnaire vs record → I04 PURE carousel → I08 demo questions → a Friday-3pm piece. Foundation done; posts are built from `design/kit/` layouts in `content/posts/drafts/`. Strategy anchor: `content/STRATEGY.md`.
 - **Content production (2026-11-09)**: Brand-page LinkedIn posts. Posts 1–2 are done (in the Google Doc). Selected ideas are 1, 3, 4, 5, 8. **Done: Post 1 = idea 1 (name match, Brightwell), Post 2 = idea 3 (bingo).** Next: 4, 5, 8. **No memes for now**: storytelling images and carousels only. The meme ideas are kept for their insight. Visuals are made with the Claude Design artifact type and the 'Sayari' design system.
 
 ## Live PWA & Links
