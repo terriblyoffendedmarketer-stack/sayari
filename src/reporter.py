@@ -257,8 +257,70 @@ def export_html_viewer(
   p.subtitle {{ color: var(--muted); font-size: 13.5px; margin-top: 4px; }}
   
   .header-actions {{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }}
-  .btn-dump-all {{ background: var(--btn-dump); color: #fff; border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }}
-  .btn-dump-all:hover {{ background: var(--btn-dump-hover); transform: translateY(-1px); }}
+  .btn-dump-all {{
+    background: var(--btn-dump);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    white-space: nowrap;
+  }}
+  .btn-dump-all:hover {{
+    background: var(--btn-dump-hover);
+    transform: translateY(-1px);
+  }}
+  .btn-dump-icon {{
+    font-size: 14px;
+    line-height: 1;
+  }}
+  .btn-dump-title {{
+    font-weight: 700;
+  }}
+  .btn-dump-badge {{
+    font-size: 10.5px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }}
+
+  .btn-pwa-install {{
+    background: #38bdf8;
+    color: #090d16;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+  }}
+  .sweep-badge-row {{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }}
+  .sweep-logs-pill {{
+    font-size: 10px;
+    background: #1e293b;
+    color: #38bdf8;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+  }}
+  .sweep-badge-sub {{
+    font-size: 11px;
+    color: #34d399;
+  }}
   
   /* Interactive Sweep Badge / Tile */
   .sweep-badge {{ background: var(--card); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-size: 12px; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; cursor: pointer; transition: all 0.2s; }}
@@ -437,19 +499,54 @@ def export_html_viewer(
     .header-actions {{
       width: 100%;
       display: flex;
-      justify-content: space-between;
-      gap: 8px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
     }}
     .btn-dump-all {{
-      font-size: 11.5px;
-      padding: 7px 10px;
-      flex: 1;
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
       justify-content: center;
+      gap: 8px;
+      text-align: center;
+      border-radius: 8px;
+      box-sizing: border-box;
+      white-space: normal;
+    }}
+    .btn-dump-title {{
+      font-weight: 700;
+    }}
+    .btn-dump-badge {{
+      font-size: 10.5px;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 2px 6px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }}
+    .btn-pwa-install {{
+      width: 100%;
+      padding: 10px 14px;
+      text-align: center;
+      box-sizing: border-box;
     }}
     .sweep-badge {{
-      font-size: 11px;
-      padding: 6px 10px;
-      align-items: flex-start;
+      width: 100%;
+      font-size: 11.5px;
+      padding: 8px 12px;
+      align-items: stretch;
+      box-sizing: border-box;
+    }}
+    .sweep-badge-row {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }}
+    .sweep-badge-sub {{
+      margin-top: 2px;
     }}
     .tabs {{
       overflow-x: auto;
@@ -511,19 +608,21 @@ def export_html_viewer(
     <p class="subtitle">Continuous public discussion mining, bottom-up practitioner opinions, and 4-format LinkedIn idea bank</p>
   </div>
   <div class="header-actions">
-    <button id="pwaInstallBtn" style="display:none; background:#38bdf8; color:#090d16; border:none; padding:9px 15px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13px; transition:all 0.2s;" onclick="installPWA()">
+    <button id="pwaInstallBtn" class="btn-pwa-install" style="display:none;" onclick="installPWA()">
       📱 Install App
     </button>
-    <button class="btn-dump-all" onclick="dumpEntireBrainToClipboard()">
-      📋 Dump Entire Brain for Claude (No Links, Trace IDs)
+    <button class="btn-dump-all" onclick="dumpEntireBrainToClipboard()" title="Copy entire structured intelligence prompt for Claude with Trace IDs">
+      <span class="btn-dump-icon">📋</span>
+      <span class="btn-dump-title">Dump Entire Brain for Claude</span>
+      <span class="btn-dump-badge">No Links • Trace IDs</span>
     </button>
     <div class="sweep-badge" onclick="openRunLogsModal()" title="Click to view full pull history and run learnings">
-      <div style="display:flex; align-items:center; gap:6px;">
+      <div class="sweep-badge-row">
         <span style="color:#94a3b8; font-size:11px;">⏱️ Last Sweep:</span>
         <span class="sweep-time">{sweep_time}</span>
-        <span style="font-size:10px; background:#1e293b; color:#38bdf8; padding:1px 6px; border-radius:4px; font-weight:700;">View Pull Logs ↗</span>
+        <span class="sweep-logs-pill">View Pull Logs ↗</span>
       </div>
-      <div style="font-size:11px; color:#34d399;">● {len(raw_items)} Signals Active | {len(pipeline_runs)} Runs Logged</div>
+      <div class="sweep-badge-sub">● {len(raw_items)} Signals Active | {len(pipeline_runs)} Runs Logged</div>
     </div>
   </div>
 </header>
