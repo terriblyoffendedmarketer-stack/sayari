@@ -224,6 +224,9 @@ def export_html_viewer(
 <meta name="apple-mobile-web-app-title" content="Sayari Radar">
 <meta name="theme-color" content="#090d16">
 <meta name="description" content="Living psychographic compliance radar & content ideas for Sayari.">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <style>
   :root {{
     --bg: #090d16;
@@ -1108,8 +1111,24 @@ function installPWA() {{
 }}
 
 if ('serviceWorker' in navigator) {{
+  navigator.serviceWorker.addEventListener('controllerchange', () => {{
+    window.location.reload();
+  }});
+
   window.addEventListener('load', () => {{
-    navigator.serviceWorker.register('./sw.js').catch(err => {{
+    navigator.serviceWorker.register('./sw.js?t=' + Date.now()).then(reg => {{
+      reg.update();
+      reg.onupdatefound = () => {{
+        const installingWorker = reg.installing;
+        if (installingWorker) {{
+          installingWorker.onstatechange = () => {{
+            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {{
+              window.location.reload();
+            }}
+          }};
+        }}
+      }};
+    }}).catch(err => {{
       console.log('SW registration note:', err);
     }});
   }});

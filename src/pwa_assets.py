@@ -122,11 +122,9 @@ def generate_manifest(dirpath: str):
         json.dump(manifest, f, indent=2)
 
 def generate_service_worker(dirpath: str):
-    sw_code = """// Sayari Radar Service Worker — Offline Caching & Instant Loads
-const CACHE_NAME = 'sayari-radar-v1';
+    sw_code = """// Sayari Radar Service Worker — Real-Time Cloud Updates & Offline Cache
+const CACHE_NAME = 'sayari-radar-v3';
 const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
@@ -134,10 +132,11 @@ const ASSETS_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS_TO_CACHE);
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
@@ -155,34 +154,47 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Network-first strategy for real-time compliance pulse, falling back to cached offline state
+// Always fetch fresh HTML from the network so live GitHub updates appear immediately
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   
+  const isHtml = event.request.mode === 'navigate' || 
+                 event.request.url.endsWith('index.html') || 
+                 event.request.url.endsWith('/') || 
+                 event.request.headers.get('accept')?.includes('text/html');
+
+  if (isHtml) {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-cache' })
+        .then((response) => {
+          if (response && response.status === 200) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // Static assets (icons, manifest): cache with network fallback
   event.respondWith(
-    fetch(event.request)
-      .then((networkResponse) => {
+    caches.match(event.request).then((cachedResponse) => {
+      return cachedResponse || fetch(event.request).then((networkResponse) => {
         if (networkResponse && networkResponse.status === 200) {
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
+          const copy = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
         }
         return networkResponse;
-      })
-      .catch(() => {
-        return caches.match(event.request).then((cachedResponse) => {
-          if (cachedResponse) {
-            return cachedResponse;
-          }
-          if (event.request.mode === 'navigate') {
-            return caches.match('./index.html');
-          }
-        });
-      })
+      });
+    })
   );
 });
 """
+    os.makedirs(dirpath, exist_ok=True)
+    with open(os.path.join(dirpath, "sw.js"), "w", encoding="utf-8") as f:
+        f.write(sw_code)
     os.makedirs(dirpath, exist_ok=True)
     with open(os.path.join(dirpath, "sw.js"), "w", encoding="utf-8") as f:
         f.write(sw_code)
