@@ -52,7 +52,7 @@
 - `src/reporter.py`: Exports CSVs, Markdown briefs, and interactive HTML viewer.
 - `viewer/index.html`: Interactive local dashboard with format, theme, and intensity filters.
 - `tests/test_filters.py`: Pytest suite for compliance keyword and drop rules.
-- `playbook/`: **company-agnostic method, reused for every client.** `SPEC.md` (the content OS: layers, rules, session dialectic, continuity), `ONBOARDING.md` (5 core tasks for a new company), `CAPTIONS.md` (caption craft), `templates.md` (meme and design mechanics library).
+- `playbook/`: **company-agnostic method, reused for every client.** `SPEC.md` (the content OS: layers, rules, session dialectic, continuity), `ONBOARDING.md` (5 core tasks for a new company), `PITCH.md` (how every post is pitched and pressure-tested), `CAPTIONS.md` (caption craft), `templates.md` (meme and design mechanics library).
 - `content/`: Sayari's content layers. `posts/POSTS.md` = **log of shipped posts with captions and tags (read first)**. `VOICE.md` = Sayari voice. `STRATEGY.md` = the 3-month plan (arc, weekly rhythm, series, current sprint). `FRAMEWORK.md` = Sayari specifics plus 9 candidate themes.
   - `buckets/IDEA_BANK.md`: **every idea, one row each** (ID, gist, format, bucket, status, needs), imported from the Google Doc 2026-11-10 (44 ideas). Add new ideas here.
   - `themes.md`: validated themes (1 so far). `sharpened/`: one file per idea after sharpening. `brand/`: Sayari logos.

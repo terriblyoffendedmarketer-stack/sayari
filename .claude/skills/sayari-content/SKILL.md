@@ -18,3 +18,4 @@ description: Use when working on Sayari LinkedIn content in this repo — findin
 5. Never fetch sayari.com with curl/requests or a spoofed User-Agent; it's blocked. See `research/sayari-site/OTHER_CONTENT_INDEX.md` for the browser method.
 6. After changing any content file, rebuild the hub (`python3 -I scripts/build_hub.py`) and republish `content/hub/hub.html` to https://claude.ai/artifact/Gmw5L8TenBeGWB3iVTRHaj (pass it as `url` from a new chat).
 7. Listener data shows the landscape; don't copy rare lingo. Use situations and words that recur across many people, phrased so a beginner gets them (hyper-relevant, not hyper-niche).
+8. When proposing a post, always pitch it in the `playbook/PITCH.md` format (what it is, why they'd relate, is it real, strategy fit, product fit, hooks, format and proof). Keep each part short and plain.

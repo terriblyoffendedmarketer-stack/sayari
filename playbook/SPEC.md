@@ -39,6 +39,7 @@ news)       world      across
 7. **Simulated data looks real:** when a mock image needs names, numbers or labels, pull them from the research layer (real lingo, real situations, realistic figures), not generic filler.
 
 ## How a session works (the dialectic)
+- **Every post starts with a pitch in the `playbook/PITCH.md` format:** what it is, why they'd relate, is it real, strategy fit, product fit, hooks, format and proof. It's a gate to pressure-test the idea, not to discard it. The human reads, understands, decides.
 We learn and decide together. The human stays on top of the work, so:
 - **Short turns.** At most 2–3 suggestions at a time, each with a one-line "why". Never a wall of text the human would skim and rubber-stamp.
 - **I propose, you push back.** I give an opinion and my reasoning; you pick, reject or redirect.
