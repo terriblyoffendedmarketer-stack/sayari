@@ -45,7 +45,8 @@
 - `src/reporter.py`: Exports CSVs, Markdown briefs, and interactive HTML viewer.
 - `viewer/index.html`: Interactive local dashboard with format, theme, and intensity filters.
 - `tests/test_filters.py`: Pytest suite for compliance keyword and drop rules.
-- `content/`: content layers. **Start at `content/FRAMEWORK.md`** (the foundation: themes → templates → meme library → idea buckets, plus rules and workflow).
+- `playbook/`: **company-agnostic method, reused for every client.** `SPEC.md` (the content OS: layers, rules, session dialectic, continuity), `ONBOARDING.md` (5 core tasks for a new company), `CAPTIONS.md` (caption craft), `templates.md` (meme and design mechanics library).
+- `content/`: Sayari's content layers. `posts/POSTS.md` = **log of shipped posts with captions and tags (read first)**. `VOICE.md` = Sayari voice. `FRAMEWORK.md` = Sayari specifics plus 9 candidate themes.
   - `sharpened/`: one file per idea after sharpening. `buckets/`: idea buckets as we fill them. `brand/`: Sayari logos.
   - `idea-doc-images/`: `IMAGE_IDEAS.md` (49 images catalogued), `gallery.html` (local visual gallery). `images/` is gitignored (copyrighted memes; regenerate with the extractor).
 - `research/`: inputs. `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.

@@ -1,6 +1,6 @@
-# Sayari content framework: the foundation we build on
+# Sayari content framework (the client instance of `playbook/SPEC.md`)
 
-Written 2026-11-10 from the working session. This is the lens for every content decision. We build the foundation slowly and together; after that, making posts is mostly picking and matching.
+The generic method (layers, rules, the session dialectic, continuity) lives in `playbook/`. This file holds the **Sayari specifics**: audience, layers and where they live, and the first candidate themes. Posts that shipped are in `content/posts/POSTS.md`; the voice is in `content/VOICE.md`.
 
 ## The bottom line (why any post exists)
 The reader **stops, reads, relates, saves it, and comes away liking Sayari**, so that months later, "in the room", they suggest it. Social won't close deals; it builds that association. So we give practitioners lots of **useful, savable, relatable** material, and Sayari shows up as the relief, never the brochure.
@@ -37,7 +37,7 @@ A meme is a **mechanic** (a reusable joke structure). One mechanic can become se
 - Before / during / after (the road patch) → a three-panel timeline
 - Crossing-the-chasm curve, graph with a highlighted zone → graphs we can **use almost as is**, since a clean graph is already an infographic
 - Calendar block, Spotify playlist, Slack thread, email → realistic fake artifacts
-Each template records: the mechanic, what it's good for, design variants, and which themes fit. File: `content/templates.md`.
+Each template records: the mechanic, what it's good for, design variants, and which themes fit. File: `playbook/templates.md` (generic mechanics, shared across clients).
 
 ### 3. Meme library: what already exists about this job
 Existing compliance memes (the 12 "pulse" images, and more we find). We keep the **insight** and say it in a template that suits Sayari (no raw memes for now). Catalogue: `content/idea-doc-images/IMAGE_IDEAS.md`.
@@ -56,16 +56,9 @@ Ideas cluster into big buckets. Each idea can produce several posts.
 | UGC reposts | regulator releases, Reddit/LinkedIn quotes, customer quotes, report snippets |
 File: `content/buckets/` (one file per bucket as we fill them).
 
-## Rules we apply to every idea
-1. **Hook first.** The hook *is* the idea, and it tells us how to tell it. We don't bolt a hook on at the end.
-2. **The best format wins; we don't pick in advance.** If each beat should top the last (e.g. "things compliance people do"), it's a carousel. If it's one sharp contrast, it's a single image. We match the story to the format.
-3. **UGC wherever possible:** regulator releases, real practitioner quotes (no usernames), customer quotes from case studies, news and report snippets, dashboard screens, trends.
-4. **Sayari value check:** does it serve the USP? *Source not score* (evidence over risk scores) · *ownership depth* (the risk is one hop away) · *one place instead of the Frankenstack*. If it's only funny, it isn't done.
-5. **Proof gates:** no number without a source. Customer proof needs Sayari's clearance. Named enforcement cases must be public.
-6. **Voice:** validating, unflinching, human and a little funny, proof-backed. No "judgment infrastructure".
-
-## How we work a session
-"Let's find more graph ideas" → I search **only** that bucket (research, templates, themes) → bring back a few strong candidates with hooks and evidence → we discuss → sharpen one → wireframe → final design (Claude Design + the "Sayari" design system). Sharpened ideas live in `content/sharpened/`.
+## Rules and session workflow
+See `playbook/SPEC.md` (hook first, the best format wins, UGC, brand value check, proof gates, short dialectic turns, scoped asks). Captions: `playbook/CAPTIONS.md` + `content/VOICE.md`.
+Sayari's value check means: *source, not score* · *ownership depth* · *one place instead of the Frankenstack*.
 
 ## Tools
 - **Listener** (this repo): `python run.py pipeline`; tune `config.yaml` and run `python run.py refilter`.
