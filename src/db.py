@@ -115,10 +115,11 @@ def record_pipeline_run(
     dropped_noise_count: int,
     summary_learnings: str
 ) -> int:
-    """Logs an execution run of the listening agent with source ranges and overall learnings."""
-    import time
+    """Logs an execution run of the listening agent with source ranges and overall learnings in IST (UTC+5:30)."""
+    from datetime import datetime, timezone, timedelta
     cur = conn.cursor()
-    ts = time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())
+    IST = timezone(timedelta(hours=5, minutes=30))
+    ts = datetime.now(timezone.utc).astimezone(IST).strftime('%Y-%m-%d %H:%M:%S IST')
     cur.execute("""
     INSERT INTO pipeline_runs (
         timestamp, trigger_type, sources_swept, time_ranges,

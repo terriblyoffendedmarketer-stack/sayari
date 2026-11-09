@@ -1,41 +1,31 @@
 term,frequency,source_count,is_vendor_marketing_only,example_context
-ofac,8,6,NO (Real Practitioner Term),"The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none"
-false positives,6,6,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
-backlog,4,4,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
-beneficial ownership,4,4,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
-name matching,4,4,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
-false positive,3,2,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
-shell companies,3,3,NO (Real Practitioner Term),One single residential flat in Belize registered to 240 shell companies Investigating a wire transfer for electronic components. Found a
-swivel chair,3,3,NO (Real Practitioner Term),Breakup note to our compliance tech stack Dear vendor stack: I cannot keep copy-pasting business registration numbers from registry PDFs
+ofac,6,4,NO (Real Practitioner Term),OFAC Expands Cuba Sanctions and Updates Iran Sanctions OFAC Expands Cuba Sanctions and Updates Iran Sanctions. OFAC Expands Cuba Sanctions
+false positives,3,3,NO (Real Practitioner Term),Review: Screening tool alert volume Review: Screening tool alert volume. We get 400 false positives a day on Mexican and
 kyc,3,2,NO (Real Practitioner Term),"Practitioner comment on r/r/fintech ('From the standpoint of the KYC provider, I believe that reco...') From the standpoint of the"
-l1 review,2,2,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
-queue,2,2,NO (Real Practitioner Term),Drowning in name matching false positives on common Latin names Our L1 review queue has 800 alerts backlog. The screening
-ubo,2,2,NO (Real Practitioner Term),"The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none"
-uflpa,2,2,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
-tprm,2,2,NO (Real Practitioner Term),"Examiner asked for proof of our sub-tier forced labor audit trail We had clean questionnaires from tier 1 suppliers, but"
-shell company,2,2,NO (Real Practitioner Term),Practitioner reaction to vendor pitch ('Automate your UBO discovery with single-click questionnaires...') Questionnaires are security theater. The moment an illicit
-manual review,1,1,NO (Real Practitioner Term),"Vendor questionnaire claimed zero SDN ties, but UBO is an OFAC designated oligarch Supplier screening questionnaire was completely clean. But"
-name match,1,1,NO (Real Practitioner Term),"Vendor questionnaire claimed zero SDN ties, but UBO is an OFAC designated oligarch Supplier screening questionnaire was completely clean. But"
-spreadsheets,1,1,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
-transshipment,1,1,NO (Real Practitioner Term),One single residential flat in Belize registered to 240 shell companies Investigating a wire transfer for electronic components. Found a
-frankenstack,1,1,NO (Real Practitioner Term),"The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs We have 4 different watchlist screening tools and none"
-edd,1,1,NO (Real Practitioner Term),"81% of our compliance tools don't talk to each other Our EDD workflow requires querying 5 databases, exporting CSVs, and"
-disposition,1,1,NO (Real Practitioner Term),Audit panic: regulator exam asked for our disposition rationale The regulator audit asked how we verified tier-2 suppliers under UFLPA.
-audit trail,1,1,NO (Real Practitioner Term),"Examiner asked for proof of our sub-tier forced labor audit trail We had clean questionnaires from tier 1 suppliers, but"
-forced labor,1,1,NO (Real Practitioner Term),"Examiner asked for proof of our sub-tier forced labor audit trail We had clean questionnaires from tier 1 suppliers, but"
+false positive,2,1,NO (Real Practitioner Term),"Practitioner comment on r/r/AMLCompliance ('Welcome to the sub, advertiser. Calling a 44% fal...') Welcome to the sub, advertiser. Calling a"
+swivel chair,2,2,NO (Real Practitioner Term),Swivel chair Swivel chair. Swivel chair.
+shell companies,2,2,NO (Real Practitioner Term),"Trump Admin Ends Rule Requiring Shell Companies to Disclose Their Ownership, Further Facilitating Corruption in the U.S. Trump Admin Ends"
+tprm,1,1,NO (Real Practitioner Term),ECI-CW TPRM 2026: The two sides of the coin in AI risk management ECI-CW TPRM 2026: The two sides of
 third-party risk,1,1,NO (Real Practitioner Term),"The State of AI Governance in Third-Party Risk The State of AI Governance in Third-Party Risk. <figure><img alt="""" class=""attachment-rss-image-size size-rss-image-size"
+name matching,1,1,NO (Real Practitioner Term),Review: Screening tool alert volume Review: Screening tool alert volume. We get 400 false positives a day on Mexican and
+uflpa,1,1,NO (Real Practitioner Term),LinkedIn Post Comment on UFLPA Audits LinkedIn Post Comment on UFLPA Audits. Auditors rejected our tier-1 self-certification form. We had
+backlog,1,1,NO (Real Practitioner Term),Huge backlog in Candidate screening Huge backlog in Candidate screening. How are recruiters current handling a huge influx of applications
+shell company,1,1,NO (Real Practitioner Term),How to Research Company Ownership? (Shell Company) How to Research Company Ownership? (Shell Company). I'm not sure if this is
+beneficial ownership,1,1,NO (Real Practitioner Term),Trump Exempted U.S. Companies from Beneficial Ownership Reporting — What Does This Mean for Tracking Shell Companies Used in Human
 alert fatigue,1,1,NO (Real Practitioner Term),"Most common category term for alert overload, used by Sayari's own blog and practitioners."
 point solutions & silos,1,1,NO (Real Practitioner Term),The standard practitioner way of describing disconnected tools that rarely communicate with each other.
 backlog & clearing alerts,1,1,NO (Real Practitioner Term),"The queue backs up, and the day is spent clearing it. Analysts say 'disposition alerts' and call first-line review 'L1'."
 spreadsheets and google,1,1,NO (Real Practitioner Term),>25% of compliance teams manage periodic reviews in spreadsheets; 65% rely on manual Google searches for adverse media.
 kyc refresh vs pkyc,1,1,NO (Real Practitioner Term),Periodic KYC review cycles vs perpetual KYC (pKYC) continuous monitoring.
 ubo & nested ownership,1,1,NO (Real Practitioner Term),Ultimate Beneficial Ownership obscured behind opaque multi-jurisdiction holding layers.
+edd,1,1,NO (Real Practitioner Term),"Enhanced Due Diligence triggered when high-risk ownership, PEPs, or transshipment hubs are flagged."
+audit trail,1,1,NO (Real Practitioner Term),Defensible paper trail proving to regulatory examiners why an alert was cleared or escalated.
+frictionless compliance,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
 judgment infrastructure,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
-holistic end-to-end,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+next-gen risk ecosystem,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
 paradigm shift,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
-zero-resistance,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
 single pane of glass,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
 leverage synergies,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
-frictionless compliance,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
-next-gen risk ecosystem,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
 best-in-breed seamless integration,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+zero-resistance,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy
+holistic end-to-end,0,0,YES (Vendor Buzzword),Vendor brochure buzzword — avoid in practitioner copy

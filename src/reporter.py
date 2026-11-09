@@ -518,7 +518,7 @@ def export_html_viewer(
       <table class="table-view">
         <thead>
           <tr>
-            <th style="width: 135px;">Timestamp (UTC)</th>
+            <th style="width: 145px;">Timestamp (IST)</th>
             <th style="width: 130px;">Trigger</th>
             <th style="width: 25%;">Sources Swept</th>
             <th style="width: 18%;">Time Range</th>
@@ -1530,7 +1530,9 @@ def generate_all_outputs(conn: sqlite3.Connection, ideas: List[Dict[str, Any]], 
     cur.execute("SELECT source, url, title, drop_reason, short_excerpt FROM raw_items WHERE passed_filters=0 ORDER BY created_at DESC")
     dropped_items = [dict(r) for r in cur.fetchall()]
     
-    sweep_time = time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())
+    from datetime import datetime, timezone, timedelta
+    IST = timezone(timedelta(hours=5, minutes=30))
+    sweep_time = datetime.now(timezone.utc).astimezone(IST).strftime('%Y-%m-%d %H:%M:%S IST')
     export_html_viewer(ideas, raw_items, glossary, dropped_items, pipeline_runs, sweep_time, "viewer/index.html")
     export_html_viewer(ideas, raw_items, glossary, dropped_items, pipeline_runs, sweep_time, "docs/index.html")
     build_all_pwa_assets(["viewer", "docs"])

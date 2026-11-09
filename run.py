@@ -103,12 +103,12 @@ def cmd_analyze_text(config, text_sample=None):
             "title": "Four layers of holding companies to hide beneficial ownership in UAE free zones",
             "body": "Tracing dual-use tech exports. Every tier references another nominee director until you hit an offshore trust. Self-certified forms are completely useless."
         },
-        # Theme: Swivel Chair Manual Review & Frankenstack
+        # Theme: Swivel Chair Manual Review & Fragmented Tools
         {
             "id": "sample_7",
             "source": "pasted:r/RegulatoryCompliance",
             "url": "https://reddit.com/r/RegulatoryCompliance/comments/fs01",
-            "title": "The Frankenstack is real: Excel, Dow Jones, Moody's, and endless tabs",
+            "title": "Fragmented vendor tools: Excel, Dow Jones, Moody's, and endless tabs",
             "body": "We have 4 different watchlist screening tools and none of them talk to each other. An analyst has to manually check each company name in 3 spellings across 6 tabs."
         },
         {
@@ -374,6 +374,29 @@ def cmd_collect_apify(config, urls=None):
         insert_raw_item(conn, item)
         if passed:
             added += 1
+
+    from src.db import record_pipeline_run
+    if urls:
+        trigger = "Targeted URL Harvest"
+        sources_swept = f"Reddit: {len(urls)} specific threads ({urls[0][:45]}...)"
+        time_ranges = "Targeted historical threads & practitioner comments (2023–2026)"
+        learnings = f"Mined {len(items)} items from targeted Reddit threads. {added} passed compliance filters (alert volume burnout, compliance bottleneck reality)."
+    else:
+        trigger = "Apify Community Sweep"
+        sources_swept = "Reddit: r/AMLCompliance, r/compliance, r/financialcrime (Top-all, Top-year, Hot, Keywords)"
+        time_ranges = "Reddit: 2023–2026 (Foundational rants & fresh pulse)"
+        learnings = f"Apify community sweep ingested {len(items)} items ({added} passed compliance filters)."
+
+    record_pipeline_run(
+        conn,
+        trigger_type=trigger,
+        sources_swept=sources_swept,
+        time_ranges=time_ranges,
+        raw_collected_count=len(items),
+        passed_filters_count=added,
+        dropped_noise_count=len(items) - added,
+        summary_learnings=learnings
+    )
 
     conn.close()
     print(f"[apify] Sweep complete. Ingested {len(items)} items ({added} passed compliance filters).\n")
