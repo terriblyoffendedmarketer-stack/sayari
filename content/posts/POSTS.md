@@ -1,5 +1,7 @@
 # Sayari posts log (source of truth for what shipped)
 
+Status convention: a post handed to Ekshika is **submitted** (done from our side; she decides). Revisions get logged here if they come back.
+
 Read this first when starting a batch. One entry per post, newest at the bottom. Images go in `content/posts/assets/`: `P<nn>-<slug>.png` for a single image, `P<nn>-v<k>-<nn>.png` for version k's slides and `P<nn>-v<k>.pdf` for its carousel PDF (the hub picks them up automatically and offers downloads). Multiple versions go under `#### Version k · <label>` headings, each with its caption.
 Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pillar** (Frankenstack / score ≠ defense / hidden risk) · **theme** (from `content/themes.md`) · **template** (from `playbook/templates.md`) · **bucket** · **hook type**.
 
@@ -9,9 +11,9 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Shared with Sayari (not live) |
 | P02 | Frankenstack bingo | Pain mirror | Frankenstack | 3×3 bingo card | Shared with Sayari (not live) |
 | P03 | 25% + 25% (questionnaire vs record) | Product as relief | Hidden risk | Split compare (kit L3) | Shared with Sayari (not live), 2 caption options |
-| P04 | The PURE case: "No match found" (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Draft, 2 versions (hook C, hook B) |
+| P04 | The PURE case: "No match found" (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Submitted to Ekshika (2 versions) |
 
-Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack → **next: a newsjack or a Friday-3pm piece.**
+Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack → **next: a newsjack or a Friday-3pm piece.**
 
 ---
 

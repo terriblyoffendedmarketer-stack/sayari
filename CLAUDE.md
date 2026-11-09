@@ -7,7 +7,7 @@ The project skill `.claude/skills/sayari-content/SKILL.md` and auto-memory carry
 ## Status
 - **Summary**: Sayari LinkedIn content system: a listener (Reddit/RSS → filtered practitioner signal, PWA dashboard) plus a content library (research → themes → templates → idea bank → posts), a design kit, a Claude Design canvas and a Content Hub page.
 - **Current Phase**: B. Production. Sprint to 5–6 images for Sayari.
-- **Posts**: P01 name match (idea tab 1) and P02 Frankenstack bingo (tab 3) shared with Sayari; P03 "25% + 25%" (tab 5) shared with 2 caption options; P04 PURE carousel (tab 4) **drafted, 2 versions (hook C / hook B), not yet shared**.
+- **Posts**: P01 name match (idea tab 1) and P02 Frankenstack bingo (tab 3) shared with Sayari; P03 "25% + 25%" (tab 5) shared with 2 caption options; P04 PURE carousel (tab 4) submitted to Ekshika with 2 versions (hook C / hook B). Handing a post to Ekshika = submitted/done from our side; she decides; log revisions if they come.
 - **What's Next**: Post 5. The mix needs a Friday-3pm relatable piece (I40 calendar / I38 "Did you mean") or a saveable list (I08 demo questions, tab 8). Pitch it in the PITCH format.
 - **Numbering**: idea IDs I01–I09 = the doc's idea tabs (I04 = tab 4); other IDs are internal and stay fixed. "Doc #" column = the doc tab.
 - **No memes for now**: storytelling images and carousels only; meme ideas are mined for insight.
