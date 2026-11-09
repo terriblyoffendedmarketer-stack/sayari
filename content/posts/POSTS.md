@@ -50,7 +50,7 @@ Mix so far: 2 pain mirror, 1 product-as-relief (draft), 0 receipts, 0 newsjack �
 ## P03 · 25% + 25% (questionnaire vs record)
 - **Idea source:** idea bank #5 (I04), pitch in `content/sharpened/idea-05_questionnaire-vs-record.md` · **Bucket:** realistic artifacts · **Theme:** the name passed, the owner didn't / trust but can't verify
 - **Format:** product as relief · **Pillar:** hidden risk · **Template:** split compare (kit L3), headline carries the hook
-- **Image:** `assets/P03-questionnaire-vs-record.png` (draft source: `drafts/P03-questionnaire-vs-record.html`). Beige; gold "25% + 25% =" / "a sanctioned company."; left: supplier questionnaire, "Any sanctioned beneficial owners? ☑ No, signed, not checked against anything"; right: dark registry panel, Northgate Supply Ltd (invented; no sanctions hits found), Owner A 25% and Owner B 25%, both "blocked person", "Together: 50% → the company is blocked too"; source line "illustrative: invented company · 50% rule per OFAC guidance".
+- **Image:** `assets/P03-questionnaire-vs-record.png` (draft source: `drafts/P03-questionnaire-vs-record.html`). Beige; gold "25% + 25% =" / "a sanctioned company."; left: supplier questionnaire, "Any sanctioned beneficial owners? ☑ No, signed, not checked against anything"; right: dark registry panel, Northgate Supply Ltd (invented; no sanctions hits found), Owner A 25% and Owner B 25%, both "blocked person", "Together: 50% → the company is blocked too". No disclaimer line on the image (by rule).
 - **Hook type:** a surprising rule (hook C). Unused alternatives are banked as hooks H01–H03 in `content/buckets/IDEA_BANK.md`.
 - **Caption (draft):**
 > 25% + 25% = a sanctioned company.

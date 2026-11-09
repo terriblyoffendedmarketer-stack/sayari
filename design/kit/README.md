@@ -20,7 +20,8 @@ Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas 
 - Nothing under 26px on the 1080×1350 canvas. Left-aligned. 80px side margins.
 - Product, search, alert and chat mocks always sit in the dark `panel`.
 - Small wordmark in one corner (white on navy, navy on beige).
-- Any number gets a `source` line. Invented companies get "illustrative" in the source line.
+- **Never put a disclaimer on an image**: no "illustrative", "invented", "fictional", "example" or "for illustration" lines. Sources and caveats go in the caption or the first comment.
+- A `source` line on the image is only for a **real, public source behind a number that is the point of the post** (e.g. an OFAC settlement amount). Otherwise leave it off.
 
 ## Render
 ```bash

@@ -32,3 +32,4 @@ Content Hub artifact never existed though user expected it | only a local galler
 Hub showed 4 ideas, user had 40+ | the idea bank lived only in the Google Doc; the hub reads repo files | imported it to content/buckets/IDEA_BANK.md (44 rows, tagged) and the hub reads that table
 Post images in a private Google Doc | Drive MCP download is too big for the context window | export as application/zip; the harness saves big results to a tool-results file; decode the base64 from that file with python
 Kit grid column blew out on a long filename | CSS grid 1fr = minmax(auto,1fr) won't shrink below min-content | use repeat(3,minmax(0,1fr)) + overflow-wrap:anywhere
+'illustrative: invented company' kept appearing on images | the Sayari Design System README told tools to put 'the source or a disclaimer' in a source line, and the kit copied it | rule rewritten at the source (design system README + tokens) and in kit/SPEC: no disclaimers on images

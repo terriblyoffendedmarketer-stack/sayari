@@ -35,4 +35,4 @@ Limit: Sayari doesn't replace questionnaires; it checks them. Don't claim otherw
 ## 7. Format and proof
 - Single image, kit layout **L3 split compare** (wireframe already rendered). Headline on the image: "Both are 'documents.'"
 - UGC/proof: the telecom TPRM quote (caption or first comment); OFAC FAQ 401 link in the first comment.
-- Checks: invented company name (Northgate Supply Ltd: confirm it isn't a real sanctioned entity); a "illustrative" source line on the image; the 50% rule wording checked against OFAC FAQ 398–401.
+- Checks: invented company name (Northgate Supply Ltd: confirm it isn't a real sanctioned entity); no disclaimer on the image (the OFAC link goes in the first comment); the 50% rule wording checked against OFAC FAQ 398–401.

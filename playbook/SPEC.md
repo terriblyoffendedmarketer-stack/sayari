@@ -37,7 +37,7 @@ A post can start from an **idea** (a concrete concept), an **insight** (an indus
 2. **The best format wins.** Carousel when each beat tops the last; single image for one sharp contrast; we never preset it.
 3. **UGC wherever possible:** regulator or government releases, real practitioner quotes (no usernames), customer quotes, news and report snippets, real dashboards.
 4. **Brand value check:** does it serve the company's USP or competitive edge? Funny alone isn't done.
-5. **Proof gates:** no number without a source; customer proof needs client clearance.
+5. **Proof gates:** no number without a source; customer proof needs client clearance. Sources and caveats live in the caption or first comment. **Never put disclaimers on images** ("illustrative", "invented company", "fictional"…); a source line appears on an image only for a real public source behind the post's key number.
 6. **Hyper-relevant and relatable, not hyper-niche.** The listener is for understanding the landscape, not for copying rare jargon. A word or situation goes in a post only if it **recurs across many people/sources** (a pattern), in the **most widely shared phrasing**, so a beginner in the field gets it and nobody feels shut out. Single niche comments are context, never copy.
 7. **Simulated data looks real:** when a mock image needs names, numbers or labels, pull them from the research layer (real lingo, real situations, realistic figures), not generic filler.
 
