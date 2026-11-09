@@ -123,7 +123,7 @@ def generate_manifest(dirpath: str):
 
 def generate_service_worker(dirpath: str):
     sw_code = """// Sayari Radar Service Worker — Real-Time Cloud Updates & Offline Cache
-const CACHE_NAME = 'sayari-radar-v3';
+const CACHE_NAME = 'sayari-radar-v4';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './icons/icon-192.png',

@@ -1483,24 +1483,8 @@ function installPWA() {{
 }}
 
 if ('serviceWorker' in navigator) {{
-  navigator.serviceWorker.addEventListener('controllerchange', () => {{
-    window.location.reload();
-  }});
-
   window.addEventListener('load', () => {{
-    navigator.serviceWorker.register('./sw.js?t=' + Date.now()).then(reg => {{
-      reg.update();
-      reg.onupdatefound = () => {{
-        const installingWorker = reg.installing;
-        if (installingWorker) {{
-          installingWorker.onstatechange = () => {{
-            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {{
-              window.location.reload();
-            }}
-          }};
-        }}
-      }};
-    }}).catch(err => {{
+    navigator.serviceWorker.register('./sw.js').catch(err => {{
       console.log('SW registration note:', err);
     }});
   }});

@@ -11,3 +11,4 @@ github pages 404 on initial enable | GitHub Pages repository creation defaults t
 TypeError in renderLexicon | is_vendor_marketing_only was integer 0/1 causing .includes() failure | Cast to String and checked both string and numeric equality
 PWA stale viewer cache | Browsers cached index.html via service worker preventing live GitHub Pages updates | Versioned service worker to sayari-radar-v3 and set cache-bypass on navigation requests
 GitHub push conflict with scheduled runs | Scraper committing to master conflicted with local push | Separated deploy-pages on push from scheduled scraper sweeps
+Infinite auto-refresh loop in viewer | sw.js?t=Date.now() triggered continuous controllerchange events with location.reload() | Removed location.reload() and dynamic query timestamp; simplified SW registration to static ./sw.js
