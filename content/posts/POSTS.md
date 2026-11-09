@@ -89,7 +89,7 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts (draft), 0 newsjack �
 ## P04 · The PURE case: "No match found" (carousel)
 - **Idea source:** doc tab 4 (I04), pitch in `content/sharpened/idea-04_no-match-is-not-an-answer.md` · **Bucket:** case studies as stories · **Theme:** the name passed, the owner didn't
 - **Format:** receipts · **Pillars:** hidden risk + a score is not a defense · **Template:** story carousel (kit L6), 6 slides
-- **Image:** `assets/P04-pure-carousel.png` (cover); all slides + PDF in `drafts/P04-pure-carousel-*.png` / `.pdf`; source `drafts/P04-pure-carousel.html`.
+- **Image:** `assets/P04-pure-carousel.png` (cover); editable on the Claude Design canvas (rows 2–3); all slides + PDF in `drafts/P04-pure-carousel-*.png` / `.pdf`; source `drafts/P04-pure-carousel.html`.
   Slides: 1 cover (search "Medallion, Inc." → no match found; "39 violations later: a $466,200 penalty.") · 2 2010, the questionnaire names the only owner (Viktor Vekselberg) · 3 April 2018, he's sanctioned; 50% rule makes the company blocked too; its name is on no list · 4 2018–2020, the screen checks the name, the name is clean; 4 policies, 39 violations by July 2020 · 5 the receipt: $466,200, OFAC settlement, owner's name in their files since 2010 (real source line) · 6 the lesson: "A name search tells you if the name is on a list. It doesn't tell you who owns it."
 - **Hook:** C, adjusted for accuracy: OFAC's 39 = violations (transactions), not searches, so not "39 times".
 - **Caption (draft, hook C):**
