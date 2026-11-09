@@ -9,7 +9,7 @@ description: Use when working on Sayari LinkedIn content in this repo — findin
    Together they define the layers (research → themes → templates → meme library → idea buckets), the rules (hook first, the best format wins, UGC wherever possible, the Sayari value check, proof gates) and the language filter (a beginner in compliance should follow it).
 2. Work **one bucket or one idea at a time**, with the user. Bring back a few strong candidates, not long lists. The user reads everything, so keep it short.
 3. Where things live:
-   - Research inputs: `research/` (case studies in `research/sayari-site/case-studies/`, an index of other site content, competitors, the listener audit)
+   - Research inputs: `research/` (brief_summary.md, lexicon.md, case studies in `research/sayari-site/case-studies/`, an index of other site content, competitors, the listener audit)
    - Listener data: `data/sayari.db` (use only `passed_filters=1`; the practitioner lane is the core subreddits)
    - Idea bank (all ideas, tagged): `content/buckets/IDEA_BANK.md`. Add new ideas as rows, never only in chat.
    - Content layers: `content/themes.md`, `playbook/templates.md`, `content/buckets/`, `content/sharpened/`, `content/idea-doc-images/IMAGE_IDEAS.md`

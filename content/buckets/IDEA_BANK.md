@@ -2,7 +2,7 @@
 
 Imported 2026-11-10 from the Google Doc "Sayari LinkedIn content: notes and idea bank" (idea bank, ideas 1–9 tabs, "more idea dump", "angles still to develop"). Near-duplicates are merged into one row; the variants are noted in Gist. New ideas: add a row with the next ID. The hub reads this table.
 
-Status: `done` (posted) · `selected` (Ekshika picked it) · `sharpened` (has a file in content/sharpened/) · `open` (in the bank) · `hold` (blocked) · `skip` (decided against for now)
+Status: `done` (posted) · `selected` (Ekshika picked it) · `sharpened` (has a file in content/sharpened/) · `open` (in the bank) · `hold` (blocked on something) · `later` (parked for now, not rejected)
 Doc # = the numbered idea in the doc's tabs (idea 1–9), where it has one.
 
 | ID | Idea | Gist | Format | Bucket | Status | Needs | Doc # |
@@ -14,7 +14,7 @@ Doc # = the numbered idea in the doc's tabs (idea 1–9), where it has one.
 | I05 | Questions to ask any screening demo | Saveable checklist: common name with no DOB, non-Latin script, see the source record, explain a clear-out six months later | Product as relief | Lists and tips | selected | Confirm Sayari answers each well | 8 |
 | I06 | Every Jose Gomez | L1 alert queue: six rows of the same name, no DOB, "clear by EOD" sticky note | Pain mirror | Realistic artifacts | open | — | 2 |
 | I07 | A score is not a defense | Examiner: "How did you clear this?" Reply: "Risk score: 87." Triage is a score; a decision is a file | Newsjack | Realistic artifacts | open | Check OFAC guidance wording | 6 |
-| I08 | One address, many companies | Carousel: a quiet address, a long list of companies, one owner at the top | Receipts | Case studies as stories | skip | A real public case (Ekshika: skip for now) | 7 |
+| I08 | One address, many companies | Carousel: a quiet address, a long list of companies, one owner at the top | Receipts | Case studies as stories | later | A real public case. Ekshika: "skip for now" while we make the first 5–6 images | 7 |
 | I09 | The 72% telecom stat | "0 watchlist matches" vs an ownership graph to a designated owner | Product as relief | Product and dashboard screens | hold | Written approval of wording + cleared graph screen | 9 |
 | I10 | A spreadsheet, a Google tab and a prayer | A browser with dozens of tabs open: the brief's own line | Pain mirror | Realistic artifacts | open | — | |
 | I11 | It's not you, it's the Frankenstack | A breakup text from an analyst to their seven tools | Pain mirror | Realistic artifacts | open | — | |

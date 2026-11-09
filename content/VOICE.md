@@ -15,4 +15,4 @@ From the brief, plus what worked in P01–P02.
 
 **Never:** "judgment infrastructure", "zero-resistance", "leverage synergies", "single pane of glass", "world model" stats, fear-mongering, naming competitors, mocking the reader.
 
-**Words that land with this ICP (beginner-safe):** potential match, false positive, alert queue/backlog, clear by EOD, audit/examiner, "how did you know?", who owns the owner, questionnaire, the 50% rule (explained), tabs/spreadsheet. **Explain when used:** UBO, L1, SDN, FOCI, UFLPA.
+**Full word list:** `research/lexicon.md`. **Words that land with this ICP (beginner-safe):** potential match, false positive, alert queue/backlog, clear by EOD, audit/examiner, "how did you know?", who owns the owner, questionnaire, the 50% rule (explained), tabs/spreadsheet. **Explain when used:** UBO, L1, SDN, FOCI, UFLPA.

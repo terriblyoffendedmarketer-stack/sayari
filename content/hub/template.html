@@ -55,7 +55,7 @@ h3{font:600 16px/1.35 var(--body);margin:0}
 .pill.pipeline,.pill.sharpened,.pill.selected{background:var(--warn-soft);color:var(--warn)}
 .pill.done{background:var(--ok-soft);color:var(--ok)}
 .pill.open{background:var(--chip);color:var(--ink)}
-.pill.hold,.pill.skip{background:var(--idle-soft);color:var(--idle)}
+.pill.hold,.pill.later,.pill.shared{background:var(--idle-soft);color:var(--idle)}
 .label{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .muted{color:var(--muted)}
 .small{font-size:13.5px}
@@ -141,7 +141,8 @@ function overview(){
   return `
   <div class="block"><h2>Where we are</h2>
     <div class="stats">
-      <div class="stat"><b>${D.posts.length}</b><span>posts created</span></div>
+      <div class="stat"><b>${D.posts.length}</b><span>posts shared with Sayari</span></div>
+      <div class="stat"><b>${D.ideas.length}</b><span>ideas in the bank</span></div>
       <div class="stat"><b>${thV}/${D.themes.length}</b><span>themes validated</span></div>
       <div class="stat"><b>${tpB}/${D.templates.length}</b><span>templates built</span></div>
       <div class="stat"><b>${D.cases.length}</b><span>case studies on file</span></div>
@@ -163,7 +164,8 @@ function posts(){
   return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Source: content/posts/POSTS.md.</p></div>
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr))">${D.posts.map((p,i)=>`
     <article class="card searchable">
-      <div class="row"><div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3></div>${pill("created")}</div>
+      <div class="row"><div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3></div>${pill(p.status||"created")}</div>
+      ${p.img?`<button class="thumb" data-img="${esc(p.img)}" data-cap="${esc(p.id)} · ${esc(p.title)}" aria-label="View ${esc(p.id)} image full size"><img loading="lazy" src="${esc(p.img)}" alt="${esc(p.title)}"></button>`:`<p class="small muted">Image not added yet (drop it in content/posts/assets/).</p>`}
       ${chips([p.format,p.pillar,p.bucket])}
       <p class="small"><span class="label">Template</span><br>${esc(p.template)}</p>
       <p class="small"><span class="label">Theme</span><br>${esc(p.theme)}</p>
@@ -192,7 +194,7 @@ function templates(){
 }
 
 let ideaStatus = "all", ideaBucket = "all";
-const STATUS_ORDER = ["done","sharpened","selected","open","hold","skip"];
+const STATUS_ORDER = ["done","sharpened","selected","open","later","hold"];
 function ideas(){
   const statuses = ["all", ...STATUS_ORDER.filter(s => D.ideas.some(i => i.status === s))];
   const buckets = ["all", ...new Set(D.ideas.map(i => i.bucket))];

@@ -50,7 +50,11 @@ def posts():
             "theme": strip_md(tags.get("Theme", "")), "hook": strip_md(field("Hook type")),
             "moves": strip_md(field("Personality moves")), "image": strip_md(field("Image")),
             "results": strip_md(field("Results")), "caption": caption,
+            "status": (re.search(r"\|\s*" + num + r"\s*\|.*\|\s*([^|]+?)\s*\|\s*$", md, re.M) or [None, "created"])[1],
         })
+        asset = glob.glob(P("content/posts/assets", num + "-*"))
+        if asset:
+            out[-1]["img"] = "posts/" + os.path.basename(asset[0])
     pipeline = re.findall(r"^- \*\*(.+?)\*\*:?\s*(.*)$", md.split("## In the pipeline")[-1], re.M) if "## In the pipeline" in md else []
     mix_note = (re.search(r"^Mix so far:.*$", md, re.M) or [""])[0]
     return out, [{"title": strip_md(t), "note": strip_md(n)} for t, n in pipeline], strip_md(mix_note)

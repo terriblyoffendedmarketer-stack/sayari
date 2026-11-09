@@ -51,7 +51,7 @@
   - `buckets/IDEA_BANK.md`: **every idea, one row each** (ID, gist, format, bucket, status, needs), imported from the Google Doc 2026-11-10 (44 ideas). Add new ideas here.
   - `themes.md`: validated themes (1 so far). `sharpened/`: one file per idea after sharpening. `brand/`: Sayari logos.
   - `idea-doc-images/`: `IMAGE_IDEAS.md` (49 images catalogued), `gallery.html` (local visual gallery). `images/` is gitignored (copyrighted memes; regenerate with the extractor).
-- `research/`: inputs. `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.
+- `research/`: inputs. `brief_summary.md` (the Sayari brief's rules on one page), `lexicon.md` (words practitioners actually use, plain meanings, beginner-safe flags, banned words). `sayari-site/case-studies/` (all 20 Sayari case studies, saved 2026-11-10), `sayari-site/OTHER_CONTENT_INDEX.md` (19 investigation briefs + 3 buyer guides, plus how to fetch), `competitors/`, `listener_audit.md`.
 - `.claude/skills/sayari-content/SKILL.md`: project skill that loads the framework rules for content work.
 - `scripts/build_hub.py` + `content/hub/template.html`: generate `content/hub/hub.html` (the Content Hub) from POSTS, FRAMEWORK, templates, IMAGE_IDEAS, sharpened ideas, case studies and the listener DB.
 - `scripts/build_image_gallery.py`: Rebuilds gallery.html from IMAGE_IDEAS.md.

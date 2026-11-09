@@ -6,8 +6,8 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 ## Running tally
 | # | Title | Format | Pillar | Template | Status |
 |---|---|---|---|---|---|
-| P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Created |
-| P02 | Compliance bingo | Pain mirror | Frankenstack | Bingo card | Created |
+| P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Shared with Sayari (not live) |
+| P02 | Compliance bingo | Pain mirror | Frankenstack | Bingo card | Shared with Sayari (not live) |
 
 Mix so far: 2/2 pain mirror, 0 product-as-relief, 0 receipts, 0 newsjack → **the next batch should add relief and receipts.**
 
