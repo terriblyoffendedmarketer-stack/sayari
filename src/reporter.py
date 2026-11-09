@@ -90,7 +90,7 @@ def export_ideas_markdown(ideas: List[Dict[str, Any]], filepath: str = "ideas.md
         f.write("\n".join(lines))
 
 def export_glossary_csv(glossary: List[Dict[str, Any]], filepath: str = "glossary.csv"):
-    headers = ["term", "frequency", "source_count", "is_vendor_marketing_only", "example_context"]
+    headers = ["term", "meaning", "frequency", "source_count", "is_vendor_marketing_only", "example_context"]
     with open(filepath, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(headers)
@@ -98,6 +98,7 @@ def export_glossary_csv(glossary: List[Dict[str, Any]], filepath: str = "glossar
             is_vendor_flag = "YES (Vendor Buzzword)" if (str(g.get("is_vendor_marketing_only", "")).upper() in ("1", "YES", "TRUE") or g.get("is_vendor_marketing_only") == 1) else "NO (Real Practitioner Term)"
             writer.writerow([
                 g.get("term"),
+                g.get("meaning", ""),
                 g.get("frequency"),
                 g.get("source_count"),
                 is_vendor_flag,
@@ -295,12 +296,64 @@ def export_html_viewer(
   .copy-btn {{ background: var(--btn-copy); color: #fff; border: none; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; }}
   .copy-btn:hover {{ background: var(--btn-copy-hover); }}
 
-  /* Responsive Table View (No Horizontal Scrolling, Word Wrap) */
-  .table-container {{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 10px; }}
-  .table-view {{ width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; table-layout: fixed; }}
-  .table-view th {{ background: #0f182c; padding: 10px 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }}
-  .table-view td {{ padding: 10px 12px; border-bottom: 1px solid var(--border); color: #e2e8f0; vertical-align: top; word-wrap: break-word; overflow-wrap: break-word; }}
-  .table-view tr:hover td {{ background: #162238; }}
+  /* Responsive Table View with Touch-Friendly Horizontal Scrolling */
+  .table-container {{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 10px;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) var(--card);
+  }}
+  .table-container::-webkit-scrollbar {{
+    height: 6px;
+    width: 6px;
+  }}
+  .table-container::-webkit-scrollbar-track {{
+    background: var(--card);
+  }}
+  .table-container::-webkit-scrollbar-thumb {{
+    background: var(--border);
+    border-radius: 3px;
+  }}
+  .table-container::-webkit-scrollbar-thumb:hover {{
+    background: var(--accent);
+  }}
+
+  .table-view {{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+  }}
+  .table-view th {{
+    background: #0f182c;
+    padding: 11px 14px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }}
+  .table-view td {{
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #e2e8f0;
+    vertical-align: top;
+    line-height: 1.45;
+    word-break: break-word;
+  }}
+  .table-view tr:hover td {{
+    background: #162238;
+  }}
   
   /* Sized Down Images */
   .table-view img, .evidence-section img, .card img {{
@@ -350,6 +403,104 @@ def export_html_viewer(
   #toast.show {{ visibility: visible; animation: fadein 0.3s, fadeout 0.3s 2.5s; }}
   @keyframes fadein {{ from {{ bottom: 0; opacity: 0; }} to {{ bottom: 30px; opacity: 1; }} }}
   @keyframes fadeout {{ from {{ bottom: 30px; opacity: 1; }} to {{ bottom: 0; opacity: 0; }} }}
+
+  /* Mobile Swipe Hint */
+  .mobile-swipe-hint {{
+    display: none;
+    font-size: 11.5px;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.08);
+    padding: 7px 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+    text-align: center;
+    border: 1px dashed rgba(56, 189, 248, 0.3);
+    font-weight: 600;
+  }}
+
+  /* Responsive Mobile Adaptations */
+  @media (max-width: 768px) {{
+    body {{
+      padding: 12px 10px;
+    }}
+    header {{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }}
+    .title-area h1 {{
+      font-size: 18px;
+    }}
+    p.subtitle {{
+      font-size: 12px;
+    }}
+    .header-actions {{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }}
+    .btn-dump-all {{
+      font-size: 11.5px;
+      padding: 7px 10px;
+      flex: 1;
+      justify-content: center;
+    }}
+    .sweep-badge {{
+      font-size: 11px;
+      padding: 6px 10px;
+      align-items: flex-start;
+    }}
+    .tabs {{
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+      flex-wrap: nowrap;
+      margin-bottom: 12px;
+    }}
+    .tabs::-webkit-scrollbar {{
+      display: none;
+    }}
+    .tab-btn {{
+      flex-shrink: 0;
+      padding: 8px 12px;
+      font-size: 12px;
+    }}
+    .filters {{
+      padding: 10px 12px;
+      gap: 10px;
+    }}
+    .filter-group {{
+      min-width: 100%;
+    }}
+    .grid {{
+      grid-template-columns: 1fr;
+    }}
+    .card {{
+      padding: 14px;
+    }}
+    .mobile-swipe-hint {{
+      display: block;
+    }}
+    .table-view {{
+      min-width: 900px;
+    }}
+    .modal-content {{
+      width: 96% !important;
+      max-width: 96% !important;
+      margin: 10px auto !important;
+      padding: 14px 10px !important;
+    }}
+    .modal-content h2 {{
+      font-size: 16px !important;
+    }}
+    .modal-close {{
+      top: 10px;
+      right: 12px;
+    }}
+  }}
 </style>
 </head>
 <body>
@@ -414,27 +565,31 @@ def export_html_viewer(
 <div id="livingBrainContainer" class="grid"></div>
 
 <!-- Tab 2: Beer Test Lexicon -->
-<div id="lexiconContainer" style="display:none;" class="table-container">
-  <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#0f182c; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:10px;">
+<div id="lexiconContainer" style="display:none;">
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#0f182c; border:1px solid var(--border); border-radius:10px 10px 0 0; border-bottom:none; flex-wrap:wrap; gap:10px;">
     <div>
       <strong style="color:#fff; font-size:14px;">🍺 "The Beer Test" Lexicon</strong>
-      <span style="color:var(--muted); font-size:12px; margin-left:8px;">Authentic practitioner slang vs. banned vendor brochure fluff.</span>
+      <span style="color:var(--muted); font-size:12px; margin-left:8px;">Authentic practitioner slang with plain-English definitions vs. banned vendor brochure fluff.</span>
     </div>
     <button class="copy-btn" onclick="copyAuthenticLexicon()">
       📋 Copy Authentic Practitioner Terms (Excludes Banned Fluff)
     </button>
   </div>
-  <table class="table-view">
-    <thead>
-      <tr>
-        <th style="width: 220px;">Term (What Practitioners Say)</th>
-        <th style="width: 180px;">Category</th>
-        <th style="width: 90px;">Frequency</th>
-        <th>Real Practitioner Context / Usage Rule</th>
-      </tr>
-    </thead>
-    <tbody id="lexiconTbody"></tbody>
-  </table>
+  <div class="mobile-swipe-hint">👈 Swipe table horizontally to see full meanings & context 👉</div>
+  <div class="table-container" style="margin-top:0; border-top:1px solid var(--border); border-radius:0 0 10px 10px;">
+    <table class="table-view" style="min-width: 1000px;">
+      <thead>
+        <tr>
+          <th style="width: 190px;">Term (Practitioner Slang)</th>
+          <th style="width: 160px;">Category</th>
+          <th style="width: 70px;">Freq</th>
+          <th style="width: 320px;">What It Actually Means (Plain-English Definition)</th>
+          <th style="min-width: 260px;">Real Practitioner Context / Usage Rule</th>
+        </tr>
+      </thead>
+      <tbody id="lexiconTbody"></tbody>
+    </table>
+  </div>
 </div>
 
 <!-- Tab 3: Raw Signals Stream -->
@@ -445,17 +600,18 @@ def export_html_viewer(
       📋 Copy All Raw Signals (Formatted for Claude)
     </button>
   </div>
+  <div class="mobile-swipe-hint">👈 Swipe table horizontally to see all columns & excerpts 👉</div>
   <div class="table-container">
-    <table class="table-view">
+    <table class="table-view" style="min-width: 1100px;">
       <thead>
         <tr>
-          <th style="width: 65px;">Trace ID</th>
-          <th style="width: 110px;">Source</th>
-          <th style="width: 20%;">Original Title & URL</th>
-          <th style="width: 22%;">Summary Takeaway</th>
-          <th style="width: 30%;">Practitioner Excerpt (Expandable)</th>
+          <th style="width: 70px;">Trace ID</th>
+          <th style="width: 120px;">Source</th>
+          <th style="width: 220px;">Original Title & URL</th>
+          <th style="width: 230px;">Summary Takeaway</th>
+          <th style="width: 340px;">Practitioner Excerpt (Expandable)</th>
           <th style="width: 110px;">Theme</th>
-          <th style="width: 65px;">Action</th>
+          <th style="width: 80px;">Action</th>
         </tr>
       </thead>
       <tbody id="rawTbody"></tbody>
@@ -464,21 +620,25 @@ def export_html_viewer(
 </div>
 
 <!-- Tab 4: Noise Shield (Blocked) -->
-<div id="noiseContainer" style="display:none;" class="table-container">
-  <div style="padding:12px 16px; background:#0c1424; border-bottom:1px solid var(--border); font-size:13px; color:var(--muted);">
-    🛡️ <strong>Noise Shield Active:</strong> Items filtered out because they were vendor product advertisements without practitioner debate, or generic career questions. Click any title to inspect the original post.
+<div id="noiseContainer" style="display:none;">
+  <div style="padding:12px 16px; background:#0c1424; border:1px solid var(--border); border-radius:10px 10px 0 0; border-bottom:none; font-size:13px; color:var(--muted); line-height:1.5;">
+    🛡️ <strong>How the Noise Shield Works:</strong>
+    Automated sweeps harvest all posts and replies across targeted threads. Comments lacking compliance keywords (casual chat, memes, office furniture), vendor sales pitches, or exam cramming are safely filtered here. Click any title to inspect the original thread.
   </div>
-  <table class="table-view">
-    <thead>
-      <tr>
-        <th style="width: 130px;">Source</th>
-        <th style="width: 35%;">Original Post Title & Link</th>
-        <th style="width: 25%;">Reason Blocked</th>
-        <th>Excerpt Preview</th>
-      </tr>
-    </thead>
-    <tbody id="noiseTbody"></tbody>
-  </table>
+  <div class="mobile-swipe-hint">👈 Swipe table horizontally to inspect blocked items & reasons 👉</div>
+  <div class="table-container" style="margin-top:0; border-top:1px solid var(--border); border-radius:0 0 10px 10px;">
+    <table class="table-view" style="min-width: 950px;">
+      <thead>
+        <tr>
+          <th style="width: 130px;">Source</th>
+          <th style="width: 300px;">Original Post Title & Link</th>
+          <th style="width: 260px;">Reason Blocked</th>
+          <th style="min-width: 280px;">Excerpt Preview</th>
+        </tr>
+      </thead>
+      <tbody id="noiseTbody"></tbody>
+    </table>
+  </div>
 </div>
 
 <!-- Tab 5: Knowledge Graph -->
@@ -514,16 +674,17 @@ def export_html_viewer(
         Detailed history of every listening sweep (cloud scheduled vs local manual), including sources queried, time ranges, and overall intelligence learnings.
       </p>
     </div>
+    <div class="mobile-swipe-hint">👈 Swipe table horizontally to view all sweep logs 👉</div>
     <div class="table-container" style="max-height: 480px; overflow-y: auto;">
-      <table class="table-view">
+      <table class="table-view" style="min-width: 950px;">
         <thead>
           <tr>
-            <th style="width: 145px;">Timestamp (IST)</th>
+            <th style="width: 155px;">Timestamp (IST)</th>
             <th style="width: 130px;">Trigger</th>
-            <th style="width: 25%;">Sources Swept</th>
-            <th style="width: 18%;">Time Range</th>
+            <th style="width: 200px;">Sources Swept</th>
+            <th style="width: 150px;">Time Range</th>
             <th style="width: 100px;">Counts</th>
-            <th style="width: 32%;">Pull Learnings & Summary</th>
+            <th style="min-width: 320px;">Pull Learnings & Summary</th>
           </tr>
         </thead>
         <tbody id="runLogsTbody"></tbody>
@@ -645,11 +806,13 @@ function copyAuthenticLexicon() {{
   }});
   const lines = [
     "# SAYARI COMPLIANCE PRACTITIONER LEXICON (THE BEER TEST)",
-    "# Mined real language, slang, and usage rules (Banned vendor fluff excluded)",
+    "# Mined real language, slang, definitions, and usage rules (Banned vendor fluff excluded)",
     ""
   ];
   authentic.forEach(g => {{
-    lines.push("- " + g.term.toUpperCase() + " (Frequency: " + g.frequency + "): " + (g.example_context || 'Practitioner term mined from community discussions.'));
+    lines.push("- " + g.term.toUpperCase() + " (Frequency: " + g.frequency + "):");
+    if (g.meaning) lines.push("  * Meaning: " + g.meaning);
+    lines.push("  * Context / Usage: " + (g.example_context || 'Practitioner term mined from community discussions.'));
   }});
   copyTextToClipboard(lines.join('\\n'), '📋 Copied ' + authentic.length + ' Authentic Practitioner Terms!');
 }}
@@ -918,7 +1081,8 @@ function renderLexicon() {{
         <td><strong style="color:#fff; font-size:13.5px;">${{g.term}}</strong></td>
         <td><span class="pill ${{isVendor ? 'badge-pain' : 'badge-relief'}}">${{isVendor ? 'Banned Vendor Fluff' : 'Real Practitioner Slang'}}</span></td>
         <td><strong style="color:var(--accent);">${{g.frequency}}</strong></td>
-        <td style="color:#cbd5e1; font-style:italic;">${{g.example_context || 'Practitioner term mined from compliance community discussions.'}}</td>
+        <td style="color:#e2e8f0; line-height:1.45; font-size:12.5px;">${{g.meaning || 'Practitioner terminology referring to operational workflows and challenges.'}}</td>
+        <td style="color:#cbd5e1; font-style:italic; line-height:1.4; font-size:12px;">${{g.example_context || 'Practitioner term mined from compliance community discussions.'}}</td>
       </tr>
     `;
   }}).join('');
@@ -974,16 +1138,40 @@ function renderRawStream() {{
   document.getElementById('rawTbody').innerHTML = html || '<tr><td colspan="7" style="padding:20px; text-align:center; color:var(--muted);">No signals match your filter.</td></tr>';
 }}
 
+function formatDropReason(reason, excerpt) {{
+  if (!reason) return '🛡️ Filtered by Noise Shield';
+  const r = reason.toLowerCase();
+  const ex = (excerpt || '').toLowerCase();
+  
+  if (r.includes('no compliance seed keywords matched') || r.includes('no keywords')) {{
+    if (ex.includes('chair') || ex.includes('sitting') || ex.includes('casters') || ex.includes('cushion')) {{
+      return '🪑 Irrelevant Subreddit / Off-Topic (Office furniture thread from keyword "swivel")';
+    }}
+    if (ex.includes('trump') || ex.includes('alien') || ex.includes('vampire') || ex.includes('bessent')) {{
+      return '💬 Off-Topic Political / Meme Comment (No compliance discussion)';
+    }}
+    return '💬 Casual Chatter / Off-Topic (Thread reply with no compliance domain terms)';
+  }}
+  if (r.includes('career') || r.includes('exam') || r.includes('cams')) {{
+    return '🎓 Study Group / Exam Prep (Career question without operational friction)';
+  }}
+  if (r.includes('vendor') || r.includes('promo')) {{
+    return '🚫 Vendor Pitch / Ad (Product promotion without practitioner debate)';
+  }}
+  return reason;
+}}
+
 // 5. Render Noise Shield
 function renderNoise() {{
   const html = DROPPED_ITEMS.map((d, idx) => {{
     const linkHtml = d.url ? `<a href="${{d.url}}" target="_blank" rel="noopener" class="source-link">${{d.title}} ↗</a>` : `<strong>${{d.title}}</strong>`;
+    const cleanReason = formatDropReason(d.drop_reason, d.short_excerpt);
     return `
       <tr>
-        <td><span style="font-size:12px; color:var(--muted);">${{d.source || 'Public Source'}}</span></td>
-        <td>${{linkHtml}}</td>
-        <td><span style="color:#f87171; font-weight:600; font-size:12px;">${{d.drop_reason || 'Vendor Promotion / No Frustration'}}</span></td>
-        <td style="color:#64748b; font-size:11.5px; font-style:italic;">${{d.short_excerpt || 'No excerpt available'}}</td>
+        <td><span style="font-size:12px; color:var(--muted); font-weight:600;">${{d.source || 'Public Source'}}</span></td>
+        <td><div style="font-size:13px; font-weight:700; margin-bottom:4px;">${{linkHtml}}</div></td>
+        <td><span style="color:#f87171; font-weight:600; font-size:12px; line-height:1.4; display:block;">${{cleanReason}}</span></td>
+        <td style="color:#94a3b8; font-size:12px; font-style:italic; line-height:1.45;">${{d.short_excerpt || 'No excerpt available'}}</td>
       </tr>
     `;
   }}).join('');
