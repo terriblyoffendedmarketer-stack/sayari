@@ -9,7 +9,7 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 | # | Title | Format | Pillar | Template | Status |
 |---|---|---|---|---|---|
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Final: Ekshika's edit (caption cut) |
-| P02 | Compliance bingo | Pain mirror | Frankenstack | 3×3 bingo card | Original restored + approved tweaks; caption under review |
+| P02 | Compliance bingo | Pain mirror | Frankenstack | 3×3 bingo card | Original restored, edited by the user; new short caption; to send to Ekshika |
 | P03 | Two "clean" 25% owners | Product as relief | Hidden risk | Split compare (kit L3) | Final: Ekshika's edit (creative + caption) |
 | P04 | The PURE case (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Reworked after round 1, 2 versions, to send to Ekshika |
 
@@ -37,24 +37,16 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four
 ## P02 · Compliance bingo
 - **Idea source:** doc tab 3 (I03) · **Bucket:** charts-as-jokes · **Theme:** the Frankenstack / understaffed and accountable
 - **Format:** pain mirror · **Pillar:** Frankenstack · **Template:** 3×3 bingo card (Claude Design canvas artboard `P02-frankenstack-bingo.dc.html`; copy in `drafts/P02-final-canvas-source.dc.html`)
-- **Image:** `assets/P02-final.png`: our original bingo, restored, then **edited by the user on the canvas (2026-11-11)**: "**Compliance** bingo" (no subline) · "The spreadsheet is the system" (quote only) · Who owns the owner? (Your supplier → Holding co. → A PO box ???) · UBO_tracker_FINAL_v7.xlsx · *"Quick one, can you double-check this?"* (italic serif) · "Same co. / Fifth search bar." + drawn bars · *"Who cleared this?"* · "Blames the intern" (letter-spaced) · "Session expired (mid case)" (mono) · "System says clear. Google says no." Gold ticks on four. All cell content centred.
+- **Image:** `assets/P02-final.png`: our original bingo, restored, then **edited by the user on the canvas (2026-11-11)**: "**Compliance** bingo" (no subline) · "The spreadsheet is the system" (quote only) · Who owns the owner? (Your supplier → Holding co. → A PO box ???) · UBO_tracker_FINAL_v7.xlsx · *"Quick one—"* + "(5:58pm)" in mono · "Same co. / Seven open tabs." + drawn bars · *"Who cleared this?"* · "Blames the intern" (letter-spaced) · "Session expired (mid case)" (mono) · "System says clear. Google says no." Gold ticks on four. All cell content centred.
 - **History:** my 2026-11-11 "simplified" rework was rejected by the user (stripped the context and feeling); it's in `archive/2026-11-10_round1-originals/rejected-rework/`.
 - **Hook type:** a moment + a quote they've heard
-- **Caption (original, kept for now; note it still explains "Frankenstack"):**
-> It's 5:58 pm, and your manager drops this banger:
-> "Quick one, can you double-check this?"
+- **Caption (final, chosen by the user from option A with the first two lines cut; the image carries the 5:58 pm moment):**
+> How many squares did you hit this week?
+> Three or more? It's not you. It's your tools. We can help.
 >
-> Your evening just got a whole lot more interesting: hunting for a false positive that may or may not exist.
->
-> That's a Frankenstack: a handful of tools that were never built to work together, stitched into a process by a spreadsheet and one person's memory.
->
-> It holds. Mostly. Until the intern goes on leave, the session expires, or an auditor asks how you decided something eight months ago, and your proof is an email, a tab and a screenshot.
->
-> Hit three squares or more? It's not you. It's the stack.
->
-> At Sayari, we replace the stitching with one place where the ownership record, its sources and your decision sit together. So "how did you know?" gets a link to an answer, not a scavenger hunt.
->
-> Drop your count below. And tell us the square we missed.
+> Drop your count below.
+- **Personality moves:** "It's not you. It's your tools."
+- **Previous caption:** the ~140-word original is archived in `archive/2026-11-10_round1-originals/README.md`.
 - **Results:** (add)
 
 ## P03 · Two "clean" 25% owners

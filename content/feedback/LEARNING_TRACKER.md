@@ -76,6 +76,11 @@ Dropped the subline, dropped the Red Bull attribution, "Same Ltd name" → "Same
 19. **Spoken lines read best as one short, self-contained quote** ("Who cleared this?") that doesn't need an attribution, which beats a long quote plus an explainer. (Refines 15: keep context, but prefer a line that carries its own context.) `testing`
 20. **Typography signals the voice:** italic serif = a person speaking, mono = a system or file. `testing`
 21. **Bingo cells: centre the content**; top-aligned text looks stuck. `applied` (design)
+
+### P02 caption (2026-11-11): the user picked option A and cut its first two lines
+Final: "How many squares did you hit this week? / Three or more? It's not you. It's your tools. We can help. / Drop your count below." (~25 words, like Ekshika's P01.)
+22. **Don't repeat in the caption what the image now shows** (the "Quick one— (5:58pm)" square made the 5:58 opener redundant). Check the caption against the *final* image. `applied`
+23. **Target length confirmed:** single-image captions around 25–40 words when the image carries the story. `applied` (CAPTIONS.md)
 - The P01 creative was used as ours; only the caption changed. `closed`
 
 ### The distilled rules (now in the rule files)

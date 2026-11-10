@@ -4,10 +4,11 @@ Personality is the edge: most B2B accounts are drab and corporate. We **inform, 
 
 ## Simplicity first (client feedback, 2026-11; overrides anything below)
 Write for a reader with **zero context and zero patience**: they get the point in one read, with no decoding.
-- **Length:** single image ~30–90 words; carousel ~60–120. If the image already makes the joke, the caption can be 3–6 lines that echo it and close.
+- **Length:** single image ~25–90 words (25–40 when the image carries the story, as with P01 and P02); carousel ~60–120. If the image already makes the joke, the caption can be 3–6 lines that echo it and close.
 - **One idea, one personality move.** A single sharp line (a metaphor, one deadpan beat) carries the voice. Don't stack jokes.
 - **Plain order:** situation → "not quite" → the fact (bullets if it's data) → why it matters → the brand as one concrete benefit sentence → simple close.
 - **Spell out the consequence** for the reader. Don't make them infer it.
+- **Check the caption against the final image:** cut any line the image already says.
 - **Don't re-explain the job** to the people who do it; don't describe product features.
 - **Simple ≠ fewer words.** Remove confusion (insider shorthand, unexplained jargon, too many ideas), not character. Keep who-said-it attributions, specific human details and visual jokes; they make people *feel* something (user, 2026-11-11, after rejecting a stripped-down bingo).
 - **Diagnose first.** Before simplifying an existing post, name exactly what confuses a zero-context reader, fix only that, and check with the user before a broad rewrite.
