@@ -40,12 +40,20 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four
 - **Image:** `assets/P02-final.png`: our original bingo, restored, then **edited by the user on the canvas (2026-11-11)**: "**Compliance** bingo" (no subline) · "The spreadsheet is the system" (quote only) · Who owns the owner? (Your supplier → Holding co. → A PO box ???) · UBO_tracker_FINAL_v7.xlsx · *"Quick one—"* + "(5:58pm)" in mono · "Same co. / Seven open tabs." + drawn bars · *"Who cleared this?"* · "Blames the intern" (letter-spaced) · "Session expired (mid case)" (mono) · "System says clear. Google says no." Gold ticks on four. All cell content centred.
 - **History:** my 2026-11-11 "simplified" rework was rejected by the user (stripped the context and feeling); it's in `archive/2026-11-10_round1-originals/rejected-rework/`.
 - **Hook type:** a moment + a quote they've heard
-- **Caption (final, chosen by the user from option A with the first two lines cut; the image carries the 5:58 pm moment):**
-> How many squares did you hit this week?
-> Three or more? It's not you. It's your tools. We can help.
+- **Caption (two options for Ekshika, written by the user in the hub, 2026-11-10):**
+> Option 1:
+> Checking one supplier shouldn’t take seven tabs.
 >
-> Drop your count below.
-- **Personality moves:** "It's not you. It's your tools."
+> If your Friday looks like this card, it’s not a you problem. It's a setup problem.
+>
+> Sayari puts company records, owners and sanctions in one place. One tab, one search, zero compliance bingo.
+>
+> How many squares did you hit? (Tell us below)
+>
+> Option 2
+> How many squares did you hit this week?
+> Drop your count below and tell us what we missed!
+- **Personality moves:** option 1 "not a you problem. It's a setup problem." + "zero compliance bingo"; option 2 "tell us what we missed"
 - **Previous caption:** the ~140-word original is archived in `archive/2026-11-10_round1-originals/README.md`.
 - **Results:** (add)
 
