@@ -47,3 +47,4 @@ editable PDF text came out in Menlo/Georgia | Chrome print-to-pdf doesn't wait f
 box-shadow in print PDF | Chrome rasterises it as a dark rectangle | box-shadow:none in editable PDFs
 hub publish refused as 'not viewed' after a fresh chat | Artifact requires the live version to be read first | diff the saved live copy (minus the publish-time skeleton line) against git HEAD hub.html; if same, Read a few lines of it and republish
 news-release dates on sayari.com looked like Apr 2026 for years-old releases | WP migration reset the date field | read the date in the article body before citing
+hub db writes open to signed-in link viewers | only inbox has a db rule; default lets 'interact' write | gate UI on user.isOwner(); a real fix is a db rule (write: admin) for captions + shelf at next capabilities publish
