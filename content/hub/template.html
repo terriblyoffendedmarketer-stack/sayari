@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Sayari Content Hub</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,11 +46,13 @@ h3{font:600 16px/1.35 var(--body);margin:0}
 .lede{color:var(--muted);max-width:68ch;margin:6px 0 0}
 .block{display:flex;flex-direction:column;gap:12px}
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0;overflow-wrap:break-word}
 .card p{margin:0}
 .meta{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:500 12px/1 var(--mono);background:var(--chip);color:var(--ink);padding:5px 8px;border-radius:6px}
-.pill{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.pill{font:600 11px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:12px;white-space:normal;overflow-wrap:anywhere;max-width:100%;flex:0 1 auto;display:inline-block}
+.row>.pill{max-width:48%;text-align:right}
+.post-status{margin-top:6px}
 .pill.built,.pill.validated,.pill.created{background:var(--ok-soft);color:var(--ok)}
 .pill.seed,.pill.candidate{background:var(--idle-soft);color:var(--idle)}
 .pill.pipeline,.pill.sharpened,.pill.selected{background:var(--warn-soft);color:var(--warn)}
@@ -197,7 +200,7 @@ function posts(){
         <p class="small"><span class="label">Personality moves</span><br>${esc(p.moves)}</p>
       </div>`;
   const caption = (p, v, i, j) => `<div class="row"><span class="label">Caption</span><button data-copy="${i}:${j}">Copy caption</button></div><pre class="caption">${esc(v.caption)}</pre>`;
-  const head = p => `<div class="row"><div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3></div>${pill(p.status||"created")}</div>${chips([p.format,p.pillar,p.bucket])}`;
+  const head = p => `<div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3><div class="post-status">${pill(p.status||"created")}</div></div>${chips([p.format,p.pillar,p.bucket])}`;
   return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Posts with options show each version separately. Tap an image to see it full size. Source: content/posts/POSTS.md.</p></div>
   <div class="stack-posts">${D.posts.map((p,i)=>{
     const carousel = p.versions.some(v => v.imgs.length > 1);

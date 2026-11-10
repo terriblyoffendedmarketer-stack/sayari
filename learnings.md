@@ -37,3 +37,4 @@ Kit wireframe said '39 times' under a 'no match' search | invented placeholder c
 Canvas headlines broke awkwardly ('later: a / $466,200') though kit renders were fine | kit.css sets text-wrap:balance on .headline; inline-styled canvas copies lost it | add text-wrap: balance to every canvas headline style
 Built-in browser pane can't open claude.ai artifacts | pane isn't signed in to claude.ai | review canvas artboards with scripts/preview_dc.py (local render of the .dc.html source)
 Download links did nothing in the hub | artifact viewers block <a download> and script-started saves | declare capabilities {downloads:true} and call (await claude.use('downloads')).save({filename, data: blob}) on click
+hub status pills spilled out of cards | .pill had white-space:nowrap and sat beside the title | let pills wrap, put post status under the title; P03 asset re-rendered from canvas artboard (was a 566px crop)
