@@ -20,6 +20,14 @@ Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas 
 - Nothing under 26px on the 1080×1350 canvas. Left-aligned. 80px side margins.
 - Product, search, alert and chat mocks always sit in the dark `panel`.
 - Small wordmark in one corner (white on navy, navy on beige).
+- **2-second test (client feedback, 2026-11):** someone with zero context gets the image in 2 seconds.
+  - **Headline = the conclusion in plain words**, not a riddle or formula ("Two 'clean' 25% owners don't make a clean company", not "25% + 25% = …").
+  - **Show the logic visually:** stamps/labels ("TAKING THEIR WORD FOR IT"), boxes that add up into a result bar, arrows. Never a sentence where a visual device can say it.
+  - **State the consequence to "you"** ("Result: 50% blocked. You just onboarded a violation.").
+  - **End on a one-line takeaway** at the bottom, so the image works without the caption.
+  - **Cut metadata noise** (section numbers, "registry record ·", dates) unless it carries meaning.
+  - Risk red can be used boldly when it carries the meaning (stamp, result bar).
+  - Reference: P03 final (Ekshika's edit) in `content/feedback/assets/P03-final-ekshika-edit.jpg`.
 - **Never put a disclaimer on an image**: no "illustrative", "invented", "fictional", "example" or "for illustration" lines. Sources and caveats go in the caption or the first comment.
 - A `source` line on the image is only for a **real, public source behind a number that is the point of the post** (e.g. an OFAC settlement amount). Otherwise leave it off.
 

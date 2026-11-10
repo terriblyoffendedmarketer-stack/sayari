@@ -19,3 +19,4 @@ description: Use when working on Sayari LinkedIn content in this repo — findin
 6. After changing any content file, rebuild the hub (`python3 -I scripts/build_hub.py`) and republish `content/hub/hub.html` to https://claude.ai/artifact/Gmw5L8TenBeGWB3iVTRHaj (pass it as `url` from a new chat).
 7. Listener data shows the landscape; don't copy rare lingo. Use situations and words that recur across many people, phrased so a beginner gets them (hyper-relevant, not hyper-niche).
 8. When proposing a post, always pitch it in the `playbook/PITCH.md` format (what it is, why they'd relate, is it real, strategy fit, product fit, hooks, format and proof). Keep each part short and plain.
+9. Simplicity first (client feedback): every image passes the 2-second test and every caption is short, one idea, one personality move. Before/after lessons live in `content/feedback/LEARNING_TRACKER.md` (private; not in the hub). Log every new round of client feedback there.

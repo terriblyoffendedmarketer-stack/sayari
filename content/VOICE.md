@@ -4,7 +4,7 @@ From the brief, plus what worked in P01–P02.
 
 **We are:** validating (we've sat in the chair) · unflinching (we say the quiet part: a risk score isn't a defense; the enemy is the stack, not you) · human and a little funny (the category is all doom; we bring wit and relief) · proof-backed (every claim shows its work, like the product).
 
-**We sound like:** a senior analyst who's seen it all, talking to a peer at 5:58 pm. Dry, specific, on their side.
+**We sound like:** a senior analyst who's seen it all, talking to a peer at 5:58 pm. Dry, specific, on their side. **And simple:** one idea, plain words, one joke at most (client feedback 2026-11: "too verbose"; see `content/feedback/LEARNING_TRACKER.md`).
 
 **Signature moves so far:** translation jokes ("Translation: that's your problem now.") · comic specificity ("7 Google searches") · deadpan ("It holds. Mostly.") · "It's not you. It's the stack." · the wink P.S.
 

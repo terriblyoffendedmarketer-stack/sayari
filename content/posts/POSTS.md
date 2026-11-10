@@ -1,6 +1,6 @@
 # Sayari posts log (source of truth for what shipped)
 
-Status convention: a post handed to Ekshika is **submitted** (done from our side; she decides). Revisions get logged here if they come back.
+Status convention: a post handed to Ekshika is **submitted** (done from our side; she decides). Her edits get logged here as the final version; the lessons go in the private `content/feedback/LEARNING_TRACKER.md`.
 
 Read this first when starting a batch. One entry per post, newest at the bottom. Images go in `content/posts/assets/`: `P<nn>-<slug>.png` for a single image, `P<nn>-v<k>-<nn>.png` for version k's slides and `P<nn>-v<k>.pdf` for its carousel PDF (the hub picks them up automatically and offers downloads). Multiple versions go under `#### Version k · <label>` headings, each with its caption.
 Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pillar** (Frankenstack / score ≠ defense / hidden risk) · **theme** (from `content/themes.md`) · **template** (from `playbook/templates.md`) · **bucket** · **hook type**.
@@ -8,9 +8,9 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 ## Running tally
 | # | Title | Format | Pillar | Template | Status |
 |---|---|---|---|---|---|
-| P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Shared with Sayari (not live) |
+| P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Final: Ekshika's edit (caption cut) |
 | P02 | Frankenstack bingo | Pain mirror | Frankenstack | 3×3 bingo card | Shared with Sayari (not live) |
-| P03 | 25% + 25% (questionnaire vs record) | Product as relief | Hidden risk | Split compare (kit L3) | Shared with Sayari (not live), 2 caption options |
+| P03 | 25% + 25% (questionnaire vs record) | Product as relief | Hidden risk | Split compare (kit L3) | Final: Ekshika's edit (creative + caption rewritten) |
 | P04 | The PURE case: "No match found" (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Submitted to Ekshika (2 versions) |
 
 Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack → **next: a newsjack or a Friday-3pm piece.**
@@ -22,7 +22,7 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack → **nex
 - **Format:** pain mirror · **Pillar:** Frankenstack · **Template:** stacked search bars with "potential match" badges + "same company?"
 - **Image:** `assets/P01-name-match.png`. Navy card, "entity screening · 3 results" in mono: Brightwell Components Ltd / Brightwel Components Limited / Bright Well Components, each with a "potential match" chip, joined by a hand-drawn gold bracket and arrow to "same company?" in gold script. SAYARI wordmark bottom right.
 - **Hook type:** a quote they've heard + a translation joke
-- **Caption (as published):**
+#### Version 1 · our draft
 > "Potential match."
 > Translation: that's your problem now.
 > The screening system did its job. It found something that looks similar.
@@ -30,6 +30,16 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack → **nex
 > That part is still a few registries, 7 Google searches and a note you hope you can find later. All while your name is on the file if you guess wrong.
 > Sayari starts where the name match stops: one entity, with the source records attached, so your call comes with its evidence.
 > P.S. if you're someone from Brightwell Components Ltd, our sincere apologies.
+#### Version 2 · final (Ekshika's edit, as shared by Sayari)
+Image unchanged from ours (`assets/P01-v2-01.png`). Caption cut to the joke plus a plain CTA.
+> Brightwell Components Ltd.
+> Brightwel Components Limited.
+> Bright Well Components.
+>
+> Same company? Maybe.
+> Different company? Also maybe.
+>
+> If you hate falling down the name-matching rabbit hole, we can help!
 - **Personality moves:** translation joke, comic specificity, wink P.S.
 - **Results:** (add impressions / comments / saves)
 
@@ -81,6 +91,22 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack → **nex
 > One of these documents is a promise. The other is a record you can attach to the file.
 > Sayari reads the registry, not the form: the owners, the owners’ owners, and the source behind each one. So when someone asks “how did you know?”, you can show them.
 > Ever had a clean questionnaire turn out not so clean? Tell us how you caught it.
+> P.S. Northgate Supply Ltd is fictional. The pattern, sadly, is not.
+#### Version 3 · final (Ekshika's edit, as shared by Sayari)
+Creative rewritten (`assets/P03-v3-01.png`): headline "Two 'clean' 25% owners don't make a clean company.", a "TAKING THEIR WORD FOR IT" stamp, owner boxes adding into a red "Result: 50% blocked. You just onboarded a violation." bar, and the bottom line "Know who you're doing business with, not who they say they are."
+> Self-attestation is just a trust fall with your compliance budget.
+>
+> A supplier checks "No" on your questionnaire, sign it, you file it, case closed, right?
+> Not quite.
+>
+> A quick look at the corporate registry tells a different story:
+> • Owner A: 25% (Sanctioned)
+> • Owner B: 25% (Sanctioned)
+>
+> Neither holds a majority. The company name itself doesn't show up on a single watchlist but under OFAC's 50% rule, those percentages aggregate. The company is blocked, and your questionnaire just handed you a massive blind spot.
+>
+> Sayari maps ownership structures down to the ultimate beneficial owner so you aren't relying on a vendor's word to protect your supply chain.
+>
 > P.S. Northgate Supply Ltd is fictional. The pattern, sadly, is not.
 - **First comment (proof):** OFAC's own example of two 25% owners (FAQ 401): https://ofac.treasury.gov/faqs/401
 - **Personality moves:** surprise beat ("Wait. What?" / "W H A T?"), deadpan ("Everyone went to lunch."), quotable line ("Forms don't do math."), wink P.S.

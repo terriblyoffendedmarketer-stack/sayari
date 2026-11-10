@@ -13,3 +13,5 @@ Not a form to fill mechanically: answer each in plain words, briefly, with real 
 7. **Format and proof.** The best format (and kit layout), the UGC/proof we can use, and the checks before posting (sources, wording, invented names).
 
 Then the human picks or pushes back, and we move to the caption and design.
+
+**Before showing any draft:** run the 2-second test (`playbook/CAPTIONS.md` "Simplicity first", `design/kit/README.md`). Would someone with zero context get the image in 2 seconds and the caption in one read? If not, cut until they would.
