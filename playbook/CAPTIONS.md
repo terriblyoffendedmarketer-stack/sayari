@@ -9,6 +9,8 @@ Write for a reader with **zero context and zero patience**: they get the point i
 - **Plain order:** situation → "not quite" → the fact (bullets if it's data) → why it matters → the brand as one concrete benefit sentence → simple close.
 - **Spell out the consequence** for the reader. Don't make them infer it.
 - **Don't re-explain the job** to the people who do it; don't describe product features.
+- **Simple ≠ fewer words.** Remove confusion (insider shorthand, unexplained jargon, too many ideas), not character. Keep who-said-it attributions, specific human details and visual jokes; they make people *feel* something (user, 2026-11-11, after rejecting a stripped-down bingo).
+- **Diagnose first.** Before simplifying an existing post, name exactly what confuses a zero-context reader, fix only that, and check with the user before a broad rewrite.
 - Real example of the target: P01 final = three spellings + "Same company? Maybe. Different company? Also maybe." + "If you hate falling down the name-matching rabbit hole, we can help!"
 - Lessons and before/after comparisons: `content/feedback/LEARNING_TRACKER.md` (client-specific; private).
 

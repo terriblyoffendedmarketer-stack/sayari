@@ -9,7 +9,7 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 | # | Title | Format | Pillar | Template | Status |
 |---|---|---|---|---|---|
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Final: Ekshika's edit (caption cut) |
-| P02 | Compliance bingo | Pain mirror | Frankenstack | 3×3 bingo card (kit L2) | Reworked after round 1, to send to Ekshika |
+| P02 | Compliance bingo | Pain mirror | Frankenstack | 3×3 bingo card | Original restored + approved tweaks; caption under review |
 | P03 | Two "clean" 25% owners | Product as relief | Hidden risk | Split compare (kit L3) | Final: Ekshika's edit (creative + caption) |
 | P04 | The PURE case (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Reworked after round 1, 2 versions, to send to Ekshika |
 
@@ -36,21 +36,25 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four
 
 ## P02 · Compliance bingo
 - **Idea source:** doc tab 3 (I03) · **Bucket:** charts-as-jokes · **Theme:** the Frankenstack / understaffed and accountable
-- **Format:** pain mirror · **Pillar:** Frankenstack · **Template:** 3×3 bingo card (kit L2)
-- **Image:** `assets/P02-final.png` (source `drafts/P02-v2-bingo.html`): beige, "**Compliance** bingo" / "How many did you hit this week?", nine squares of 2–6 words: "Quick one, can you double-check?" · Who owns the owner? (Supplier → Holding co. → A PO box ???) · final_v7_REAL.xlsx · Same name. Fifth search. · Excel is the system. · "How did you decide this?" · The one person who knows is on leave. · Session expired. Again. · System says clear. Google says no. Gold ticks on four.
-- **Rework notes:** "Frankenstack" dropped from the headline (zero-context readers don't know it); attributions removed; each square shortened.
+- **Format:** pain mirror · **Pillar:** Frankenstack · **Template:** 3×3 bingo card (Claude Design canvas artboard `P02-frankenstack-bingo.dc.html`; copy in `drafts/P02-final-canvas-source.dc.html`)
+- **Image:** `assets/P02-final.png`: **our original bingo, restored**, with the user-approved tweaks only: headline "**Compliance** bingo" (was Frankenstack), subline "How many did you hit this week?" (dropped "Be honest."), "Holding co.", "Quick one, can you double-check?" without the manager attribution, "Blames the intern." (was the OoO intern line), "Session expired. / Mid-case.", "System says clear. Google says no." Everything else is as it was: the spreadsheet square with "– the analyst on his 5th Red Bull", UBO_tracker_FINAL_v7.xlsx, "Same Ltd name. Fifth search bar." with the drawn bars, "How did you decide this?" + "The auditor, 8 months later."
+- **History:** my 2026-11-11 "simplified" rework was rejected by the user (stripped the context and feeling); it's in `archive/2026-11-10_round1-originals/rejected-rework/`.
 - **Hook type:** a moment + a quote they've heard
-- **Caption (reworked):**
-> It's 5:58 pm. "Quick one, can you double-check this?"
+- **Caption (original, kept for now; note it still explains "Frankenstack"):**
+> It's 5:58 pm, and your manager drops this banger:
+> "Quick one, can you double-check this?"
 >
-> How many squares did you hit this week?
+> Your evening just got a whole lot more interesting: hunting for a false positive that may or may not exist.
 >
-> Three or more? It's not you. It's your tools.
+> That's a Frankenstack: a handful of tools that were never built to work together, stitched into a process by a spreadsheet and one person's memory.
 >
-> Sayari puts the owner, the source and your decision in one place.
+> It holds. Mostly. Until the intern goes on leave, the session expires, or an auditor asks how you decided something eight months ago, and your proof is an email, a tab and a screenshot.
 >
-> Drop your count below.
-- **Personality moves:** "It's not you. It's your tools."
+> Hit three squares or more? It's not you. It's the stack.
+>
+> At Sayari, we replace the stitching with one place where the ownership record, its sources and your decision sit together. So "how did you know?" gets a link to an answer, not a scavenger hunt.
+>
+> Drop your count below. And tell us the square we missed.
 - **Results:** (add)
 
 ## P03 · Two "clean" 25% owners

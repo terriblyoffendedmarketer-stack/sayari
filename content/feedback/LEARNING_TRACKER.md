@@ -61,6 +61,15 @@ Files: `assets/2026-11-10_ekshika-creatives-P01-P03.jpg`, `assets/2026-11-10_eks
 | P04 slides | Two lines plus a body sentence per slide; ending "A name search tells you if the name is on a list. It doesn't tell you who owns it." + question | One short line per slide; diagram does the explaining; ending "Don't just check the name. Check who owns it." | Show, don't tell; plain conclusion; takeaway line |
 | P04 captions | ~150 words each | ~70 words each | Length rule |
 Our pre-rework versions: `content/posts/archive/2026-11-10_round1-originals/`.
+
+### The user rejected my P02 rework (2026-11-11), and why
+"This version you made is not nice… nothing really tells me anything or makes the user feel anything." Reverted to the original, keeping only these tweaks: Compliance (not Frankenstack) bingo · "Be honest" trimmed · "Holding co." · quick one without the attribution · "Blames the intern." · "Session expired. Mid-case." · "System says clear. Google says no."
+**Lessons:**
+14. **"Simple" ≠ "fewer words".** I cut by word count and stripped the parts that carried meaning and feeling. `applied`
+15. **Attributions carry context.** "How did you decide this?" only lands with "The auditor, 8 months later". Keep the *who* when the line needs it. `applied`
+16. **Keep the human, specific details** (the 5th Red Bull): they make people feel something. Simplicity removes *confusion*, not *character*. `applied`
+17. **Keep visual jokes** (the drawn search bars); they're the opposite of verbose. `applied`
+18. **Diagnose before rewriting.** Work out what actually confused the reader (here: insider shorthand like OoO and Frankenstack), fix only that, and ask before broad rewrites. `applied`
 - The P01 creative was used as ours; only the caption changed. `closed`
 
 ### The distilled rules (now in the rule files)
