@@ -50,8 +50,8 @@ Files: `assets/2026-11-10_ekshika-creatives-P01-P03.jpg`, `assets/2026-11-10_eks
 13. Note: she kept some jargon ("self-attestation", "ultimate beneficial owner"), so plain doesn't mean jargon-free. It means **few ideas, clearly ordered**. `noted`
 
 ### Open questions
-- Did Ekshika change P02 (bingo) or P04 (PURE carousel) before sharing? If yes, get her versions; P04 especially is text-heavy by these standards. `open`
-- Was the P01 creative used exactly as ours? (It looks unchanged.) `open`
+- P02 (bingo) and P04 (PURE carousel) were shared **unchanged** (confirmed by the user). Still, P04 is text-heavy by these standards, so apply the simplicity rules to future carousels. `closed`
+- The P01 creative was used as ours; only the caption changed. `closed`
 
 ### The distilled rules (now in the rule files)
 - **2-second test:** someone with zero context gets the image in 2 seconds and the caption's point in one read.
