@@ -135,6 +135,21 @@ button.dl:hover{background:var(--gold);color:#1d2440}
 #lightbox p{color:#F1ECE2;margin:0;font-size:14px;text-align:center;max-width:70ch}
 #lightbox button{background:#F1ECE2;color:#1D2440}
 @media (max-width:520px){.mixrow{grid-template-columns:1fr 64px}.mixrow .bar{grid-column:1/-1;order:3}h1{font-size:21px}}
+.inbox-form{display:flex;flex-direction:column;gap:10px}
+.inbox-form textarea,.inbox-form input[type=url]{width:100%;font:14.5px/1.5 var(--body);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.inbox-form textarea{min-height:76px;resize:vertical}
+.inbox-form textarea:focus,.inbox-form input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.drop{display:flex;align-items:center;gap:12px;border:1.5px dashed var(--line);border-radius:8px;padding:12px;color:var(--muted);font-size:13.5px;cursor:pointer}
+.drop.over{border-color:var(--gold);background:var(--gold-soft)}
+.drop img{width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+.inbox-item .thumb img{height:180px}
+.inbox-item .sorted{border-left:3px solid var(--gold);padding:8px 10px;background:var(--paper);border-radius:0 6px 6px 0;display:flex;flex-direction:column;gap:4px}
+.inbox-item textarea{width:100%;min-height:70px;font:14px/1.5 var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--gold);border-radius:8px;padding:8px}
+.pill.inbox,.pill.new{background:var(--gold-soft);color:var(--gold)}
+.pill.filed{background:var(--ok-soft);color:var(--ok)}
+button.primary{background:var(--ink);color:var(--paper)}
+button:disabled{opacity:.6;cursor:default}
+details.filed summary{cursor:pointer;color:var(--muted);font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -257,14 +272,15 @@ function templates(){
 let ideaStatus = "all", ideaBucket = "all", ideaStart = "all";
 const STATUS_ORDER = ["done","sharpened","selected","open","later","hold"];
 function ideas(){
-  const statuses = ["all", ...STATUS_ORDER.filter(s => D.ideas.some(i => i.status === s))];
-  const buckets = ["all", ...new Set(D.ideas.map(i => i.bucket))];
-  const starts = ["all", ...["idea","insight","angle","hook"].filter(t => D.ideas.some(i => i.start === t))];
-  const rows = D.ideas.filter(i => (ideaStatus==="all"||i.status===ideaStatus) && (ideaBucket==="all"||i.bucket===ideaBucket) && (ideaStart==="all"||i.start===ideaStart));
-  const cnt = s => s==="all" ? D.ideas.length : D.ideas.filter(i=>i.status===s).length;
-  return `<div><h2>Ideas</h2><p class="lede">Every starting point for a post: an idea, an insight, an angle, or just a hook. Each is tagged with format, bucket and status, and each can become several posts. Source: content/buckets/IDEA_BANK.md.</p></div>
+  const ALL = [...inboxIdeas(), ...D.ideas];
+  const statuses = ["all", ...["inbox",...STATUS_ORDER].filter(s => ALL.some(i => i.status === s))];
+  const buckets = ["all", ...new Set(ALL.map(i => i.bucket))];
+  const starts = ["all", ...["idea","insight","angle","hook"].filter(t => ALL.some(i => i.start === t))];
+  const rows = ALL.filter(i => (ideaStatus==="all"||i.status===ideaStatus) && (ideaBucket==="all"||i.bucket===ideaBucket) && (ideaStart==="all"||i.start===ideaStart));
+  const cnt = s => s==="all" ? ALL.length : ALL.filter(i=>i.status===s).length;
+  return `<div><h2>Ideas</h2><p class="lede">Every starting point for a post: an idea, an insight, an angle, or just a hook. Each is tagged with format, bucket and status, and each can become several posts. Source: content/buckets/IDEA_BANK.md.${inboxIdeas().length?` Rows marked <b>inbox</b> come from your Inbox (only you see them) until Claude files them.`:""}</p></div>
   <div class="block">
-    <div class="filters" role="group" aria-label="Filter by starting point">${starts.map(t=>`<button data-istart="${t}" aria-pressed="${t===ideaStart}">${t==="all"?"all starting points":t+"s"} <span class="muted">${t==="all"?D.ideas.length:D.ideas.filter(i=>i.start===t).length}</span></button>`).join("")}</div>
+    <div class="filters" role="group" aria-label="Filter by starting point">${starts.map(t=>`<button data-istart="${t}" aria-pressed="${t===ideaStart}">${t==="all"?"all starting points":t+"s"} <span class="muted">${t==="all"?ALL.length:ALL.filter(i=>i.start===t).length}</span></button>`).join("")}</div>
     <div class="filters" role="group" aria-label="Filter by status">${statuses.map(s=>`<button data-istatus="${s}" aria-pressed="${s===ideaStatus}">${s} <span class="muted">${cnt(s)}</span></button>`).join("")}</div>
     <div class="filters" role="group" aria-label="Filter by bucket">${buckets.map(b=>`<button data-ibucket="${esc(b)}" aria-pressed="${b===ideaBucket}">${esc(b)}</button>`).join("")}</div>
     <div class="tablewrap"><table><thead><tr><th>ID</th><th>Start</th><th>Idea</th><th>Format</th><th>Bucket</th><th>Needs</th><th>Status</th></tr></thead><tbody>
@@ -311,13 +327,13 @@ function md(src){
 function strategy(){
   return D.strategy ? `<div><h2>3-month strategy</h2><p class="lede">Our anchor plan. Flexible; reviewed monthly against results. Source: content/STRATEGY.md.</p></div><article class="card prose searchable">${md(D.strategy)}</article>` : `<p class="empty">No strategy yet.</p>`;
 }
-const RENDER = {overview, strategy, posts, themes, templates, ideas, memes, research};
+const RENDER = {overview, strategy, posts, themes, templates, ideas, memes, research, inbox};
 const main = document.getElementById("main"), q = document.getElementById("q");
 function current(){ const h = location.hash.slice(1); return RENDER[h] ? h : "overview"; }
 function render(){
   const v = current();
   document.getElementById("tabs").innerHTML = VIEWS.map(([id,label,n]) => `<a href="#${id}" ${id===v?'aria-current="page"':""}>${label}${n!=null?`<span class="n">${n}</span>`:""}</a>`).join("");
-  main.innerHTML = `<section data-view="${v}">${RENDER[v]()}</section>`; if (typeof showDl === "function") showDl(); if (typeof paintCaptions === "function") paintCaptions();
+  main.innerHTML = `<section data-view="${v}">${RENDER[v]()}</section>`; if (typeof showDl === "function") showDl(); if (typeof paintCaptions === "function") paintCaptions(); if (v === "inbox" && typeof wireInbox === "function") wireInbox();
   q.value = ""; q.hidden = v === "overview";
 }
 main.addEventListener("click", e => {
@@ -423,6 +439,164 @@ main.addEventListener("click", async e => {
   }, () => {});
   paintCaptions();
 })();
+/* ---- Inbox: owner-only dump for ideas, links, images + context (db "inbox", images in assets) ----
+   inbox/<auto id> {text, link, context, assetId, at, status:"new"|"sorted"|"filed", sort:{start,bucket,format,title,gist,needs}, filedAs}
+   Read + write are owner-only (db rules declared at publish). Claude files sorted items into IDEA_BANK.md
+   in the /hub-sync routine and sets status "filed" + filedAs.                                            */
+const INBOX = []; let IB = { db: null, assets: null, sample: null, owner: false, busy: "" , pending: null };
+const imgUrl = it => it.assetId ? "/_blob/" + it.assetId : "";
+function inboxIdeas(){
+  return INBOX.filter(it => it.status === "sorted" && it.sort).map(it => ({ id: "inbox", start: it.sort.start || "idea", idea: it.sort.title || it.text, gist: it.sort.gist || it.context || "", format: it.sort.format || "", bucket: it.sort.bucket || "", needs: it.sort.needs || "", status: "inbox" }));
+}
+function inboxCard(it){
+  const s = it.sort;
+  return `<div class="card inbox-item searchable" data-iid="${esc(it.id)}">
+    <div class="row"><span class="label">${when(it.at)}</span>${pill(it.status === "filed" ? "filed" + (it.filedAs ? " as " + it.filedAs : "") : it.status)}</div>
+    ${it.assetId ? `<button class="thumb" data-img="${esc(imgUrl(it))}" data-cap="${esc(it.context || it.text || "Inbox image")}" aria-label="View image full size"><img loading="lazy" src="${esc(imgUrl(it))}" alt="${esc(it.context || "Inbox image")}"></button>` : ""}
+    ${it.text ? `<p>${esc(it.text)}</p>` : ""}
+    ${it.link ? `<p class="small"><a href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.link.replace(/^https?:\/\//, "").slice(0, 70))}</a></p>` : ""}
+    <div class="ctx">${it.context ? `<p class="small muted"><span class="label">Context</span><br>${esc(it.context)}</p>` : ""}</div>
+    ${s ? `<div class="sorted small"><b>${esc(s.title || "")}</b><span class="muted">${esc(s.gist || "")}</span>${chips([s.start, s.bucket, s.format])}${s.needs ? `<span class="muted">Needs: ${esc(s.needs)}</span>` : ""}</div>` : ""}
+    ${it.status !== "filed" ? `<div class="capbtns" style="justify-content:flex-start"><button data-ictx>${it.context ? "Edit context" : "Add context"}</button>${IB.sample ? `<button data-isort>${s ? "Re-sort" : "Sort"}</button>` : ""}<button data-idel>Delete</button></div>` : ""}
+  </div>`;
+}
+function inboxView(){
+  if (!IB.owner) return `<p class="empty">The inbox is private to the hub's owner.</p>`;
+  const fresh = INBOX.filter(i => i.status === "new"), sorted = INBOX.filter(i => i.status === "sorted"), filed = INBOX.filter(i => i.status === "filed");
+  return `<div><h2>Inbox</h2><p class="lede">Dump anything here: a quick idea, a link, a screenshot (drop, paste or pick), plus whatever you're thinking about it. Only you can see this tab. <b>Sort with Claude</b> tags each item (idea / insight / angle / hook, bucket, format) so it shows up in the Ideas tab straight away. At the start of a work session Claude files sorted items into the idea bank and marks them filed.</p></div>
+  <div class="card inbox-form">
+    <textarea id="in-text" placeholder="Idea, hook, observation, quote… (optional if you add an image or link)"></textarea>
+    <input id="in-link" type="url" placeholder="Link (optional)">
+    ${IB.assets ? `<label class="drop" id="in-drop"><input id="in-file" type="file" accept="image/*" hidden><span id="in-prev"></span><span id="in-droptext">Drop, paste (⌘V) or click to add an image</span></label>` : `<p class="small muted">Image upload isn't available in this view.</p>`}
+    <textarea id="in-ctx" placeholder="Context (optional): why you saved it, what it could become, who it's for"></textarea>
+    <div class="capactions"><button class="primary" id="in-add">Add to inbox</button><span class="small muted" id="in-msg"></span></div>
+  </div>
+  <div class="block"><div class="row"><h3>New <span class="muted">${fresh.length}</span></h3>${IB.sample && fresh.length ? `<button class="primary" id="in-sortall">Sort ${fresh.length} with Claude</button>` : ""}</div>
+    <p class="small muted" id="in-sortmsg">${esc(IB.busy)}</p>
+    <div class="grid">${fresh.map(inboxCard).join("") || `<p class="empty">Nothing new. Add something above.</p>`}</div></div>
+  <div class="block"><h3>Sorted, waiting to be filed <span class="muted">${sorted.length}</span></h3><div class="grid">${sorted.map(inboxCard).join("") || `<p class="empty">None.</p>`}</div></div>
+  ${filed.length ? `<details class="filed block"><summary>Filed into the idea bank (${filed.length})</summary><div class="grid" style="margin-top:12px">${filed.map(inboxCard).join("")}</div></details>` : ""}`;
+}
+function inbox(){ return inboxView(); }
+function setPending(file){
+  IB.pending = file || null;
+  const prev = document.getElementById("in-prev"), t = document.getElementById("in-droptext"); if (!prev) return;
+  if (file) { prev.innerHTML = `<img alt="Selected image">`; prev.querySelector("img").src = URL.createObjectURL(file); t.textContent = file.name + " · click to change"; }
+  else { prev.innerHTML = ""; t.textContent = "Drop, paste (⌘V) or click to add an image"; }
+}
+async function addInbox(){
+  const btn = document.getElementById("in-add"), msg = document.getElementById("in-msg");
+  const text = document.getElementById("in-text").value.trim(), link = document.getElementById("in-link").value.trim(), context = document.getElementById("in-ctx").value.trim();
+  if (!text && !link && !IB.pending) { msg.textContent = "Add an idea, a link or an image first."; return; }
+  btn.disabled = true; msg.textContent = IB.pending ? "Uploading image…" : "Saving…";
+  try {
+    let assetId = null;
+    if (IB.pending) { const r = await IB.assets.upload(IB.pending); assetId = r.id; }
+    await IB.db.collection("inbox").add({ text, link, context, assetId, at: new Date().toISOString(), status: "new" });
+    ["in-text","in-link","in-ctx"].forEach(id => document.getElementById(id).value = ""); setPending(null);
+    msg.textContent = "Added.";
+  } catch (e) {
+    msg.textContent = e?.code === "too_large" ? "That image is too big (20 MB max)." : e?.code === "unsupported_type" ? "That file type isn't supported." : "Couldn't save. Your text is still here; try again.";
+  } finally { btn.disabled = false; }
+}
+async function sortInbox(items){
+  if (!IB.sample || !items.length) return;
+  const formats = [...new Set(D.ideas.map(i => i.format).filter(Boolean))].slice(0, 30);
+  const buckets = D.buckets.map(b => b.name);
+  const lim = await IB.sample.limits().catch(() => null);
+  const canImg = !!lim?.images, maxImg = Math.min(lim?.images?.maxCount || 0, 6);
+  const withImg = canImg ? items.filter(i => i.assetId).slice(0, maxImg) : [];
+  const images = [];
+  for (const it of withImg) { try { images.push(await (await fetch(imgUrl(it))).blob()); } catch { images.push(null); } }
+  const imgIdx = {}; let n = 0; withImg.forEach((it, k) => { if (images[k]) imgIdx[it.id] = ++n; });
+  const prompt = `You sort raw content ideas for a LinkedIn content library for Sayari, a company whose platform shows who really owns and controls companies (corporate records, beneficial ownership, sanctions and trade risk). The audience is compliance, KYC/KYB, AML and supply-chain risk practitioners.
+For each inbox item below, classify it:
+- start: one of "idea" (a post concept), "insight" (an observation or fact a post could be built on), "angle" (a way to frame an existing topic), "hook" (an opening line).
+- bucket: the best match from this list, exactly as written: ${buckets.join(" | ")}
+- format: a short post format, preferably one of: ${formats.join(" | ")}
+- title: a plain, specific title for the idea, max 10 words.
+- gist: one sentence on what the post would say or show, max 30 words. Plain words, no hype.
+- needs: what's missing to make it a post (e.g. "a real case", "a screenshot", "a source"), max 8 words, or "".
+Use the person's context note as the main signal of what they intend. ${n ? "Images are attached in order; the item says which image is its own." : ""}
+Reply with only a JSON array: [{"id": "...", "start": "...", "bucket": "...", "format": "...", "title": "...", "gist": "...", "needs": "..."}]
+
+Items:
+${items.map(it => JSON.stringify({ id: it.id, text: it.text || "", link: it.link || "", context: it.context || "", image: imgIdx[it.id] ? `image ${imgIdx[it.id]}` : (it.assetId ? "has an image (not attached)" : "none") })).join("\n")}`;
+  IB.busy = `Claude is sorting ${items.length} item${items.length > 1 ? "s" : ""}…`; paintInbox();
+  try {
+    const out = await IB.sample.json(prompt, { modelTier: "default", images: images.filter(Boolean).length ? images.filter(Boolean) : undefined, cache: false });
+    const arr = Array.isArray(out) ? out : [];
+    for (const r of arr) {
+      const it = items.find(i => i.id === r.id); if (!it) continue;
+      const sort = { start: String(r.start || ""), bucket: String(r.bucket || ""), format: String(r.format || ""), title: String(r.title || ""), gist: String(r.gist || ""), needs: String(r.needs || "") };
+      await IB.db.doc(`inbox/${it.id}`).update({ sort, status: "sorted" });
+    }
+    IB.busy = arr.length ? `Sorted ${arr.length}. They're in the Ideas tab now, marked inbox.` : "Claude didn't return anything usable. Try again.";
+  } catch (e) {
+    IB.busy = e?.code === "not_granted" ? "Sorting needs your OK to use Claude. Reload the page to be asked again." : e?.code === "rate_limited" ? "Too many requests right now. Try again in a minute." : "Sorting failed. Try again.";
+  }
+  paintInbox();
+}
+function paintInbox(){
+  if (current() !== "inbox") { if (current() === "ideas") render(); return; }
+  const keep = ["in-text","in-link","in-ctx"].map(id => document.getElementById(id)?.value ?? ""), pend = IB.pending;
+  const sec = main.querySelector("section[data-view]"); if (!sec) return; sec.innerHTML = inboxView();
+  ["in-text","in-link","in-ctx"].forEach((id, k) => { const el = document.getElementById(id); if (el) el.value = keep[k]; });
+  setPending(pend); wireInbox();
+}
+function wireInbox(){
+  const drop = document.getElementById("in-drop"), file = document.getElementById("in-file");
+  document.getElementById("in-add")?.addEventListener("click", addInbox);
+  document.getElementById("in-sortall")?.addEventListener("click", e => { e.target.disabled = true; sortInbox(INBOX.filter(i => i.status === "new").slice(0, 12)); });
+  if (drop) {
+    file.addEventListener("change", () => setPending(file.files[0]));
+    drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("over"); });
+    drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+    drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); const f = [...e.dataTransfer.files].find(f => f.type.startsWith("image/")); if (f) setPending(f); });
+  }
+}
+document.addEventListener("paste", e => {
+  if (current() !== "inbox" || !IB.assets) return;
+  const f = [...(e.clipboardData?.files || [])].find(f => f.type.startsWith("image/")); if (!f) return;
+  e.preventDefault(); setPending(f);
+});
+main.addEventListener("click", async e => {
+  const b = e.target.closest("button"); if (!b) return; const card = b.closest(".inbox-item"); if (!card) return;
+  const it = INBOX.find(i => i.id === card.dataset.iid); if (!it) return;
+  if (b.hasAttribute("data-idel")) {
+    if (!confirm("Delete this inbox item?")) return;
+    b.disabled = true;
+    try { await IB.db.doc(`inbox/${it.id}`).delete(); if (it.assetId && IB.assets) IB.assets.delete(it.assetId).catch(() => {}); } catch { b.disabled = false; }
+  } else if (b.hasAttribute("data-isort")) { b.disabled = true; sortInbox([it]); }
+  else if (b.hasAttribute("data-ictx")) {
+    const box = card.querySelector(".ctx");
+    box.innerHTML = `<textarea aria-label="Context"></textarea><div class="capactions"><button class="primary" data-ictxsave>Save</button><button data-ictxcancel>Cancel</button></div>`;
+    const ta = box.querySelector("textarea"); ta.value = it.context || ""; ta.focus();
+  } else if (b.hasAttribute("data-ictxcancel")) paintInbox();
+  else if (b.hasAttribute("data-ictxsave")) {
+    b.disabled = true; const context = card.querySelector(".ctx textarea").value.trim();
+    try { await IB.db.doc(`inbox/${it.id}`).update({ context }); } catch { b.disabled = false; b.textContent = "Couldn't save"; }
+  }
+});
+(async () => {
+  let user = null, db = null;
+  try { user = await window.claude?.use?.("user"); } catch {}
+  IB.owner = user ? await Promise.resolve(user.isOwner()).catch(() => false) : false;
+  if (!IB.owner) return;
+  try { db = await window.claude?.use?.("db"); } catch {}
+  if (!db) return;
+  IB.db = db;
+  try { IB.assets = await window.claude?.use?.("assets"); } catch {}
+  try { IB.sample = await window.claude?.use?.("sample"); } catch {}
+  VIEWS.push(["inbox", "Inbox", 0]);
+  db.collection("inbox").orderBy("at", "desc").onSnapshot(snap => {
+    INBOX.length = 0; snap.docs.forEach(d => INBOX.push({ id: d.id, ...d.data() }));
+    VIEWS.find(v => v[0] === "inbox")[2] = INBOX.filter(i => i.status !== "filed").length;
+    document.getElementById("tabs").innerHTML = VIEWS.map(([id,label,n]) => `<a href="#${id}" ${id===current()?'aria-current="page"':""}>${label}${n!=null?`<span class="n">${n}</span>`:""}</a>`).join("");
+    paintInbox();
+  }, () => {});
+  if (current() === "inbox") render();
+})();
 let downloads = null;
 const showDl = () => document.querySelectorAll(".dl").forEach(el => el.hidden = !downloads);
 (async () => { try { downloads = await window.claude?.use?.("downloads"); } catch { downloads = null; } showDl(); })();
@@ -443,6 +617,6 @@ const closeLb = () => { lightbox.hidden = true; lbimg.removeAttribute("src"); };
 lbclose.addEventListener("click", closeLb);
 lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLb(); });
 addEventListener("keydown", e => { if (e.key === "Escape" && !lightbox.hidden) closeLb(); });
-document.getElementById("foot").textContent = `Built ${D.built} from the Sayari repo (scripts/build_hub.py). Read-only view; edits happen in the markdown files.`;
+document.getElementById("foot").textContent = `Built ${D.built} from the Sayari repo (scripts/build_hub.py). Captions and the Inbox save live; everything else comes from the markdown files.`;
 render();
 </script>

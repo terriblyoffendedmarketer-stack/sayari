@@ -40,3 +40,6 @@ Download links did nothing in the hub | artifact viewers block <a download> and 
 hub status pills spilled out of cards | .pill had white-space:nowrap and sat beside the title | let pills wrap, put post status under the title; P03 asset re-rendered from canvas artboard (was a 566px crop)
 hub image viewer overlay stayed on screen | #lightbox{display:flex} beat the hidden attribute | global [hidden]{display:none!important}
 hub caption edits need to reach the repo | edits live in the artifact db, not in POSTS.md | scripts/sync_captions.py after ArtifactData list with out_dir; db doc wins on the page
+canvas→hub image sync would archive false changes if comparing PNGs | headless renders differ by a few px from older renders | detect change by hashing the artboard source (canvas_map.json sha), render only then
+hub inbox: `let inbox` state clashed with `function inbox()` view (SyntaxError) | RENDER keys are function names | state object renamed IB
+carousel slides shared by both P04 versions | one artboard feeds two PNGs and two PDFs | canvas_map out/pdf are lists

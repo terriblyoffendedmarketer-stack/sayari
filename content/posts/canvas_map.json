@@ -1,0 +1,100 @@
+{
+ "P01-name-match.dc.html": {
+  "out": [
+   "P01-final.png"
+  ],
+  "sha": "00391cd3ccece018"
+ },
+ "P02-frankenstack-bingo.dc.html": {
+  "out": [
+   "P02-final.png"
+  ],
+  "sha": "8ccb3e9624e84816"
+ },
+ "Main.dc.html": {
+  "out": [
+   "P03-final.png"
+  ],
+  "sha": "c655428c10b32f5b"
+ },
+ "P04-1C.dc.html": {
+  "out": [
+   "P04-v1-01.png"
+  ],
+  "pdf": [
+   "P04-v1.pdf"
+  ],
+  "sha": "da92c6c4c0d2f876"
+ },
+ "P04-1B.dc.html": {
+  "out": [
+   "P04-v2-01.png"
+  ],
+  "pdf": [
+   "P04-v2.pdf"
+  ],
+  "sha": "266bf9350c29d096"
+ },
+ "P04-5C.dc.html": {
+  "out": [
+   "P04-v1-05.png"
+  ],
+  "pdf": [
+   "P04-v1.pdf"
+  ],
+  "sha": "9160b847017269cc"
+ },
+ "P04-5B.dc.html": {
+  "out": [
+   "P04-v2-05.png"
+  ],
+  "pdf": [
+   "P04-v2.pdf"
+  ],
+  "sha": "e212baed882adef2"
+ },
+ "P04-2.dc.html": {
+  "out": [
+   "P04-v1-02.png",
+   "P04-v2-02.png"
+  ],
+  "pdf": [
+   "P04-v1.pdf",
+   "P04-v2.pdf"
+  ],
+  "sha": "83bfe7923375c7f6"
+ },
+ "P04-3.dc.html": {
+  "out": [
+   "P04-v1-03.png",
+   "P04-v2-03.png"
+  ],
+  "pdf": [
+   "P04-v1.pdf",
+   "P04-v2.pdf"
+  ],
+  "sha": "a4820ebe63a9a342"
+ },
+ "P04-4.dc.html": {
+  "out": [
+   "P04-v1-04.png",
+   "P04-v2-04.png"
+  ],
+  "pdf": [
+   "P04-v1.pdf",
+   "P04-v2.pdf"
+  ],
+  "sha": "398658bafe23bda0"
+ },
+ "P04-6.dc.html": {
+  "out": [
+   "P04-v1-06.png",
+   "P04-v2-06.png"
+  ],
+  "pdf": [
+   "P04-v1.pdf",
+   "P04-v2.pdf"
+  ],
+  "sha": "cd4260fdc4096542"
+ }
+}
