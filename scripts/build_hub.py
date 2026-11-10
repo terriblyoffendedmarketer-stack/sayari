@@ -49,6 +49,7 @@ def posts():
                 elif lines and l.startswith("- **"): break
             return "\n".join(lines)
         assets = sorted(os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*.png")))
+        editable = lambda k: f"editable/{k}-editable.pdf" if os.path.exists(P("content/posts/editable", f"{k}-editable.pdf")) else ""
         pdfs = {os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*.pdf"))}
         shared = ["posts/" + a for a in assets if not re.match(num + r"-v\d+-", a)]
         parts = re.split(r"\n#### Version (\d+) · ([^\n]*)\n", body)
@@ -58,9 +59,10 @@ def posts():
                 k, label, txt = parts[i], parts[i + 1], parts[i + 2]
                 imgs = ["posts/" + a for a in assets if a.startswith(f"{num}-v{k}-")] or shared
                 versions.append({"label": f"Version {k} · {strip_md(label)}", "caption": quote(txt), "imgs": imgs,
-                                 "pdf": f"posts/{num}-v{k}.pdf" if f"{num}-v{k}.pdf" in pdfs else ""})
+                                 "pdf": f"posts/{num}-v{k}.pdf" if f"{num}-v{k}.pdf" in pdfs else "",
+                                 "editable": editable(f"{num}-v{k}")})
         else:
-            versions.append({"label": "", "caption": quote(body), "imgs": shared, "pdf": ""})
+            versions.append({"label": "", "caption": quote(body), "imgs": shared, "pdf": "", "editable": editable(num)})
         out.append({
             "id": num, "title": title,
             "format": strip_md(tags.get("Format", "")), "pillar": strip_md(tags.get("Pillar", "") or tags.get("Pillars", "")),

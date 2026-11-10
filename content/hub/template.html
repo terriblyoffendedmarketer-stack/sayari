@@ -235,7 +235,7 @@ function posts(){
       return `<article class="card searchable post-split">
         <div class="post-media">${imgs.map(src => thumb(src, p.id + " · " + p.title) + `<div class="dl-row">${dlBtn(src, "Download image", fname(src))}</div>`).join("") || `<p class="small muted">Image not added yet (drop it in content/posts/assets/).</p>`}</div>
         <div class="post-side">${head(p)}${meta(p)}
-          ${p.versions.map((v,j)=>`<section class="version">${v.label?`<h4>${esc(v.label)}</h4>`:""}${caption(p,v,i,j)}</section>`).join("")}
+          ${p.versions.map((v,j)=>`<section class="version">${v.label?`<h4>${esc(v.label)}</h4>`:""}${v.editable?`<div class="dl-row">${dlBtn(v.editable, "Editable PDF (Canva)", "Sayari-" + v.editable.split("/").pop())}</div>`:""}${caption(p,v,i,j)}</section>`).join("")}
           <p class="small muted">Results: ${esc(p.results)}</p></div>
       </article>`;
     }
@@ -243,7 +243,7 @@ function posts(){
       ${p.versions.map((v,j)=>`<section class="version">
           ${v.label?`<h4>${esc(v.label)}</h4>`:""}
           <div class="strip">${v.imgs.map((src,k)=>`<div class="slide">${thumb(src, `${p.id} · ${v.label} · slide ${k+1}/${v.imgs.length}`)}<div class="dl-row">${dlBtn(src, `Slide ${k+1}`, fname(src))}</div></div>`).join("")}</div>
-          <div class="dl-row">${v.pdf?dlBtn(v.pdf, "Download carousel (PDF)", "Sayari-" + v.pdf.split("/").pop()):""}</div>
+          <div class="dl-row">${v.pdf?dlBtn(v.pdf, "Download carousel (PDF)", "Sayari-" + v.pdf.split("/").pop()):""}${v.editable?dlBtn(v.editable, "Editable PDF (Canva)", "Sayari-" + v.editable.split("/").pop()):""}</div>${v.editable?`<p class="small muted">Editable PDF: text and shapes stay separate. In Canva: Create a design → Import file.</p>`:""}
           ${caption(p,v,i,j)}
         </section>`).join("")}
       <p class="small muted">Results: ${esc(p.results)}</p>

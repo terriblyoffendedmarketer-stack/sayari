@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(file:///Users/apple/Documents/Claude Code/Sayari/design/kit/fonts/caveat_v23_WnznHAc5bAfYB2QRah7pcpNvOx-pjRV6SII.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(file:///Users/apple/Documents/Claude Code/Sayari/design/kit/fonts/inter_v20_UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(file:///Users/apple/Documents/Claude Code/Sayari/design/kit/fonts/inter_v20_UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(file:///Users/apple/Documents/Claude Code/Sayari/design/kit/fonts/jetbrainsmono_v24_tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(file:///Users/apple/Documents/Claude Code/Sayari/design/kit/fonts/jetbrainsmono_v24_tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8-qxjPQ.ttf) format('truetype');
+}

@@ -11,6 +11,7 @@
 #   so comparing images would archive false changes.
 # - Replaced images go to content/posts/archive/history/<YYYY-MM-DD_HHMM>/ (old file, same name). Never deleted.
 # - New artboards not in canvas_map.json are only reported; add them to the map (which post file they become).
+# - When anything changed it also re-runs export_editable.py (editable PDFs for Canva, content/posts/editable/).
 # - Carousel PDFs are rebuilt from the slide PNGs (one image per page) whenever any slide changes.
 # - /_blob/<id> logos only resolve on claude.ai; BLOB_MAP in preview_dc.py swaps known ids for local SVGs.
 #   A new uploaded image in an artboard needs its id added there, or it renders blank.
@@ -94,6 +95,8 @@ def main():
         print(f"rebuilt {pdf} from {len(slides)} slides")
     if write:
         json.dump(cmap, open(MAP, "w"), indent=1)
+        if changed:  # refresh the editable (Canva) PDFs too
+            subprocess.run([sys.executable, "-I", os.path.join(ROOT, "scripts/export_editable.py"), src], check=True)
     print(f"{len(changed)} artboard(s) changed" + ("" if write else " (dry run; add --write)") +
           (f"; old images archived in {os.path.relpath(archive, ROOT)}" if write and os.path.isdir(archive) else ""))
 

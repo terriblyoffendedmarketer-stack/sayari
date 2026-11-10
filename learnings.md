@@ -43,3 +43,5 @@ hub caption edits need to reach the repo | edits live in the artifact db, not in
 canvas→hub image sync would archive false changes if comparing PNGs | headless renders differ by a few px from older renders | detect change by hashing the artboard source (canvas_map.json sha), render only then
 hub inbox: `let inbox` state clashed with `function inbox()` view (SyntaxError) | RENDER keys are function names | state object renamed IB
 carousel slides shared by both P04 versions | one artboard feeds two PNGs and two PDFs | canvas_map out/pdf are lists
+editable PDF text came out in Menlo/Georgia | Chrome print-to-pdf doesn't wait for Google Fonts (file:// TTFs not applied either) | cache TTFs in design/kit/fonts, inline as base64 @font-face
+box-shadow in print PDF | Chrome rasterises it as a dark rectangle | box-shadow:none in editable PDFs

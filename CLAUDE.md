@@ -73,6 +73,7 @@ The project skill `.claude/skills/sayari-content/SKILL.md` and auto-memory carry
 - `.claude/skills/sayari-content/SKILL.md`: project skill that loads the framework rules for content work.
 - `design/kit/`: **design kit**. `kit.css` (tokens copied from the Sayari Design System artifact), 6 base layouts in `layouts/` (L1 search stack, L2 card grid, L3 split compare, L4 stat + source, L5 message thread, L6 story carousel), `previews/` PNGs, README with rules.
 - `scripts/sync_canvas.py` + `content/posts/canvas_map.json`: renders changed canvas artboards into `content/posts/assets/` (source-hash change detection), archives replaced images to `content/posts/archive/history/<stamp>/`, rebuilds carousel PDFs.
+- `scripts/export_editable.py`: editable PDFs (real text, vector shapes) of each post from the canvas → `content/posts/editable/`, for Ekshika to import into Canva; fonts cached in `design/kit/fonts/`. Hub shows an "Editable PDF (Canva)" button; published as `editable/<f>`.
 - `scripts/inbox_report.py`: compact list of the hub Inbox (dumped db docs) for filing.
 - `content/inbox/`: filed Inbox items (`LIBRARY.md` index + `assets/`).
 - `scripts/sync_captions.py`: copies captions edited in the hub (db docs dumped to JSON) back into POSTS.md.
