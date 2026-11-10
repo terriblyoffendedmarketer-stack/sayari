@@ -2,7 +2,7 @@
 
 Our versions of P01–P04 exactly as we made them, before Ekshika's edits (P01 caption, P03 creative + caption). P02 and P04 were shared unchanged. Kept for reference and comparison; the live log is `content/posts/POSTS.md`, lessons are in `content/feedback/LEARNING_TRACKER.md`.
 
-Files: `P01-ours.png`, `P02-ours.png`, `P03-ours.png` (+ `P03-ours-source.html`), `P04-v1-ours.pdf` / `P04-v2-ours.pdf` (+ sources).
+Also here: `old-drafts/` (our working HTML/PNG/PDF for P03 and both P04 versions) and `old-assets/` (images the hub showed before the cleanup, incl. Ekshika's low-res crop of P01). Files: `P01-ours.png`, `P02-ours.png`, `P03-ours.png` (+ `P03-ours-source.html`), `P04-v1-ours.pdf` / `P04-v2-ours.pdf` (+ sources).
 
 ## P01 · Name-match purgatory (Brightwell)
 - **Idea source:** idea bank #1 · **Bucket:** realistic artifacts · **Theme:** clearing false positives all day / the name passed, the owner didn't

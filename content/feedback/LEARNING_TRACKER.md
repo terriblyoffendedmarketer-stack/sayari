@@ -5,7 +5,8 @@ Status: `applied` (written into a rule file) · `testing` (trying on the next po
 
 ---
 
-## Round 1 · Ekshika · 2026-11-10 · P01–P04 (she edited P01 and P03 before sharing)
+## Round 1 · Ekshika · 2026-11-10 · P01–P04
+Ekshika = our account manager (freelance); she liaises with Sayari. She edited P01 and P03 herself before sending them to Sayari. **Her revision notes apply to all four**, so P02 and P04 are reworked by us under these rules.
 
 **Her words:** "all your creatives are too verbose and difficult to comprehend. when creating these, try to use simple language and treat your audience like idiots." / "we need to think in that direction for both copy and creatives." / "the goal here is to offload this from me so you take complete ownership of the posts."
 **What she means (our working reading):** assume the reader has **zero context and zero patience**. They should get it in 2 seconds without thinking. Simple words, one idea, the point stated outright.
@@ -50,7 +51,16 @@ Files: `assets/2026-11-10_ekshika-creatives-P01-P03.jpg`, `assets/2026-11-10_eks
 13. Note: she kept some jargon ("self-attestation", "ultimate beneficial owner"), so plain doesn't mean jargon-free. It means **few ideas, clearly ordered**. `noted`
 
 ### Open questions
-- P02 (bingo) and P04 (PURE carousel) were shared **unchanged** (confirmed by the user). Still, P04 is text-heavy by these standards, so apply the simplicity rules to future carousels. `closed`
+- P02 (bingo) and P04 (PURE carousel): she didn't edit them, but the notes apply. **Reworked by us on 2026-11-11** (see below). `done`
+
+### Applying round 1 to P02 and P04 (our rework, 2026-11-11)
+| Post | Before | After | Rule applied |
+|---|---|---|---|
+| P02 image | "Frankenstack bingo"; squares with attributions ("– the analyst on his 5th Red Bull", "Your manager, 5:58pm", "The auditor, 8 months later") | "Compliance bingo"; every square 2–6 words, no attributions | Plain words (practitioners don't say "Frankenstack"); 2-second test |
+| P02 caption | ~140 words, Frankenstack explained, auditor story, Sayari paragraph | ~40 words: the 5:58 pm moment, count your squares, "It's not you. It's your tools.", one Sayari line, drop your count | Short; one personality move; brand as one benefit line |
+| P04 slides | Two lines plus a body sentence per slide; ending "A name search tells you if the name is on a list. It doesn't tell you who owns it." + question | One short line per slide; diagram does the explaining; ending "Don't just check the name. Check who owns it." | Show, don't tell; plain conclusion; takeaway line |
+| P04 captions | ~150 words each | ~70 words each | Length rule |
+Our pre-rework versions: `content/posts/archive/2026-11-10_round1-originals/`.
 - The P01 creative was used as ours; only the caption changed. `closed`
 
 ### The distilled rules (now in the rule files)
