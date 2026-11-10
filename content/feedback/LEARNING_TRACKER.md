@@ -70,6 +70,12 @@ Our pre-rework versions: `content/posts/archive/2026-11-10_round1-originals/`.
 16. **Keep the human, specific details** (the 5th Red Bull): they make people feel something. Simplicity removes *confusion*, not *character*. `applied`
 17. **Keep visual jokes** (the drawn search bars); they're the opposite of verbose. `applied`
 18. **Diagnose before rewriting.** Work out what actually confused the reader (here: insider shorthand like OoO and Frankenstack), fix only that, and ask before broad rewrites. `applied`
+
+### The user's own canvas edits to P02 (2026-11-11): what they show
+Dropped the subline, dropped the Red Bull attribution, "Same Ltd name" → "Same co.", "How did you decide this? / The auditor, 8 months later" → **"Who cleared this?"**, italic serif for spoken quotes, mono for the system message, and asked for centred cells.
+19. **Spoken lines read best as one short, self-contained quote** ("Who cleared this?") that doesn't need an attribution, which beats a long quote plus an explainer. (Refines 15: keep context, but prefer a line that carries its own context.) `testing`
+20. **Typography signals the voice:** italic serif = a person speaking, mono = a system or file. `testing`
+21. **Bingo cells: centre the content**; top-aligned text looks stuck. `applied` (design)
 - The P01 creative was used as ours; only the caption changed. `closed`
 
 ### The distilled rules (now in the rule files)
