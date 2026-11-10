@@ -34,3 +34,8 @@ What works: open https://sayari.com in a real browser tab (Claude in Chrome, or 
 `fetch('/wp-json/wp/v2/case-study?per_page=100&_fields=slug,link,date,title,content')` in the page
 (other types: `investigation-brief`, `buyer-guide`). Then write the text out from the session.
 The pane can't POST to localhost or trigger downloads, so text has to come back through the session.
+
+## Product context (pulled 2026-11-11, summarised in FEATURE_MAP.md)
+- Change logs (no Cloudflare block; plain browser read works): https://documentation.sayari.com/change-log/overview/api and /risk-factors
+- Sayari Learn (Notion, real Graph screenshots): https://sayari.notion.site/learn
+- Product pages: WP `pages` type, e.g. `fetch('/wp-json/wp/v2/pages?slug=signal&_fields=content')` from a sayari.com tab
