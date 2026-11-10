@@ -45,3 +45,4 @@ hub inbox: `let inbox` state clashed with `function inbox()` view (SyntaxError) 
 carousel slides shared by both P04 versions | one artboard feeds two PNGs and two PDFs | canvas_map out/pdf are lists
 editable PDF text came out in Menlo/Georgia | Chrome print-to-pdf doesn't wait for Google Fonts (file:// TTFs not applied either) | cache TTFs in design/kit/fonts, inline as base64 @font-face
 box-shadow in print PDF | Chrome rasterises it as a dark rectangle | box-shadow:none in editable PDFs
+hub publish refused as 'not viewed' after a fresh chat | Artifact requires the live version to be read first | diff the saved live copy (minus the publish-time skeleton line) against git HEAD hub.html; if same, Read a few lines of it and republish
