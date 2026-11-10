@@ -4,18 +4,18 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 
 | Rank | Score | Title | Format | Pillar | Extends Doc Idea | Sources | Intensity |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | **97.8** | [The Practitioner Reality of The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-1) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 70 | 1.87/5 |
-| 2 | **90.6** | [From 6 Tabs to 1 Query: Solving The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-2) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 70 | 1.87/5 |
-| 3 | **87.0** | [One Residential Apartment, 147 Export Trading Firms](#idea-3) | The receipts | The risk hiding in plain sight | One address, 200 companies | 70 | 1.87/5 |
-| 4 | **87.0** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-4) | Headline to what it means for you | A score is not a defense | A score is not a defense | 70 | 1.87/5 |
+| 1 | **97.7** | [The Practitioner Reality of The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-1) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 76 | 1.84/5 |
+| 2 | **90.5** | [From 6 Tabs to 1 Query: Solving The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-2) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 76 | 1.84/5 |
+| 3 | **86.8** | [One Residential Apartment, 147 Export Trading Firms](#idea-3) | The receipts | The risk hiding in plain sight | One address, 200 companies | 76 | 1.84/5 |
+| 4 | **86.8** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-4) | Headline to what it means for you | A score is not a defense | A score is not a defense | 76 | 1.84/5 |
 | 5 | **84.1** | [The Practitioner Reality of Enforcement Is Shifting From Box-Checking to Evidentiary Proof](#idea-5) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 6 | 2.83/5 |
 | 6 | **77.9** | [From 6 Tabs to 1 Query: Solving Enforcement Is Shifting From Box-Checking to Evidentiary Proof](#idea-6) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 6 | 2.83/5 |
 | 7 | **74.8** | [One Residential Apartment, 147 Export Trading Firms](#idea-7) | The receipts | The risk hiding in plain sight | One address, 200 companies | 6 | 2.83/5 |
 | 8 | **74.8** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-8) | Headline to what it means for you | A score is not a defense | A score is not a defense | 6 | 2.83/5 |
-| 9 | **46.8** | [The 500-Alert Queue and the Friday 4:45 PM Panic](#idea-9) | Pain mirror | The Frankenstack Reckoning | Spreadsheet with comments full of '??? recheck' | 5 | 1.6/5 |
-| 10 | **43.4** | [From 6 Tabs to 1 Query: Solving Alert Fatigue is a Tool Failure, Not an Analyst Failure](#idea-10) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 5 | 1.6/5 |
-| 11 | **41.6** | [One Residential Apartment, 147 Export Trading Firms](#idea-11) | The receipts | The risk hiding in plain sight | One address, 200 companies | 5 | 1.6/5 |
-| 12 | **41.6** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-12) | Headline to what it means for you | A score is not a defense | A score is not a defense | 5 | 1.6/5 |
+| 9 | **60.6** | [The 500-Alert Queue and the Friday 4:45 PM Panic](#idea-9) | Pain mirror | The Frankenstack Reckoning | Spreadsheet with comments full of '??? recheck' | 6 | 2.0/5 |
+| 10 | **56.1** | [From 6 Tabs to 1 Query: Solving Alert Fatigue is a Tool Failure, Not an Analyst Failure](#idea-10) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 6 | 2.0/5 |
+| 11 | **53.9** | [One Residential Apartment, 147 Export Trading Firms](#idea-11) | The receipts | The risk hiding in plain sight | One address, 200 companies | 6 | 2.0/5 |
+| 12 | **53.9** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-12) | Headline to what it means for you | A score is not a defense | A score is not a defense | 6 | 2.0/5 |
 | 13 | **33.4** | [The Practitioner Reality of A Vendor Risk Score is Not an Audit Defense](#idea-13) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 3 | 3.0/5 |
 | 14 | **30.9** | [From 6 Tabs to 1 Query: Solving A Vendor Risk Score is Not an Audit Defense](#idea-14) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 3 | 3.0/5 |
 | 15 | **29.7** | [One Residential Apartment, 147 Export Trading Firms](#idea-15) | The receipts | The risk hiding in plain sight | One address, 200 companies | 3 | 3.0/5 |
@@ -29,19 +29,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *A spreadsheet, a Google tab and a prayer*
 - **The Hook:** "What the sales pitch says about The Reality Gap: Vendor Promises vs Practitioner Daily Grind vs what actually lands in your inbox at 8:00 AM on Monday."
 - **Suggested Visual Portrayal:** Two-panel meme or clean typographic contrast card.
-- **Metrics:** Backed by 70 independent sources | Engagement Score: 951 | Avg Intensity: 1.87/5
+- **Metrics:** Backed by 76 independent sources | Engagement Score: 1280 | Avg Intensity: 1.84/5
 - **Risks:** Low.
 - **Verify Before Use:** Verify tone remains validating rather than cynical.
 
 **Evidence & Sourced Public Reaction:**
   - [https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/](https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/) (2023-03-04, 172 upvotes, 119 comments): *"Why does compliance have such a bad rep?. I got an offer to intern as a financial compliance analyst at a defense contractor this summer and I thought it was a great opportunity. A..."*
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/) (2025-08-08, 147 upvotes, 73 comments): *"Leaving the Fraud/AML Industry – Here’s Why I’m Done. I’m officially throwing in the towel. I’ve loved parts of this work, but the industry’s current state has me burned out and di..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/](https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/) (2025-11-12, 93 upvotes, 50 comments): *"AML Investigator. "*
   - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/) (2026-02-25, 58 upvotes, 28 comments): *"Third analyst gone in 4 months and I can't even be mad at them. All 3 went to fintech companies paying 20 to 30% more with half the alert volume. If I were 5 years younger with the..."*
   - [https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/](https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/) (2026-01-11, 33 upvotes, 0 comments): *"Is this a serious question? You can and will be unbanked for doing business with sanctioned entities. OFAC charges are up to ~$356,000 per transaction, or 2x..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/](https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/) (2026-10-13, 25 upvotes, 0 comments): *"You missed the third party contractor
-      
-     wave already
-/search/?q=third+party+contractor+AML&cId=d0122a12-12da-4bf6-afea-6a1fff4d6ef9&iId=8747aef2-7be9-437f-bccd-cc361b0943..."*
 
 ---
 
@@ -51,19 +48,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *Six tabs to one query: before/after*
 - **The Hook:** "The manual workaround for The Reality Gap: Vendor Promises vs Practitioner Daily Grind takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
 - **Suggested Visual Portrayal:** Before/after UI workflow comparison with clear source documentation attached.
-- **Metrics:** Backed by 70 independent sources | Engagement Score: 951 | Avg Intensity: 1.87/5
+- **Metrics:** Backed by 76 independent sources | Engagement Score: 1280 | Avg Intensity: 1.84/5
 - **Risks:** Needs cleared Sayari product screenshots.
 - **Verify Before Use:** Confirm with Sayari which product screens (Sayari Graph or Sayari Map) are cleared for public release.
 
 **Evidence & Sourced Public Reaction:**
   - [https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/](https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/) (2023-03-04, 172 upvotes, 119 comments): *"Why does compliance have such a bad rep?. I got an offer to intern as a financial compliance analyst at a defense contractor this summer and I thought it was a great opportunity. A..."*
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/) (2025-08-08, 147 upvotes, 73 comments): *"Leaving the Fraud/AML Industry – Here’s Why I’m Done. I’m officially throwing in the towel. I’ve loved parts of this work, but the industry’s current state has me burned out and di..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/](https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/) (2025-11-12, 93 upvotes, 50 comments): *"AML Investigator. "*
   - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/) (2026-02-25, 58 upvotes, 28 comments): *"Third analyst gone in 4 months and I can't even be mad at them. All 3 went to fintech companies paying 20 to 30% more with half the alert volume. If I were 5 years younger with the..."*
   - [https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/](https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/) (2026-01-11, 33 upvotes, 0 comments): *"Is this a serious question? You can and will be unbanked for doing business with sanctioned entities. OFAC charges are up to ~$356,000 per transaction, or 2x..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/](https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/) (2026-10-13, 25 upvotes, 0 comments): *"You missed the third party contractor
-      
-     wave already
-/search/?q=third+party+contractor+AML&cId=d0122a12-12da-4bf6-afea-6a1fff4d6ef9&iId=8747aef2-7be9-437f-bccd-cc361b0943..."*
 
 ---
 
@@ -73,19 +67,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *One address, 200 companies*
 - **The Hook:** "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
 - **Suggested Visual Portrayal:** Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
-- **Metrics:** Backed by 70 independent sources | Engagement Score: 951 | Avg Intensity: 1.87/5
+- **Metrics:** Backed by 76 independent sources | Engagement Score: 1280 | Avg Intensity: 1.84/5
 - **Risks:** Legal sensitivity: naming real addresses or companies requires official DOJ/OFAC public settlement source.
 - **Verify Before Use:** Attach public OFAC settlement notice or BIS enforcement action as citation before naming real entities.
 
 **Evidence & Sourced Public Reaction:**
   - [https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/](https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/) (2023-03-04, 172 upvotes, 119 comments): *"Why does compliance have such a bad rep?. I got an offer to intern as a financial compliance analyst at a defense contractor this summer and I thought it was a great opportunity. A..."*
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/) (2025-08-08, 147 upvotes, 73 comments): *"Leaving the Fraud/AML Industry – Here’s Why I’m Done. I’m officially throwing in the towel. I’ve loved parts of this work, but the industry’s current state has me burned out and di..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/](https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/) (2025-11-12, 93 upvotes, 50 comments): *"AML Investigator. "*
   - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/) (2026-02-25, 58 upvotes, 28 comments): *"Third analyst gone in 4 months and I can't even be mad at them. All 3 went to fintech companies paying 20 to 30% more with half the alert volume. If I were 5 years younger with the..."*
   - [https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/](https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/) (2026-01-11, 33 upvotes, 0 comments): *"Is this a serious question? You can and will be unbanked for doing business with sanctioned entities. OFAC charges are up to ~$356,000 per transaction, or 2x..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/](https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/) (2026-10-13, 25 upvotes, 0 comments): *"You missed the third party contractor
-      
-     wave already
-/search/?q=third+party+contractor+AML&cId=d0122a12-12da-4bf6-afea-6a1fff4d6ef9&iId=8747aef2-7be9-437f-bccd-cc361b0943..."*
 
 ---
 
@@ -95,19 +86,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *A score is not a defense*
 - **The Hook:** "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
 - **Suggested Visual Portrayal:** Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
-- **Metrics:** Backed by 70 independent sources | Engagement Score: 951 | Avg Intensity: 1.87/5
+- **Metrics:** Backed by 76 independent sources | Engagement Score: 1280 | Avg Intensity: 1.84/5
 - **Risks:** Moderate. Explaining enforcement standards must strictly cite published regulatory guidance (e.g. OFAC Framework for Compliance Commitments).
 - **Verify Before Use:** Check OFAC's published penalty guidelines regarding compliance program mitigation factors.
 
 **Evidence & Sourced Public Reaction:**
   - [https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/](https://www.reddit.com/r/FinancialCareers/comments/11i8hdn/why_does_compliance_have_such_a_bad_rep/) (2023-03-04, 172 upvotes, 119 comments): *"Why does compliance have such a bad rep?. I got an offer to intern as a financial compliance analyst at a defense contractor this summer and I thought it was a great opportunity. A..."*
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/leaving_the_fraudaml_industry_heres_why_im_done/) (2025-08-08, 147 upvotes, 73 comments): *"Leaving the Fraud/AML Industry – Here’s Why I’m Done. I’m officially throwing in the towel. I’ve loved parts of this work, but the industry’s current state has me burned out and di..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/](https://www.reddit.com/r/AMLCompliance/comments/1ov3311/aml_investigator/) (2025-11-12, 93 upvotes, 50 comments): *"AML Investigator. "*
   - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/third_analyst_gone_in_4_months_and_i_cant_even_be/) (2026-02-25, 58 upvotes, 28 comments): *"Third analyst gone in 4 months and I can't even be mad at them. All 3 went to fintech companies paying 20 to 30% more with half the alert volume. If I were 5 years younger with the..."*
   - [https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/](https://www.reddit.com/r/business/comments/1qa19de/comment/nyzab6j/) (2026-01-11, 33 upvotes, 0 comments): *"Is this a serious question? You can and will be unbanked for doing business with sanctioned entities. OFAC charges are up to ~$356,000 per transaction, or 2x..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/](https://www.reddit.com/r/AMLCompliance/comments/1x58q5u/comment/pgkq37k/) (2026-10-13, 25 upvotes, 0 comments): *"You missed the third party contractor
-      
-     wave already
-/search/?q=third+party+contractor+AML&cId=d0122a12-12da-4bf6-afea-6a1fff4d6ef9&iId=8747aef2-7be9-437f-bccd-cc361b0943..."*
 
 ---
 
@@ -193,16 +181,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *Spreadsheet with comments full of '??? recheck'*
 - **The Hook:** "Closing 40 alerts an hour isn't screening. It's playing whack-a-mole while hoping the regulator never asks for your audit trail."
 - **Suggested Visual Portrayal:** Realistic fake spreadsheet screenshot showing a comments column filled with 'Rechecked - clear ???' and escalating red status badges.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 72 | Avg Intensity: 1.6/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 106 | Avg Intensity: 2.0/5
 - **Risks:** Low. Relatable workflow frustration.
 - **Verify Before Use:** Keep spreadsheet mock free of real bank logos or IDs.
 
 **Evidence & Sourced Public Reaction:**
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/) (2025-08-08, 34 upvotes, 0 comments): *"Burnout and Bad Tools: The burnout is REAL. We’re drowning in alerts, false positives, and outdated systems that make our jobs harder than they need to be. Half the time, we don’t ..."*
   - [https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/](https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/) (2026-10-28, 6 upvotes, 14 comments): *"How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/) (2026-04-09, 0 upvotes, 16 comments): *"44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/) (2026-04-09, 4 upvotes, 0 comments): *"Welcome to the sub, advertiser. Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/) (2026-04-11, 1 upvotes, 0 comments): *"44% FP that seems remarkable what models / methodology are you guys using, most banks with traditional rule based approach have false positive rates in 98%-99% range; infact 0 prod..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/) (2026-03-13, 1 upvotes, 0 comments): *"If you have not yet looked at Agentic solutions from SymphonyAI to augment your L1 workloads you should."*
 
 ---
 
@@ -212,16 +200,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *Six tabs to one query: before/after*
 - **The Hook:** "The manual workaround for Alert Fatigue is a Tool Failure, Not an Analyst Failure takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
 - **Suggested Visual Portrayal:** Before/after UI workflow comparison with clear source documentation attached.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 72 | Avg Intensity: 1.6/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 106 | Avg Intensity: 2.0/5
 - **Risks:** Needs cleared Sayari product screenshots.
 - **Verify Before Use:** Confirm with Sayari which product screens (Sayari Graph or Sayari Map) are cleared for public release.
 
 **Evidence & Sourced Public Reaction:**
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/) (2025-08-08, 34 upvotes, 0 comments): *"Burnout and Bad Tools: The burnout is REAL. We’re drowning in alerts, false positives, and outdated systems that make our jobs harder than they need to be. Half the time, we don’t ..."*
   - [https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/](https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/) (2026-10-28, 6 upvotes, 14 comments): *"How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/) (2026-04-09, 0 upvotes, 16 comments): *"44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/) (2026-04-09, 4 upvotes, 0 comments): *"Welcome to the sub, advertiser. Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/) (2026-04-11, 1 upvotes, 0 comments): *"44% FP that seems remarkable what models / methodology are you guys using, most banks with traditional rule based approach have false positive rates in 98%-99% range; infact 0 prod..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/) (2026-03-13, 1 upvotes, 0 comments): *"If you have not yet looked at Agentic solutions from SymphonyAI to augment your L1 workloads you should."*
 
 ---
 
@@ -231,16 +219,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *One address, 200 companies*
 - **The Hook:** "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
 - **Suggested Visual Portrayal:** Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 72 | Avg Intensity: 1.6/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 106 | Avg Intensity: 2.0/5
 - **Risks:** Legal sensitivity: naming real addresses or companies requires official DOJ/OFAC public settlement source.
 - **Verify Before Use:** Attach public OFAC settlement notice or BIS enforcement action as citation before naming real entities.
 
 **Evidence & Sourced Public Reaction:**
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/) (2025-08-08, 34 upvotes, 0 comments): *"Burnout and Bad Tools: The burnout is REAL. We’re drowning in alerts, false positives, and outdated systems that make our jobs harder than they need to be. Half the time, we don’t ..."*
   - [https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/](https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/) (2026-10-28, 6 upvotes, 14 comments): *"How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/) (2026-04-09, 0 upvotes, 16 comments): *"44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/) (2026-04-09, 4 upvotes, 0 comments): *"Welcome to the sub, advertiser. Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/) (2026-04-11, 1 upvotes, 0 comments): *"44% FP that seems remarkable what models / methodology are you guys using, most banks with traditional rule based approach have false positive rates in 98%-99% range; infact 0 prod..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/) (2026-03-13, 1 upvotes, 0 comments): *"If you have not yet looked at Agentic solutions from SymphonyAI to augment your L1 workloads you should."*
 
 ---
 
@@ -250,16 +238,16 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *A score is not a defense*
 - **The Hook:** "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
 - **Suggested Visual Portrayal:** Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 72 | Avg Intensity: 1.6/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 106 | Avg Intensity: 2.0/5
 - **Risks:** Moderate. Explaining enforcement standards must strictly cite published regulatory guidance (e.g. OFAC Framework for Compliance Commitments).
 - **Verify Before Use:** Check OFAC's published penalty guidelines regarding compliance program mitigation factors.
 
 **Evidence & Sourced Public Reaction:**
+  - [https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/](https://www.reddit.com/r/AMLCompliance/comments/1ml7yf3/comment/n7oemjc/) (2025-08-08, 34 upvotes, 0 comments): *"Burnout and Bad Tools: The burnout is REAL. We’re drowning in alerts, false positives, and outdated systems that make our jobs harder than they need to be. Half the time, we don’t ..."*
   - [https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/](https://www.reddit.com/r/fintech/comments/1xhkyyd/how_are_fintech_startups_handling_sanctions/) (2026-10-28, 6 upvotes, 14 comments): *"How are fintech startups handling sanctions screening without constant false positives?. How are you handling sanctions screening as they scale? Matching common names against watch..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/44_of_aml_alerts_are_false_positives_at_what/) (2026-04-09, 0 upvotes, 16 comments): *"44% of AML alerts are false positives. At what point does the system become the risk?. New here, still finding my feet. I work at Liminal, an actionable intelligence company that r..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/of7nu1i/) (2026-04-09, 4 upvotes, 0 comments): *"Welcome to the sub, advertiser. Calling a 44% false positive rate a bad thing shows a lack of understanding of the space. We don't have any solutions that are "Minority ..."*
   - [https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/](https://www.reddit.com/r/AMLCompliance/comments/1sgt6h8/comment/oflal6y/) (2026-04-11, 1 upvotes, 0 comments): *"44% FP that seems remarkable what models / methodology are you guys using, most banks with traditional rule based approach have false positive rates in 98%-99% range; infact 0 prod..."*
-  - [https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/](https://www.reddit.com/r/AMLCompliance/comments/1re2miv/comment/oa8j97h/) (2026-03-13, 1 upvotes, 0 comments): *"If you have not yet looked at Agentic solutions from SymphonyAI to augment your L1 workloads you should."*
 
 ---
 
