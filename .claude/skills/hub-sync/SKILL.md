@@ -17,6 +17,7 @@ URLs (also in CLAUDE.md): hub `https://claude.ai/artifact/Gmw5L8TenBeGWB3iVTRHaj
    - Links → into the idea row's needs/source, or `research/` if it's a source document.
    - Then ArtifactData `batch` of `update` ops: `inbox/<id>` `{status: "filed", filedAs: "<id or file>"}`.
    - Unclear item → leave it as is and list it in the report as a question for the user.
+3b. **Backup shelf.** ArtifactData `list` (hub url, collection `shelf`). Each doc id (`P0X-vN`) is a version the user moved to Backup on the Posts tab (Restore deletes the doc). Mirror it in the POSTS.md index Status column ("Backup") and report changes. Backup ≠ archive: archive is recovery only.
 4. **Rebuild + republish the hub.** `python3 -I scripts/build_hub.py`, then Artifact publish `content/hub/hub.html` to the hub url. Pass only the changed images as `files` (`posts/<f>` ← `content/posts/assets/<f>`, and `editable/<f>` ← `content/posts/editable/<f>` when designs changed). Omit `capabilities`.
 5. **Commit** with a message listing what came in (e.g. "hub-sync: 2 captions, P04 slide 3 from canvas, 4 inbox items → I53–I55").
 

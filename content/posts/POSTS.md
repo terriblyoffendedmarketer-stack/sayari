@@ -11,7 +11,7 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Final: Ekshika's edit (caption cut) |
 | P02 | Compliance bingo | Pain mirror | Frankenstack | 3×3 bingo card | Original restored, edited by the user; new short caption; to send to Ekshika |
 | P03 | Two "clean" 25% owners | Product as relief | Hidden risk | Split compare (kit L3) | Final: Ekshika's edit (creative + caption) |
-| P04 | The PURE case (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | Reworked after round 1, 2 versions, to send to Ekshika |
+| P04 | The PURE case (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | **Backup** (both versions, 2026-11-11, user's call; kept for later, not archived) |
 
 Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four are simplified under the round-1 rules (2-second images, short captions).
 

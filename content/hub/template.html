@@ -104,6 +104,14 @@ footer{color:var(--muted);font-size:13px;padding-block:0 32px}
 .stack-posts{display:flex;flex-direction:column;gap:16px}
 .meta-grid{display:grid;gap:10px 20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .version{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.shelfbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:4px 0 16px}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;border-radius:0;background:transparent;padding:8px 14px;font-weight:600}
+.seg button[aria-selected="true"]{background:var(--ink);color:var(--surface)}
+.shelfact{display:flex;gap:10px;align-items:center}
+.shelfact button[disabled]{opacity:.45;cursor:not-allowed}
+.shelfpick{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:600;cursor:pointer;width:fit-content}
+.shelfpick input{width:18px;height:18px;accent-color:var(--gold)}
 .version h4{margin:0;font:600 15px/1.35 var(--body);color:var(--gold)}
 .strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
 .strip .slide{flex:0 0 auto;width:min(300px,72vw);display:flex;flex-direction:column;gap:6px;scroll-snap-align:start}
@@ -227,21 +235,30 @@ function posts(){
       </div>`;
   const caption = (p, v, i, j) => { const k = capKey(p, j); return `<div class="capbox" data-key="${k}"><div class="row"><span class="label">Caption</span><div class="capbtns"><button data-copy="${i}:${j}">Copy caption</button><button class="capedit" data-edit="${i}:${j}" hidden>Edit</button><button class="caphist" data-hist="${i}:${j}" hidden>History</button></div></div><pre class="caption">${esc(capText(p, j))}</pre><p class="small muted capmeta">${capMeta(k)}</p><div class="capwork"></div></div>`; };
   const head = p => `<div><span class="label">${esc(p.id)}</span><h3>${esc(p.title)}</h3><div class="post-status">${pill(p.status||"created")}</div></div>${chips([p.format,p.pillar,p.bucket])}`;
-  return `<div><h2>Posts log</h2><p class="lede">Every post we've made, tagged so the next batch can see what's covered. Posts with options show each version separately. Tap an image to see it full size. Captions can be edited here; every save is kept in History.</p></div>
-  <div class="stack-posts">${D.posts.map((p,i)=>{
+  const inBackup = POSTVIEW === "backup";
+  const vis = p => p.versions.map((v,j)=>[v,j]).filter(([v,j]) => !!SHELF[capKey(p,j)] === inBackup);
+  const pick = (p, j) => { const k = capKey(p, j); return SH.can ? `<label class="shelfpick"><input type="checkbox" data-pick="${k}"${SH.picked.has(k)?" checked":""}> Select${p.versions.length>1?" this version":""}</label>${inBackup && SHELF[k]?.at ? `<span class="small muted">In backup since ${when(SHELF[k].at)}</span>` : ""}` : ""; };
+  const nBackup = Object.keys(SHELF).length, nAll = D.posts.reduce((a,p)=>a+p.versions.length,0);
+  const shown = D.posts.filter(p => vis(p).length);
+  const bar = `<div class="shelfbar"><div class="seg" role="tablist"><button data-postview="active" aria-selected="${!inBackup}">Active · ${nAll - nBackup}</button><button data-postview="backup" aria-selected="${inBackup}">Backup · ${nBackup}</button></div>${SH.can ? `<div class="shelfact"><span class="small muted">${SH.picked.size} selected</span><button data-shelf="${inBackup?"restore":"backup"}"${SH.picked.size?"":" disabled"}>${inBackup?"Restore selected":"Move selected to Backup"}</button></div>` : ""}</div>`;
+  const intro = inBackup ? `<p class="lede">Versions set aside for later: not chosen now, but kept in full (images, captions, history) and ready to bring back. This is not the archive; the archive is only for recovery.</p>` : `<p class="lede">Every post we've made, tagged so the next batch can see what's covered. Posts with options show each version separately. Tap an image to see it full size. Captions can be edited here; every save is kept in History.${SH.can?" Select versions to move them to Backup.":""}</p>`;
+  return `<div><h2>Posts log</h2>${intro}</div>${bar}
+  ${shown.length ? "" : `<p class="empty">${inBackup ? "Nothing in Backup yet." : "Everything is in Backup."}</p>`}
+  <div class="stack-posts">${shown.map(p=>{
+    const i = D.posts.indexOf(p);
     const carousel = p.versions.some(v => v.imgs.length > 1);
     if (!carousel) {
-      const imgs = [...new Set(p.versions.flatMap(v => v.imgs))];
+      const imgs = [...new Set(vis(p).flatMap(([v]) => v.imgs))];
       return `<article class="card searchable post-split">
         <div class="post-media">${imgs.map(src => thumb(src, p.id + " · " + p.title) + `<div class="dl-row">${dlBtn(src, "Download image", fname(src))}</div>`).join("") || `<p class="small muted">Image not added yet (drop it in content/posts/assets/).</p>`}</div>
         <div class="post-side">${head(p)}${meta(p)}
-          ${p.versions.map((v,j)=>`<section class="version">${v.label?`<h4>${esc(v.label)}</h4>`:""}${v.editable?`<div class="dl-row">${dlBtn(v.editable, "Editable PDF (Canva)", "Sayari-" + v.editable.split("/").pop())}</div>`:""}${caption(p,v,i,j)}</section>`).join("")}
+          ${vis(p).map(([v,j])=>`<section class="version">${v.label?`<h4>${esc(v.label)}</h4>`:""}${pick(p,j)}${v.editable?`<div class="dl-row">${dlBtn(v.editable, "Editable PDF (Canva)", "Sayari-" + v.editable.split("/").pop())}</div>`:""}${caption(p,v,i,j)}</section>`).join("")}
           <p class="small muted">Results: ${esc(p.results)}</p></div>
       </article>`;
     }
     return `<article class="card searchable">${head(p)}${meta(p)}
-      ${p.versions.map((v,j)=>`<section class="version">
-          ${v.label?`<h4>${esc(v.label)}</h4>`:""}
+      ${vis(p).map(([v,j])=>`<section class="version">
+          ${v.label?`<h4>${esc(v.label)}</h4>`:""}${pick(p,j)}
           <div class="strip">${v.imgs.map((src,k)=>`<div class="slide">${thumb(src, `${p.id} · ${v.label} · slide ${k+1}/${v.imgs.length}`)}<div class="dl-row">${dlBtn(src, `Slide ${k+1}`, fname(src))}</div></div>`).join("")}</div>
           <div class="dl-row">${v.pdf?dlBtn(v.pdf, "Download carousel (PDF)", "Sayari-" + v.pdf.split("/").pop()):""}${v.editable?dlBtn(v.editable, "Editable PDF (Canva)", "Sayari-" + v.editable.split("/").pop()):""}</div>${v.editable?`<p class="small muted">Editable PDF: text and shapes stay separate. In Canva: Create a design → Import file.</p>`:""}
           ${caption(p,v,i,j)}
@@ -438,6 +455,48 @@ main.addEventListener("click", async e => {
     await loadNames(Object.values(CAP).map(c => c.by)); paintCaptions();
   }, () => {});
   paintCaptions();
+})();
+/* ---- Backup shelf: versions set aside for later (not the recovery archive) ----
+   shelf/<P0X-vN> {state:"backup", at, by}   present = in Backup; Restore deletes the doc.
+   Only the owner sees the Select boxes; everyone else sees Active/Backup read-only. */
+const SHELF = {}; let POSTVIEW = "active"; const SH = { db: null, can: false, picked: new Set(), busy: false };
+const onPosts = () => !!document.querySelector('section[data-view="posts"]');
+const rerenderPosts = () => { if (onPosts()) { const y = scrollY; render(); scrollTo(0, y); } };
+document.addEventListener("click", async e => {
+  const pv = e.target.closest("[data-postview]");
+  if (pv) { POSTVIEW = pv.dataset.postview; SH.picked.clear(); rerenderPosts(); return; }
+  const act = e.target.closest("[data-shelf]");
+  if (!act || !SH.db || SH.busy || !SH.picked.size) return;
+  SH.busy = true; act.disabled = true; act.textContent = "Saving…";
+  const keys = [...SH.picked], at = new Date().toISOString();
+  const by = capUser ? await capUser.id().catch(() => null) : null;
+  try {
+    await Promise.all(keys.map(k => act.dataset.shelf === "backup"
+      ? SH.db.doc(`shelf/${k}`).set({ state: "backup", at, by })
+      : SH.db.doc(`shelf/${k}`).delete()));
+    keys.forEach(k => { if (act.dataset.shelf === "backup") SHELF[k] = { state: "backup", at, by }; else delete SHELF[k]; });
+    SH.picked.clear();
+  } catch { alert("Couldn't save. Check your connection and try again."); }
+  SH.busy = false; rerenderPosts();
+});
+document.addEventListener("change", e => {
+  const cb = e.target.closest("[data-pick]"); if (!cb) return;
+  cb.checked ? SH.picked.add(cb.dataset.pick) : SH.picked.delete(cb.dataset.pick);
+  const b = document.querySelector("[data-shelf]"), n = document.querySelector(".shelfact .small");
+  if (b) b.disabled = !SH.picked.size; if (n) n.textContent = `${SH.picked.size} selected`;
+});
+(async () => {
+  try { SH.db = await window.claude?.use?.("db"); } catch { SH.db = null; }
+  if (!SH.db) return;
+  let u = null; try { u = await window.claude?.use?.("user"); } catch {}
+  // Owner only (like the Inbox): signed-in link viewers can technically write the db, so the controls are hidden from them.
+  SH.can = u ? await Promise.resolve(u.isOwner()).catch(() => false) : false;
+  SH.db.collection("shelf").onSnapshot(snap => {
+    for (const k of Object.keys(SHELF)) delete SHELF[k];
+    snap.docs.forEach(d => { if (d.exists) SHELF[d.id] = d.data(); });
+    if (!SH.busy) rerenderPosts();
+  }, () => {});
+  rerenderPosts();
 })();
 /* ---- Inbox: owner-only dump for ideas, links, images + context (db "inbox", images in assets) ----
    inbox/<auto id> {text, link, context, assetId, at, status:"new"|"sorted"|"filed", sort:{start,bucket,format,title,gist,needs}, filedAs}
