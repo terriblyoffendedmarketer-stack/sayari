@@ -31,6 +31,13 @@ Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas 
 - **Never put a disclaimer on an image**: no "illustrative", "invented", "fictional", "example" or "for illustration" lines. Sources and caveats go in the caption or the first comment.
 - A `source` line on the image is only for a **real, public source behind a number that is the point of the post** (e.g. an OFAC settlement amount). Otherwise leave it off.
 
+## Real content inside the frame (variety rule, 2026-11-11)
+- Real screenshots (product UI, regulator releases, social posts, emails, Slack) **keep their native colours** (white UI, blue links, platform greens/reds). Don't recolour them navy/beige; the contrast is the visual break.
+- The **frame stays Sayari**: navy or beige background, Merriweather headline, wordmark corner. The screenshot sits on it as a card (rounded corners, soft shadow), cropped to the one part that makes the point.
+- Gold still marks one thing: a highlight box, circle or scrawl on top of the screenshot.
+- Crop out personal data (avatars, emails, usernames). Rebuild social posts rather than screenshotting real accounts.
+- Library of usable real content: `content/library/LIBRARY.md`.
+
 ## Kit vs Claude Design
 The kit is the master for building and rendering. When a post needs hand-tweaking, it also goes onto the Claude Design canvas "Sayari LinkedIn Posts" (https://claude.ai/artifact/Qf9AmewWkDheDkufUh7b1n) as an artboard with inline styles. Once tweaked there, the canvas is that post's source of truth; export the final image from it and save it to `content/posts/assets/`.
 

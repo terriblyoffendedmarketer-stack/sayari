@@ -9,3 +9,6 @@ __pycache__/
 # Third-party reference memes/cartoons from the idea doc: copyrighted + ~28MB, so not redistributed in this public repo.
 # Regenerate with: python -I scripts/extract_doc_images.py <doc-id> content/idea-doc-images
 content/idea-doc-images/images/
+
+# Client product screenshots + third-party real-content images (public repo): kept local, see content/library/LIBRARY.md
+content/library/assets/
