@@ -5,6 +5,10 @@
 
 | Source | URL | Reason Logged | Timestamp |
 | :--- | :--- | :--- | :--- |
+| **Export Control Navigator** | https://exportcontrolnavigator.substack.com/feed | HTTP 403 paywall or login requirement | 2026-11-11 05:40:49 |
+| **FCPA Blog** | https://fcpablog.com/feed/ | HTTP 401 paywall or login requirement | 2026-11-11 05:40:47 |
+| **FiveBy Risk News & Insights (Substack)** | https://fiveby.substack.com/feed | HTTP 403 paywall or login requirement | 2026-11-11 05:40:47 |
+| **ACAMS moneylaundering.com** | https://www.moneylaundering.com/feed/ | HTTP 403 paywall or login requirement | 2026-11-11 05:40:45 |
 | **Export Control Navigator** | https://exportcontrolnavigator.substack.com/feed | HTTP 403 paywall or login requirement | 2026-11-10 23:04:25 |
 | **FCPA Blog** | https://fcpablog.com/feed/ | HTTP 401 paywall or login requirement | 2026-11-10 23:04:22 |
 | **FiveBy Risk News & Insights (Substack)** | https://fiveby.substack.com/feed | HTTP 403 paywall or login requirement | 2026-11-10 23:04:22 |
