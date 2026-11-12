@@ -1,4 +1,4 @@
-# P05 · Caption v5 DRAFT (restructure, 2026-11-12, after the user's notes): pending the user's OK
+# P05 · Caption FINAL v5 (restructure, 2026-11-12; the user approved it with hook H-a)
 
 **Notes behind it (user):** no "Where Sayari fits" heading (it reads like shoehorning); "what we know so far" only *after* we've shown why it matters to compliance readers (a sandwich); cut "For compliance teams, the crypto isn't the point"; the open should signal "this concerns you"; Sayari line = option B, woven in.
 
@@ -28,7 +28,7 @@
 
 ---
 
-# P05 · Caption FINAL (v4 = the user's v3 + 4 accuracy/wording fixes, 2026-11-12)
+# P05 · Caption v4 (the user's v3 + 4 fixes), superseded by v5
 
 > Binance says $6.3bn in digital assets were hit on 29 October, in what looks like the biggest crypto hack on record.
 >

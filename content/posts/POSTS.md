@@ -85,28 +85,24 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four
 - **News (sent by Sayari via Ekshika, 2026-11-12):** BBC, 30 Oct 2026, "Crypto giant Binance hit by $6.3bn hack suspected to be largest in history" (https://www.bbc.com/news/articles/cwg7xp8kx4v5o)
 - **Format:** newsjack · **Pillar:** hidden risk · **Template:** none (made fresh; creative = stage 4, not started)
 - **Story (locked):** once stolen crypto leaves the blockchain, the trail turns into people and companies, which can land in your onboarding, payments or supply chain; the question on your desk is "are we exposed?"; Sayari shows the ownership and control behind companies, linked to source records. Stages: `newsjack/P05-binance/01-news.md` → `02-why-it-matters.md` → `03-story.md` → `05-caption.md`.
-- **Caption (final, the user's version + fixes; edit on the hub):**
-> Binance says $6.3bn in digital assets were hit on 29 October, in what looks like the biggest crypto hack on record.
+- **Caption (final v5, hook H-a; edit on the hub):**
+> Binance says $6.3bn in digital assets were hit on 29 October, in what looks like the biggest crypto hack on record. If you work in sanctions, KYB or financial crime, here's why it's your problem too.
 >
-> Here’s what we know so far:
+> The attacker still holds billions. To use them, that money has to pass through people and companies, and those companies can land in your onboarding queue, your payments or your supply chain.
 >
-> → About half the assets are frozen. Tether and Circle alone froze about $2.4bn. The rest is still with the attacker, and Binance says it will cover all losses.
-> → Binance says it started with a fake job interview that infected an engineer’s laptop, and spread from there.
-> → The FBI, along with Chainalysis and TRM Labs, links the attack to a North Korean hacking group. Binance hasn’t confirmed that, and North Korea has denied past hacks.
+> Here's what we know so far:
 >
-> What it means for you
+> → About half the assets are frozen. Tether and Circle alone froze about $2.4bn. The rest is still with the attacker.
+> → The FBI, along with Chainalysis and TRM Labs, links the attack to a North Korean hacking group. Binance hasn't confirmed that, and North Korea has denied past hacks.
+> → Binance says it started with a fake job interview that infected an engineer's laptop.
 >
-> For compliance teams, the crypto isn’t the point. The attacker still holds a huge sum, and to use it, that money has to move through people and companies. Those companies can land in your onboarding queue, your payments or your supply chain.
->
-> Western agencies have said stolen funds like these help pay for North Korea’s weapons programs. So the question reaching your desk isn’t about crypto. It’s “are we exposed?”
+> Western agencies have said stolen funds like these help pay for North Korea's weapons programs. So when the money moves, the question that reaches your desk is "are we exposed?"
 >
 > Answering it means knowing who owns and controls the companies involved, not just whether a name matches a list. That usually means a search tool, a registry, a spreadsheet and an hour of guessing.
 >
-> Where Sayari fits
+> When money moves through people and companies, Sayari shows who's behind them: owners, controllers and their connections, across 250+ jurisdictions, each linked to the source record. So you can show exactly why you are, or aren't, exposed.
 >
-> Sayari shows the ownership and control behind companies, linked to the source records. So you can trace a counterparty to the people and networks behind it, and show your work.
->
-> When news like this breaks, how long does it take your team to answer “are we exposed?”
+> How long does that take your team today?
 - **Before posting:** refresh the frozen figure; read the FBI notice itself.
 - **First comment (sources):** BBC (30 Oct) · Binance post-mortem (3 Nov) · FBI attribution (31 Oct–1 Nov).
 - **History:** v1 one-shot (GIF copying Sayari's template + borrowed 2023 case caption) retired; its files are in `archive/history/2026-11-12_P05-v1/`, and earlier captions are in `newsjack/P05-binance/05-caption.md` + git.
