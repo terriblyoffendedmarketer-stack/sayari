@@ -51,3 +51,6 @@ That's the BBC's wording, and it's vague. The concrete source: the **UN Panel of
 - **Refined messages:**
   - M1: "The FBI says North Korea stole $6.3bn in crypto. To spend it, it needs companies that look like your customers."
   - M3: "The biggest crypto theft ever just became a KYB problem." (makes no claim about who), second beat: "The FBI says North Korea did it, and to spend the money, it needs companies that look like your customers."
+
+## M1 built (2026-11-12)
+`drafts/P05-v3-m1.html` → `assets/P05-v3-m1.gif`. No coins (they were decoration); the image is the attributed headline + a list of ordinary new customers, all "No match" + "Would you spot the front?". Next: M3, for comparison.

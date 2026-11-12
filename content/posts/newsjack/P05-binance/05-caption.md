@@ -1,5 +1,7 @@
 # P05 · Caption FINAL v5 (restructure, 2026-11-12; the user approved it with hook H-a)
 
+**Edit (2026-11-12):** "Western agencies" → the 2024 UN Panel of Experts finding (~40% of WMD programmes funded by illicit cyber means).
+
 **Notes behind it (user):** no "Where Sayari fits" heading (it reads like shoehorning); "what we know so far" only *after* we've shown why it matters to compliance readers (a sandwich); cut "For compliance teams, the crypto isn't the point"; the open should signal "this concerns you"; Sayari line = option B, woven in.
 
 **Hooks (separate, pick one):**
@@ -18,7 +20,7 @@
 > → The FBI, along with Chainalysis and TRM Labs, links the attack to a North Korean hacking group. Binance hasn't confirmed that, and North Korea has denied past hacks.
 > → Binance says it started with a fake job interview that infected an engineer's laptop.
 >
-> Western agencies have said stolen funds like these help pay for North Korea's weapons programs. So when the money moves, the question that reaches your desk is "are we exposed?"
+> A 2024 UN report found North Korea funds about 40% of its weapons programs through cybercrime. So when the money moves, the question that reaches your desk is "are we exposed?"
 >
 > Answering it means knowing who owns and controls the companies involved, not just whether a name matches a list. That usually means a search tool, a registry, a spreadsheet and an hour of guessing.
 >
