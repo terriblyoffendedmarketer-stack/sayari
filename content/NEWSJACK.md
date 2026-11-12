@@ -24,6 +24,7 @@ Ekshika asked on 2026-11-12 for posts like four that Sayari's in-house team publ
 - Build with L6 (carousel) + the real-content frame rule in `design/kit/README.md`.
 
 ## Captions
+- **Their captions are a reference, not a rule** (user, 2026-11-12). We may beat them; if not, they become the rule.
 - **Full verbatim captions + skeleton:** `research/sayari-site/newsjack-examples.md`.
 - **Theirs run long (240–440 words):** a cold open on the most concrete detail → "X just reported…" → a numbered 1–7 breakdown → one extra striking detail → "the questions for risk teams are:" → the Sayari line → sometimes a closing question.
 - **Confirmed (user, 2026-11-12):** ~240–440 words is right for newsjacks, because explaining the news is the value. The creative also carries more words than other posts. It's still not a reading slog: numbered steps, short lines, one mechanism. The GIF's movement adds the interactivity.

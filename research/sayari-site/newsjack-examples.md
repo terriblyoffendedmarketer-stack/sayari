@@ -128,7 +128,9 @@ Reference for the newsjack format (`content/NEWSJACK.md`). Copied 2026-11-12 fro
 
 ---
 
-## Caption skeleton (all four)
+## Caption skeleton (all four): a reference, not a rule
+The user (2026-11-12) said not to treat this as gospel: we may improve on it. If it keeps winning, it becomes the rule; until then, stay flexible.
+
 1. **Cold open:** the most concrete, surprising detail (floor mats → drone parts; 70 GPU servers; "Beijing may now want to see that deal first").
 2. **The news, attributed:** "The NYT just dug into…", "Federal prosecutors in LA have charged…", plus the hedge.
 3. **"Here's how it worked":** a numbered 4–7 step breakdown.
