@@ -1,4 +1,33 @@
-# P05 · Caption v3 (the user's rewrite, 2026-11-12): CURRENT
+# P05 · Caption FINAL (v4 = the user's v3 + 4 accuracy/wording fixes, 2026-11-12)
+
+> Binance says $6.3bn in digital assets were hit on 29 October, in what looks like the biggest crypto hack on record.
+>
+> Here’s what we know so far:
+>
+> → About half the assets are frozen. Tether and Circle alone froze about $2.4bn. The rest is still with the attacker, and Binance says it will cover all losses.
+> → Binance says it started with a fake job interview that infected an engineer’s laptop, and spread from there.
+> → The FBI, along with Chainalysis and TRM Labs, links the attack to a North Korean hacking group. Binance hasn’t confirmed that, and North Korea has denied past hacks.
+>
+> What it means for you
+>
+> For compliance teams, the crypto isn’t the point. The attacker still holds a huge sum, and to use it, that money has to move through people and companies. Those companies can land in your onboarding queue, your payments or your supply chain.
+>
+> Western agencies have said stolen funds like these help pay for North Korea’s weapons programs. So the question reaching your desk isn’t about crypto. It’s “are we exposed?”
+>
+> Answering it means knowing who owns and controls the companies involved, not just whether a name matches a list. That usually means a search tool, a registry, a spreadsheet and an hour of guessing.
+>
+> Where Sayari fits
+>
+> Sayari shows the ownership and control behind companies, linked to the source records. So you can trace a counterparty to the people and networks behind it, and show your work.
+>
+> When news like this breaks, how long does it take your team to answer “are we exposed?”
+
+**Before posting:** refresh the frozen figure; read the FBI notice itself (attribution so far confirmed via press coverage).
+**First comment (sources):** BBC (30 Oct) · Binance post-mortem (3 Nov) · FBI attribution (31 Oct–1 Nov).
+
+---
+
+# P05 · Caption v3 (the user's rewrite, 2026-11-12), superseded by FINAL
 
 > Binance says $6.3bn in digital assets were hit in what looks like the biggest crypto hack on record.
 >
