@@ -10,7 +10,7 @@ Starting points for every post, in Sayari's own design system (tokens copied fro
 | `L4-stat-source.html` | navy | One sourced number (receipts, newsjacks) | Big stat + source |
 | `L5-message-thread.html` | navy | Realistic fake Slack / email / auditor chat | Realistic chat/email |
 | `L6-carousel-story.html` | navy/beige alternating | Receipts: a real case told as setup → trap → move → result → rule | Story carousel |
-| `L7-newsjack-gif.html` | beige, **animated** | Newsjacks: "paperwork said A, reality was B" explainer GIF (Sayari's own newsjack format; see `content/NEWSJACK.md`) | Builds step by step → red end node |
+| `L7-newsjack-gif.html` ⚠ reference only: too close to Sayari's own GIF, don't reuse its look (user, 2026-11-12); the animation + `render_gif.py` pipeline is still the way to make GIFs | beige, **animated** | Newsjacks: "paperwork said A, reality was B" explainer GIF (Sayari's own newsjack format; see `content/NEWSJACK.md`) | Builds step by step → red end node |
 
 Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas in the idea bank (L3 = idea I05, L6 = idea I04), so they double as first wireframes.
 

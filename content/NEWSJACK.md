@@ -38,8 +38,12 @@ Ekshika asked on 2026-11-12 for posts like four that Sayari's in-house team publ
 ## How Sayari builds them
 In **Canva**: an animated design downloaded as a GIF (Canva animates elements and pages and exports GIF/MP4). Their PDF export of the Earthmade design (2 versions, the second adds a "$176M+ paid…" callout box) is in `content/library/assets/sayari-examples/` (gitignored). L7 matches it: wordmark top right, no bottom takeaway, optional callout.
 
-## Our process for one newsjack
-1. **Find** (or receive from Sayari): DOJ/OFAC/BIS/Commerce releases, ICIJ/NYT/FT/Reuters investigations, MOFCOM or EU notices from the last 2 weeks. Read the primary source.
-2. **Pick the mechanism:** can it be drawn as "paperwork vs reality" (GIF) or as "N cases" (carousel)? If neither, skip it.
-3. **Pitch** in the PITCH.md format, with the source link and the hedges.
-4. **Build** with L7 or L6, render, then caption.
+## Our process for one newsjack (user, 2026-11-12: decoupled stages, one at a time, agree before moving on)
+One-shotting (article → angle → image in one go) skipped the thinking. Each stage gets the user's OK before the next.
+1. **Understand the news.** Read the article and the primary sources. Explain plainly what happened, who did what, what's confirmed and what's alleged. No Sayari angle yet.
+2. **Why it matters.** Why it matters to our ICP (risk, compliance and trade teams) and why it matters to Sayari.
+3. **Define the story from Sayari's side.** Agree the one story (the trick or claim, the link to Sayari, the hedges) before any design.
+4. **Make the creative: a GIF or a carousel, built new for this story.** Don't copy Sayari's example GIF layout (P05 v1 looked like a copy). Carousels can flex more.
+5. **Caption.** Sayari's example captions are a reference, not a rule.
+
+**No templates for now.** Make each post fresh. Templates come later, as the outcome once enough posts exist.
