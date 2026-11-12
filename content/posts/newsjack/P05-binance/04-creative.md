@@ -43,3 +43,11 @@ Format follows the message: a GIF builds the one sentence in steps; a carousel g
 
 ## Caption fix: "Western agencies"
 That's the BBC's wording, and it's vague. The concrete source: the **UN Panel of Experts (2024 report)** said cyber theft brings in about half of North Korea's foreign currency and funds about 40% of its weapons of mass destruction programmes. Suggested line: "A 2024 UN report found North Korea funds about 40% of its weapons programs through cyber theft." (The panel's mandate ended in 2024, so this is its last report.)
+
+## Certainty check: "North Korea stole it" (user asked, 2026-11-12)
+- **What's certain:** $6.3bn was taken from Binance without authorisation (Binance confirms).
+- **Who did it is an attribution, not a proven fact.** The FBI publicly attributed it to North Korea's TraderTraitor unit, and Chainalysis, TRM Labs and Elliptic agree. No one has been charged, no court has ruled, Binance hasn't confirmed it, and North Korea denies these accusations. (FBI attributions like this, e.g. Bybit 2025, are rarely walked back, but they're still claims.)
+- **Image rule:** never "North Korea stole…". Use "The FBI says North Korea…" or "FBI: North Korea behind…". Before posting, read the FBI notice itself (so far we've only seen press coverage of it).
+- **Refined messages:**
+  - M1: "The FBI says North Korea stole $6.3bn in crypto. To spend it, it needs companies that look like your customers."
+  - M3: "The biggest crypto theft ever just became a KYB problem." (makes no claim about who), second beat: "The FBI says North Korea did it, and to spend the money, it needs companies that look like your customers."
