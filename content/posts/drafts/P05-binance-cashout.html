@@ -1,0 +1,88 @@
+<!doctype html><meta charset="utf-8"><title>P05 · Binance hack newsjack</title><link rel="stylesheet" href="../../../design/kit/kit.css">
+<meta name="gif" content="duration=13;settle=9.6;fps=12">
+<!-- P05 draft · Binance hack newsjack (BBC, 30 Oct 2026), built from L7. Right column = the cash-out pattern documented
+     in US Treasury jy1435 / DOJ US v. Sim Hyon Sop (2023), labelled "before" because this hack's cash-out is still unfolding. -->
+
+<style>
+  .a{animation:rise .55s cubic-bezier(.2,.7,.2,1) var(--d,0s) both}
+  .a.pop{animation-name:pop}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes pop{0%{opacity:0;transform:scale(.6)}70%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:none}}
+  .grow{animation:grow .5s ease-out var(--d,0s) both;transform-origin:top}
+  @keyframes grow{from{transform:scaleY(0)}to{transform:none}}
+
+  .headline em{font-style:italic;color:var(--accent)}
+  .kick{font:500 27px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+  .kick b{font-weight:500;color:var(--accent)}
+  .split{display:grid;grid-template-columns:minmax(0,1fr) 2px minmax(0,1.08fr);gap:34px;background:#fff;border:3px solid #1d2440;
+    border-radius:var(--radius-card);padding:36px;flex:1;min-height:0;box-shadow:0 10px 30px #1d24401a}
+  .rule{background:repeating-linear-gradient(#cfcac0 0 8px,transparent 8px 16px)}
+  .col{display:flex;flex-direction:column;gap:22px;min-width:0}
+  .lab{font:600 22px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#6a6760}
+  .lab.gold{color:var(--accent)}
+  .form{background:#f6f3ee;border:2px solid #e8e3da;border-radius:20px;padding:10px 26px;display:flex;flex-direction:column}
+  .f{padding:18px 0;border-bottom:2px dashed #e3ddd2}
+  .f:last-child{border:0}
+  .f small{display:block;font:400 26px/1.2 var(--sans);color:#6a6760;margin-bottom:6px}
+  .f div{font:600 30px/1.25 var(--sans);color:#1d2440}
+  .chip{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:6px 18px;font:600 26px/1.2 var(--sans)}
+  .chip.ok{background:#e4f3ea;color:#2f7a4f}
+  .chip.risk{background:var(--risk-tint);color:var(--risk)}
+  .chain{display:flex;flex-direction:column}
+  .node{display:grid;grid-template-columns:76px minmax(0,1fr);gap:22px;align-items:center}
+  .dot{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:#7b8091}
+  .dot svg{width:38px;height:38px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .dot.gold{background:var(--accent)} .dot.red{background:var(--risk)}
+  .node b{display:block;font:700 31px/1.2 var(--sans);color:#1d2440}
+  .node span{font:400 26px/1.3 var(--sans);color:#6a6760}
+  .link{display:grid;grid-template-columns:76px minmax(0,1fr);gap:22px;align-items:center;height:66px}
+  .link i{justify-self:center;width:3px;height:100%;background:#9aa0ad;position:relative}
+  .link i::after{content:"";position:absolute;left:-7px;bottom:-2px;border:8.5px solid transparent;border-top:11px solid #9aa0ad;border-bottom:0}
+  .link em{font:italic 400 26px/1.2 var(--sans);color:var(--accent)}
+  .take{font:700 34px/1.3 var(--serif);color:var(--ink)}
+  .callout{margin-top:22px;background:#f6f3ee;border-left:6px solid var(--accent);border-radius:0 16px 16px 0;padding:18px 24px}
+  .callout b{display:block;font:700 40px/1.15 var(--serif);color:#1d2440}
+  .callout span{display:block;font:400 26px/1.25 var(--sans);color:#3d4256}
+</style>
+<div class="canvas mode-beige" style="gap:28px;padding-top:140px">
+  <div class="headline" style="font-size:60px;white-space:nowrap;text-wrap:nowrap">
+    <div class="a" style="--d:.2s">The hack was <em>on-chain.</em></div>
+    <div class="a" style="--d:1.2s">The cash-out needs <em>companies.</em></div>
+  </div>
+  <div class="kick a" style="--d:2.2s">Binance · $6.3bn stolen · FBI: North Korea<br><b>About half frozen · the rest is still moving</b></div>
+
+  <div class="split a" style="--d:2.9s">
+    <div class="col">
+      <div class="lab">What the bank sees</div>
+      <div class="form">
+        <div class="f a" style="--d:3.5s"><small>Payer</small><div>A Hong Kong trading company</div></div>
+        <div class="f a" style="--d:3.9s"><small>Paying for</small><div>Goods from a supplier</div></div>
+        <div class="f a" style="--d:4.3s"><small>Payment</small><div>USD wire</div></div>
+        <div class="f a" style="--d:4.7s"><small>Sanctions name screen</small><span class="chip ok">✓ No match</span></div>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <div class="col">
+      <div class="lab gold a" style="--d:5.2s">Lazarus’s past cash-outs</div>
+      <div class="chain">
+        <div class="node a" style="--d:5.6s"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9.5 9h4a1.5 1.5 0 0 1 0 3h-4h4.5a1.5 1.5 0 0 1 0 3h-4.5M11 7v2M11 15v2"/></svg></div><div><b>Stolen crypto</b><span>Split, swapped, moved</span></div></div>
+        <div class="link a" style="--d:6.2s"><i></i><em>sold off-exchange to</em></div>
+        <div class="node a pop" style="--d:6.7s"><div class="dot gold"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.8-4-5.6"/></svg></div><div><b>OTC traders</b><span>China & Hong Kong</span></div></div>
+        <div class="link a" style="--d:7.3s"><i></i><em>paid out through</em></div>
+        <div class="node a pop" style="--d:7.8s"><div class="dot gold"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></svg></div><div><b>Front companies</b><span>Hong Kong</span></div></div>
+        <div class="link a" style="--d:8.4s"><i></i><em>buying goods for</em></div>
+        <div class="node a pop" style="--d:8.9s"><div class="dot red"><svg viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17v.5"/></svg></div><div><b>North Korea</b><span class="chip risk" style="margin-top:8px">⚠ Sanctioned</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="wordmark tr"></div>
+</div>
+<script>
+// Frame control for render_gif.py: #t=4.5 → pause every animation at 4.5s, then mark the page ready.
+(async () => {
+  const m = location.hash.match(/t=([\d.]+)/); if (!m) return;
+  const t = parseFloat(m[1]) * 1000;
+  const freeze = () => document.getAnimations().forEach(a => { a.pause(); a.currentTime = t; });
+  freeze(); await document.fonts.ready; freeze();
+})();
+</script>

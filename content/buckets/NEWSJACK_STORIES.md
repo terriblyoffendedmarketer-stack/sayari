@@ -4,6 +4,11 @@ Candidate stories for the newsjack series (I55; format and process in `content/N
 **Flow (2026-11-12):** Sayari sends the news; we make the newsjack. Stories here are our own finds: backups and proposals to offer them, not the main source.
 Window: a story stays usable for about 3 weeks after the news (Sayari's own lag is 1–3 weeks).
 
+## From Sayari
+| # | Story (date) | Source | Our angle | Status |
+|---|---|---|---|---|
+| S1 | Binance $6.3bn hack, attributed to North Korea (30 Oct 2026) | BBC, sent by Sayari 2026-11-12 | The cash-out needs companies: OTC traders + HK front companies (2023 Treasury/DOJ pattern) | made → P05 draft v1 |
+
 ## Search 2026-11-12
 | # | Story (date) | "Paperwork vs reality" | Why risk teams care | Sayari fit | Primary source | Status |
 |---|---|---|---|---|---|---|

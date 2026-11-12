@@ -50,3 +50,4 @@ news-release dates on sayari.com looked like Apr 2026 for years-old releases | W
 hub db writes open to signed-in link viewers | only inbox has a db rule; default lets 'interact' write | gate UI on user.isOwner(); a real fix is a db rule (write: admin) for captions + shelf at next capabilities publish
 render_gif.py: parallel headless Chrome frames crashed (ProcessSingleton / SingletonLock) | Chrome won't run two instances on one --user-data-dir | warm one profile for fonts, then copy it per worker (skip Singleton* files)
 Ordinal post pages: JS returning text with URLs is blocked by Claude in Chrome (cookie/query-string filter) | output contained query strings | return innerText of main only, strip URLs to filenames
+L7 headline wrapped into 3 lines | .headline has text-wrap:balance, which re-splits each per-line <div> | put white-space:nowrap;text-wrap:nowrap on the headline and size the font so the longest line fits (60px ≈ 30 chars)
