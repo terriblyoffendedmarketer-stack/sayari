@@ -1,3 +1,33 @@
+# P05 · Caption v5 DRAFT (restructure, 2026-11-12, after the user's notes): pending the user's OK
+
+**Notes behind it (user):** no "Where Sayari fits" heading (it reads like shoehorning); "what we know so far" only *after* we've shown why it matters to compliance readers (a sandwich); cut "For compliance teams, the crypto isn't the point"; the open should signal "this concerns you"; Sayari line = option B, woven in.
+
+**Hooks (separate, pick one):**
+- H-a: "…If you work in sanctions, KYB or financial crime, here's why it's your problem too." (after the news line) ← used below
+- H-b: "Your bank never touched Binance. It could still touch the $6.3bn."
+- H-c: "Binance lost $6.3bn. The attacker still has billions to move, and it won't move as crypto."
+- H-d: "The biggest crypto hack on record comes with a compliance problem: the money still has to be spent."
+
+> Binance says $6.3bn in digital assets were hit on 29 October, in what looks like the biggest crypto hack on record. If you work in sanctions, KYB or financial crime, here's why it's your problem too.
+>
+> The attacker still holds billions. To use them, that money has to pass through people and companies, and those companies can land in your onboarding queue, your payments or your supply chain.
+>
+> Here's what we know so far:
+>
+> → About half the assets are frozen. Tether and Circle alone froze about $2.4bn. The rest is still with the attacker.
+> → The FBI, along with Chainalysis and TRM Labs, links the attack to a North Korean hacking group. Binance hasn't confirmed that, and North Korea has denied past hacks.
+> → Binance says it started with a fake job interview that infected an engineer's laptop.
+>
+> Western agencies have said stolen funds like these help pay for North Korea's weapons programs. So when the money moves, the question that reaches your desk is "are we exposed?"
+>
+> Answering it means knowing who owns and controls the companies involved, not just whether a name matches a list. That usually means a search tool, a registry, a spreadsheet and an hour of guessing.
+>
+> When money moves through people and companies, Sayari shows who's behind them: owners, controllers and their connections, across 250+ jurisdictions, each linked to the source record. So you can show exactly why you are, or aren't, exposed.
+>
+> How long does that take your team today?
+
+---
+
 # P05 · Caption FINAL (v4 = the user's v3 + 4 accuracy/wording fixes, 2026-11-12)
 
 > Binance says $6.3bn in digital assets were hit on 29 October, in what looks like the biggest crypto hack on record.
