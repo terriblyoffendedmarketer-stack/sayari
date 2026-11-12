@@ -59,3 +59,6 @@ That's the BBC's wording, and it's vague. The concrete source: the **UN Panel of
 - No blank start: the kicker, headline and table (with company names) are there from frame 0; only countries, name-screen results and the closing question animate.
 - Hierarchy: the facts moved into one small kicker; the headline is 2 lines.
 - "Front company", not "shell": a shell is an empty company with no real business; a front looks like a real business and acts for someone hidden (Treasury's word in the North Korea cases). It also matches "look like your customers".
+
+## Headline fix (user, 2026-11-12)
+Moving the news into a small kicker made the headline an incomplete hook ("Now the money needs…" with no subject). Fix: the news is the big 2-line headline ("The FBI says North Korea stole $6.3bn from Binance."); the consequence is a smaller gold subline; no kicker. **Lesson:** trim verbosity with hierarchy (size), never by demoting the line that carries the news.

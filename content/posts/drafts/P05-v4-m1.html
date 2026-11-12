@@ -1,6 +1,7 @@
 <!doctype html><meta charset="utf-8"><title>P05 v4 · M1 refined</title><link rel="stylesheet" href="../../../design/kit/kit.css">
 <meta name="gif" content="duration=10;settle=6.6;fps=12">
-<!-- P05 v4 = M1 refined (user notes 2026-11-12): message visible from frame 0 (no blank start); facts in one small kicker,
+<!-- Headline fix (user, 2026-11-12): the news goes in the big headline (FBI/North Korea/$6.3bn/Binance); the consequence is a smaller gold subline; no kicker.
+     P05 v4 = M1 refined (user notes 2026-11-12): message visible from frame 0 (no blank start); facts in one small kicker,
      2-line headline; only the table animates (company names present at start; country + name screen fill in); ends on
      "Would you spot the front company?" (front, not shell: a shell is empty, a front looks like a real business).
      Was: P05 v3, message M1 (user-picked 2026-11-12). Must work with zero context: what happened (attributed to the FBI),
@@ -31,10 +32,11 @@
   .note span{font:700 62px/1 var(--hand);color:var(--accent)}
   .note svg{width:110px;height:84px;overflow:visible;margin-bottom:26px}
   .note path{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .sub{font:italic 700 40px/1.3 var(--serif);color:var(--accent);margin-top:-8px;text-wrap:balance}
 </style>
 <div class="canvas mode-navy" style="gap:30px;padding-top:150px">
-  <div class="kick">Binance hack · $6.3bn stolen · FBI: North Korea</div>
-  <div class="headline" style="font-size:55px;margin-top:-6px;white-space:nowrap;text-wrap:nowrap">Now the money needs companies<br>that <em>look like your customers.</em></div>
+  <div class="headline" style="font-size:66px;line-height:1.15">The FBI says North Korea stole $6.3bn from Binance.</div>
+  <div class="sub">To spend it, it needs companies that look like your customers.</div>
 
   <div class="win">
     <div class="bar"><b>New customers</b><span>This week</span></div>
