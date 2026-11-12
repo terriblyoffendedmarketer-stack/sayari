@@ -86,7 +86,8 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four
 - **Angle:** blockchain firms trace the coins; turning stolen crypto into usable money goes through OTC traders and front companies, which is where Sayari's corporate data sits. The right column shows the cash-out pattern from the **2023 US Treasury/DOJ case** (labelled "past cash-outs", because this hack's cash-out is still unfolding).
 - **Format:** newsjack · explainer GIF (kit L7) · `drafts/P05-binance-cashout.html` → `assets/P05-binance-cashout.gif` (+ .mp4, final-frame .png)
 - **Image:** "The hack was *on-chain.* The cash-out needs *companies.*" Kicker "BINANCE · $6.3BN STOLEN · FBI: NORTH KOREA / ABOUT HALF FROZEN · THE REST IS STILL MOVING". Left "What the bank sees": HK trading company, goods from a supplier, USD wire, "✓ No match". Right "Lazarus's past cash-outs": stolen crypto → OTC traders (China & HK) → front companies (HK) → North Korea "⚠ Sanctioned".
-- **Caption (v1, ~300 words):**
+- **v2 (staged, 2026-11-12): current.** Story: `newsjack/P05-binance/03-story.md` (the trail turns into companies once it leaves the blockchain; Sayari picks it up there). Caption v2: `newsjack/P05-binance/05-caption.md`. Design not started.
+- **Caption (v1, ~300 words, superseded by v2):**
 > $6.3bn was taken from Binance on 30 October. Investigators think it's the biggest crypto theft on record.
 >
 > Stealing it was the first half. Spending it is the second, and that half runs through ordinary-looking companies.
