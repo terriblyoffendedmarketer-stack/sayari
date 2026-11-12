@@ -159,6 +159,8 @@ button.primary{background:var(--ink);color:var(--paper)}
 button:disabled{opacity:.6;cursor:default}
 details.filed summary{cursor:pointer;color:var(--muted);font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.capnote{background:#f6ecd6;color:#5a4317;border-radius:10px;padding:8px 12px;margin:0 0 8px}
+.capnote button,.capmeta button{margin-left:6px}
 </style>
 
 <header>
@@ -389,7 +391,8 @@ function paintCaptions(){
   document.querySelectorAll(".capbox").forEach(box => {
     const k = box.dataset.key, ij = postBy(k); if (!ij) return;
     if (!box.classList.contains("editing")) box.querySelector(".caption").textContent = capText(D.posts[ij[0]], ij[1]);
-    box.querySelector(".capmeta").innerHTML = capMeta(k);
+    const dr = newestDraft(k), showDr = dr && !box.classList.contains("editing") && capCanWrite && dr.text !== capText(D.posts[ij[0]], ij[1]);
+    box.querySelector(".capmeta").innerHTML = capMeta(k) + (showDr ? `${capMeta(k) ? " · " : ""}<b>Unsaved draft from ${when(dr.at)}</b> <button data-edit>Continue editing</button>` : "");
     box.querySelectorAll(".capedit,.caphist").forEach(b => b.hidden = !capDb || (!capCanWrite && b.classList.contains("capedit")));
   });
 }
@@ -402,16 +405,39 @@ async function saveCaption(key, text, note){
   await hist.add({ text, at: now, by, note: note || "Edit" });
   await capDb.doc(`captions/${key}`).set({ text, at: now, by });
 }
+/* ---- Drafts + editing flag (added 2026-11-12 after a republish wiped unsaved edits) ----
+   Every keystroke is kept in this browser (localStorage) and, a second later, in the db:
+   capdrafts/<P0X-vN> {text, at, by, editing}. editing:true while the editor is open, so Claude
+   checks it before any republish. Save clears the draft (the saved text goes to history);
+   Cancel keeps it, so nothing typed is ever thrown away without asking.                      */
+const CAPDRAFT = {}; const draftTimers = {};
+const LKEY = k => `sayari-capdraft:${k}`;
+function localDraft(k){ try { return JSON.parse(localStorage.getItem(LKEY(k)) || "null"); } catch { return null; } }
+function setLocalDraft(k, d){ try { d ? localStorage.setItem(LKEY(k), JSON.stringify(d)) : localStorage.removeItem(LKEY(k)); } catch {} }
+function newestDraft(k){ const a = localDraft(k), b = CAPDRAFT[k]; if (!a) return b || null; if (!b) return a; return (a.at || "") >= (b.at || "") ? a : b; }
+async function pushDraft(k, text, editing){
+  if (!capDb || !capCanWrite) return;
+  const by = capUser ? await capUser.id().catch(()=>null) : null;
+  try { await capDb.doc(`capdrafts/${k}`).set({ text, at: new Date().toISOString(), by, editing }); } catch {}
+}
+function queueDraft(k, text){ clearTimeout(draftTimers[k]); draftTimers[k] = setTimeout(() => pushDraft(k, text, true), 1000); }
+async function clearDraft(k){ clearTimeout(draftTimers[k]); setLocalDraft(k, null); delete CAPDRAFT[k]; if (capDb && capCanWrite) { try { await capDb.doc(`capdrafts/${k}`).delete(); } catch {} } }
 function openEditor(box){
   const k = box.dataset.key, ij = postBy(k), cur = capText(D.posts[ij[0]], ij[1]);
   box.classList.add("editing"); box.querySelector(".caption").hidden = true;
   const w = box.querySelector(".capwork");
-  w.innerHTML = `<textarea class="capedit-area" aria-label="Edit caption"></textarea><div class="capactions"><button class="primary" data-capsave>Save</button><button data-capcancel>Cancel</button><span class="small muted capwc"></span></div>`;
-  const ta = w.querySelector("textarea"); ta.value = cur; ta.style.height = Math.max(180, ta.scrollHeight + 4) + "px"; ta.focus();
-  const wc = () => w.querySelector(".capwc").textContent = (ta.value.trim().split(/\s+/).filter(Boolean).length) + " words";
-  ta.addEventListener("input", wc); wc();
+  const d = newestDraft(k), restored = d && d.text != null && d.text !== cur;
+  w.innerHTML = `${restored ? `<p class="small capnote">Restored your unsaved draft from ${when(d.at)}. <button data-capdiscard>Discard draft</button></p>` : ""}<textarea class="capedit-area" aria-label="Edit caption"></textarea><div class="capactions"><button class="primary" data-capsave>Save</button><button data-capcancel>Close (keeps draft)</button><span class="small muted capwc"></span></div>`;
+  const ta = w.querySelector("textarea"); ta.value = restored ? d.text : cur; ta.style.height = Math.max(180, ta.scrollHeight + 4) + "px"; ta.focus();
+  const wc = () => w.querySelector(".capwc").textContent = (ta.value.trim().split(/\s+/).filter(Boolean).length) + " words · draft kept as you type";
+  ta.addEventListener("input", () => { wc(); const t = ta.value; setLocalDraft(k, { text: t, at: new Date().toISOString() }); queueDraft(k, t); });
+  wc(); pushDraft(k, ta.value, true);
 }
-function closeEditor(box){ box.classList.remove("editing"); box.querySelector(".caption").hidden = false; box.querySelector(".capwork").innerHTML = ""; paintCaptions(); }
+function closeEditor(box, keepDraft){
+  const k = box.dataset.key, ta = box.querySelector("textarea");
+  if (keepDraft && ta) { const ij = postBy(k), t = ta.value; if (t !== capText(D.posts[ij[0]], ij[1])) { setLocalDraft(k, { text: t, at: new Date().toISOString() }); clearTimeout(draftTimers[k]); pushDraft(k, t, false); } else clearDraft(k); }
+  box.classList.remove("editing"); box.querySelector(".caption").hidden = false; box.querySelector(".capwork").innerHTML = ""; paintCaptions();
+}
 async function openHistory(box){
   const k = box.dataset.key, w = box.querySelector(".capwork");
   if (w.dataset.mode === "hist") { w.innerHTML = ""; w.dataset.mode = ""; return; }
@@ -428,12 +454,13 @@ main.addEventListener("click", async e => {
   const b = e.target.closest("button"); if (!b) return; const box = b.closest(".capbox"); if (!box) return;
   if (b.dataset.edit != null) { box.querySelector(".capwork").dataset.mode = ""; openEditor(box); }
   else if (b.dataset.hist != null) { if (box.classList.contains("editing")) closeEditor(box); openHistory(box); }
-  else if (b.hasAttribute("data-capcancel")) closeEditor(box);
+  else if (b.hasAttribute("data-capcancel")) closeEditor(box, true);
+  else if (b.hasAttribute("data-capdiscard")) { if (!confirm("Discard your unsaved draft? This can't be undone.")) return; await clearDraft(box.dataset.key); closeEditor(box); openEditor(box); }
   else if (b.hasAttribute("data-capsave")) {
     const text = box.querySelector("textarea").value.replace(/\s+$/,""), k = box.dataset.key, ij = postBy(k);
-    if (text === capText(D.posts[ij[0]], ij[1])) { closeEditor(box); return; }
+    if (text === capText(D.posts[ij[0]], ij[1])) { await clearDraft(k); closeEditor(box); return; }
     b.disabled = true; b.textContent = "Saving…";
-    try { await saveCaption(k, text); CAP[k] = { ...(CAP[k]||{}), text, at: new Date().toISOString() }; closeEditor(box); }
+    try { await saveCaption(k, text); CAP[k] = { ...(CAP[k]||{}), text, at: new Date().toISOString() }; await clearDraft(k); closeEditor(box); }
     catch (err) { b.disabled = false; b.textContent = "Save"; box.querySelector(".capwc").textContent = err?.code === "invalid_argument" ? "You can't edit this page (view only)." : "Couldn't save. Your text is still here; try again."; }
   }
   else if (b.hasAttribute("data-hview")) { const li = b.closest("li"); li.classList.toggle("open"); b.textContent = li.classList.contains("open") ? "Show less" : "Show all"; }
@@ -454,6 +481,11 @@ main.addEventListener("click", async e => {
     snap.docs.forEach(d => { if (d.exists) CAP[d.id] = d.data(); });
     await loadNames(Object.values(CAP).map(c => c.by)); paintCaptions();
   }, () => {});
+  capDb.collection("capdrafts").onSnapshot(snap => {
+    for (const k of Object.keys(CAPDRAFT)) delete CAPDRAFT[k];
+    snap.docs.forEach(d => { if (d.exists) CAPDRAFT[d.id] = d.data(); });
+    paintCaptions();
+  }, () => {});
   paintCaptions();
 })();
 /* ---- Backup shelf: versions set aside for later (not the recovery archive) ----
@@ -461,7 +493,7 @@ main.addEventListener("click", async e => {
    Only the owner sees the Select boxes; everyone else sees Active/Backup read-only. */
 const SHELF = {}; let POSTVIEW = "active"; const SH = { db: null, can: false, picked: new Set(), busy: false };
 const onPosts = () => !!document.querySelector('section[data-view="posts"]');
-const rerenderPosts = () => { if (onPosts()) { const y = scrollY; render(); scrollTo(0, y); } };
+const rerenderPosts = () => { if (!onPosts() || document.querySelector(".capbox.editing")) return; const y = scrollY; render(); scrollTo(0, y); };
 document.addEventListener("click", async e => {
   const pv = e.target.closest("[data-postview]");
   if (pv) { POSTVIEW = pv.dataset.postview; SH.picked.clear(); rerenderPosts(); return; }
