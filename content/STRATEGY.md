@@ -2,6 +2,9 @@
 
 Drafted 2026-11-10. Brand page, **3–4 posts a week → about 40–45 posts over 13 weeks.** Review it at the end of each month against results in `content/posts/POSTS.md` and change what isn't working.
 
+## Current mode
+**Mode change (2026-11-12): newsjack-only for now.** Sayari sends us the news; we turn each story into a newsjack in their formats (explainer GIF or digest carousel; `content/NEWSJACK.md`). Nothing else is retired: the shortlist, idea bank, P01–P04 and every evergreen idea stay as the bank, ready the moment they want that content back. The weekly rhythm below resumes when evergreen posts come back.
+
 ## North star
 A compliance analyst sees a Sayari post, thinks **"that's literally my job"**, saves or tags someone, and over three months comes to see Sayari as *the brand that gets us*. Then when their team looks at tools, they say the name.
 

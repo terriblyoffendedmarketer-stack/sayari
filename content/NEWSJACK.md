@@ -28,8 +28,16 @@ Ekshika asked on 2026-11-12 for posts like four that Sayari's in-house team publ
 - **Confirmed (user, 2026-11-12):** ~240–440 words is right for newsjacks, because explaining the news is the value. The creative also carries more words than other posts. It's still not a reading slog: numbered steps, short lines, one mechanism. The GIF's movement adds the interactivity.
 - **Spacing:** newsjacks aren't continuous. Run them when a good story lands, between the regular posts.
 
+## Mode and flow (2026-11-12)
+- Sayari wants **newsjacks only, for now**. Evergreen work isn't retired; it's banked.
+- **Flow:** Sayari sends the story → we read the primary source → pick GIF or carousel → pitch → build → caption.
+- **For now, use only their two formats.** Later (not yet): prep more newsjack formats so the feed doesn't look repetitive, e.g. a timeline GIF, a single-stat card or a regulator-document annotation.
+
+## How Sayari builds them
+In **Canva**: an animated design downloaded as a GIF (Canva animates elements and pages and exports GIF/MP4). Their PDF export of the Earthmade design (2 versions, the second adds a "$176M+ paid…" callout box) is in `content/library/assets/sayari-examples/` (gitignored). L7 matches it: wordmark top right, no bottom takeaway, optional callout.
+
 ## Our process for one newsjack
-1. **Find:** DOJ/OFAC/BIS/Commerce releases, ICIJ/NYT/FT/Reuters investigations, MOFCOM or EU notices from the last 2 weeks. Read the primary source.
+1. **Find** (or receive from Sayari): DOJ/OFAC/BIS/Commerce releases, ICIJ/NYT/FT/Reuters investigations, MOFCOM or EU notices from the last 2 weeks. Read the primary source.
 2. **Pick the mechanism:** can it be drawn as "paperwork vs reality" (GIF) or as "N cases" (carousel)? If neither, skip it.
 3. **Pitch** in the PITCH.md format, with the source link and the hedges.
 4. **Build** with L7 or L6, render, then caption.

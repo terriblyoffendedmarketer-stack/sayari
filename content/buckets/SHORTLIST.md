@@ -1,5 +1,7 @@
 # Post shortlist (15) — the next ~5 weeks
 
+> **Parked 2026-11-12, not discarded.** Sayari switched to newsjack-only for now (see `content/NEWSJACK.md`). This list stays ready to go the moment they want evergreen posts back.
+
 Built 2026-11-11 from `IDEA_BANK.md` + the new `research/sayari-site/FEATURE_MAP.md` (F#) and `content/library/LIBRARY.md`. Each is sharpened just enough to pick from. When one is picked, it gets a full pitch (`playbook/PITCH.md`) first.
 
 **Mix:** 6 pain · 5 relief · 3 receipts · 1 news (news follows real events, so add one when news lands). **Variety:** 9 of 15 use real content or native-UI looks (screenshots, Slack, calendar, search page, Reddit card, code, customer diagram), not just navy/beige type.

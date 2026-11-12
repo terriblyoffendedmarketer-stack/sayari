@@ -1,6 +1,7 @@
 # Newsjack story log
 
 Candidate stories for the newsjack series (I55; format and process in `content/NEWSJACK.md`). Newest search first. Status: `candidate` · `pitched` · `made` · `passed` (too old, weak fit or already covered).
+**Flow (2026-11-12):** Sayari sends the news; we make the newsjack. Stories here are our own finds: backups and proposals to offer them, not the main source.
 Window: a story stays usable for about 3 weeks after the news (Sayari's own lag is 1–3 weeks).
 
 ## Search 2026-11-12
