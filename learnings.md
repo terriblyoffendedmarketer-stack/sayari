@@ -51,3 +51,4 @@ hub db writes open to signed-in link viewers | only inbox has a db rule; default
 render_gif.py: parallel headless Chrome frames crashed (ProcessSingleton / SingletonLock) | Chrome won't run two instances on one --user-data-dir | warm one profile for fonts, then copy it per worker (skip Singleton* files)
 Ordinal post pages: JS returning text with URLs is blocked by Claude in Chrome (cookie/query-string filter) | output contained query strings | return innerText of main only, strip URLs to filenames
 L7 headline wrapped into 3 lines | .headline has text-wrap:balance, which re-splits each per-line <div> | put white-space:nowrap;text-wrap:nowrap on the headline and size the font so the longest line fits (60px ≈ 30 chars)
+P05 queue panel got squashed and clipped the last row once a note was added below it | .canvas is a flex column, so children shrink to fit | flex:none on fixed-height blocks (panels, chain band, notes)

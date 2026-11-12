@@ -11,7 +11,7 @@ Tags: **format** (pain mirror / product as relief / receipts / newsjack) · **pi
 | P01 | Name-match purgatory (Brightwell) | Pain mirror | Frankenstack | Stacked search bars, "same company?" | Final: Ekshika's edit (caption cut) |
 | P02 | Compliance bingo | Pain mirror | Frankenstack | 3×3 bingo card | Original restored, edited by the user; new short caption; to send to Ekshika |
 | P03 | Two "clean" 25% owners | Product as relief | Hidden risk | Split compare (kit L3) | Final: Ekshika's edit (creative + caption) |
-| P05 | Binance hack: are we exposed? (newsjack) | Newsjack | Hidden risk | Creative not started (made fresh, stage 4) | **Caption final**, 2026-11-12; creative next |
+| P05 | Binance hack: are we exposed? (newsjack) | Newsjack | Hidden risk | Queue GIF (made fresh) | Caption final; **creative v2 draft** for review |
 | P04 | The PURE case (carousel) | Receipts | Hidden risk + score ≠ defense | Story carousel (kit L6), 6 slides | **Backup** (both versions, 2026-11-11, user's call; kept for later, not archived) |
 
 Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four are simplified under the round-1 rules (2-second images, short captions).
@@ -83,7 +83,8 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four
 
 ## P05 · Binance hack: are we exposed? (newsjack)
 - **News (sent by Sayari via Ekshika, 2026-11-12):** BBC, 30 Oct 2026, "Crypto giant Binance hit by $6.3bn hack suspected to be largest in history" (https://www.bbc.com/news/articles/cwg7xp8kx4v5o)
-- **Format:** newsjack · **Pillar:** hidden risk · **Template:** none (made fresh; creative = stage 4, not started)
+- **Format:** newsjack · **Pillar:** hidden risk · **Template:** none (made fresh)
+- **Image (creative v2, concept A, draft):** navy GIF `assets/P05-v2-queue.gif` (+ .mp4, final-frame .png), source `drafts/P05-v2-queue.html`. Headline "The Binance money has to land somewhere. *It could be your queue.*" Kicker "$6.3BN HIT · ABOUT HALF FROZEN". Coins move along a blockchain line; three freeze (blue, "Frozen"); the rest leave the chain and arrive as rows in a white "Onboarding queue" (Northbay Trading Ltd · Hong Kong, Kestrel Supply FZE · UAE, Lumenpath LLC · US; all invented, all "✓ No match"). The last row is outlined in gold, with the scrawl "Who's behind it?". ~13 s loop.
 - **Story (locked):** once stolen crypto leaves the blockchain, the trail turns into people and companies, which can land in your onboarding, payments or supply chain; the question on your desk is "are we exposed?"; Sayari shows the ownership and control behind companies, linked to source records. Stages: `newsjack/P05-binance/01-news.md` → `02-why-it-matters.md` → `03-story.md` → `05-caption.md`.
 - **Caption (final v5, hook H-a; edit on the hub):**
 > Binance says $6.3bn in digital assets were hit on 29 October, in what looks like the biggest crypto hack on record. If you work in sanctions, KYB or financial crime, here's why it's your problem too.

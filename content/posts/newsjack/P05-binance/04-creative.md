@@ -1,4 +1,6 @@
-# P05 · Stage 4: creative (discussion; nothing built yet)
+# P05 · Stage 4: creative
+
+**Picked (user):** concept A + headline 2. Built 2026-11-12 → `drafts/P05-v2-queue.html` / `assets/P05-v2-queue.gif`. Navy (sets it apart from Sayari's beige examples); the queue keeps native white UI colours; one gold scrawl "Who's behind it?". Check before posting: the invented names (Northbay Trading Ltd, Kestrel Supply FZE, Lumenpath LLC) shouldn't match a real, notable company.
 
 What the creative has to land in 2 seconds: **stolen crypto has to turn into ordinary-looking companies, and those companies can land in your queue.** The caption carries the facts; the image carries that one shift. It must not copy Sayari's example GIF (paperwork-vs-reality split card).
 

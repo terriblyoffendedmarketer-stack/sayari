@@ -1,0 +1,95 @@
+<!doctype html><meta charset="utf-8"><title>P05 v2 · The money has to land somewhere</title><link rel="stylesheet" href="../../../design/kit/kit.css">
+<meta name="gif" content="duration=13;settle=9.4;fps=12">
+<!-- P05 v2 creative (concept A, user-picked 2026-11-12). Navy frame. Story: stolen crypto moves along the chain; about half freezes;
+     the rest leaves the chain and arrives as ordinary companies in an onboarding queue (native white UI). Last row is highlighted:
+     name screen "No match" + "Who's behind it?". Company names are invented. Render: python3 -I scripts/render_gif.py <this file>. -->
+<style>
+  .a{animation:rise .55s cubic-bezier(.2,.7,.2,1) var(--d,0s) both}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .headline{font-size:62px;white-space:nowrap;text-wrap:nowrap;color:#faf8f4}
+  .headline em{font-style:italic;color:var(--accent)}
+  .kick{font:500 26px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#a8aab6}
+
+  /* the chain */
+  .chainbox{position:relative;height:140px;flex:none}
+  .lab2{position:absolute;top:0;font:600 22px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#a8aab6}
+  .track{position:absolute;left:0;right:150px;top:70px;height:0;border-top:4px dashed #4a5272}
+  .edge{position:absolute;right:120px;top:36px;width:4px;height:76px;background:#a8aab6;border-radius:2px}
+  .coin{position:absolute;left:0;top:47px;width:50px;height:50px;border-radius:50%;background:#e9e6df;border:4px solid #c9c4b8;
+    display:grid;place-items:center;font:700 22px/1 var(--mono);color:#1d2440;opacity:0}
+  .coin.go{animation:go 2.6s cubic-bezier(.4,0,.6,1) var(--d) both}
+  @keyframes go{0%{opacity:0;transform:translateX(0)}8%{opacity:1}72%{opacity:1;transform:translateX(770px)}
+    100%{opacity:0;transform:translateX(860px) translateY(120px) scale(.6)}}
+  .coin.freeze{animation:fz 2.2s cubic-bezier(.4,0,.6,1) var(--d) both}
+  @keyframes fz{0%{opacity:0;transform:translateX(0)}10%{opacity:1}70%{transform:translateX(var(--x));background:#e9e6df;border-color:#c9c4b8}
+    100%{opacity:1;transform:translateX(var(--x));background:#8fb3d9;border-color:#5d86b3;color:#fff}}
+  .frz{position:absolute;left:300px;top:118px;font:600 22px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#8fb3d9}
+  .drop{position:absolute;right:52px;top:44px;width:56px;height:96px}
+  .drop i{position:absolute;left:25px;top:0;width:5px;height:78px;background:#a8aab6;border-radius:3px}
+  .drop i::after{content:"";position:absolute;left:-10px;bottom:-14px;border:12.5px solid transparent;border-top:16px solid #a8aab6;border-bottom:0}
+
+  /* the queue (native UI) */
+  .win{flex:none;background:#fff;border-radius:22px;box-shadow:0 18px 40px #0000004d;overflow:hidden;color:#1d2440}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:22px 30px;border-bottom:2px solid #eceef2;background:#f7f8fa}
+  .bar b{font:700 32px/1.1 var(--sans)} .bar span{font:500 24px/1 var(--sans);color:#6b7280}
+  .cols,.row{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,.8fr) minmax(0,1fr);gap:16px;align-items:center;padding:0 30px}
+  .cols{height:56px;font:600 22px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#9aa0ad;border-bottom:2px solid #eceef2}
+  .row{height:104px;border-bottom:2px solid #eceef2;position:relative}
+  .row:last-child{border:0}
+  .co{display:flex;align-items:center;gap:16px;min-width:0}
+  .ic{width:52px;height:52px;flex:none;border-radius:12px;background:#eef0f4;display:grid;place-items:center}
+  .ic svg{width:28px;height:28px;fill:none;stroke:#6b7280;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .co b{font:600 28px/1.2 var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ctry{font:400 26px/1.2 var(--sans);color:#4b5563}
+  .ok{justify-self:start;display:inline-flex;gap:8px;align-items:center;background:#e6f4ec;color:#23784a;border-radius:999px;padding:8px 18px;font:600 24px/1 var(--sans)}
+  .row.new{animation:slot .6s cubic-bezier(.2,.7,.2,1) var(--d) both}
+  @keyframes slot{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:none}}
+  .hl{position:absolute;inset:6px 10px;border:4px solid var(--accent);border-radius:16px;animation:rise .5s ease-out var(--d) both}
+  .ask{position:absolute;right:26px;top:-24px;background:var(--accent);color:#1d2440;border-radius:999px;padding:9px 20px;
+    font:700 24px/1 var(--sans);box-shadow:0 6px 16px #0000002e;animation:rise .5s ease-out var(--d) both}
+  .note{flex:none;white-space:nowrap;position:relative;margin-top:-10px;display:flex;align-items:flex-end;gap:10px;padding-left:250px;animation:rise .5s ease-out var(--d) both}
+  .note span{font:700 78px/1 var(--hand);color:var(--accent)}
+  .note svg{width:120px;height:90px;overflow:visible;margin-bottom:22px}
+  .note path{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<div class="canvas mode-navy" style="gap:26px;padding-top:100px">
+  <div class="headline">
+    <div class="a" style="--d:.2s">The Binance money has to</div>
+    <div class="a" style="--d:.9s">land somewhere.</div>
+    <div class="a" style="--d:1.7s"><em>It could be your queue.</em></div>
+  </div>
+  <div class="kick a" style="--d:2.4s">$6.3bn hit · about half frozen</div>
+
+  <div class="chainbox a" style="--d:2.8s">
+    <div class="lab2" style="left:0">On the blockchain</div>
+    <div class="lab2" style="right:0">Off it</div>
+    <div class="track"></div><div class="edge"></div>
+    <div class="coin freeze" style="--d:3.1s;--x:330px">◆</div>
+    <div class="coin freeze" style="--d:3.5s;--x:400px">◆</div>
+    <div class="coin freeze" style="--d:3.9s;--x:470px">◆</div>
+    <div class="frz a" style="--d:5.4s">Frozen</div>
+    <div class="coin go" style="--d:3.3s">◆</div>
+    <div class="coin go" style="--d:4.3s">◆</div>
+    <div class="coin go" style="--d:5.3s">◆</div>
+    <div class="drop"><i></i></div>
+  </div>
+
+  <div class="win a" style="--d:3.2s">
+    <div class="bar"><b>Onboarding queue</b><span>New today</span></div>
+    <div class="cols"><div>Company</div><div>Country</div><div>Name screen</div></div>
+    <div class="row new" style="--d:5.4s"><div class="co"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></svg></div><b>Northbay Trading Ltd</b></div><div class="ctry">Hong Kong</div><span class="ok">✓ No match</span></div>
+    <div class="row new" style="--d:6.4s"><div class="co"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></svg></div><b>Kestrel Supply FZE</b></div><div class="ctry">UAE</div><span class="ok">✓ No match</span></div>
+    <div class="row new" style="--d:7.4s"><div class="co"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></svg></div><b>Lumenpath LLC</b></div><div class="ctry">US</div><span class="ok">✓ No match</span>
+      <div class="hl" style="--d:8.4s"></div></div>
+  </div>
+  <div class="note" style="--d:8.9s"><svg viewBox="0 0 120 90"><path d="M10 80 C 40 78, 70 60, 92 14"/><path d="M78 22 L92 12 L96 30"/></svg><span>Who's behind it?</span></div>
+  <div class="wordmark br"></div>
+</div>
+<script>
+(async () => {
+  const m = location.hash.match(/t=([\d.]+)/); if (!m) return;
+  const t = parseFloat(m[1]) * 1000;
+  const freeze = () => document.getAnimations().forEach(a => { a.pause(); a.currentTime = t; });
+  freeze(); await document.fonts.ready; freeze();
+})();
+</script>
