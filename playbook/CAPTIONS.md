@@ -4,7 +4,7 @@ Personality is the edge: most B2B accounts are drab and corporate. We **inform, 
 
 ## Simplicity first (client feedback, 2026-11; overrides anything below)
 Write for a reader with **zero context and zero patience**: they get the point in one read, with no decoding.
-- **Length follows the content type.** Decide verbosity per type, never one rule for all. Single image ~25–90 words (25–40 when the image carries the story, as with P01 and P02); carousel ~60–120; **newsjack ~240–440**, because explaining the news is the value (still scannable: numbered steps and short lines, never a reading slog; the creative also carries more words than usual) (user, 2026-11-12). If the image already makes the joke, the caption can be 3–6 lines that echo it and close.
+- **Length follows the content type.** Decide verbosity per type, never one rule for all. Single image ~25–90 words (25–40 when the image carries the story, as with P01 and P02); carousel ~60–120; **newsjack ~180–300** (P05's final was ~200; Sayari's own run 240–440), because explaining the news is the value (still scannable: numbered steps and short lines, never a reading slog; the creative also carries more words than usual) (user, 2026-11-12). If the image already makes the joke, the caption can be 3–6 lines that echo it and close.
 - **One idea, one personality move.** A single sharp line (a metaphor, one deadpan beat) carries the voice. Don't stack jokes.
 - **Plain order:** situation → "not quite" → the fact (bullets if it's data) → why it matters → the brand as one concrete benefit sentence → simple close.
 - **Spell out the consequence** for the reader. Don't make them infer it.

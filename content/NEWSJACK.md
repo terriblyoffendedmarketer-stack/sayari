@@ -47,3 +47,34 @@ One-shotting (article → angle → image in one go) skipped the thinking. Each 
 5. **Caption.** Sayari's example captions are a reference, not a rule.
 
 **No templates for now.** Make each post fresh. Templates come later, as the outcome once enough posts exist.
+
+## Lessons from P05 (Binance, 2026-11-12): use these on every newsjack
+**Process**
+- Run the stages, one file each, in `content/posts/newsjack/<P0X-slug>/` (01-news → 02-why-it-matters → 03-story → 04-creative → 05-caption), with the user's OK between stages. The one-shot v1 skipped the thinking and copied Sayari's template.
+- Read the primary sources first: the company's own statement or post-mortem, the government notice, the tracing firms. Press coverage changes the facts (the fake job interview only appeared in Binance's post-mortem).
+
+**Finding the link to Sayari**
+- The news topic is rarely Sayari's ground (crypto, AI, chips). Look for the **company-level fact**: the companies, owners and controllers the story runs through, and where they land in a compliance team's day (onboarding queue, payments, supply chain).
+- The strongest link makes Sayari the **second half of the story** ("the money has to move through people and companies… Sayari shows who's behind them"), not a line bolted on at the end.
+- Check Sayari's partners before framing (Chainalysis is a partner): complement, never "they can't, we can".
+
+**Accuracy (the user wants to be corrected on all of these)**
+- Attribution ≠ proof: "The FBI says North Korea…", never "North Korea stole…".
+- Keep who said what: the UN's 40% figure is "one member state", cited in a UN panel report. North Korea hadn't denied *this* hack ("has denied similar accusations before").
+- Don't quote moving estimates that sources use inconsistently ($2.85bn was "frozen" in one, "with the attacker" in another).
+- Never import an old case as the spine (v2's 2023 Treasury chain read heavy and borrowed).
+
+**Caption (the user's final shape, ~200 words)**
+Hook (the news, attributed) → "If you work in sanctions, KYB or financial crime, it's your problem too." → why it reaches your desk → "Here's what we know so far" (2 arrows, only what matters to compliance) → the stakes (sourced) → the question on its own line → what answering it takes today (the human pain line) → Sayari, woven in, **no "Where Sayari fits" heading**. No closing CTA question this time.
+- Cut anything that only matters to the exchange's customers or crypto insiders (Binance covering losses, who froze what, how the hack worked).
+- Avoid AI signposts and patterns: "Here's why it matters:", double colons, "it's not X, it's Y".
+
+**Creative**
+- It must work **without the caption**: the news is the big headline (attributed); the consequence is a smaller subline; the image shows the reader's own screen (native UI) and ends on one question.
+- Trim with hierarchy (size), never by demoting the line that carries the news into a small kicker.
+- No blank first frame: the message is on screen from frame 0; animate only the part that tells the story.
+- Don't copy Sayari's example GIF layout; build new for each story. Use invented company names; "front company", not "shell" (a shell is empty, a front looks real).
+- Deliver: GIF (`scripts/render_gif.py`) → `content/posts/assets/<P0X>-final.gif/png` → artboard on the Claude Design canvas → editable PDF for Canva (`scripts/export_editable.py <canvas-dir> <P0X>`).
+
+**Hub**
+- Before any hub publish, check `capdrafts`; never publish while `editing:true`. Send previews as files, not hub republishes.

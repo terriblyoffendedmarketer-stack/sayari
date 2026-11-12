@@ -89,24 +89,26 @@ Mix so far: 2 pain mirror, 1 product-as-relief, 1 receipts, 0 newsjack. All four
 - **Image (creative v2, concept A, rejected: needed the caption to make sense):** navy GIF, moved to `archive/history/2026-11-12_P05-v2/` (+ .mp4, final-frame .png), source `drafts/P05-v2-queue.html`. Headline "The Binance money has to land somewhere. *It could be your queue.*" Kicker "$6.3BN HIT · ABOUT HALF FROZEN". Coins move along a blockchain line; three freeze (blue, "Frozen"); the rest leave the chain and arrive as rows in a white "Onboarding queue" (Northbay Trading Ltd · Hong Kong, Kestrel Supply FZE · UAE, Lumenpath LLC · US; all invented, all "✓ No match"). The last row is outlined in gold, with the scrawl "Who's behind it?". ~13 s loop.
 - **Story (locked):** once stolen crypto leaves the blockchain, the trail turns into people and companies, which can land in your onboarding, payments or supply chain; the question on your desk is "are we exposed?"; Sayari shows the ownership and control behind companies, linked to source records. Stages: `newsjack/P05-binance/01-news.md` → `02-why-it-matters.md` → `03-story.md` → `05-caption.md`.
 - **Caption (final v5, hook H-a; edit on the hub):**
-> $6.3 bn stolen from Binance on 29th October in what looks like the biggest crypto hack on record.
+> $6.3bn stolen from Binance on October 29, in what looks like the biggest crypto hack on record.
 >
 > If you work in sanctions, KYB or financial crime, it’s your problem too.
 >
-> The attacker still holds billions. To use that money, it has to pass through people and companies. Some of those companies can end up in your onboarding queue, your payments or your supply chain.
+> The attacker still holds billions. To use that money, they have to move it through people and companies. Some of those companies can end up in your onboarding queue, your payments or your supply chain.
 >
-> Here's what we know so far:
+> Here’s what we know so far:
 >
-> → About half the assets are frozen. Tether and Circle alone froze about $2.4bn.
-> → The FBI, Chainalysis and TRM Labs link the attack to North Korea. North Korea denies it.
-> → Binance says it started with a fake job interview that infected an engineer’s laptop.
+> → About half the assets are frozen.
+> → The FBI, Chainalysis and TRM Labs link the attack to North Korea. (North Korea has denied similar accusations before.)
 >
-> But here is why it matters: a 2024 UN expert panel report cited a member state saying North Korea funds about 40% of its weapons programs through cybercrime. So when the money moves, the question you need to ask yourself is “Are we exposed?”
+> A 2024 UN expert panel report says cybercrime funds about 40% of North Korea’s weapons programs, citing one member state.
 >
-> To answer it, you need to know who owns and controls the companies involved, not just whether a name matches a list. Today that often means a search tool, a registry, a spreadsheet and an hour of guessing.
+> So when the money moves, how would you know if you’re exposed?
 >
+> To answer it, you need to know who owns and controls the companies involved, not just whether a name matches a list.
 >
-> When money moves through people and companies, Sayari shows who's behind them: owners, controllers and their connections, across 250+ jurisdictions, each linked to the source record. So you can show exactly why you are, or aren't, exposed.
+> Today, that often means a search tool, a registry, a spreadsheet and an hour of guessing.
+>
+> Sayari shows who’s behind those companies: owners, controllers and their connections, across 250+ jurisdictions, each linked to the source record. So you can show exactly why you are, or aren’t, exposed.
 - **Before posting:** refresh the frozen figure; read the FBI notice itself.
 - **First comment (sources):** BBC (30 Oct) · Binance post-mortem (3 Nov) · FBI attribution (31 Oct–1 Nov).
 - **History:** v1 one-shot (GIF copying Sayari's template + borrowed 2023 case caption) retired; its files are in `archive/history/2026-11-12_P05-v1/`, and earlier captions are in `newsjack/P05-binance/05-caption.md` + git.
