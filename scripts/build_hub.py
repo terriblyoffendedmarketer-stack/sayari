@@ -48,7 +48,9 @@ def posts():
                 if l.startswith(">"): lines.append(l[2:] if l.startswith("> ") else l[1:])
                 elif lines and l.startswith("- **"): break
             return "\n".join(lines)
-        assets = sorted(os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*.png")))
+        # A post image with a same-name .gif shows the animated GIF (newsjack GIFs); the .png is its final frame.
+        assets = sorted(a[:-4] + ".gif" if os.path.exists(P("content/posts/assets", a[:-4] + ".gif")) else a
+                        for a in (os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*.png"))))
         editable = lambda k: f"editable/{k}-editable.pdf" if os.path.exists(P("content/posts/editable", f"{k}-editable.pdf")) else ""
         pdfs = {os.path.basename(f) for f in glob.glob(P("content/posts/assets", num + "-*.pdf"))}
         shared = ["posts/" + a for a in assets if not re.match(num + r"-v\d+-", a)]

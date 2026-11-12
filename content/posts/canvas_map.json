@@ -96,5 +96,11 @@
    "P04-v2.pdf"
   ],
   "sha": "cd4260fdc4096542"
+ },
+ "P05-binance.dc.html": {
+  "out": [
+   "P05-final.png"
+  ],
+  "sha": "89695acbeeb271f5"
  }
 }
