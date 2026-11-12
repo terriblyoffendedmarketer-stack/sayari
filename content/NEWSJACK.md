@@ -25,7 +25,8 @@ Ekshika asked on 2026-11-12 for posts like four that Sayari's in-house team publ
 
 ## Captions
 - **Theirs run long (240–440 words):** a cold open on the most concrete detail → "X just reported…" → a numbered 1–7 breakdown → one extra striking detail → "the questions for risk teams are:" → the Sayari line → sometimes a closing question.
-- ⚠ This conflicts with Ekshika's round-1 note (too verbose, ~30–90 words). Our working assumption: newsjacks are the exception, because the explanation *is* the value. Confirm with Ekshika before the first one ships.
+- **Confirmed (user, 2026-11-12):** ~240–440 words is right for newsjacks, because explaining the news is the value. The creative also carries more words than other posts. It's still not a reading slog: numbered steps, short lines, one mechanism. The GIF's movement adds the interactivity.
+- **Spacing:** newsjacks aren't continuous. Run them when a good story lands, between the regular posts.
 
 ## Our process for one newsjack
 1. **Find:** DOJ/OFAC/BIS/Commerce releases, ICIJ/NYT/FT/Reuters investigations, MOFCOM or EU notices from the last 2 weeks. Read the primary source.
