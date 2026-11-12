@@ -18,7 +18,7 @@ URLs (also in CLAUDE.md): hub `https://claude.ai/artifact/Gmw5L8TenBeGWB3iVTRHaj
    - Then ArtifactData `batch` of `update` ops: `inbox/<id>` `{status: "filed", filedAs: "<id or file>"}`.
    - Unclear item → leave it as is and list it in the report as a question for the user.
 3b. **Backup shelf.** ArtifactData `list` (hub url, collection `shelf`). Each doc id (`P0X-vN`) is a version the user moved to Backup on the Posts tab (Restore deletes the doc). Mirror it in the POSTS.md index Status column ("Backup") and report changes. Backup ≠ archive: archive is recovery only.
-4. **Before ANY hub publish (here or anywhere else): check the editing flag.** ArtifactData `list` (hub url, collection `capdrafts`). If any doc has `editing: true`, or a draft newer than the saved caption, **do not publish**: tell the user and wait for their go-ahead. Also never publish the hub mid-session without the user's explicit OK (a publish reloads the page; see learnings 2026-11-12).
+4. **Before ANY hub publish (here or anywhere else): check the editing flag.** ArtifactData `list` (hub url, collection `capdrafts`). If any doc has `editing: true`, or a draft newer than the saved caption, **do not publish**: tell the user and wait for their go-ahead. No need to ask the user otherwise (user, 2026-11-12: the flag is the gate).
 5. **Rebuild + republish the hub.** `python3 -I scripts/build_hub.py`, then Artifact publish `content/hub/hub.html` to the hub url. Pass only the changed images as `files` (`posts/<f>` ← `content/posts/assets/<f>`, and `editable/<f>` ← `content/posts/editable/<f>` when designs changed). Omit `capabilities`.
 6. **Commit** with a message listing what came in (e.g. "hub-sync: 2 captions, P04 slide 3 from canvas, 4 inbox items → I53–I55").
 

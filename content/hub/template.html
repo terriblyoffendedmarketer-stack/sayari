@@ -407,9 +407,8 @@ async function saveCaption(key, text, note){
 }
 /* ---- Drafts + editing flag (added 2026-11-12 after a republish wiped unsaved edits) ----
    Every keystroke is kept in this browser (localStorage) and, a second later, in the db:
-   capdrafts/<P0X-vN> {text, at, by, editing}. editing:true while the editor is open, so Claude
-   checks it before any republish. Save clears the draft (the saved text goes to history);
-   Cancel keeps it, so nothing typed is ever thrown away without asking.                      */
+   capdrafts/<P0X-vN> {text, at, by, editing}. editing:true from the moment Edit is pressed until Save (Close keeps it on;
+   it only clears if the text is unchanged). Claude checks it before any republish.                      */
 const CAPDRAFT = {}; const draftTimers = {};
 const LKEY = k => `sayari-capdraft:${k}`;
 function localDraft(k){ try { return JSON.parse(localStorage.getItem(LKEY(k)) || "null"); } catch { return null; } }
@@ -435,7 +434,7 @@ function openEditor(box){
 }
 function closeEditor(box, keepDraft){
   const k = box.dataset.key, ta = box.querySelector("textarea");
-  if (keepDraft && ta) { const ij = postBy(k), t = ta.value; if (t !== capText(D.posts[ij[0]], ij[1])) { setLocalDraft(k, { text: t, at: new Date().toISOString() }); clearTimeout(draftTimers[k]); pushDraft(k, t, false); } else clearDraft(k); }
+  if (keepDraft && ta) { const ij = postBy(k), t = ta.value; if (t !== capText(D.posts[ij[0]], ij[1])) { setLocalDraft(k, { text: t, at: new Date().toISOString() }); clearTimeout(draftTimers[k]); pushDraft(k, t, true); } else clearDraft(k); }
   box.classList.remove("editing"); box.querySelector(".caption").hidden = false; box.querySelector(".capwork").innerHTML = ""; paintCaptions();
 }
 async function openHistory(box){
