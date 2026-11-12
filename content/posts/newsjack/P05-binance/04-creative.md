@@ -29,3 +29,17 @@ What the creative has to land in 2 seconds: **stolen crypto has to turn into ord
 
 ## Rules for whichever we pick
 No Binance logo or other brand marks; invented company names; no disclaimers on the image; one gold accent; numbers on the image only if sourced and refreshed on the posting day.
+
+---
+
+## Rethink (user, 2026-11-12): v2 doesn't work without the caption
+**Problem:** "The Binance money has to land somewhere. It could be your queue." assumes the reader knows the story. It never says what happened, who did it, or why it's a sanctions problem. "Your queue" is vague, and the coin animation is decoration, not information.
+**The image alone must say three things:** (1) what happened, in one line (who stole how much, from whom; FBI → North Korea), (2) why it reaches a compliance desk (billions still have to be cashed out through ordinary-looking companies), (3) the question it leaves them with.
+**Message options (pick one before any format):**
+- M1: "North Korea stole $6.3bn in crypto. To spend it, it needs companies that look like your customers." (+ FBI attribution line)
+- M2: "$6.3bn stolen. About half frozen. The rest needs a way out, and the way out looks like an ordinary company."
+- M3: "The biggest crypto theft ever just became a KYB problem."
+Format follows the message: a GIF builds the one sentence in steps; a carousel gives each beat a slide.
+
+## Caption fix: "Western agencies"
+That's the BBC's wording, and it's vague. The concrete source: the **UN Panel of Experts (2024 report)** said cyber theft brings in about half of North Korea's foreign currency and funds about 40% of its weapons of mass destruction programmes. Suggested line: "A 2024 UN report found North Korea funds about 40% of its weapons programs through cyber theft." (The panel's mandate ended in 2024, so this is its last report.)
