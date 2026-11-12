@@ -1,4 +1,33 @@
-# P05 · Caption v2 (from the locked story, 03-story.md)
+# P05 · Caption v3 (the user's rewrite, 2026-11-12): CURRENT
+
+> Binance says $6.3bn in digital assets were hit in what looks like the biggest crypto hack on record.
+>
+> Here’s what we know so far:
+>
+> → Binance says about half the assets are frozen. The rest is still with the attacker. It says it will cover all losses.
+> → It first pointed to a compromised engineer’s laptop. Later checks found other breach points.
+> → Chainalysis and TRM Labs link the attack to a North Korean hacking group. Binance hasn’t confirmed that. North Korea has denied past hacks.
+> → Tether and Circle froze about $2.4bn between them.
+>
+> What it means for you
+>
+> If compliance teams are the audience, the crypto isn’t the point. The attacker still holds a huge sum, and to use it, that money has to move through people and companies. Those companies can land in your onboarding queue, your payments or your supply chain.
+>
+> Western agencies have said that stolen funds like these help pay for North Korea’s weapons programs. So the question reaching your desk isn’t about crypto. It’s “are we exposed?”
+>
+> Answering that means knowing who owns and controls the entities involved, not only whether a name matches a list. That usually means a search tool, a registry, a spreadsheet and an hour of guessing.
+>
+> Where Sayari fits
+>
+> Sayari shows the ownership and control behind companies, linked to the source records, so you can trace from a counterparty to the people and networks behind it and show your work.
+>
+> When news like this breaks, how long does it take your team to answer “are we exposed?”
+
+**What v3 does better than v2 (lessons):** a "what we know so far" arrow list instead of a cold open; plain section labels (What it means for you / Where Sayari fits); no borrowed 2023 case history; the reader's own pain ("a search tool, a registry, a spreadsheet and an hour of guessing"); Sayari as source-linked ownership and control ("show your work"); ends on a question about the reader's own team. ~260 words.
+
+---
+
+# P05 · Caption v2 (from the locked story, 03-story.md), superseded by v3
 
 ~350 words. Design (stage 4) not started.
 
