@@ -84,6 +84,7 @@ The project skill `.claude/skills/sayari-content/SKILL.md` and auto-memory carry
 - `scripts/build_tracker.py`: renders the private learning tracker page from LEARNING_TRACKER.md.
 - `scripts/preview_dc.py`: renders Claude Design artboards (.dc.html) locally + a contact sheet laid out like the canvas, for reviewing without claude.ai sign-in.
 - `scripts/render_gif.py`: renders an animated post HTML (L7) to a looping GIF + MP4 + final-frame PNG (headless Chrome frames + ffmpeg).
+- `content/buckets/NEWSJACK_STORIES.md`: newsjack story log (candidates per search, status).
 - `content/NEWSJACK.md`: how Sayari's own newsjack posts work (GIF + digest carousel), caption pattern, our newsjack process.
 - `scripts/render_post.py`: renders a post HTML to a 1080×1350 PNG (carousels: PNG per slide + PDF) via headless Chrome.
 - `scripts/build_hub.py` + `content/hub/template.html`: generate `content/hub/hub.html` (the Content Hub) from POSTS, FRAMEWORK, templates, IMAGE_IDEAS, sharpened ideas, case studies and the listener DB.
