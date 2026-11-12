@@ -48,3 +48,5 @@ box-shadow in print PDF | Chrome rasterises it as a dark rectangle | box-shadow:
 hub publish refused as 'not viewed' after a fresh chat | Artifact requires the live version to be read first | diff the saved live copy (minus the publish-time skeleton line) against git HEAD hub.html; if same, Read a few lines of it and republish
 news-release dates on sayari.com looked like Apr 2026 for years-old releases | WP migration reset the date field | read the date in the article body before citing
 hub db writes open to signed-in link viewers | only inbox has a db rule; default lets 'interact' write | gate UI on user.isOwner(); a real fix is a db rule (write: admin) for captions + shelf at next capabilities publish
+render_gif.py: parallel headless Chrome frames crashed (ProcessSingleton / SingletonLock) | Chrome won't run two instances on one --user-data-dir | warm one profile for fonts, then copy it per worker (skip Singleton* files)
+Ordinal post pages: JS returning text with URLs is blocked by Claude in Chrome (cookie/query-string filter) | output contained query strings | return innerText of main only, strip URLs to filenames

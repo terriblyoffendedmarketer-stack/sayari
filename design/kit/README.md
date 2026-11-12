@@ -10,6 +10,7 @@ Starting points for every post, in Sayari's own design system (tokens copied fro
 | `L4-stat-source.html` | navy | One sourced number (receipts, newsjacks) | Big stat + source |
 | `L5-message-thread.html` | navy | Realistic fake Slack / email / auditor chat | Realistic chat/email |
 | `L6-carousel-story.html` | navy/beige alternating | Receipts: a real case told as setup → trap → move → result → rule | Story carousel |
+| `L7-newsjack-gif.html` | beige, **animated** | Newsjacks: "paperwork said A, reality was B" explainer GIF (Sayari's own newsjack format; see `content/NEWSJACK.md`) | Builds step by step → red end node |
 
 Previews (rendered PNGs) are in `previews/`. Example text comes from real ideas in the idea bank (L3 = idea I05, L6 = idea I04), so they double as first wireframes.
 
@@ -49,6 +50,10 @@ python3 -I scripts/render_post.py design/kit/layouts/L3-split-compare.html --out
 python3 -I scripts/render_post.py design/kit/layouts/L6-carousel-story.html --slides 5 --pdf --out content/posts/drafts/P04.png
 ```
 The carousel gets one PNG per slide plus a PDF (LinkedIn's carousel format).
+```bash
+python3 -I scripts/render_gif.py design/kit/layouts/L7-newsjack-gif.html --out content/posts/drafts/P05.gif
+```
+Animated layouts get a looping GIF + MP4 + a PNG of the final frame (timing comes from the layout's `<meta name="gif">`).
 
 ## Gotchas
 - Fonts come from Google Fonts: render with internet on, or text falls back to Georgia/system fonts.
