@@ -27,3 +27,25 @@ Builds on `01-news.md`. Not the story yet (that's stage 3).
 
 ## Sources
 Stage 1 sources, plus: US Treasury jy1435 (24 Apr 2023) + DOJ US v. Sim Hyon Sop · Silent Push via Reuters/CoinDesk/The Block (25 Apr 2025: BlockNovas, SoftGlide) · TRM Labs on the Treasury action of 4 Nov 2025 (DPRK bankers, Korea Mangyongdae Computer Technology Co.) · Sayari partner ecosystem page (lists Chainalysis).
+
+---
+
+## How Sayari's 4 posts made the news → Sayari connection (and ours)
+Their method, every time:
+1. **Find the company-level fact inside the news:** an entity, an owner, a controller, a registration. Ignore everything else, however big (GPUs, invoices, AI model weights).
+2. **Name the claim that hid it:** paperwork, an invoice, "a minority stake", "no foreign owner".
+3. **Turn it into the risk team's own question** ("Who owns the transshipment company?", "Diligence has to cover who controls the target", "what does your memo cite?").
+4. **One Sayari line = data + verb + "side by side / in one place":** corporate (and trade) records, 250+ jurisdictions → maps / traces / surfaces → the claim and the reality "show up side by side", "in one place", "a head start", "there when needed". Modest, never "would have caught it".
+
+| Post | Company-level fact in the news | The risk team's question | Sayari line's payoff |
+|---|---|---|---|
+| Earthmade | The **transshipment company** buying the servers | Who owns it? Where did its past shipments end up? | "compliant" first stop and real destination side by side |
+| A7 | **Two UAE shells registered by the same person** (from the NYT story) | Catch it in the network, not the invoice | front company and the network behind it in one place |
+| MOFCOM | The **"actual controller"** of a Chinese AI company | Who controls the target, not just who owns it | a head start on the control question |
+| ICBC | **Minority stakes, JVs, obscured shareholders** | What does your exception memo cite? | the records are there when needed |
+
+**For Binance, drop the crypto.** Coins, wallets, ether and memecoins are blockchain analytics' ground (and Chainalysis is a Sayari partner). The company-level fact *in this story*: the $6.3bn heist started with **a "Project Director" at a fictitious company**, with a fake HR rep, a fake CEO and social accounts built to look real (Binance post-mortem, 3–4 Nov).
+- **The claim that hid it:** a convincing company front (people, profiles, a project).
+- **The risk team's question:** onboarding companies is the KYB job. Does this company actually exist? If it's registered, who registered it, at what address, linked to whom? North Korea has registered real shells for this same tactic before (BlockNovas LLC, New Mexico; SoftGlide LLC, New York; Apr 2025), so a registration alone proves nothing.
+- **Sayari line (draft, in their pattern):** "Sayari's corporate records across 250+ jurisdictions show who sits behind a company: its owners, officers, addresses and links. So a polished front and a company that doesn't exist on paper are easy to tell apart." (Supported by the Aug 2026 shell-company risk factors: mass address, mass registration, implausible date of birth, company service providers.)
+- **The gap to bridge honestly:** at Binance, the fake company targeted a job candidate, not a compliance check. The post has to make the jump explicit: the same front, built to fool a candidate, is what risk teams meet as a new customer, vendor or counterparty.
