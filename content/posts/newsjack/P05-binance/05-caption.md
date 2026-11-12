@@ -99,3 +99,33 @@
 
 ## First comment (sources)
 BBC report · Binance post-mortem · US Treasury press release jy1435 · DOJ case page US v. Sim Hyon Sop et al.
+
+---
+
+# P05 · Caption v1 (one-shot, retired)
+
+> $6.3bn was taken from Binance on 30 October. Investigators think it's the biggest crypto theft on record.
+>
+> Stealing it was the first half. Spending it is the second, and that half runs through ordinary-looking companies.
+>
+> The FBI has attributed the hack to North Korea's TraderTraitor group, also known as Lazarus. (North Korea has denied involvement in past hacks.) Binance says about half the assets have been frozen. The rest is still moving.
+>
+> So how does stolen crypto become money North Korea can use? A 2023 US Treasury and DOJ case laid out how earlier Lazarus thefts were cashed out:
+>
+> 1) The stolen coins are split across thousands of wallets and swapped between blockchains. (In the Binance case, the FBI says they're being converted mainly into ether.)
+> 2) An OTC trader in China buys them off-exchange and pays out in regular currency.
+> 3) A Hong Kong-based trader routes those payments through front companies, which let North Korean actors get past banks' anti-money-laundering checks.
+> 4) A North Korean banker directs the front companies to buy goods for North Korea.
+> 5) To the supplier's bank, it's a trading company paying an invoice. The name screen comes back clean.
+>
+> --
+>
+> The same banker was separately charged over a tobacco scheme that used front companies and false documents to push at least 310 transactions, worth about $74M, through US banks.
+>
+> --
+>
+> So, the questions for risk teams are:
+> -Who actually owns the trading company paying you?
+> -Who else shares its directors, its address and its bank?
+>
+> Blockchain analytics follow the coins. Sayari follows the companies: ownership, officers and trade records across 250+ jurisdictions, so a front company and the network behind it show up in one place.
