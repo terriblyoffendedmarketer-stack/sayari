@@ -25,15 +25,15 @@
 - UBO & NESTED OWNERSHIP [AUTHENTIC PRACTITIONER TERM]: Ultimate Beneficial Ownership obscured behind opaque multi-jurisdiction holding layers.
 - AUDIT TRAIL [AUTHENTIC PRACTITIONER TERM]: Defensible paper trail proving to regulatory examiners why an alert was cleared or escalated.
 - FRANKENSTACK [AUTHENTIC PRACTITIONER TERM]: Enterprise shorthand for the fragmented 5-8 vendor point solutions and spreadsheets compliance teams are forced to glue together.
-- JUDGMENT INFRASTRUCTURE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- LEVERAGE SYNERGIES [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- BEST-IN-BREED SEAMLESS INTEGRATION [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- HOLISTIC END-TO-END [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - ZERO-RESISTANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
-- SINGLE PANE OF GLASS [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- HOLISTIC END-TO-END [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - NEXT-GEN RISK ECOSYSTEM [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- BEST-IN-BREED SEAMLESS INTEGRATION [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- JUDGMENT INFRASTRUCTURE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - PARADIGM SHIFT [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 - FRICTIONLESS COMPLIANCE [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- LEVERAGE SYNERGIES [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
+- SINGLE PANE OF GLASS [BANNED VENDOR BUZZWORD]: Vendor brochure buzzword — avoid in practitioner copy
 
 ## 3. SAYARI VERIFIED PROOF ANCHORS
 - [Proof #1] No. 3 Global Telecom: 72% of flagged risk was on zero watchlists anywhere, hidden in nested ownership (60K+ partners screened continuously).
