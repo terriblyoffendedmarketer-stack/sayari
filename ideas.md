@@ -16,10 +16,10 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 | 10 | **56.1** | [From 6 Tabs to 1 Query: Solving Alert Fatigue is a Tool Failure, Not an Analyst Failure](#idea-10) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 6 | 2.0/5 |
 | 11 | **53.9** | [One Residential Apartment, 147 Export Trading Firms](#idea-11) | The receipts | The risk hiding in plain sight | One address, 200 companies | 6 | 2.0/5 |
 | 12 | **53.9** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-12) | Headline to what it means for you | A score is not a defense | A score is not a defense | 6 | 2.0/5 |
-| 13 | **43.9** | [The Practitioner Reality of A Vendor Risk Score is Not an Audit Defense](#idea-13) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 5 | 3.2/5 |
-| 14 | **40.7** | [From 6 Tabs to 1 Query: Solving A Vendor Risk Score is Not an Audit Defense](#idea-14) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 5 | 3.2/5 |
-| 15 | **39.1** | [One Residential Apartment, 147 Export Trading Firms](#idea-15) | The receipts | The risk hiding in plain sight | One address, 200 companies | 5 | 3.2/5 |
-| 16 | **39.1** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-16) | Headline to what it means for you | A score is not a defense | A score is not a defense | 5 | 3.2/5 |
+| 13 | **48.5** | [The Practitioner Reality of A Vendor Risk Score is Not an Audit Defense](#idea-13) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 6 | 3.17/5 |
+| 14 | **44.9** | [From 6 Tabs to 1 Query: Solving A Vendor Risk Score is Not an Audit Defense](#idea-14) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 6 | 3.17/5 |
+| 15 | **43.1** | [One Residential Apartment, 147 Export Trading Firms](#idea-15) | The receipts | The risk hiding in plain sight | One address, 200 companies | 6 | 3.17/5 |
+| 16 | **43.1** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-16) | Headline to what it means for you | A score is not a defense | A score is not a defense | 6 | 3.17/5 |
 
 ---
 
@@ -257,7 +257,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *A spreadsheet, a Google tab and a prayer*
 - **The Hook:** "What the sales pitch says about A Vendor Risk Score is Not an Audit Defense vs what actually lands in your inbox at 8:00 AM on Monday."
 - **Suggested Visual Portrayal:** Two-panel meme or clean typographic contrast card.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 15 | Avg Intensity: 3.2/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 15 | Avg Intensity: 3.17/5
 - **Risks:** Low.
 - **Verify Before Use:** Verify tone remains validating rather than cynical.
 
@@ -278,7 +278,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *Six tabs to one query: before/after*
 - **The Hook:** "The manual workaround for A Vendor Risk Score is Not an Audit Defense takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
 - **Suggested Visual Portrayal:** Before/after UI workflow comparison with clear source documentation attached.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 15 | Avg Intensity: 3.2/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 15 | Avg Intensity: 3.17/5
 - **Risks:** Needs cleared Sayari product screenshots.
 - **Verify Before Use:** Confirm with Sayari which product screens (Sayari Graph or Sayari Map) are cleared for public release.
 
@@ -299,7 +299,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *One address, 200 companies*
 - **The Hook:** "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
 - **Suggested Visual Portrayal:** Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 15 | Avg Intensity: 3.2/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 15 | Avg Intensity: 3.17/5
 - **Risks:** Legal sensitivity: naming real addresses or companies requires official DOJ/OFAC public settlement source.
 - **Verify Before Use:** Attach public OFAC settlement notice or BIS enforcement action as citation before naming real entities.
 
@@ -320,7 +320,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *A score is not a defense*
 - **The Hook:** "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
 - **Suggested Visual Portrayal:** Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
-- **Metrics:** Backed by 5 independent sources | Engagement Score: 15 | Avg Intensity: 3.2/5
+- **Metrics:** Backed by 6 independent sources | Engagement Score: 15 | Avg Intensity: 3.17/5
 - **Risks:** Moderate. Explaining enforcement standards must strictly cite published regulatory guidance (e.g. OFAC Framework for Compliance Commitments).
 - **Verify Before Use:** Check OFAC's published penalty guidelines regarding compliance program mitigation factors.
 
