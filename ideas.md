@@ -4,11 +4,11 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 
 | Rank | Score | Title | Format | Pillar | Extends Doc Idea | Sources | Intensity |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | **98.1** | [The Practitioner Reality of The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-1) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 86 | 1.92/5 |
-| 2 | **90.9** | [From 6 Tabs to 1 Query: Solving The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-2) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 86 | 1.92/5 |
+| 1 | **98.2** | [The Practitioner Reality of The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-1) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 87 | 1.94/5 |
+| 2 | **91.0** | [From 6 Tabs to 1 Query: Solving The Reality Gap: Vendor Promises vs Practitioner Daily Grind](#idea-2) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 87 | 1.94/5 |
 | 3 | **89.8** | [The Practitioner Reality of Enforcement Is Shifting From Box-Checking to Evidentiary Proof](#idea-3) | Pain mirror | The Frankenstack Reckoning | A spreadsheet, a Google tab and a prayer | 7 | 3.0/5 |
-| 4 | **87.2** | [One Residential Apartment, 147 Export Trading Firms](#idea-4) | The receipts | The risk hiding in plain sight | One address, 200 companies | 86 | 1.92/5 |
-| 5 | **87.2** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-5) | Headline to what it means for you | A score is not a defense | A score is not a defense | 86 | 1.92/5 |
+| 4 | **87.3** | [One Residential Apartment, 147 Export Trading Firms](#idea-4) | The receipts | The risk hiding in plain sight | One address, 200 companies | 87 | 1.94/5 |
+| 5 | **87.3** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-5) | Headline to what it means for you | A score is not a defense | A score is not a defense | 87 | 1.94/5 |
 | 6 | **83.1** | [From 6 Tabs to 1 Query: Solving Enforcement Is Shifting From Box-Checking to Evidentiary Proof](#idea-6) | Product as relief | The Frankenstack Reckoning | Six tabs to one query: before/after | 7 | 3.0/5 |
 | 7 | **79.8** | [One Residential Apartment, 147 Export Trading Firms](#idea-7) | The receipts | The risk hiding in plain sight | One address, 200 companies | 7 | 3.0/5 |
 | 8 | **79.8** | [A Score Is Not a Defense: What Regulators Actually Ask When Front Companies Slip Through](#idea-8) | Headline to what it means for you | A score is not a defense | A score is not a defense | 7 | 3.0/5 |
@@ -29,7 +29,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *A spreadsheet, a Google tab and a prayer*
 - **The Hook:** "What the sales pitch says about The Reality Gap: Vendor Promises vs Practitioner Daily Grind vs what actually lands in your inbox at 8:00 AM on Monday."
 - **Suggested Visual Portrayal:** Two-panel meme or clean typographic contrast card.
-- **Metrics:** Backed by 86 independent sources | Engagement Score: 1421 | Avg Intensity: 1.92/5
+- **Metrics:** Backed by 87 independent sources | Engagement Score: 1421 | Avg Intensity: 1.94/5
 - **Risks:** Low.
 - **Verify Before Use:** Verify tone remains validating rather than cynical.
 
@@ -48,7 +48,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *Six tabs to one query: before/after*
 - **The Hook:** "The manual workaround for The Reality Gap: Vendor Promises vs Practitioner Daily Grind takes 45 minutes per vendor across disconnected point solutions. Here is the single query that pulls verified registry records in seconds."
 - **Suggested Visual Portrayal:** Before/after UI workflow comparison with clear source documentation attached.
-- **Metrics:** Backed by 86 independent sources | Engagement Score: 1421 | Avg Intensity: 1.92/5
+- **Metrics:** Backed by 87 independent sources | Engagement Score: 1421 | Avg Intensity: 1.94/5
 - **Risks:** Needs cleared Sayari product screenshots.
 - **Verify Before Use:** Confirm with Sayari which product screens (Sayari Graph or Sayari Map) are cleared for public release.
 
@@ -86,7 +86,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *One address, 200 companies*
 - **The Hook:** "On paper, it's a quiet residential address in Cyprus. In customs trade records, it routed $42M in dual-use microelectronics last quarter."
 - **Suggested Visual Portrayal:** Five-slide carousel teardown: Slide 1 Setup -> Slide 2 The Trap -> Slide 3 The Network Graph -> Slide 4 The Designated UBO -> Slide 5 The Takeaway Rule.
-- **Metrics:** Backed by 86 independent sources | Engagement Score: 1421 | Avg Intensity: 1.92/5
+- **Metrics:** Backed by 87 independent sources | Engagement Score: 1421 | Avg Intensity: 1.94/5
 - **Risks:** Legal sensitivity: naming real addresses or companies requires official DOJ/OFAC public settlement source.
 - **Verify Before Use:** Attach public OFAC settlement notice or BIS enforcement action as citation before naming real entities.
 
@@ -105,7 +105,7 @@ Every idea below is mapped to Sayari's 4 core formats, backed by multiple public
 - **Extends Doc Idea:** *A score is not a defense*
 - **The Hook:** "When a regulator asks 'How did you clear this transshipment hub?', telling them your automated vendor screening assigned an 88 risk score is not a legal defense."
 - **Suggested Visual Portrayal:** Outcome-first carousel: regulator question on top, risk score trap in middle, defensible evidence record at bottom.
-- **Metrics:** Backed by 86 independent sources | Engagement Score: 1421 | Avg Intensity: 1.92/5
+- **Metrics:** Backed by 87 independent sources | Engagement Score: 1421 | Avg Intensity: 1.94/5
 - **Risks:** Moderate. Explaining enforcement standards must strictly cite published regulatory guidance (e.g. OFAC Framework for Compliance Commitments).
 - **Verify Before Use:** Check OFAC's published penalty guidelines regarding compliance program mitigation factors.
 
